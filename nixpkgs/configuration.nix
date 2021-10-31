@@ -4,11 +4,18 @@
 
 { config, pkgs, ... }:
 
+let
+  home-manager-tar = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/master.tar.gz";
+
+in 
 {
   imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
+    [
+      (import "${home-manager-tar}/nixos")
     ];
+
+  home-manager.users.will = import ./home.nix
+    
 
   #Nix preferences: unstable version
   nix = {
@@ -108,37 +115,18 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-
     home-manager
 
     #Terminal emulator
-    alacritty
-    zsh
-    neovim
     wget
     git
-    neofetch
-    htop
-    xorg.xkill
-    ranger
-    lf
-
-    #GUI stuff
-    brave
-    trayer
-    networkmanagerapplet
 
     #Window manager stuff
     xmobar
-    nitrogen
-    picom
-    rofi
   ];
 
   fonts.fonts = with pkgs; [
     ubuntu_font_family
-    fira-code
-    fira-code-symbols
     nerdfonts
     font-awesome
   ];

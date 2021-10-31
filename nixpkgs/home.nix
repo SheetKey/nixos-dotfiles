@@ -21,12 +21,36 @@
 
 
 
+  home.packages = with pkgs; [
+    #Terminal
+    alacritty
+    zsh
+    neovim
+    neofetch
+    htop
+    xorg.kill
+    lf
+
+    #GUI stuff
+    brave
+    trayer
+    networkmanagerapplet
+
+    #window manager related
+    nitrogen
+    picom
+    rofi
+  ];
+
+
+
   imports = 
     [
       ./programs/xmonad/default.nix
       ./programs/zsh/default.nix
       ./programs/rofi/default.nix
       ./programs/xmobar/default.nix
+      ./programs/lf/default.nix
 
       ./services/picom/default.nix
     ];
