@@ -6,7 +6,7 @@
     nixpkgs.url = "nixpkgs/nixos-unstable";
 
     home-manager.url = "github:nix-community/home-manager/master";
-    home-manager.inputs.nixpkgs.follows = "mixpkgs";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
   };
 
