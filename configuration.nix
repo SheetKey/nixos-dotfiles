@@ -1,35 +1,27 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
 { config, pkgs, ... }:
 
-let
-  home-manager-tar = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/master.tar.gz";
-
-in 
 {
-  imports =
-    [
-      (import "${home-manager-tar}/nixos")
-    ];
+#  imports =
+#    [
+#      (import "${home-manager-tar}/nixos")
+#    ];
 
-  home-manager.users.will = import ./home.nix
-    
 
-  #Nix preferences: unstable version
+  # Nix preferences: unstable version
   nix = {
     package = pkgs.nixUnstable;
+
     #Garbage collection
     gc = {
       automatic = true;
-      dates = "03:15";
+      dates = daily;
     };
+
+    extraOptions = ''
+      experimental-features = nix-command flakes
+    '';
   };
-  system.autoUpgrade = {
-    enable = true;
-    channel = "https://nixos.org/channels/nixos-unstable";
-  };
+
 
   # Use the GRUB 2 boot loader.
   boot.loader.grub.enable = true;
@@ -43,8 +35,13 @@ in
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
-  # Set your time zone.
+  # Set up locales.
   time.timeZone = "America/New_York";
+  i18n.defaultLocale = "en_US.UTF-8";
+  console = {
+    font = "FiraCode";
+    keyMap = "us";
+  };
 
   # The global useDHCP flag is deprecated, therefore explicitly set to false here.
   # Per-interface useDHCP will be mandatory in the future, so this generated config
@@ -56,17 +53,13 @@ in
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
-  console = {
-    font = "FiraCode";
-    keyMap = "us";
-  };
 
   # Enable the X11 windowing system.
   services.xserver = {
   	enable = true;
-	#displayManager.lighdm.enable = true;
+	layout = "us";
+
+	displayManager.lighdm.enable = true;
 	displayManager.defaultSession = "none+xmonad";
 	windowManager = {
 		xmonad.enable = true;
@@ -77,17 +70,11 @@ in
 			hpkgs.xmonad-extras
 			];
 	};
+	libinput = {
+          enable = true;
+	  touchpad.naturalScrolling = false;
+	};
   };
-
-  #Shell
-  users.defaultUserShell = pkgs.zsh;
-  
-  # nvim default editor
-  programs.neovim.defaultEditor = true;
-
-  # Configure keymap in X11
-  services.xserver.layout = "us";
-  # services.xserver.xkbOptions = "eurosign:e";
 
   # Enable CUPS to print documents.
   # services.printing.enable = true;
@@ -96,14 +83,12 @@ in
   sound.enable = true;
   hardware.pulseaudio.enable = true;
 
-  # Enable touchpad support (enabled default in most desktopManager).
-  services.xserver.libinput.enable = true;
-
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.will = {
     isNormalUser = true;
     home = "/home/will";
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" ]; 
+    shell = pkgs.zsh;
   };
 
   #no sudo passwd
@@ -125,8 +110,8 @@ in
     xmobar
   ];
 
+  # Install fonts
   fonts.fonts = with pkgs; [
-    ubuntu_font_family
     nerdfonts
     font-awesome
   ];
