@@ -57,7 +57,7 @@
   	enable = true;
 	layout = "us";
 
-	displayManager.lighdm.enable = true;
+	displayManager.lightdm.enable = true;
 	displayManager.defaultSession = "none+xmonad";
 	windowManager = {
 		xmonad.enable = true;
@@ -87,6 +87,9 @@
     home = "/home/will";
     extraGroups = [ "wheel" ]; 
     shell = pkgs.zsh;
+
+    initialPassword = "12";
+
   };
 
   #no sudo passwd
