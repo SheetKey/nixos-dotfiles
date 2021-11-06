@@ -1,0 +1,15 @@
+{ config, lib, pkgs, modulesPath, ... }:
+
+{
+
+  networking.hostName = "laptop";
+
+  environment.systemPackages = with pkgs; [
+
+  ];
+
+  imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
+
+  
+
+}
