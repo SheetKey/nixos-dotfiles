@@ -14,7 +14,7 @@
     #Garbage collection
     gc = {
       automatic = true;
-      dates = daily;
+      dates = "daily";
     };
 
     extraOptions = ''
