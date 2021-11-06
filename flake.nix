@@ -49,6 +49,22 @@
 	];
       };
 
+      vmtest = lib.nixosSystem {
+        inherit system;
+
+	modules = [
+          ./configuration.nix ./hosts/vmtest.nix
+
+	  home-manager.nixosModules.home-manager {
+            
+            home-manager.useGlobalPkgs = true;
+	    home-manager.useUserPkgs = true;
+            home-manager.users.will = import ./users/will/home.nix;
+
+	  };
+	];
+      };
+
     };
 
   };
