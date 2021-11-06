@@ -28,7 +28,7 @@
     neovim
     neofetch
     htop
-    xorg.kill
+    #xorg.kill
     lf
 
     #GUI stuff
