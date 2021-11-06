@@ -45,7 +45,7 @@
             home-manager.users.will = import ./users/will/home.nix;
 
 
-	  };
+	  }
 	];
       };
 
@@ -61,7 +61,7 @@
 	    home-manager.useUserPkgs = true;
             home-manager.users.will = import ./users/will/home.nix;
 
-	  };
+	  }
 	];
       };
 
