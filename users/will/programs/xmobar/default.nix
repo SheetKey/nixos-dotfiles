@@ -37,7 +37,7 @@
 
 	, sepChar = "%"
 	, alignSep = "}{"
-	, template = " <icon=haskell_20.xpm/>	<fc=#666666>|Hello</fc>"
+	, template = " <icon=haskell_20.xpm/>	<fc=#666666>|</fc> %UnsafeStdinReader% }{ <box type=Bottom width=2 mb=2 color=#dc322f><fc=#dc322f>%penguin%  <action=`alacritty -e htop`>%kernel%</action> </fc></box>    <box type=Bottom width=2 mb=2 color=#859900><fc=#859900><action=`alacritty -e htop`>%cpu%</action></fc></box>    <box type=Bottom width=2 mb=2 color=#268bd2><fc=#268bd2><action=`alacritty -e htop`>%memory%</action></fc></box>    <box type=Bottom width=2 mb=2 color=#b59800><fc=#b59800><action'`alacritty -e htop`>%disku%</action></fc></box>    <box type=Bottom width=2 mb=2 color=#d33682><fc=#d33682>%uparrow%  <action=`alacritty -e htop`%uptime%</action></fc></box>    <box type=Bottom width=2 mb=2 color=#dc322f><fc=#dc322f>%baticon%</fc></box>    <box type=Bottom width=2 mb=2 color=#286bd2><fc=#286bd2>%date%</fc></box> %trayerpad%"
         }
     '';
   };
