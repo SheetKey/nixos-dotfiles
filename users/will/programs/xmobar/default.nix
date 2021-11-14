@@ -6,7 +6,7 @@
 
     extraConfig = ''
       Config 
-        { font = "xft:Hack:weight=bold:pixelsize=11:antialias=true:hinting=true"
+        { font = "xft:Ubuntu Nerd Font Mono:weight=bold:pixelsize=11:antialias=true:hinting=true"
 	, bgColor = "#002b36"
 	, fgColor = "#839496"
 	, position = TopSize L 100 24
