@@ -10,6 +10,7 @@
 	, additionalFonts = [ "xft:mononoki Nerd Font Mono:pixelsize=11:antialias=true:hinting=true"
 	                    , "xft:Font Awesome 5 Free Solid:pixelsize=12"
 			    , "xft:Font Awesome 5 Brands:pixelsize=12"
+			    ]
 	, bgColor = "#002b36"
 	, fgColor = "#839496"
 	, position = TopSize L 100 24
