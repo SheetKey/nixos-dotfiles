@@ -17,7 +17,7 @@
       font = {
         size = 12.0;
 
-	normal.family = "mononoki";
+	normal.family = "mononoki Nerd Font Mono";
 	normal.style = "Regular";
 	bold.family = "monospace";
 	bold.style = "Bold";
