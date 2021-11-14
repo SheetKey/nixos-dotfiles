@@ -13,7 +13,7 @@
   # COPIED FROM GENERATED "hardward-configuration.nix"
 
   boot.initrd.availableKernelModules = [ "ata_piix" "ohci_pci" "ahci" "sd_mod" "sr_mod" ];
-  boot.initrd.kernelMondules = [ ];
+  boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ ];
   boot.extraModulePackages = [ ];
 
