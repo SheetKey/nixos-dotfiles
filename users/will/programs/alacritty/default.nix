@@ -18,13 +18,13 @@
         size = 12.0;
 
 	normal.family = mononoki;
-	normal.style = Regular;
+	normal.style = "Regular";
 	bold.family = monospace;
-	bold.style = Bold;
+	bold.style = "Bold";
 	italic.family = monospace;
-	italic.style = Italic;
+	italic.style = "Italic";
 	bold_italic.family = monospace;
-	bold_italic.style = Bold Italic;
+	bold_italic.style = "Bold Italic";
       };
 
       colors = {
