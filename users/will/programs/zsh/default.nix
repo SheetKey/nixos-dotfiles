@@ -1,11 +1,13 @@
 # zsh default.nix
 
+{ pkgs, ... }:
+
 {
 
   programs.zsh = {
     enable = true;
 
-    enableAutosuggestions = true;
+    # enableAutosuggestions = true;
     enableCompletion = true;
     completionInit = ''
       autoload -U compinit
@@ -46,7 +48,15 @@
     '';
 
     plugins = [
-
+      {
+        name = "zsh-vi-mode";
+	source = pkgs.fetchFromGithub; {
+          owner = "jeffreytse";
+	  repo = "zsh-vi-mode";
+	  rev = "0eb3c7b43b1f0a81af3676b150747b839e17c125";
+	  sha256 = "PmfzWj0MynNvDaws8K0QsLcCyJULwxUyyNIjsA7oLgM=";
+	};
+      }
     ];
 
   };
