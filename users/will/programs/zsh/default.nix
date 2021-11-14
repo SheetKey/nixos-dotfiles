@@ -7,6 +7,13 @@
 
     enableAutosuggestions = true;
     enableCompletion = true;
+    completionInit = ''
+      autoload -U compinit
+      zstyle ':completion:*' menu select
+      zmodload zsh/complist
+      compinit
+      _comp_options+=(globdots)
+    '';
     enableSyntaxHighlighting = true;
 
     history = {
@@ -34,6 +41,7 @@
 	  [ -d "$dir" ] && [ "$dir" != "($pwd)" ] && cd "$dir"
 	fi
       }
+      bindkey -s '^o' 'lfcd\n'
 
     '';
 
