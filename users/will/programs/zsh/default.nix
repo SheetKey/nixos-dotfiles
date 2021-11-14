@@ -4,6 +4,43 @@
 
   programs.zsh = {
     enable = true;
+
+    enableAutosuggestions = true;
+    enableCompletion = true;
+    enableSyntaxHighlighting = true;
+
+    history = {
+      save = 1000000;
+      size = 1000000;
+    };
+
+    initExtraBeforeCompInit = ''
+      autoload -U colors && colors
+      PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%~%{$fg[red]%}]%{$reset_color%}$%b "
+    '';
+
+    initExtra = ''
+      # bindkey -M menuselect 'h' vi-backward-char
+      # bindkey -M menuselect 'k' vi-up-line-or-history
+      # bindkey -M menuselect 'l' vi-forward-char
+      # binkkey -M menuselect 'j' vi-down-line-or-history
+
+      lfcd () {
+        tmp="$(mktemp)"
+	lf -last-dir-path="$tmp" "$@"
+	if [ -f "$tmp" ]; then
+	  dir="$(cat "$tmp")"
+	  rm -f "$tmp" >/dev/null
+	  [ -d "$dir" ] && [ "$dir" != "($pwd)" ] && cd "$dir"
+	fi
+      }
+
+    '';
+
+    plugins = [
+
+    ];
+
   };
 
 
