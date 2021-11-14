@@ -17,13 +17,13 @@
       font = {
         size = 12.0;
 
-	normal.family = mononoki;
+	normal.family = "mononoki";
 	normal.style = "Regular";
-	bold.family = monospace;
+	bold.family = "monospace";
 	bold.style = "Bold";
-	italic.family = monospace;
+	italic.family = "monospace";
 	italic.style = "Italic";
-	bold_italic.family = monospace;
+	bold_italic.family = "monospace";
 	bold_italic.style = "Bold Italic";
       };
 
