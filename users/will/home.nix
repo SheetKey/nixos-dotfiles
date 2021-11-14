@@ -51,7 +51,8 @@
       ./programs/zsh/default.nix
       ./programs/rofi/default.nix
       ./programs/xmobar/default.nix
-      #./programs/lf/default.nix
+      ./programs/lf/default.nix
+      ./programs/alacritty/default.nix
 
       ./services/picom/default.nix
     ];
