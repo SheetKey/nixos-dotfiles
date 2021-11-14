@@ -10,6 +10,11 @@
 
   imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
+  # MANDATORY BOOT OPTIONS
+
+  boot.loader.systemd-boot EFI boot loader;
+  boot.loader.efi.canTouchEfiVariables = true;
+
   # COPIED FROM GENERATED "hardward-configuration.nix"
 
   boot.initrd.availableKernelModules = [ "ata_piix" "ohci_pci" "ahci" "sd_mod" "sr_mod" ];
