@@ -30,6 +30,7 @@
     htop
     #xorg.kill
     lf
+    nix-prefetch-github
 
     #GUI stuff
     brave
