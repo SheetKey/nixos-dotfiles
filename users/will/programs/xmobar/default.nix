@@ -36,7 +36,7 @@
 
 	, sepChar = "%"
 	, alignSep = "}{"
-	, template = " <icon=haskell_20.xpm/>	<fc=#666666>HHH|Hello</fc>"
+	, template = " <icon=haskell_20.xpm/>	<fc=#666666>|Hello</fc>"
         }
     '';
   };
