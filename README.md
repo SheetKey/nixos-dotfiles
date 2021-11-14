@@ -2,5 +2,5 @@
 
 Build a certain nixosConfiguration.
 ```
-nixos-rebuild switch --flakes .#CONFIGURATIONNAME
+nixos-rebuild switch --flake .#CONFIGURATIONNAME
 ```
