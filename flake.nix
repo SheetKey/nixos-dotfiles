@@ -65,6 +65,22 @@
 	];
       };
 
+      nixos2vmbox = lib.nixosSystem {
+        inherit system;
+
+	modules = [
+	  ./configuration.nix ./hosts/nixos2vbox.nix
+
+	  home-manager.nixosModules.home-manager {
+            
+            home-manager.useGlobalPkgs = true;
+	    home-manager.useUserPackages = true;
+            home-manager.users.will = import ./users/will/home.nix;
+
+	  }
+	];
+      };
+
     };
 
   };
