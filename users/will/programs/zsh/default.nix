@@ -50,7 +50,7 @@
     plugins = [
       {
         name = "zsh-vi-mode";
-	source = pkgs.fetchFromGithub {
+	src = pkgs.fetchFromGithub {
           owner = "jeffreytse";
 	  repo = "zsh-vi-mode";
 	  rev = "0eb3c7b43b1f0a81af3676b150747b839e17c125";
