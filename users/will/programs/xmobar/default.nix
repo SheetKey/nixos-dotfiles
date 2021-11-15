@@ -17,11 +17,11 @@
 	, lowerOnStart = True
 	, hideOnStart = False
 	, persistent = True
- 	, iconRoot = "dotfiles/nixos-dotfiles/users/will/programs/xpm/" -- default: "."
+	, iconRoot = "./xpm/" 
 	, commands =
 	        [ 
 		  Run Com "echo" ["<fn=3>\xf17c</fn>"] "penguin" 3600
-		, Run Com ".local/bin/kernal" [] "kernel" 36000
+		, Run Com "./kernal" [] "kernel" 36000
 		, Run Cpu ["-t", "<fn=2>\xf108</fn> cpu: (<total>%) ","-H","50","--high","red"] 20
 		, Run Memory ["-t", "<fn=2>\xf233</fn> mem: <used>M (<usedratio>%)"] 20
 		, Run DiskU [("/", "<fn=2>\xf0aa</fn> hdd: <free> free")] [] 60
