@@ -17,7 +17,6 @@
 	, lowerOnStart = True
 	, hideOnStart = False
 	, persistent = True
-	, iconRoot = "./xpm/" 
 	, commands =
 	        [ 
 		  Run Com "echo" ["<fn=3>\xf17c</fn>"] "penguin" 3600
