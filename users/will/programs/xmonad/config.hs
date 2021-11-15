@@ -442,7 +442,7 @@ main = do
 	    , ppTitle = xmobarColor "#b3afc2" "" . shorten 60
 
 	    -- Separator character
-	    , ppSep = "<fc=#666666> <fn=1>|</fn? </fc>"
+	    , ppSep = "<fc=#666666> <fn=1>|</fn> </fc>"
 
 	    -- Urgent workspace
 	    , ppUrgent = xmobarColor "#C45500" "" . wrap "!" "!"
