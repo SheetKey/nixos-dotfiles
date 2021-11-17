@@ -109,6 +109,7 @@
 
     #Window manager stuff
     xmobar
+    polybar
   ];
 
   # Install fonts

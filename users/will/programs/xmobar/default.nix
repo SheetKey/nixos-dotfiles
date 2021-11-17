@@ -7,7 +7,7 @@ let
 in
 {
   programs.xmobar = {
-    enable = true;
+    enable = false;
 
     extraConfig = ''
       Config 
