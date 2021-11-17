@@ -3,6 +3,7 @@
 { config, pkgs, ... }:
 
 let
+  bars = builtins.readFile ./bars.ini;
   xmonad = ''
     [module/xmonad]
     type = custon/script
@@ -20,10 +21,10 @@ in
 
     config = ./config.ini;
 
-    extraConfig = customMods;
+    extraConfig = bars + customMods;
 
     script = ''
-      polybar bar &
+      polybar top &
     '';
   };
 }
