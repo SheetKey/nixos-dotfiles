@@ -45,6 +45,8 @@ in
 	}
     '';
 
+
+  };
     config.xdg.configFile."xmobar/kernel".text = ''
       #! /bin/bash
 
@@ -101,7 +103,5 @@ in
 #      # Output the icon tag for xmobar
 #      echo "<icon=${iconfile}/>"
 #    '';
-
-  };
 }
 
