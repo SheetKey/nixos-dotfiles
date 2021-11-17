@@ -405,9 +405,9 @@ myKeys =
 
 -- main
 main = do
-  xmproc <- spawnPipe "xmobar -x 0"
+--  xmproc <- spawnPipe "xmobar -x 0"
 
-  xmonad $ ewmh def
+    xmonad $ ewmh def
   	{ manageHook = myManageHook <+> manageDocks
 	, handleEventHook = docksEventHook
 
@@ -422,35 +422,35 @@ main = do
 	, normalBorderColor = myNormalBorderColor
 	, focusedBorderColor = myFocusedBorderColor
 
-	, logHook = dynamicLogWithPP $ namedScratchpadFilterOutWorkspacePP $ xmobarPP
-	    -- pp variable for xmobar
-	    { ppOutput = \x -> hPutStrLn xmproc x
-
-	    -- Current Workspace
-	    , ppCurrent = xmobarColor "#c792ea" "" . wrap "<box type=Bottom width=2 mb=2 color=#c792ea>" "</box>"
-
-	    -- Visible but not current workspace
-	    , ppVisible = xmobarColor "#c792ea" ""
-
-	    -- Hidden workspace 
-	    , ppHidden = xmobarColor "#82AAFF" "" . wrap "<box type=Top width=2 mt=2 color=#82AAFF>" "</box>" 
-
-	    -- Hidden workspace (no windows)
-	    , ppHiddenNoWindows = xmobarColor "#82AAFF" ""
-
-	    -- Title of active window
-	    , ppTitle = xmobarColor "#b3afc2" "" . shorten 60
-
-	    -- Separator character
-	    , ppSep = "<fc=#666666> <fn=1>|</fn> </fc>"
-
-	    -- Urgent workspace
-	    , ppUrgent = xmobarColor "#C45500" "" . wrap "!" "!"
-
-	    -- # of windows current workspace
-	    , ppExtras = [windowCount]
-	    
-	    -- order of things in xmobar
-	    , ppOrder = \(ws:l:t:ex) -> [ws,l]++ex++[t]
-	    }
+--	, logHook = dynamicLogWithPP $ namedScratchpadFilterOutWorkspacePP $ xmobarPP
+--	    -- pp variable for xmobar
+--	    { ppOutput = \x -> hPutStrLn xmproc x
+--
+--	    -- Current Workspace
+--	    , ppCurrent = xmobarColor "#c792ea" "" . wrap "<box type=Bottom width=2 mb=2 color=#c792ea>" "</box>"
+--
+--	    -- Visible but not current workspace
+--	    , ppVisible = xmobarColor "#c792ea" ""
+--
+--	    -- Hidden workspace 
+--	    , ppHidden = xmobarColor "#82AAFF" "" . wrap "<box type=Top width=2 mt=2 color=#82AAFF>" "</box>" 
+--
+--	    -- Hidden workspace (no windows)
+--	    , ppHiddenNoWindows = xmobarColor "#82AAFF" ""
+--
+--	    -- Title of active window
+--	    , ppTitle = xmobarColor "#b3afc2" "" . shorten 60
+--
+--	    -- Separator character
+--	    , ppSep = "<fc=#666666> <fn=1>|</fn> </fc>"
+--
+--	    -- Urgent workspace
+--	    , ppUrgent = xmobarColor "#C45500" "" . wrap "!" "!"
+--
+--	    -- # of windows current workspace
+--	    , ppExtras = [windowCount]
+--	    
+--	    -- order of things in xmobar
+--	    , ppOrder = \(ws:l:t:ex) -> [ws,l]++ex++[t]
+--	    }
 	} `additionalKeysP` myKeys
