@@ -1,5 +1,10 @@
 # xmobar default.nix
 
+let
+  kernel = ./kernel;
+  trayer-padding-icon = ./trayer-padding-icon.sh;
+
+in
 {
   programs.xmobar = {
     enable = true;
@@ -20,7 +25,7 @@
 	, commands =
 	        [ 
 		  Run Com "echo" ["<fn=3>\xf17c</fn>"] "penguin" 3600
-		, Run Com "home/will/dotfiles/nixos-dotfiles/users/will/programs/xmobar/kernel" [] "kernel" 36000
+		, Run Com "${kernel}" [] "kernel" 36000
 		, Run Cpu ["-t", "<fn=2>\xf108</fn> cpu: (<total>%) ","-H","50","--high","red"] 20
 		, Run Memory ["-t", "<fn=2>\xf233</fn> mem: <used>M (<usedratio>%)"] 20
 		, Run DiskU [("/", "<fn=2>\xf0aa</fn> hdd: <free> free")] [] 60
@@ -30,7 +35,7 @@
 		, Run Com "echo" ["<fn=2>\xf242</fn>"] "baticon" 3600
 		, Run BatteryP ["BAT0"] ["-t", "<acstatus><watts> (<left<%)"] 360
 		, Run Date "<fn=2>\xf017</fn> %b %d %Y - (%H:%M) " "date" 50
-		, Run Com "./trayer-padding-icons.sh" [] "trayerpad" 20
+		, Run Com "./trayer-padding-icon.sh" [] "trayerpad" 20
 		, Run UnsafeStdinReader
 		]
 
