@@ -45,7 +45,7 @@ in
 	}
     '';
 
-    xdg.configFile."xmobar/kernel".text = ''
+    config.xdg.configFile."xmobar/kernel".text = ''
       #! /bin/bash
 
       kern="$(uname -r)"
