@@ -55,5 +55,6 @@
       ./programs/alacritty/default.nix
 
       ./services/picom/default.nix
+      ./services/polybar/default.nix
     ];
 }
