@@ -17,7 +17,7 @@ let
 in
 {
   services.polybar = {
-    enable = true;
+    enable = false;
 
     config = ./config.ini;
 

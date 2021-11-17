@@ -69,6 +69,11 @@ import XMonad.Util.NamedScratchpad
 import XMonad.Util.Run (runProcessWithInput, safeSpawn, spawnPipe)
 import XMonad.Util.SpawnOnce
 
+    -- Polybar
+import qualified DBus as D
+import qualified DBus.Client as D
+import qualified Codec.Binary.UTF8.String as UTF8
+
 
 myFont :: String
 myFont = "xft:Fira Code:regular:size=9:antialias=true:hinting=true"
@@ -115,7 +120,8 @@ myStartupHook = do
         spawnOnce "nitrogen --restore &"
         spawnOnce "picom &"
         spawnOnce "nm-applet &"
-        spawnOnce "trayer --edge top --align right --widthtype request --padding 6 --SetDockType true --SetPartialStrut true --expand true --transparent true --alpha 0 --tint 0x282c34 --height 22 &"
+	spawnOnce "polybar-msg cmd toggle &"
+        -- spawnOnce "trayer --edge top --align right --widthtype request --padding 6 --SetDockType true --SetPartialStrut true --expand true --transparent true --alpha 0 --tint 0x282c34 --height 22 &"
 
 	setWMName "LG3D"
 
@@ -402,10 +408,38 @@ myKeys =
 	        nonEmptyNonNSP = WSIs(return (\ws -> isJust (W.stack ws) && W.tag ws /= "NSP"))
 
 -----------------------------------------------------------------------------
+myLogHook :: D.Client -> PP
+myLogHook dbus = def
+    { ppOutput = dbusOutput dbus
+    , ppCurrent = wrap ("%{F" ++ blue ++ "} ") " %{F-}"
+    , ppVisible = wrap ("%{F" ++ gray ++ "} ") " %{F-}"
+    , ppUrgent = wrap ("%{F" ++ red ++ "} ") " %{F-}"
+    , ppHidden = wrap ("%{F" ++ gray ++ "} ") " %{F-}"
+    , ppTitle = wrap ("%{F" ++ gray2 ++ "} ") " %{F-}"
+    }
+  where 
+    blue = "#2E9AFE"
+    gray = "#7F7F7F"
+    red = "#722222"
+    gray2 = "#7F7F7G"
+
+dbusOutput :: D.Client -> String -> IO()
+dbusOutput dbus str = 
+  let opath = D.objectPath_ "/org/xmonad/Log"
+      iname = D.interfaceName_ "org.xmonad.Log"
+      mname = D.memberName_ "Update"
+      signal = D.signal opath iname mname
+      body = [D.toVariant $ UTF8.decodeString str]
+  in D.emit dbus $ signal { D.signalBody = body }
+
+-----------------------------------------------------------------------------
 
 -- main
+main :: IO()
 main = do
---  xmproc <- spawnPipe "xmobar -x 0"
+    dbus <- D.connectSession
+    D.requestName dbus (D.busName_ "org.xmonad.Log")
+        [D.nameAllowReplacement, D.nameReplaceExisting, D.nameDoNotQueue]
 
     xmonad $ ewmh def
   	{ manageHook = myManageHook <+> manageDocks
@@ -422,35 +456,6 @@ main = do
 	, normalBorderColor = myNormalBorderColor
 	, focusedBorderColor = myFocusedBorderColor
 
---	, logHook = dynamicLogWithPP $ namedScratchpadFilterOutWorkspacePP $ xmobarPP
---	    -- pp variable for xmobar
---	    { ppOutput = \x -> hPutStrLn xmproc x
---
---	    -- Current Workspace
---	    , ppCurrent = xmobarColor "#c792ea" "" . wrap "<box type=Bottom width=2 mb=2 color=#c792ea>" "</box>"
---
---	    -- Visible but not current workspace
---	    , ppVisible = xmobarColor "#c792ea" ""
---
---	    -- Hidden workspace 
---	    , ppHidden = xmobarColor "#82AAFF" "" . wrap "<box type=Top width=2 mt=2 color=#82AAFF>" "</box>" 
---
---	    -- Hidden workspace (no windows)
---	    , ppHiddenNoWindows = xmobarColor "#82AAFF" ""
---
---	    -- Title of active window
---	    , ppTitle = xmobarColor "#b3afc2" "" . shorten 60
---
---	    -- Separator character
---	    , ppSep = "<fc=#666666> <fn=1>|</fn> </fc>"
---
---	    -- Urgent workspace
---	    , ppUrgent = xmobarColor "#C45500" "" . wrap "!" "!"
---
---	    -- # of windows current workspace
---	    , ppExtras = [windowCount]
---	    
---	    -- order of things in xmobar
---	    , ppOrder = \(ws:l:t:ex) -> [ws,l]++ex++[t]
---	    }
+	, logHook = dynamicLogWithPP (myLogHook dbus)
+
 	} `additionalKeysP` myKeys
