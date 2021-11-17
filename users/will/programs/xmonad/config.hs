@@ -424,15 +424,13 @@ myLogHook dbus = def
     gray2 = "#7F7F7G"
 
 dbusOutput :: D.Client -> String -> IO()
-dbusOutput dbus str = do
-    let signal = (D.signal objectPath interfaceName memberName) {
-        D.signalBody = [D.toVariant $ UTF8.decodeString str]
-    }
-    D.emit dbus signal
-  where 
-    objectPath = D.objectPath_ "/org/xmonad/Log"
-    interfaceName = D.interfaceName_ "org.xmonad/Log"
-    memberName = D.memberName_ "Update"
+dbusOutput dbus str = 
+  let opath = D.objectPath_ "/org/xmonad/Log"
+      iname = D.interfaceName_ "org.xmonad.Log"
+      mname = D.memberName_ "Update"
+      signal = D.signal opath iname mname
+      body = [D.toVariant $ UTF8.decodeString str]
+  in D.emit dbus $ signal { D.signalBody = body }
 
 -----------------------------------------------------------------------------
 
