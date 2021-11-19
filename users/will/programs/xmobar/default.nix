@@ -28,7 +28,7 @@ in
 		  Run Com "echo" ["<fn=3>\xf17c</fn>"] "penguin" 3600
 	--	, Run Com ".config/xmobar/kernel" [] "kernel" 36000
 
-		, Run Com "kernelScript" [] "kernel" 36000
+		, Run Com "getKernelScript" [] "kernel" 36000
 	
 		, Run Cpu ["-t", "<fn=2>\xf108</fn> cpu: (<total>%) ","-H","50","--high","red"] 20
 		, Run Memory ["-t", "<fn=2>\xf233</fn> mem: <used>M (<usedratio>%)"] 20
