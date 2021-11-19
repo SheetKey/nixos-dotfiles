@@ -4,10 +4,14 @@ let
   kernel = ./kernel;
   trayer-padding-icon = ./trayer-padding-icon.sh;
 
+  kernelScript = pkgs.writeShellScriptBin "kernelScript" ''
+    kern="$(uname -r)"
+    echo -e "$kern "
+  '';
+
 in
 {
-  programs.xmobar = {
-    enable = true;
+  programs.xmobar = { enable = true;
 
     extraConfig = ''
       Config 
@@ -27,7 +31,7 @@ in
 		  Run Com "echo" ["<fn=3>\xf17c</fn>"] "penguin" 3600
 	--	, Run Com ".config/xmobar/kernel" [] "kernel" 36000
 
-		, Run Com "bash" ["~/dotfiles/nixos-dotfiles/users/will/programs/xmobar/kernel"] "kernel" 36000
+		, Run Com "kernelScript" [] "kernel" 36000
 	
 		, Run Cpu ["-t", "<fn=2>\xf108</fn> cpu: (<total>%) ","-H","50","--high","red"] 20
 		, Run Memory ["-t", "<fn=2>\xf233</fn> mem: <used>M (<usedratio>%)"] 20
@@ -50,12 +54,13 @@ in
 
 
   };
-  xdg.configFile."xmobar/kernel".text = ''
-    #! /bin/bash
 
-    kern="$(uname -r)"
-    echo -e "$kern "
-  '';
+#  xdg.configFile."xmobar/kernel".text = ''
+#    #! /bin/bash
+#
+#    kern="$(uname -r)"
+#    echo -e "$kern "
+#  '';
 #  xdg.configFile."xmobar/trayer-padding-icon.sh".text = ''
 #    #!/bin/sh
 #    # Copied from https://github.com/jaor/xmobar/issues/239#issuecomment-233206552
