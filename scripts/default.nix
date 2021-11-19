@@ -35,7 +35,7 @@ let
     /* leave room for trayer-srg. It is dynamically   */
     /* updated by by trayer-padding-icon.sh which is run  */
     /* by xmobar.                                     */
-    /* Created: ${timestamp} */
+    /* Created:  */
     /* <w/cols>  <h/rows>  <colors>  <chars per pixel> */
     "$1 1 1 1",
     /* Colors (none: transparent) */
