@@ -6,14 +6,8 @@ let
   kernel = ./kernel;
   trayer-padding-icon = ./trayer-padding-icon.sh;
 
-  kernelScript = pkgs.writeShellScriptBin "kernelScript" ''
-    kern="$(uname -r)"
-    echo -e "$kern "
-  '';
-
 in
 {
-  environment.systemPackages = [kernelScript];
   programs.xmobar = { enable = true;
 
     extraConfig = ''

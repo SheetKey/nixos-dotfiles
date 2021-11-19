@@ -1,10 +1,10 @@
 { config, pkgs, ... }:
 
 {
-#  imports =
-#    [
-#      (import "${home-manager-tar}/nixos")
-#    ];
+  imports =
+    [
+      ./scripts/default.nix
+    ];
 
 
   # Nix preferences: unstable version
