@@ -13,6 +13,7 @@ let
 
 in
 {
+  environment.systemPackages = [kernelScript];
   programs.xmobar = { enable = true;
 
     extraConfig = ''
