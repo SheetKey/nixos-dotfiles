@@ -1,5 +1,7 @@
 # xmobar default.nix
 
+{ pkgs, ... }:
+
 let
   kernel = ./kernel;
   trayer-padding-icon = ./trayer-padding-icon.sh;
