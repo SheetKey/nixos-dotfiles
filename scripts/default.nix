@@ -9,3 +9,7 @@ let
     kern="$(uname -r)"
     echo -e "$kern "
   '';
+
+in {
+  environment.systemPackages = [ getKernelScript ];
+}
