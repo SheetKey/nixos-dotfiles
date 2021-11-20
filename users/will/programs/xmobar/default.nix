@@ -11,7 +11,7 @@
 	, additionalFonts = [ "xft:mononoki Nerd Font Mono:pixelsize=11:antialias=true:hinting=true"
 	                    , "xft:Font Awesome 5 Free Solid:pixelsize=12"
 			    , "xft:Font Awesome 5 Brands:pixelsize=12"
-			    , "xft:mononoki Nerd Font Mono:pixelsize=25:antialias=true:hinting=true"
+			    , "xft:mononoki Nerd Font Mono:pixelsize=22:antialias=true:hinting=true"
 			    ]
 	, bgColor = "#002b36"
 	, fgColor = "#839496"
@@ -38,7 +38,7 @@
 		]
 	, sepChar = "%"
 	, alignSep = "}{"
-	, template = " <fc=#2aa198>  %nixosicon%</fc> <fc=#666666> | </fc> %UnsafeStdinReader% }{ <box type=Bottom width=2 mb=2 color=#dc322f><fc=#dc322f>%penguin%  <action=`alacritty -e htop`>%kernel%</action> </fc></box>    <box type=Bottom width=2 mb=2 color=#859900><fc=#859900><action=`alacritty -e htop`>%cpu%</action></fc></box>    <box type=Bottom width=2 mb=2 color=#268bd2><fc=#268bd2><action=`alacritty -e htop`>%memory%</action></fc></box>    <box type=Bottom width=2 mb=2 color=#b59800><fc=#b59800><action=`alacritty -e htop`>%disku%</action></fc></box>    <box type=Bottom width=2 mb=2 color=#d33862><fc=#d33682>%uparrow%  <action=`alacritty -e htop`>%uptime%</action></fc></box>    <box type=Bottom width=2 mb=2 color=#2aa198><fc=#2aa198>%date%</fc></box> %trayerpad%"
+	, template = " <fc=#2aa198> %nixosicon%</fc> <fc=#666666> | </fc> %UnsafeStdinReader% }{ <box type=Bottom width=2 mb=2 color=#dc322f><fc=#dc322f>%penguin%  <action=`alacritty -e htop`>%kernel%</action> </fc></box>    <box type=Bottom width=2 mb=2 color=#859900><fc=#859900><action=`alacritty -e htop`>%cpu%</action></fc></box>    <box type=Bottom width=2 mb=2 color=#268bd2><fc=#268bd2><action=`alacritty -e htop`>%memory%</action></fc></box>    <box type=Bottom width=2 mb=2 color=#b59800><fc=#b59800><action=`alacritty -e htop`>%disku%</action></fc></box>    <box type=Bottom width=2 mb=2 color=#d33862><fc=#d33682>%uparrow%  <action=`alacritty -e htop`>%uptime%</action></fc></box>    <box type=Bottom width=2 mb=2 color=#2aa198><fc=#2aa198>%date%</fc></box> %trayerpad%"
 	}
     '';
   };
