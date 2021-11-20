@@ -25,7 +25,7 @@
 		, Run Com "getKernelScript" [] "kernel" 36000
 		, Run Cpu ["-t", "<fn=2>\xf108</fn> cpu: (<total>%) ","-H","50","--high","red"] 20
 		, Run Memory ["-t", "<fn=2>\xf233</fn> mem: <used>M (<usedratio>%)"] 20
-		, Run DiskU [("/", "<fn=2>\xf0aa</fn> hdd: <free> free")] [] 60
+		, Run DiskU [("/", "<fn=2>\xf0c7</fn> hdd: <free> free")] [] 60
 		, Run Com "echo" ["<fn=2>\xf0aa</fn>"] "uparrow" 3600
 		, Run Uptime ["-t", "uptime: <days>d <hours>h"] 360
 		, Run Com "echo" ["<fn=2>\xf0f3</fn>"] "bell" 3600
@@ -38,7 +38,7 @@
 		]
 	, sepChar = "%"
 	, alignSep = "}{"
-	, template = " <fc=#666666> %nixosicon% | </fc> %UnsafeStdinReader% }{ <box type=Bottom width=2 mb=2 color=#dc322f><fc=#dc322f>%penguin%  <action=`alacritty -e htop`>%kernel%</action> </fc></box>    <box type=Bottom width=2 mb=2 color=#859900><fc=#859900><action=`alacritty -e htop`>%cpu%</action></fc></box>    <box type=Bottom width=2 mb=2 color=#268bd2><fc=#268bd2><action=`alacritty -e htop`>%memory%</action></fc></box>    <box type=Bottom width=2 mb=2 color=#b59800><fc=#b59800><action=`alacritty -e htop`>%disku%</action></fc></box>    <box type=Bottom width=2 mb=2 color=#d33862><fc=#d33682>%uparrow%  <action=`alacritty -e htop`>%uptime%</action></fc></box>    <box type=Bottom width=2 mb=2 color=#2aa198><fc=#2aa198>%date%</fc></box> %trayerpad%"
+	, template = " <fc=#2aa198>%nixosicon%</fc>  <fc=#666666> | </fc> %UnsafeStdinReader% }{ <box type=Bottom width=2 mb=2 color=#dc322f><fc=#dc322f>%penguin%  <action=`alacritty -e htop`>%kernel%</action> </fc></box>    <box type=Bottom width=2 mb=2 color=#859900><fc=#859900><action=`alacritty -e htop`>%cpu%</action></fc></box>    <box type=Bottom width=2 mb=2 color=#268bd2><fc=#268bd2><action=`alacritty -e htop`>%memory%</action></fc></box>    <box type=Bottom width=2 mb=2 color=#b59800><fc=#b59800><action=`alacritty -e htop`>%disku%</action></fc></box>    <box type=Bottom width=2 mb=2 color=#d33862><fc=#d33682>%uparrow%  <action=`alacritty -e htop`>%uptime%</action></fc></box>    <box type=Bottom width=2 mb=2 color=#2aa198><fc=#2aa198>%date%</fc></box> %trayerpad%"
 	}
     '';
   };
