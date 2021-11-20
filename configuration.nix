@@ -106,6 +106,7 @@
     #Terminal emulator
     wget
     git
+    neovim
 
     #Window manager stuff
     xmobar

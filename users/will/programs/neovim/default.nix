@@ -4,15 +4,15 @@
 
 {
   programs.neovim = {
-    #enable = true;
+    enable = true;
 
     viAlias = true;
     vimAlias = true;
 
-    #plugins = with pkgs.vimPlugins; [
-    #];
+    plugins = with pkgs.vimPlugins; [
+    ];
 
-    #extraConfig = ''
-    #'';
+    extraConfig = ''
+    '';
   };
 }

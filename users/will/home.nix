@@ -25,7 +25,8 @@
     #Terminal
     alacritty
     zsh
-    neovim
+    # DO NOT ADD NEOVIM TO "home.packages": LEAVE IN "configuration.nix"
+    # neovim
     neofetch
     htop
     #xorg.kill
