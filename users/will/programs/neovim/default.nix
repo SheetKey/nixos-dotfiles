@@ -13,7 +13,7 @@
 
     ];
 
-    extraCongig = ''
+    extraConfig = ''
 
     '';
   };
