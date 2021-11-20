@@ -34,7 +34,7 @@
       bindkey -M menuselect 'l' vi-forward-char
       bindkey -M menuselect 'j' vi-down-line-or-history
 
-      lfcd () {
+      f () {
         tmp="$(mktemp)"
 	lf -last-dir-path="$tmp" "$@"
 	if [ -f "$tmp" ]; then
@@ -43,7 +43,6 @@
 	  [ -d "$dir" ] && [ "$dir" != "($pwd)" ] && cd "$dir"
 	fi
       }
-      bindkey -s '^f' 'lfcd\n'
 
     '';
 
