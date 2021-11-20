@@ -11,6 +11,7 @@
 	, additionalFonts = [ "xft:mononoki Nerd Font Mono:pixelsize=11:antialias=true:hinting=true"
 	                    , "xft:Font Awesome 5 Free Solid:pixelsize=12"
 			    , "xft:Font Awesome 5 Brands:pixelsize=12"
+			    , "xft:mononoki Nerd Font Mono:pixelsize=15:antialias=true:hinting=true"
 			    ]
 	, bgColor = "#002b36"
 	, fgColor = "#839496"
@@ -32,12 +33,12 @@
 		, Run BatteryP ["BAT0"] ["-t", "<acstatus><watts> (<left<%)"] 360
 		, Run Date "<fn=2>\xf017</fn> %b %d %Y - (%H:%M) " "date" 50
 		, Run Com "trayer-padding-icon.sh" [] "trayerpad" 20
-		, Run Com "echo" ["<fn=1>\xf313</fn>"] "nixosicon" 3600
+		, Run Com "echo" ["<fn=4>\xf313</fn>"] "nixosicon" 3600
 		, Run UnsafeStdinReader
 		]
 	, sepChar = "%"
 	, alignSep = "}{"
-	, template = " <fc=#dc322f> %nixosicon% | </fc> %UnsafeStdinReader% }{ <box type=Bottom width=2 mb=2 color=#51afef><fc=#51afef>%penguin%  <action=`alacritty -e htop`>%kernel%</action> </fc></box>    <box type=Bottom width=2 mb=2 color=#ecbe7b><fc=#ecbe7b><action=`alacritty -e htop`>%cpu%</action></fc></box>    <box type=Bottom width=2 mb=2 color=#ff6c6b><fc=#ff6c6b><action=`alacritty -e htop`>%memory%</action></fc></box>    <box type=Bottom width=2 mb=2 color=#a9a1e1><fc=#a9a1e1><action=`alacritty -e htop`>%disku%</action></fc></box>    <box type=Bottom width=2 mb=2 color=#98be65><fc=#98be65>%uparrow%  <action=`alacritty -e htop`>%uptime%</action></fc></box>    <box type=Bottom width=2 mb=2 color=#46d9ff><fc=#46d9ff>%date%</fc></box> %trayerpad%"
+	, template = " <fc=#666666> %nixosicon% | </fc> %UnsafeStdinReader% }{ <box type=Bottom width=2 mb=2 color=#dc322f><fc=#dc322f>%penguin%  <action=`alacritty -e htop`>%kernel%</action> </fc></box>    <box type=Bottom width=2 mb=2 color=#859900><fc=#859900><action=`alacritty -e htop`>%cpu%</action></fc></box>    <box type=Bottom width=2 mb=2 color=#268bd2><fc=#268bd2><action=`alacritty -e htop`>%memory%</action></fc></box>    <box type=Bottom width=2 mb=2 color=#b59800><fc=#b59800><action=`alacritty -e htop`>%disku%</action></fc></box>    <box type=Bottom width=2 mb=2 color=#d33862><fc=#d33682>%uparrow%  <action=`alacritty -e htop`>%uptime%</action></fc></box>    <box type=Bottom width=2 mb=2 color=#2aa198><fc=#2aa198>%date%</fc></box> %trayerpad%"
 	}
     '';
   };
