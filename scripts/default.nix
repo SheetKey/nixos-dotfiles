@@ -10,7 +10,7 @@ let
     echo -e "$kern "
   '';
 
-  trayer-padding-icon = pkgs.writeShellScriptBin "trayer-padding-icon.sh" ''
+  trayer-padding-icon = pkgs.writeScriptBin "trayer-padding-icon.sh" ''
     #!/bin/sh
     # Copied from https://github.com/jaor/xmobar/issues/239#issuecomment-233206552
     # Detects the width of running trayer-srg window (xprop name 'panel')
@@ -35,7 +35,7 @@ let
     /* leave room for trayer-srg. It is dynamically   */
     /* updated by by trayer-padding-icon.sh which is run  */
     /* by xmobar.                                     */
-    /* Created:  */
+    /* Created: ${timestamp} */
     /* <w/cols>  <h/rows>  <colors>  <chars per pixel> */
     "$1 1 1 1",
     /* Colors (none: transparent) */
