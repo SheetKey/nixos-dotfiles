@@ -56,5 +56,7 @@
 
       ./services/picom/default.nix
       ./services/polybar/default.nix
+
+      ./xdg/userDirs/default.nix
     ];
 }
