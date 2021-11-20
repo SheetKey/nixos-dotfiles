@@ -53,6 +53,7 @@
       ./programs/xmobar/default.nix
       ./programs/lf/default.nix
       ./programs/alacritty/default.nix
+      ./programs/neovim/default.nix
 
       ./services/picom/default.nix
       ./services/polybar/default.nix
