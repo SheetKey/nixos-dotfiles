@@ -35,7 +35,7 @@ let
     /* leave room for trayer-srg. It is dynamically   */
     /* updated by by trayer-padding-icon.sh which is run  */
     /* by xmobar.                                     */
-    /* Created: "${timestamp} */
+    /* Created: ''${timestamp} */
     /* <w/cols>  <h/rows>  <colors>  <chars per pixel> */
     "$1 1 1 1",
     /* Colors (none: transparent) */
@@ -50,15 +50,15 @@ let
     width=$(xprop -name panel | grep 'program specified minimum size' | cut -d ' ' -f 5)
     
     # Icon file name
-    iconfile="/tmp/trayer-padding-"${width}px.xpm"
+    iconfile="/tmp/trayer-padding-''${width}px.xpm"
     
     # If the desired icon does not exist create it
-    if [ ! -f "$iconfile ]; then
+    if [ ! -f ''$iconfile ]; then
         create_xpm_icon $width $iconfile
     fi
     
     # Output the icon tag for xmobar
-    echo "<icon="${iconfile}/>" 
+    echo "<icon=''${iconfile}/>" 
   '';
 
 in {
