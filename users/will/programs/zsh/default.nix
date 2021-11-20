@@ -43,7 +43,7 @@
 	  [ -d "$dir" ] && [ "$dir" != "($pwd)" ] && cd "$dir"
 	fi
       }
-      bindkey -s '^o' 'lfcd\n'
+      bindkey -s '^f' 'lfcd\n'
 
     '';
 
