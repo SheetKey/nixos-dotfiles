@@ -32,7 +32,7 @@
 		, Run BatteryP ["BAT0"] ["-t", "<acstatus><watts> (<left<%)"] 360
 		, Run Date "<fn=2>\xf017</fn> %b %d %Y - (%H:%M) " "date" 50
 		, Run Com "trayer-padding-icon.sh" [] "trayerpad" 20
-		, Run Com "echo" ["<fn=3>\xf313</fn>"] "nixosicon" 3600
+		, Run Com "echo" ["<fn=3>\xf312</fn>"] "nixosicon" 3600
 		, Run UnsafeStdinReader
 		]
 	, sepChar = "%"
