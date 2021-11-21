@@ -2,6 +2,9 @@
 local opt = vim.opt
 local g = vim.g
 
+-- Lazy load files
+dofile("./nvim-tree.lua")
+
 vim.cmd [[
   " NeoSolarized Colorscheme settings
   colorscheme NeoSolarized
