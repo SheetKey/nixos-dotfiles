@@ -3,7 +3,7 @@
 vim.cmd [[
   " NeoSolarized Colorscheme settings
   colorscheme NeoSolarized
-  set background=dark
+  "set background=dark
 ]]
 
 -- Enable plugins
