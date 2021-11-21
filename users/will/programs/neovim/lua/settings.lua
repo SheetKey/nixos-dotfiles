@@ -10,6 +10,9 @@ vim.cmd [[
 
 -- Enable plugins
 
+-- Indent line
+-- g.indent_blankline_char = '⸽'
+
 -- Perfromance
 opt.shell = "zsh"
 
