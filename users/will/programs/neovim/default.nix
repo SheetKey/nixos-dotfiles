@@ -24,6 +24,9 @@
     '';
   };
 
-  xdg.configFile."nvim/lua/settings.lua".source = ./lua/settings.lua;
-  xdg.configFile."nvim/lua/nvim-tree.lua".source = ./lua/nvim-tree.lua;
+  # xdg.configFile."nvim/lua/settings.lua".source = ./lua/settings.lua;
+  # xdg.configFile."nvim/lua/nvim-tree.lua".source = ./lua/nvim-tree.lua;
+  
+  home.file."nvim/lua/settings.lua".source = ./lua/settings.lua;
+  home.file."nvim/lua/nvim-tree.lua".source = ./lua/nvim-tree.lua;
 }
