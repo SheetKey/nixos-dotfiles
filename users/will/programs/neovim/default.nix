@@ -20,7 +20,9 @@
     ];
 
     extraConfig = ''
-      luafile home/will/dotfiles/nixos-dotfiles/users/will/programs/neovim/lua/settings.lua
+      luafile ./lua/settings.lua
     '';
   };
+
+  xdg.configFile."neovim/settings.lua".source = ./lua/setting.lua
 }
