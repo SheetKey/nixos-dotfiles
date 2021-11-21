@@ -9,8 +9,9 @@
     viAlias = true;
     vimAlias = true;
 
-#    plugins = with pkgs.vimPlugins; [
- #   ];
+    plugins = with pkgs.vimPlugins; [
+      NeoSolarized
+    ];
 
   #  extraConfig = ''
    # '';
