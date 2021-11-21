@@ -24,5 +24,5 @@
     '';
   };
 
-  xdg.configFile."neovim/settings.lua".source = ./lua/setting.lua
+  xdg.configFile."neovim/settings.lua".source = ./lua/setting.lua;
 }
