@@ -13,7 +13,8 @@
       NeoSolarized
     ];
 
-  #  extraConfig = ''
-   # '';
+    extraConfig = ''
+      luafile ./lua/settings.lua
+    '';
   };
 }
