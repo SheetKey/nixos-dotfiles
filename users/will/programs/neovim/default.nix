@@ -11,6 +11,7 @@
 
     plugins = with pkgs.vimPlugins; [
       NeoSolarized
+      indent-backline-nvim
     ];
 
     extraConfig = ''
