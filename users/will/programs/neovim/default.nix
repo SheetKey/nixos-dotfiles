@@ -30,6 +30,6 @@
   home.file."settings.lua".source = ./lua/settings.lua;
   home.file."settings.lua".target = .config/nvim/lua;
 
-  home.file."nvim-tree.lua".source = ./lua/nvim-tree.lua;
-  home.file."nvim-tree.lua".target = .config/nvim/lua;
+  #home.file."nvim-tree.lua".source = ./lua/nvim-tree.lua;
+  #home.file."nvim-tree.lua".target = .config/nvim/lua;
 }
