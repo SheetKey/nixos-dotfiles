@@ -20,12 +20,12 @@
     ];
 
     extraConfig = ''
-      luafile ./lua/settings.lua
+      luafile ${./lua/settings.lua}
     '';
   };
 
-  xdg.configFile."nvim/lua/settings.lua".source = ./lua/settings.lua;
-  xdg.configFile."nvim/lua/nvim-tree.lua".source = ./lua/nvim-tree.lua;
+  # xdg.configFile."nvim/lua/settings.lua".source = ./lua/settings.lua;
+  # xdg.configFile."nvim/lua/nvim-tree.lua".source = ./lua/nvim-tree.lua;
   
   # home.file."settings.lua".source = ./lua/settings.lua;
   # home.file."settings.lua".target = .config/nvim/lua;
