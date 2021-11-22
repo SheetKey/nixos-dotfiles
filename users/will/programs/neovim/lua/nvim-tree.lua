@@ -42,3 +42,4 @@ require'nvim-tree'.setup {
         }
     }
 }
+
