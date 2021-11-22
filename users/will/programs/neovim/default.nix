@@ -21,6 +21,9 @@
 
     extraConfig = ''
       luafile ${./lua}/settings.lua
+      lua << EOF 
+      dofile("${./lua}/nvim-tree.lua")
+      EOF
     '';
   };
 
