@@ -20,7 +20,7 @@
     ];
 
     extraConfig = ''
-      luafile ${./lua/settings.lua}
+      luafile ${./lua}/settings.lua
     '';
   };
 
