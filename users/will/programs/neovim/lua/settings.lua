@@ -9,15 +9,17 @@ vim.cmd [[
   " NeoSolarized Colorscheme settings
   colorscheme NeoSolarized
   set background=dark
+
+  nnoremap <C-p> :NvimTreeToggle<CR>
 ]]
 
 -- Enable plugins
 
 
 
-local map = vim.api.nvim_set_keymap
-options = { noremap = true }
-map('n', '<C-p>', 'NvimTreeToggle <CR>', options)
+-- local map = vim.api.nvim_set_keymap
+-- options = { noremap = true }
+-- map('n', '<C-p>', 'NvimTreeToggle <CR>', options)
 
 -- Indent line
 -- g.indent_blankline_char = '⸽'
