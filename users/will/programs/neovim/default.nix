@@ -36,6 +36,7 @@
       " EO
 
       lua << EOF
+      dofile("${./lua}/nvim-tree.lua")
       print('hello')
       EOF
     '';
