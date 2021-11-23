@@ -23,18 +23,13 @@
       set runtimepath^=${./lua}
       luafile ${./lua}/settings.lua
 
-      " lua << EOF
-      " vim.defer_fn(function()
-      "   vim.cmd [[
-      "     luafile ${./lua}/nvim-tree.lua
-      "   ]]
-      " end, 70)
-      " print('hello 1')
-      " EOF
-
       lua << EOF
-      dofile("${./lua}/nvim-tree.lua")
-      print('hello')
+      vim.defer_fn(function()
+        vim.cmd [[
+          luafile ${./lua}/nvim-tree.lua
+        ]]
+      end, 70)
+      print('hello 1')
       EOF
     '';
   };
