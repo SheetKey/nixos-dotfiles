@@ -17,7 +17,7 @@ vim.cmd [[
 
 local map = vim.api.nvim_set_keymap
 options = { noremap = true }
-map ('n', '<C-p>', 'NvimTreeToggle <CR>', options)
+map('n', '<C-p>', 'NvimTreeToggle <CR>', options)
 
 -- Indent line
 -- g.indent_blankline_char = '⸽'
