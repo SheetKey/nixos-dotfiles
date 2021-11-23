@@ -14,13 +14,6 @@ vim.cmd [[
 -- Enable plugins
 
 
--- Treesitter settings
-require'nvim-treesitter.configs'.setup {
-    ensure_installed = "all",
-    highlight = {
-        enable = true
-    },
-}
 
 local map = vim.api.nvim_set_keymap
 options = { noremap = true }
