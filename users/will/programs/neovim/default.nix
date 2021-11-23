@@ -22,10 +22,10 @@
     extraConfig = ''
       set runtimepath^=${./lua}
       luafile ${./lua}/settings.lua
-      luafile ${./lua}/nvim-tree.lua
-     " lua << EOF 
-     "   dofile("${./lua}/nvim-tree.lua")
-     " EOF
+      "luafile ${./lua}/nvim-tree.lua
+      lua << EOF 
+        dofile("${./lua}/nvim-tree.lua")
+      EO
 
     '';
   };
