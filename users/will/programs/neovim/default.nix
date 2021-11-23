@@ -27,13 +27,17 @@
       "  dofile("${./lua}/nvim-tree.lua")
       "EO
 
+      " lua << EOF
+      " vim.defer_fn(function()
+      "   vim.cmd [[
+      "     luafile ${./lua}/nvim-tree.lua
+      "   ]]
+      " end, 70)
+      " EO
+
       lua << EOF
-      vim.defer_fn(function()
-        vim.cmd [[
-          luafile ${./lua}/nvim-tree.lua
-        ]]
-      end, 70)
-      EO
+      print('hello')
+      EOF
     '';
   };
 
