@@ -14,7 +14,7 @@ vim.cmd [[
 ]]
 
 -- Enable plugins
-
+require('colorizer').setup()
 
 
 -- local map = vim.api.nvim_set_keymap
