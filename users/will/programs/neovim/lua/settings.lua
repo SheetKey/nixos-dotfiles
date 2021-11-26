@@ -28,7 +28,7 @@ require('colorizer').setup()
 opt.shell = "zsh"
 
 -- Colors
-opt.termguicolors = true
+-- opt.termguicolors = true
 
 -- Indentation
 opt.smartindent = true

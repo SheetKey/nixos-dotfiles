@@ -25,6 +25,7 @@
 
     extraConfig = ''
       set runtimepath^=${./lua}
+      set termguicolors
       luafile ${./lua}/settings.lua
 
       lua << EOF
