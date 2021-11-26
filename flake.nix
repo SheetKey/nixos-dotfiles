@@ -8,9 +8,14 @@
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
+    neovim-nightly-overlay = {
+        url = "github:nix-community/neovim-nightly-overlay";
+        inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, ... }: 
+  outputs = inputs@{ self, nixpkgs, home-manager, neovim-nightly-overlay, ... }: 
 
   let 
 
@@ -33,52 +38,55 @@
     nixosConfigurations = {
     
       laptop = lib.nixosSystem {
-	inherit system;
+    	inherit system;
 
         modules = [
           ./configuration.nix ./hosts/laptop.nix
 
-	  home-manager.nixosModules.home-manager {
+    	  home-manager.nixosModules.home-manager {
 
             home-manager.useGlobalPkgs = true;
-	    home-manager.useUserPackages = true;
+    	    home-manager.useUserPackages = true;
             home-manager.users.will = import ./users/will/home.nix;
 
-
-	  }
-	];
+    	  }
+    	];
       };
 
       vmtest = lib.nixosSystem {
         inherit system;
 
-	modules = [
+    	modules = [
           ./configuration.nix ./hosts/vmtest.nix
 
-	  home-manager.nixosModules.home-manager {
+    	  home-manager.nixosModules.home-manager {
             
             home-manager.useGlobalPkgs = true;
-	    home-manager.useUserPackages = true;
+    	    home-manager.useUserPackages = true;
             home-manager.users.will = import ./users/will/home.nix;
 
-	  }
-	];
+    	  }
+    	];
       };
 
       nixos2vmbox = lib.nixosSystem {
         inherit system;
 
-	modules = [
-	  ./configuration.nix ./hosts/nixos2vbox.nix
+    	modules = [
+	      ./configuration.nix ./hosts/nixos2vbox.nix
 
-	  home-manager.nixosModules.home-manager {
+          ({ pkgs, ... }: {
+            nixpkgs.overlays = [ neovim-nightly-overlay.overlay ];
+          })
+
+	     home-manager.nixosModules.home-manager {
             
             home-manager.useGlobalPkgs = true;
-	    home-manager.useUserPackages = true;
+	        home-manager.useUserPackages = true;
             home-manager.users.will = import ./users/will/home.nix;
 
-	  }
-	];
+    	  }
+    	];
       };
 
     };
