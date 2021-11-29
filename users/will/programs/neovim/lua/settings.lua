@@ -24,7 +24,9 @@ vim.cmd [[
 ]]
 
 -- Enable plugins
-require('bufferline').setup{}
+require('bufferline').setup{
+    offsets = {{filetype = "NvimTree", text = "File Explorer", text_align = "center"}},
+}
 require('colorizer').setup()
 require('pears').setup()
 require'nvim-treesitter.configs'.setup{
