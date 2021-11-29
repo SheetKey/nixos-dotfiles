@@ -22,6 +22,7 @@
       vim-nix
 
       # Eyecandy
+      nvim-tree-sitter
       pears-nvim
 
       #Indent backline (NOT WORKING AS OF NOW)

@@ -16,6 +16,12 @@ vim.cmd [[
 -- Enable plugins
 require('colorizer').setup()
 require('pears').setup()
+require'nvim-treesitter.configs'.configs'.setup{
+    ensure_installed = "all",
+    highlight = {
+        enable = true
+    }
+}
 
 
 -- local map = vim.api.nvim_set_keymap
