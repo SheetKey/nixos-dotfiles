@@ -17,7 +17,7 @@
       # Colorscheme
       NeoSolarized
       nvim-colorizer-lua
-
+      vim-nix
 
       #Indent backline (NOT WORKING AS OF NOW)
       #indent-blankline-nvim
@@ -38,13 +38,4 @@
       EOF
     '';
   };
-
-  # xdg.configFile."nvim/lua/settings.lua".source = ./lua/settings.lua;
-  # xdg.configFile."nvim/lua/nvim-tree.lua".source = ./lua/nvim-tree.lua;
-  
-  # home.file."settings.lua".source = ./lua/settings.lua;
-  # home.file."settings.lua".target = .config/nvim/lua;
-
-  # home.file."nvim-tree.lua".source = ./lua/nvim-tree.lua;
-  # home.file."nvim-tree.lua".target = .config/nvim/lua;
 }
