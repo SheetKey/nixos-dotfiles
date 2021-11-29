@@ -16,7 +16,7 @@ vim.cmd [[
 -- Enable plugins
 require('colorizer').setup()
 require('pears').setup()
-require'nvim-treesitter.configs'.configs'.setup{
+require'nvim-treesitter.configs'.setup{
     ensure_installed = "all",
     highlight = {
         enable = true
