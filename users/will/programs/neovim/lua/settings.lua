@@ -14,11 +14,11 @@ vim.cmd [[
 
   " Bufferline remaps
     " Navigate through buffers in order
-    nnoremap <silent>[b :BufferLineCycleNext<CR>
-    nnoremap <silent>]b :BufferLineCyclePrev<CR>
+    nnoremap <silent>bm :BufferLineCycleNext<CR>
+    nnoremap <silent>bn :BufferLineCyclePrev<CR>
     " Move the current buffer forward or backwards
-    nnoremap <silent>bm :BufferLineMoveNext<CR>
-    nnoremap <silent>bn :BufferLineMovePrev<CR>
+    nnoremap <silent>]b :BufferLineMoveNext<CR>
+    nnoremap <silent>[b :BufferLineMovePrev<CR>
     " Sort buffers by directory
     nnoremap <silent>bd :BufferLineSortByDirectory<CR>
 ]]
