@@ -24,6 +24,7 @@
       # Eyecandy
       (nvim-treesitter.withPlugins (plugins: pkgs.tree-sitter.allGrammars))
       pears-nvim
+      bufferline-nvim
 
       #Indent backline (NOT WORKING AS OF NOW)
       #indent-blankline-nvim

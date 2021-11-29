@@ -14,6 +14,7 @@ vim.cmd [[
 ]]
 
 -- Enable plugins
+require('bufferline').setup{}
 require('colorizer').setup()
 require('pears').setup()
 require'nvim-treesitter.configs'.setup{
