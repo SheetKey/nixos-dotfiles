@@ -11,6 +11,16 @@ vim.cmd [[
   set background=dark
 
   nnoremap <C-p> :NvimTreeToggle<CR>
+
+  " Bufferline remaps
+    " Navigate through buffers in order
+    nnoremap <silent>[b :BufferLineCycleNext<CR>
+    nnoremap <silent>]b :BufferLineCyclePrev<CR>
+    " Move the current buffer forward or backwards
+    nnoremap <silent>bm :BufferLineMoveNext<CR>
+    nnoremap <silent>bn :BufferLineMovePrev<CR>
+    " Sort buffers by directory
+    nnoremap <silent>bd :BufferLineSortByDirectory<CR>
 ]]
 
 -- Enable plugins
