@@ -17,7 +17,12 @@
       # Colorscheme
       NeoSolarized
       nvim-colorizer-lua
+
+      # Languages
       vim-nix
+
+      # Eyecandy
+      pears-nvim
 
       #Indent backline (NOT WORKING AS OF NOW)
       #indent-blankline-nvim
