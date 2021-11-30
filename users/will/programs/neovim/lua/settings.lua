@@ -16,7 +16,7 @@ vim.cmd [[
 
     function! NvimTreeFocusToggle()
         if (&filetype == "NvimTree")
-            return "<C-W> l"
+            return "normal! <C-W> l"
         else
             return ":NvimTreeFocus"
         endif
