@@ -25,7 +25,14 @@ vim.cmd [[
 
 -- Enable plugins
 require('bufferline').setup{
-    offsets = {{filetype = "NvimTree", text = "File Explorer", text_align = "center"}},
+    offsets = {
+        {
+            filetype = "NvimTree", 
+            text = "File Explorer", 
+            highlight = "Directory",
+            text_align = "center"
+        }
+    },
 }
 require('colorizer').setup()
 require('pears').setup()
