@@ -16,9 +16,9 @@ vim.cmd [[
 
     function! NvimTreeFocusToggle()
         if (&filetype == "NvimTree")
-            return "<C-W> l"
+            return '<C-W> l'
         else
-            return ":NvimTreeFocus<CR>"
+            return ':NvimTreeFocus<CR>'
         endif
     endfunction
 
