@@ -11,8 +11,19 @@ vim.cmd [[
   set background=dark
 
   " Nvim Tree keybinds
-  nnoremap <C-p> :NvimTreeFocus<CR>
+  " nnoremap <C-p> :NvimTreeFocus<CR>
   nnoremap <C-c> :NvimTreeClose<CR>
+
+    function! NvimTreeFocusToggle()
+        if (&filetype == "NvimTree")
+            return "<C-W> l"
+        else
+            return ":NvimTreeFocus<CR>"
+        endif
+    endfunction
+
+  nnoremap <expr> <C-p> NvimTreeFocusToggle()
+  
 
   " Bufferline remaps
     " Navigate through buffers in order
