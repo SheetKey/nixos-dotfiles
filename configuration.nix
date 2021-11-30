@@ -108,6 +108,9 @@
     git
     neovim
 
+    # Latex
+    texlive.combined.scheme-full
+
     #Window manager stuff
     xmobar
     polybar
