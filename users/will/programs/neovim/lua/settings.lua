@@ -12,6 +12,7 @@ vim.cmd [[
 
   " Nvim Tree keybinds
   nnoremap <C-p> :NvimTreeFocus<CR>
+  nnoremap <C-c> :NvimTreeClose<CR>
 
   " Bufferline remaps
     " Navigate through buffers in order
