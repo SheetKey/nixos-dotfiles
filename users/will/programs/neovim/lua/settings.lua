@@ -28,7 +28,11 @@ vim.cmd [[
     endfunction
 
   nnoremap <C-p> :execute NvimTreeFocusToggle() <CR>
-  
+
+  " Ultisnips settings
+  let g:UltiSnipsExpandTrigger='<tab>'
+  let g:UltiSnipsJumpForwardTrigger='<tab>'
+  let g:UltiSnipsJumpBackwardTrigger='<s-tab>'
 
   " Bufferline remaps
     " Navigate through buffers in order
