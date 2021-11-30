@@ -18,11 +18,11 @@ vim.cmd [[
         if (&filetype == "NvimTree")
             return "<C-W> l"
         else
-            return ":NvimTreeFocus<CR>"
+            return ":NvimTreeFocus"
         endif
     endfunction
 
-  nnoremap <C-p> :execute NvimTreeFocusToggle()
+  nnoremap <C-p> :execute NvimTreeFocusToggle() <CR>
   
 
   " Bufferline remaps
