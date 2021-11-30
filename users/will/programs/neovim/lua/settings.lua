@@ -10,7 +10,8 @@ vim.cmd [[
   colorscheme NeoSolarized
   set background=dark
 
-  nnoremap <C-p> :NvimTreeToggle<CR>
+  " Nvim Tree keybinds
+  nnoremap <C-p> :NvimTreeFocus<CR>
 
   " Bufferline remaps
     " Navigate through buffers in order
