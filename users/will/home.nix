@@ -22,7 +22,7 @@
 
 
   home.packages = with pkgs; [
-    #Terminal
+    # Terminal
     alacritty
     zsh
     # DO NOT ADD NEOVIM TO "home.packages": LEAVE IN "configuration.nix"
@@ -33,12 +33,15 @@
     lf
     nix-prefetch-github
 
+    # Latex
+    texlive.combined.scheme-full
+
     #GUI stuff
     brave
     trayer
     networkmanagerapplet
 
-    #window manager related
+    # window manager related
     nitrogen
     picom
     rofi
