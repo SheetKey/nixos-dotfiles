@@ -49,6 +49,11 @@ require('bufferline').setup{
         },
     }
 }
+require('lualine').setup {
+    options = {
+        theme = 'solarized_dark',
+    },
+}
 require('colorizer').setup()
 require('pears').setup()
 require'nvim-treesitter.configs'.setup{
