@@ -36,6 +36,9 @@
     # Latex
     texlive.combined.scheme-full
 
+    # Viewer
+    zathura
+
     #GUI stuff
     brave
     trayer

@@ -21,6 +21,9 @@
       # Languages
       vim-nix
 
+      # Latex
+      vimtex
+
       # Eyecandy
       (nvim-treesitter.withPlugins (plugins: pkgs.tree-sitter.allGrammars))
       pears-nvim

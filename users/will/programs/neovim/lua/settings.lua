@@ -10,6 +10,11 @@ vim.cmd [[
   colorscheme NeoSolarized
   set background=dark
 
+  " Latex Vimtex Settings
+  let g:tex_flavor='latex'
+  let g:vimtex_view_method='zathura'
+  "let g:vimtex_quickfix_mode=0
+
   " Nvim Tree keybinds
   " nnoremap <C-p> :NvimTreeFocus<CR>
   nnoremap <C-c> :NvimTreeClose<CR>
