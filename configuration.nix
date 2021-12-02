@@ -55,7 +55,11 @@
   # Enable the X11 windowing system.
   services.xserver = {
   	enable = true;
-	layout = "us";
+    # Keyboard US and Polytonic Greek
+	layout = "us,gr";
+    xkbVariant = "polytonic";
+    xkbOptions = "grp:win_space_toggle";
+
 
 	displayManager.lightdm.enable = true;
 	displayManager.defaultSession = "none+xmonad";
