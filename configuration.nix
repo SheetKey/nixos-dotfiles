@@ -114,6 +114,9 @@
     #Window manager stuff
     xmobar
     polybar
+
+    # xkblayout-state
+    xkblayout-state
   ];
 
   # Install fonts
