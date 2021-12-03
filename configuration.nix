@@ -58,7 +58,7 @@
     # Keyboard US and Polytonic Greek
 	layout = "us,gr";
     xkbVariant = "polytonic";
-    xkbOptions = "grp:win_space_toggle";
+    xkbOptions = "grp:alts_toggle";
 
 
 	displayManager.lightdm.enable = true;
