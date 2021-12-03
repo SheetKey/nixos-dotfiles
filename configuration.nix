@@ -57,7 +57,8 @@
   	enable = true;
     # Keyboard US and Polytonic Greek
 	layout = "us,gr";
-    xkbOptions = "polytonic:gr, grp:shifts_toggle";
+    xkbVariant = ",polytonic";
+    xkbOptions = "grp:shifts_toggle";
 
 
 	displayManager.lightdm.enable = true;
