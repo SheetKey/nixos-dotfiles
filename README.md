@@ -11,6 +11,7 @@
 	3. Add this to enable flakes
 		```
 		nix = {
+		  packages = pkgs.nixUnstable;
 		  extraOptions = ''
 		    experimental-features = nix-command flakes
 		  '';

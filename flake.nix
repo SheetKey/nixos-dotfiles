@@ -54,7 +54,7 @@
 	  ./configuration.nix ./hosts/nixos3.nix
 
 	  ({ pkgs, ... }: {
-	    nixpkgs.overlays = [ neovim-nightly-overlay.overlay ]:
+	    nixpkgs.overlays = [ neovim-nightly-overlay.overlay ];
 	  })
 
 	  home-manager.nixosModules.home-manager {
