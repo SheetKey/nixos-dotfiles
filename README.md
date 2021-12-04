@@ -6,10 +6,20 @@
 	`nixos-install`. 
 
 2. Edit the generated `configuration.nix`
-	1. Add user `jane` with `will` and add `initialPassword` option
+	1. Switch user `jane` with `will` and add `initialPassword` option
 	2. Add packages `neovim` and `git` (others are optional, I usually only install these)
+	3. Add this to enable flakes
+		```
+		nix = {
+		  extraOptions = ''
+		    experimental-features = nix-command flakes
+		  '';
+		  };
+		  ```
 
-3. Run `nixos-install` and create `root` user password.
+3. Run `nixos-install` and set `root` password when prompted.
+	1. If not prompted an error occured. 
+	2. Good luck
 
 4. Reboot and remove boot drive.
 
@@ -17,13 +27,13 @@
 
 6. Create new ssh-key with `ssh-keygen -t ed25519 -C "your_email@email.com"` and add key to github.
 
-7. `eval `ssh-agent`, `ssh-add KEYNAME`.
+7. `eval \`ssh-agent\``, `ssh-add KEYNAME`.
 
 8. In home directory run, `mkdir dotfiles`, `cd /dotfiles`, `git clone git@github.com:SheetKey/nixos-dotfiles.git`
 
-9. Create new host file in `/hosts` 
+9. Create new host file `HOSTNAME.nix` in `/hosts` 
 
-10. Add to new host file
+10. Add to new `HOSTNAME.nix`
 	```
 	{ config, lib, pkgs, modulesPath, ... }:
 
@@ -66,7 +76,9 @@
 	}
 	```
 
-12. Build a certain nixosConfiguration.
+12. Run `nix flake lock`
+
+13. Build a certain nixosConfiguration.
 	```
-	nixos-rebuild switch --flake .#CONFIGURATIONNAME
+	nixos-rebuild switch --flake .#NEWHOSTNAME
 	```
