@@ -72,8 +72,8 @@
 	        nur.overlay emacs-overlay.overlay
 	      ];
 	    }
-	  ]
-	}
+	  ];
+	};
 	```
 
 12. Run `nix flake lock`
