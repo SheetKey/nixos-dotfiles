@@ -60,7 +60,7 @@
 	  home-manager.nixosModules.home-manager {
 	    home-manager.useGlobalPkgs = true;
 	    home-manager.useUserPackages = true;
-	    home-manager.user.will = import ./users/will/home.nix;
+	    home-manager.users.will = import ./users/will/home.nix;
 	    nixpkgs.overlays = [
 	      nur.overlay emacs-overlay.overlay
 	    ];
