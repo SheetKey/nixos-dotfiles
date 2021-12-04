@@ -27,7 +27,7 @@
 
 6. Create new ssh-key with `ssh-keygen -t ed25519 -C "your_email@email.com"` and add key to github.
 
-7. `eval \`ssh-agent\``, `ssh-add KEYNAME`.
+7. ``eval `ssh-agent` ``, `ssh-add KEYNAME`.
 
 8. In home directory run, `mkdir dotfiles`, `cd /dotfiles`, `git clone git@github.com:SheetKey/nixos-dotfiles.git`
 
