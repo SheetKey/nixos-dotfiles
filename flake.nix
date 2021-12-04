@@ -13,9 +13,19 @@
         inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    emacs-overlay = {
+      url = "github:nix-community/emacs-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nur = {
+      url = "github:nix-community/NUR";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, neovim-nightly-overlay, ... }: 
+  outputs = inputs@{ self, nixpkgs, home-manager, neovim-nightly-overlay, nur, emacs-overlay, ... }: 
 
   let 
 
@@ -26,7 +36,7 @@
       inherit system;
 
       config = {
-	allowUnfree = true;
+    	allowUnfree = true;
       };
 
     };
@@ -84,6 +94,9 @@
             home-manager.useGlobalPkgs = true;
 	        home-manager.useUserPackages = true;
             home-manager.users.will = import ./users/will/home.nix;
+            nixpkgs.overlays = [
+              nur.overlay emacs-overlay.overlay
+            ];
 
     	  }
     	];
