@@ -6,7 +6,7 @@ let
 
 in
 {
-  import = [ nurNoPkgs.repos.rycee.hmModules.programs.emacs.init ];
+  imports = [ nurNoPkgs.repos.rycee.hmModules.programs.emacs.init ];
 
   programs.emacs = {
     enable = true;
