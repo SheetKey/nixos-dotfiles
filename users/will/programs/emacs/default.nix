@@ -2,7 +2,7 @@
 
 let 
 
-  nurNoPkgs = import <nur> { pkgs = null };
+  nurNoPkgs = import <nur> { pkgs = null; };
 
 in
 {
