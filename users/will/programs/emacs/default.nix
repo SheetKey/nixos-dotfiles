@@ -1,12 +1,14 @@
-{ pkgs, ... }:
+{ pkgs, nur, ... }:
 
 let 
 
-  nurNoPkgs = import <nur> { pkgs = null; };
-
+  nur-no-pkgs = import nur {
+    nurpkgs = import nixpkgs { system = "x86_64-linux"; };
+  };
+  
 in
 {
-  imports = [ nurNoPkgs.repos.rycee.hmModules.programs.emacs.init ];
+  imports = [ nur-no-pkgs.repos.rycee.hmModules.emacs-init ];
 
   programs.emacs = {
     enable = true;
