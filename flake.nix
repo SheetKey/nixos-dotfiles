@@ -25,7 +25,7 @@
 
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, neovim-nightly-overlay, nur, emacs-overlay, nur-no-pkgs, ... }: 
+  outputs = inputs@{ self, nixpkgs, home-manager, neovim-nightly-overlay, nur, emacs-overlay, ... }: 
 
   let 
 
@@ -43,9 +43,7 @@
 
     lib = nixpkgs.lib;
 
-    nur-no-pkgs = import nur {
-      nurpkgs = import nixpkgs { system = "x86_64-linux"; };
-    };
+    nur-no-pkgs = import nur { pkgs = null; nurpkgs = import nixos { system = "x86_64-linux"; };};
 
   in {
 
