@@ -59,7 +59,7 @@
                 nurpkgs = import nixpkgs { system = "x86_64-linux"; };
               };
             in {
-              imports = [ nur-no-pkgs.repos.rycee.hmModules.programs.emacs.init ];
+              imports = [ nur-no-pkgs.repos.rycee.hmModules.emacs-init ];
             }
           )
 
