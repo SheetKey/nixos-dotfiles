@@ -43,7 +43,10 @@
 
     lib = nixpkgs.lib;
 
-    nur-no-pkgs = import nur { pkgs = null; nurpkgs = import nixpkgs { system = "x86_64-linux"; };};
+    nur-no-pkgs = import nur { 
+      pkgs = null; 
+      nurpkgs = import nixpkgs { system = "x86_64-linux"; };
+    };
 
   in {
 
