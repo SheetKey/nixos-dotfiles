@@ -64,6 +64,8 @@
 	    nixpkgs.overlays = [
 	      nur.overlay emacs-overlay.overlay
 	    ];
+        # Module for emacs.init
+        pkgs.nur.repos.rycee.hmModules.programs.emacs.init;
 	  }
 	];
       };
