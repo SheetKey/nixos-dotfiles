@@ -43,6 +43,10 @@
 
     lib = nixpkgs.lib;
 
+    nur-no-pkgs = import nur {
+      nurpkgs = import nixpkgs { system = "x86_64-linux"; };
+    };
+
   in {
 
     nixosConfigurations = {
