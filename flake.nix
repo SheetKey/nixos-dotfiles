@@ -25,7 +25,7 @@
 
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, neovim-nightly-overlay, nur, emacs-overlay, ... }: 
+  outputs = inputs@{ self, nixpkgs, home-manager, neovim-nightly-overlay, nur, emacs-overlay, nur-no-pkgs, ... }: 
 
   let 
 
