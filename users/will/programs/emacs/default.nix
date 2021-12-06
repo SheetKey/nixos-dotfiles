@@ -1,4 +1,4 @@
-{ pkgs, nur, ... }:
+{ pkgs, nur, nixpkgs, ... }:
 
 let 
 
