@@ -65,15 +65,15 @@
 	          nur.overlay emacs-overlay.overlay
 	        ];
 
-            ({ pkgs, ... }: 
-              let
-                nur-no-pkgs = import nur {
-                  nurpkgs = import nixpkgs { system = "x86_64-linux"; };
-                };
-              in {
-                imports = [ nur-no-pkgs.repos.rycee.hmModules.emacs-init ];
-              }
-            )
+#            ({ pkgs, ... }: 
+#              let
+#                nur-no-pkgs = import nur {
+#                  nurpkgs = import nixpkgs { system = "x86_64-linux"; };
+#                };
+#              in {
+#                imports = [ nur-no-pkgs.repos.rycee.hmModules.emacs-init ];
+#              }
+#            )
 	      }
 	    ];
       };
