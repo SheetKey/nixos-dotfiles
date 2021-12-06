@@ -50,24 +50,32 @@
       nixos3 = lib.nixosSystem {
         inherit system;
 
-	modules = [
-	  ./configuration.nix ./hosts/nixos3.nix
+	    modules = [
+	      ./configuration.nix ./hosts/nixos3.nix
 
-	  ({ pkgs, ... }: {
-	    nixpkgs.overlays = [ neovim-nightly-overlay.overlay ];
-	  })
+          ({ pkgs, ... }: 
+            let
+              nur-no-pkgs = import nur {
+                nurpkgs = import nixpkgs { system = "x86_64-linux"; };
+              };
+            in {
+              imports = [ nur-no-pkgs.repos.rycee.hmModules.programs.emacs.init ];
+            }
+          )
 
-	  home-manager.nixosModules.home-manager {
-	    home-manager.useGlobalPkgs = true;
-	    home-manager.useUserPackages = true;
-	    home-manager.users.will = import ./users/will/home.nix;
-	    nixpkgs.overlays = [
-	      nur.overlay emacs-overlay.overlay
+	      ({ pkgs, ... }: {
+	        nixpkgs.overlays = [ neovim-nightly-overlay.overlay ];
+	      })
+
+	      home-manager.nixosModules.home-manager {
+	        home-manager.useGlobalPkgs = true;
+	        home-manager.useUserPackages = true;
+	        home-manager.users.will = import ./users/will/home.nix;
+	        nixpkgs.overlays = [
+	          nur.overlay emacs-overlay.overlay
+	        ];
+	      }
 	    ];
-        # Module for emacs.init
-        pkgs.nur.repos.rycee.hmModules.programs.emacs.init;
-	  }
-	];
       };
     
       laptop = lib.nixosSystem {
