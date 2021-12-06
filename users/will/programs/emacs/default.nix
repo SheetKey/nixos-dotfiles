@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, nur-no-pkgs, ... }:
 
 {
   imports = [ nur-no-pkgs.repos.rycee.hmModules.emacs-init ];
