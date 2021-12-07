@@ -24,6 +24,10 @@
         (tool-bar-mode -1)                  ; Disable the toolbar
         (tooltip-mode -1)                   ; Disable tooltips
         (set-fringe-mode 10)                ; Give breathing room
+        (menu-bar-mode -1)                  ; Disable menu bar
+
+        ;; Set up visual bell
+        (setq visible-bell t)
       '';
 
       # extra packages for emacs
