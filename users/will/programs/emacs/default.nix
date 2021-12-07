@@ -44,7 +44,7 @@
         # ivy buffer completion
         ivy = {
           enable = true;
-          diminish = [ ivy ];
+          diminish = [ "ivy" ];
           config = ''
             (ivy-mode 1)
           '';
