@@ -30,7 +30,7 @@
         (setq visible-bell t)
 
         ;; Font
-        (set-face-attribute 'default nil :font "Ubuntu Nerd Font" :height 280)
+        (set-face-attribute 'default nil :font "FiraCode Nerd Font Mono" :height 140)
       '';
 
       # extra packages for emacs
