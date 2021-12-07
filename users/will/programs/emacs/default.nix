@@ -46,7 +46,7 @@
           enable = true;
           diminish = [ "ivy-mode" ];
           bind = {
-            C-s = "swiper";
+            "C-s" = "swiper";
           };
           config = ''
             (ivy-mode 1)
