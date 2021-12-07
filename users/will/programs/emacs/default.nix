@@ -16,7 +16,7 @@
 
         (require 'doom-modeline)
         (setq doom-modeline-buffer-file-name-style 'truncate-except-project)
-        (doom-modeline-mode)
+        (doom-modeline-mode 1)
       '';
 
       # beginning of init.el
