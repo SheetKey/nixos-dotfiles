@@ -14,6 +14,9 @@
       # early-init.el file
       earlyInit = ''
 
+        (require 'doom-modeline)
+        (setq doom-modeline-buffer-file-name-style 'truncate-except-project)
+        (doom-modeline-mode)
       '';
 
       # beginning of init.el
@@ -66,6 +69,12 @@
                     ("C-d" . ivy-reverse-i-search-kill)
                   )
           '';
+        };
+
+        # Doom-modeline
+        doom-modeline = {
+          enable = true;
+          extraConfig = ":disabled"
         };
 
       };
