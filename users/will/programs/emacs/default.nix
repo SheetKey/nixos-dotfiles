@@ -14,9 +14,9 @@
       # early-init.el file
       earlyInit = ''
 
-        ;;(require 'doom-modeline)
-        ;;(setq doom-modeline-buffer-file-name-style 'truncate-except-project)
-        ;;(doom-modeline-mode 1)
+        (require 'doom-modeline)
+        (setq doom-modeline-buffer-file-name-style 'truncate-except-project)
+        (doom-modeline-mode 1)
       '';
 
       # beginning of init.el
@@ -74,9 +74,9 @@
         # Doom-modeline
         doom-modeline = {
           enable = true;
-          # extraConfig = ''
-          #   :disabled
-          # '';
+          extraConfig = ''
+            :disabled
+          '';
         };
 
       };
