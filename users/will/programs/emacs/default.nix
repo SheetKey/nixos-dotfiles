@@ -3,7 +3,7 @@
 {
   programs.emacs = {
     enable = true;
-    package = pkgs.emacsGcc;
+    package = pkgs.emacsPgtkGcc;
     init = {
       enable = true;
 

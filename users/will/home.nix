@@ -43,7 +43,6 @@
     brave
     trayer
     networkmanagerapplet
-    emacsGcc
 
     # window manager related
     nitrogen
