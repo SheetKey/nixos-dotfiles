@@ -1,8 +1,6 @@
 { pkgs, nur-no-pkgs, ... }:
 
 {
-  imports = [ nur-no-pkgs.repos.rycee.hmModules.emacs-init ];
-
   programs.emacs = {
     enable = true;
     package = pkgs.emacsGcc;
