@@ -74,9 +74,9 @@
         # Doom-modeline
         doom-modeline = {
           enable = true;
-          extraConfig = ''
-            :disabled
-          '';
+          # extraConfig = ''
+          #   :disabled
+          # '';
         };
 
       };
