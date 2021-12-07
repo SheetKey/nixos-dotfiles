@@ -28,6 +28,9 @@
 
         ;; Set up visual bell
         (setq visible-bell t)
+
+        ;; Font
+        (set-face-attribute 'default nit :font "Ubuntu Nerd Font" :height 12)
       '';
 
       # extra packages for emacs
