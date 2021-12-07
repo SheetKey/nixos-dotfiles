@@ -31,6 +31,9 @@
 
         ;; Font
         (set-face-attribute 'default nil :font "FiraCode Nerd Font Mono" :height 100)
+
+        ;; TEMPORARY THEME
+        (load-theme 'tango-dark)
       '';
 
       # extra packages for emacs
