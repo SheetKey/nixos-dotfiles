@@ -34,10 +34,20 @@
 
         ;; TEMPORARY THEME
         (load-theme 'tango-dark)
+
+        ;; Make ESC quit prompts
+        (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
       '';
 
       # extra packages for emacs
       usePackage = {
+        # ivy buffer completion
+        ivy = {
+          enable = true;
+          config = ''
+            (ivy-mode 1)
+          '';
+        };
 
       };
 
