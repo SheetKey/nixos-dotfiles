@@ -112,7 +112,7 @@
 
         vertico = {
           enable = true;
-          init = "(vertico-mode)";
+          init = "vertico-mode";
         };
 
       };
