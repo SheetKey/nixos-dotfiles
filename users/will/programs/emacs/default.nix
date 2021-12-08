@@ -29,6 +29,15 @@
         (set-fringe-mode 10)                ; Give breathing room
         (menu-bar-mode -1)                  ; Disable menu bar
 
+        ;; Line numbers
+        (column-number-mode)
+        (global-display-line-numbers-mode t)
+        ;; Disable line numbers in some modes
+        (dolist (mode '(org-mode-hook
+                        term-mode-hook
+                        eshell-mode-hook))
+                (add-hook mode (lambda () (display-line-numbers-mode 0))))
+
         ;; Set up visual bell
         (setq visible-bell t)
 
