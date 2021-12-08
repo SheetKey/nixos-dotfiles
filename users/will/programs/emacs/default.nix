@@ -101,15 +101,12 @@
         # Which key
         which-key = {
           enable = true;
-          # command = [ "which-key-mode" ];
+          command = [ "which-key-mode" ];
           # diminish = [ "which-key-mode" ];
           # defer = 1;
           config = ''
-            ;; (setq which-key-idle-delay 0.3)
+            (setq which-key-idle-delay 0.3)
             (which-key-mode)
-          '';
-          extraConfig = ''
-            :init (which-key-mode)
           '';
         };
 
