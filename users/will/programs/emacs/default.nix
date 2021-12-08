@@ -122,7 +122,8 @@
             ;;        ("C-k" . vertico-previous)
             ;;        ("C-f" . vertico-exit)
             ;;        :map minibuffer-local-map
-            ;;        ("M-h" . backward-kill-word))
+            ;;        ("M-h" . backward-kill-word)
+            )
             :custom
             (vertico-cycle t)
           '';
