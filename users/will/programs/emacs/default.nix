@@ -80,10 +80,12 @@
         };
 
         # All the icons
-        all-the-icons-dired = {
-          enable = true;
-          hook = [ "(dired-mode . all-the-icons-dired-mode)" ];
-        };
+        all-the-icons.enable = true;
+        # all-the-icons-dired = {
+        #   enable = true;
+        #   after = [ "dired" "all-the-icons" ];
+        #   hook = [ "(dired-mode . all-the-icons-dired-mode)" ];
+        # };
 
       };
 
