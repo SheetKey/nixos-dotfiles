@@ -112,7 +112,8 @@
 
         vertico = {
           enable = true;
-          init = "vertico-mode";
+          command = [ "vertico-mode" ];
+          init = "(vertico-mode)";
         };
 
       };
