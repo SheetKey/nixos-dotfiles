@@ -139,7 +139,7 @@
           after = [ "vertico" ];
           command = [ "marginalia-mode" ];
           init = "(marginalia-mode)";
-          extraConfif = ''
+          extraConfig = ''
             :custom
             (marginalia-annotators '(marginalia-annotators-heavy marginalia-annotators-light nil))
           '';
