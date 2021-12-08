@@ -118,7 +118,7 @@
           init = "(vertico-mode)";
           extraConfig = ''
             :bind (:map vertico-map
-            ;;        ("C-j" . vertico-next)
+                   ("C-j" . vertico-next)
             ;;        ("C-k" . vertico-previous)
             ;;        ("C-f" . vertico-exit)
             ;;        :map minibuffer-local-map
