@@ -79,6 +79,12 @@
           '';
         };
 
+        # All the icons
+        all-the-icons-dired = {
+          enable = true;
+          hook = [ "(dired-mode . all-the-icons-dired-mode)" ];
+        };
+
       };
 
     };
