@@ -116,7 +116,7 @@
           enable = true;
           command = [ "vertico-mode" ];
           init = "(vertico-mode)";
-          extraCongif = ''
+          extraConfig = ''
             :bind ( :map vertico-map
                     ("C-j" . vertico-next)
                     ("C-k" . vertico-previous)
