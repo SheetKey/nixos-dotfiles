@@ -101,9 +101,12 @@
         # Which key
         which-key = {
           enable = true;
-          init = "(which-key-mode)";
+          command = [ "which-key-mode" ];
           diminish = [ "which-key-mode" ];
-          config = "(setq which-key-idle-delay 0.3)";
+          config = ''
+            (setq which-key-idle-delay 0.3)
+            (which-key-mode)
+          '';
         };
 
       };
