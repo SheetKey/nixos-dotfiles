@@ -117,7 +117,14 @@
           command = [ "vertico-mode" ];
           init = "(vertico-mode)";
           bindLocal = {
-            vertico-map = { C-j = "vertico-next"; };
+            vertico-map = { 
+              C-j = "vertico-next"; 
+              C-k = "vertico-previous";
+              C-f = "vertico-exit";
+            };
+            minibuffer-local-map = {
+              M-h = "backward-kill-word";
+            };
           };
           extraConfig = ''
             ;;:bind (:map vertico-map
