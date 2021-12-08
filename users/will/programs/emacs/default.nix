@@ -110,6 +110,11 @@
           '';
         };
 
+        vertico = {
+          enable = true;
+          init = "(vertico-mode)";
+        };
+
       };
 
     };
