@@ -54,32 +54,6 @@
 
       # extra packages for emacs
       usePackage = {
-        # ivy buffer completion
-        # ivy = {
-        #   enable = true;
-        #   diminish = [ "ivy-mode" ];
-        #   bind = {
-        #     "C-s" = "swiper";
-        #   };
-        #   config = ''
-        #     (ivy-mode 1)
-        #   '';
-        #   extraConfig = ''
-        #     :bind ( :map ivy-minibuffer-map
-        #             ("TAB" . ivy-alt-done)
-        #             ("C-l" . ivy-alt-done)
-        #             ("C-j" . ivy-next-line)
-        #             ("C-k" . ivy-previous-line)
-        #             :map ivy-switch-buffer-map
-        #             ("C-k" . ivy-previous-line)
-        #             ("C-l" . ivy-done)
-        #             ("C-d" . ivy-switch-buffer-kill)
-        #             :map ivy-reverse-i-search-map
-        #             ("C-k" . ivy-previous-line)
-        #             ("C-d" . ivy-reverse-i-search-kill)
-        #           )
-        #   '';
-        # };
 
         # Doom-modeline
         doom-modeline = {
@@ -127,13 +101,6 @@
             };
           };
           extraConfig = ''
-            ;;:bind (:map vertico-map
-            ;;       ("C-j" . vertico-next)
-            ;;        ("C-k" . vertico-previous)
-            ;;        ("C-f" . vertico-exit)
-            ;;        :map minibuffer-local-map
-            ;;        ("M-h" . backward-kill-word)
-            ;;)
             :custom
             (vertico-cycle t)
           '';
@@ -154,6 +121,14 @@
             :custom
             (marginalia-annotators '(marginalia-annotators-heavy marginalia-annotators-light nil))
           '';
+        };
+
+        # Helpful: a better help tool
+        helpful = {
+          enable = true;
+          bind = {
+            [remap describe-function] = "counsel-describe-function"; 
+          };
         };
 
       };
