@@ -35,8 +35,9 @@
         ;; Disable line numbers in some modes
         (dolist (mode '(org-mode-hook
                         term-mode-hook
-                        eshell-mode-hook))
-                (add-hook mode (lambda () (display-line-numbers-mode 0))))
+                        eshell-mode-hook
+                        shell-mode-hook))
+          (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
         ;; Set up visual bell
         (setq visible-bell t)
