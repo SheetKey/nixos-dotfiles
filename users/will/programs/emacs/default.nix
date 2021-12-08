@@ -111,10 +111,38 @@
           '';
         };
 
+        # Vertico for auto completion
         vertico = {
           enable = true;
           command = [ "vertico-mode" ];
           init = "(vertico-mode)";
+          extraCongif = ''
+            :bind ( :map vertico-map
+                    ("C-j" . vertico-next)
+                    ("C-k" . vertico-previous)
+                    ("C-f" . vertico-exit)
+                    :map minibuffer-local-map
+                    ("M-h" . backeard-kill-word))
+            :custom
+            (vertico-cycle t)
+          '';
+        };
+        # Savehist for vertico
+        savehist = {
+          enable = true;
+          command = [ "savehist-mode" ];
+          init = "(savehist-mode)";
+        };
+        # Marginalia for vertico extra information
+        marginalia = {
+          enable = true;
+          after = [ "vertico" ];
+          command = [ "marginalia-mode" ];
+          init = "(marginalia-mode)";
+          extraConfif = ''
+            :custom
+            (marginalia-annotators '(marginalia-annotators-heavy marginalia-annotators-light nil))
+          '';
         };
 
       };
