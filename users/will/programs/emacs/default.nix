@@ -67,14 +67,12 @@
             (setq doom-themes-enable-bold t
                   doom-themes-enable-italic t)
             (load-theme 'doom-solarized-dark t)
-          '';
-          extraConfig = ''
-          :config
+
             ;; Enable flashing mode-line on errors
-            (doom-themes-visual-bell-config t)
+            ;; (doom-themes-visual-bell-config)
 
             ;; For org-mode
-            (doom-themes-org-config t)
+            (doom-themes-org-config)
           '';
         };
 
