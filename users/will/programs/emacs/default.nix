@@ -70,7 +70,8 @@
 
             ;; Enable flashing mode-line on errors
             ;; (doom-themes-visual-bell-config)
-            (doom-themes-ext-visual-bell)
+            (setq ring-bell-function #'doom-themes-visual-bell-fn
+                  visual-bell t)
 
             ;; For org-mode
             ;; (doom-themes-org-config)
