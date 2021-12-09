@@ -45,9 +45,6 @@
         ;; Font
         (set-face-attribute 'default nil :font "FiraCode Nerd Font Mono" :height 100)
 
-        ;; TEMPORARY THEME
-        (load-theme 'wombat)
-
         ;; Make ESC quit prompts
         (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
       '';
@@ -69,7 +66,7 @@
           config = ''
             (setq doom-themes-enable-bold t
                   doom-themes-enable-italic t)
-            (load-theme 'doom-solarized-dark)
+            (load-theme 'doom-solarized-dark t)
 
             ;; Enable flashing mode-line on errors
             (doom-themes-visual-bell-config)
