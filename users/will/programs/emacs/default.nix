@@ -127,6 +127,15 @@
         # Consult with vertico
         consult = {
           enable = true;
+          demand = true;
+          bind = {
+            "C-s" = "consult-line";
+            "C-M-l" = "consult-imenu";
+            "C-x b" = "consult-buffer";
+            "M-g M-g" = "consult-goto-line";
+            "M-s f" = "consult-find";
+            "M-s r" = "consult-ripgrep";
+          };
         };
 
         # Helpful: a better help tool
