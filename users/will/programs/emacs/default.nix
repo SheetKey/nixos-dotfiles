@@ -72,7 +72,7 @@
             ;; (doom-themes-visual-bell-config)
 
             ;; For org-mode
-            (doom-themes-org-config)
+            doom-themes-org-config
           '';
         };
 
