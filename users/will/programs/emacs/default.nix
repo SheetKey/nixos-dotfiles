@@ -40,7 +40,7 @@
           (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
         ;; Set up visual bell
-        (setq visible-bell t)
+        ;; (setq visible-bell t)
 
         ;; Font
         (set-face-attribute 'default nil :font "FiraCode Nerd Font Mono" :height 100)
