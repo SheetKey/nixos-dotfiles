@@ -68,8 +68,9 @@
                   doom-themes-enable-italic t)
             (load-theme 'doom-solarized-dark t)
 
+            ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;NEEDS TO BE FIXED
             ;; Enable flashing mode-line on errors
-            (doom-themes-visual-bell-config)
+            ;;(doom-themes-visual-bell-config)
 
             ;; For org-mode
             (doom-themes-org-config)
