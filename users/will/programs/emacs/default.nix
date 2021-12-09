@@ -70,9 +70,10 @@
 
             ;; Enable flashing mode-line on errors
             ;; (doom-themes-visual-bell-config)
+            (doom-themes-ext-visual-bell)
 
             ;; For org-mode
-            doom-themes-org-config
+            ;; (doom-themes-org-config)
           '';
         };
 
