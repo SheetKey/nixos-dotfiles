@@ -66,7 +66,8 @@
           config = ''
             (setq doom-themes-enable-bold t
                   doom-themes-enable-italic t)
-            (load-theme 'doom-solarized-dark t)
+            ;; (load-theme 'doom-solarized-dark t)
+            (load-theme 'doom-vibrant t)
 
             ;; Enable flashing mode-line on errors
             (doom-themes-visual-bell-config t)
