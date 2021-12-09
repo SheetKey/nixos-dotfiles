@@ -108,8 +108,10 @@
         # Savehist for vertico
         savehist = {
           enable = true;
-          command = [ "savehist-mode" ];
-          init = "(savehist-mode)";
+          config = ''
+            (setq history-length 25)
+            (savehist-mode 1)
+          '';
         };
         # Marginalia for vertico extra information
         marginalia = {
