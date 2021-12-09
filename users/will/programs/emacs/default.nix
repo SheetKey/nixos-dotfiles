@@ -50,15 +50,6 @@
 
         ;; Make ESC quit prompts
         (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
-
-        ;; Define function for vertico
-        (defun dw/minibuffer-backward-kill (arg)
-          (interactive "p")
-          (if minibuffer-completing-file-name
-            (if (string-match-p "/." (minibuffer-contents))
-                (zap-up-to-char (- arg) ?/)
-              (delete-minibuffer-contents))
-            (delete-backward-char arg)))
       '';
 
       # extra packages for emacs
@@ -107,7 +98,6 @@
             };
             minibuffer-local-map = {
               M-h = "backward-kill-word";
-              "<Backspace>" = "dw/minibuffer-backward-kill";
             };
           };
           extraConfig = ''
