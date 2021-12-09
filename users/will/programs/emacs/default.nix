@@ -42,9 +42,6 @@
         ;; Set up visual bell
         (setq visible-bell t)
 
-        ;; Enable flashing mode-line on errors
-        (doom-themes-visual-bell-config)
-
         ;; Font
         (set-face-attribute 'default nil :font "FiraCode Nerd Font Mono" :height 100)
 
@@ -72,7 +69,7 @@
             (load-theme 'doom-solarized-dark t)
 
             ;; Enable flashing mode-line on errors
-            ;; (doom-themes-visual-bell-config)
+            (doom-themes-visual-bell-config)
 
             ;; For org-mode
             (doom-themes-org-config)
