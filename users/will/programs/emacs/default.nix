@@ -67,14 +67,6 @@
             (setq doom-themes-enable-bold t
                   doom-themes-enable-italic t)
             (load-theme 'doom-solarized-dark t)
-
-            ;; Enable flashing mode-line on errors
-            ;; (doom-themes-visual-bell-config)
-            (setq ring-bell-function #'doom-themes-visual-bell-fn
-                  visual-bell t)
-
-            ;; For org-mode
-            ;; (doom-themes-org-config)
           '';
         };
 
