@@ -32,6 +32,7 @@
     #xorg.kill
     lf
     nix-prefetch-github
+    ripgrep
 
     # Latex
     texlive.combined.scheme-full

@@ -125,7 +125,6 @@
         # Consult with vertico
         consult = {
           enable = true;
-          
         };
 
         # Helpful: a better help tool
@@ -133,6 +132,7 @@
           enable = true;
           extraConfig = ''
             :bind
+            ;; remap default describe functions to helpful describe functions
             ([remap describe-function] . helpful-function)
             ([remap describe-symbol] . helpful-symbol)
             ([remap describe-command] . helpful-command)
