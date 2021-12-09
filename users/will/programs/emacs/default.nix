@@ -63,6 +63,22 @@
           '';
         };
 
+        # Colorscheme
+        doom-themes = {
+          enable = true;
+          config = ''
+            (setq doom-themes-enable-bold t
+                  doom-themes-enable-italic t)
+            (load-theme 'doom-solarized-dark)
+
+            ;; Enable flashing mode-line on errors
+            (doom-themes-visual-bell-config)
+
+            ;; For org-mode
+            (doom-themes-org-config)
+          '';
+        };
+
         # All the icons
         all-the-icons.enable = true;
 
