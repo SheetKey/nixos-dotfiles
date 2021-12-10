@@ -63,6 +63,7 @@
         # Colorscheme
         doom-themes = {
           enable = true;
+          command = [ "doom-themes-visual-bell-config" ];
           config = ''
             (setq doom-themes-enable-bold t
                   doom-themes-enable-italic t)
