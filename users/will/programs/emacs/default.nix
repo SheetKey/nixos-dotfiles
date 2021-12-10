@@ -63,14 +63,16 @@
         # Colorscheme
         doom-themes = {
           enable = true;
-          command = [ "doom-themes-visual-bell-config" ];
           config = ''
             (setq doom-themes-enable-bold t
                   doom-themes-enable-italic t)
             (load-theme 'doom-solarized-dark t)
-
-            (doom-themes-visual-bell-config)
           '';
+        };
+        doom-themes-ext-visual-bell = {
+          enable = true;
+          after = [ "doom-themes" ];
+          config = "(doom-themes-visual-bell-config)";
         };
 
         # All the icons
