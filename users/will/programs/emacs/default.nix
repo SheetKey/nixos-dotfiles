@@ -68,8 +68,6 @@
                   doom-themes-enable-italic t)
             (load-theme 'doom-solarized-dark t)
 
-          '';
-          extraConfig = ''
             (doom-themes-visual-bell-config)
           '';
         };
