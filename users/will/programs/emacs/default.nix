@@ -202,7 +202,7 @@
             (evil-set-initial-state 'dashboard-mode 'normal)
           '';
         };
-        evil-global-set-key = {
+        evil-core = {
           enable = true;
         }; 
 
