@@ -45,6 +45,7 @@
         ;; Font
         (set-face-attribute 'default nil :font "FiraCode Nerd Font Mono" :height 100)
 
+        ;;;;;;;;;;; KEYBINDS
         ;; Make ESC quit prompts
         (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
       '';
