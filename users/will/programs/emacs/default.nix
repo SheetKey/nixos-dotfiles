@@ -179,6 +179,17 @@
           '';
         };
 
+        # General keybinds manager
+        general = {
+          enable = true;
+          config = ''
+            (general-create-definer will/leader-keys
+              :keymaps '(normal insert visual emacs)
+              :prefix "SPC"
+              :global-prefix "C-SPC")
+          '';
+        };
+
         # Evil mode
         evil = {
           enable = true;
