@@ -69,7 +69,6 @@
             (variable-pitch-mode 1)
             (auto-fill-mode 0)
             (visual-line-mode 1)
-            (setq evil-auto-indent nill))
             (setq evil-auto-indent nil))
 
           ;;;;;;;;;; Org-mode heading sizes function
