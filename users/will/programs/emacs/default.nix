@@ -163,6 +163,10 @@
             "M-s f" = "consult-find";
             "M-s r" = "consult-ripgrep";
           };
+          bindLocal = {
+            { minibuffer-local-map =
+                { C-r = "consult-history"; };
+            };
         };
 
         # Helpful: a better help tool
