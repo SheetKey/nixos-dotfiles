@@ -276,6 +276,7 @@
             (setq org-ellipsis " ▾"
                   org-hide-emphasis-markers t)
           '';
+        };
 
       };
 
