@@ -182,13 +182,13 @@
         # Evil mode
         evil = {
           enable = true;
-          init = ''
-            (setq evil-want-integration t)
-            (setq evil-want-keybinding nil)
-            (setq evil-want-C-u-scroll t)
-            (setq evil-want-C-i-jump nil)
-          '';
-          hook = [ "(evil-mode . will/evil-hook)" ];
+        #  init = ''
+        #    (setq evil-want-integration t)
+        #    (setq evil-want-keybinding nil)
+        #    (setq evil-want-C-u-scroll t)
+        #    (setq evil-want-C-i-jump nil)
+        #  '';
+        #  hook = [ "(evil-mode . will/evil-hook)" ];
           config = ''
             (evil-mode 1)
             (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
