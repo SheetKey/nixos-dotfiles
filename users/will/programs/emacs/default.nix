@@ -62,6 +62,14 @@
                           ; term-mode
                           ))
           (add-to-list 'evil-emacs-state-modes mode)))
+
+          ;;;;;;;;;; Org-mode hook function
+          (defun will/org-mode-setup ()
+            (org-indent-mode)
+            (variable-pitch-mode 1)
+            (auto-fill-mode 0)
+            (visual-line-mode 1)
+            (setq evil-auto-indent nill))
       '';
 
       # extra packages for emacs
@@ -259,6 +267,15 @@
         ssh-agency = {
           enable = true;
         };
+
+        # Org mode
+        org = {
+          enable = true;
+          hook = [ "(org-mode . will/org-mode-setup)" ];
+          config = ''
+            (setq org-ellipsis " ▾"
+                  org-hide-emphasis-markers t)
+          '';
 
       };
 
