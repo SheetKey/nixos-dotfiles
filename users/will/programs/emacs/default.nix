@@ -222,6 +222,18 @@
           after = [ "evil" ];
           config = "(evil-collection-init)";
         };
+
+        projectile = {
+          enable = true;
+          diminish = [ "projectile-mode" ];
+          config = "(projectile-mode)";
+          bindKeyMap = { C-c p = "projectile-command-map"; };
+          init = ''
+            (when (file-directory-p "~/Documents/Projects")
+              (setq projectile-project-search-path '("~/Documents/Projects")))
+            (setq projectile-switch-project-action #'projectile-dired)
+          '';
+        };
         
 	      # Nix-mode for emacs
 	      nix-mode = {
