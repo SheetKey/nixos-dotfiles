@@ -71,6 +71,17 @@
             (visual-line-mode 1)
             (setq evil-auto-indent nil))
 
+          ;;;;;;;;;; Org-mode heading sizes function
+          (with-eval-after-load 'org-faces
+            (dolist (face '((org-level-1 . 1.2)
+                            (org-level-2 . 1.1)
+                            (org-level-3 . 1.05)
+                            (org-level-4 . 1.0)
+                            (org-level-5 . 1.1)
+                            (org-level-6 . 1.1)
+                            (org-level-7 . 1.1)
+                            (org-level-8 . 1.1)))
+                    (set-face-attribute (car face) nil :font "FiraCode Nerd Mono" :weight 'regular :height (cdr face))))
       '';
 
       # extra packages for emacs
@@ -276,18 +287,6 @@
           config = ''
             (setq org-ellipsis " ▾"
                   org-hide-emphasis-markers t)
-
-
-          ;;;;;;;;;; Org-mode heading sizes function
-          (dolist (face '((org-level-1 . 1.2)
-                          (org-level-2 . 1.1)
-                          (org-level-3 . 1.05)
-                          (org-level-4 . 1.0)
-                          (org-level-5 . 1.1)
-                          (org-level-6 . 1.1)
-                          (org-level-7 . 1.1)
-                          (org-level-8 . 1.1)))
-                  (set-face-attribute (car face) nil :font "FiraCode Nerd Mono" :weight 'regular :height (cdr face)))
           '';
         };
         org-bullets = {
