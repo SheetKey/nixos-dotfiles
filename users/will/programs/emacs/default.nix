@@ -219,7 +219,7 @@
 	nix-mode = {
 	  enable = true;
 	  extraConfig = ''
-	    :mode "\\.nix\\"
+	    :mode "\\.nix\\'"
 	  '';
 	};
 
