@@ -202,18 +202,10 @@
             (evil-set-initial-state 'dashboard-mode 'normal)
           '';
         };
-        # evil-core = {
-        #   enable = true;
-        #   after = [ "evil" ];
-        #   config = ''
-        #     ;; Use visual line motions even outside of visual-line-mode buffers
-        #     (evil-global-set-key 'motion "j" 'evil-next-visual-line)
-        #     (evil-global-set-key 'motion "k" 'evil-previous-visual-line)
-
-        #     (evil-set-initial-state 'messages-buffer-mode 'normal)
-        #     (evil-set-initial-state 'dashboard-mode 'normal)
-        #   '';
-        # };
+        evil-collection = {
+          enable = true;
+          after = [ "evil" ];
+          config = "(evil-collection-init)";
         
 	      # Nix-mode for emacs
 	      nix-mode = {
