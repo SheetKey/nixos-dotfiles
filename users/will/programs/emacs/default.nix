@@ -250,10 +250,10 @@
         # Magit
         magit = {
           enable = true;
-          command = [ "magit-status magit-get-current-branch" ];
-          extraConfig = ''
-            (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1)
-          '';
+          # command = [ "magit-status magit-get-current-branch" ];
+          # extraConfig = ''
+          #   (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1)
+          # '';
         };
         evil-magit = {
           enable = true;
