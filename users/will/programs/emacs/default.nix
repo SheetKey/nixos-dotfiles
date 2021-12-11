@@ -43,7 +43,7 @@
         (setq visible-bell t)
 
         ;; Font
-        (set-face-attribute 'default nil :font "FiraCode Nerd Font Mono" :height 120)
+        (set-face-attribute 'default nil :font "FiraCode Nerd Font Mono" :height 110)
 
         ;;;;;;;;;;; KEYBINDS
         ;; Make ESC quit prompts
