@@ -206,6 +206,7 @@
           enable = true;
           after = [ "evil" ];
           config = "(evil-collection-init)";
+        };
         
 	      # Nix-mode for emacs
 	      nix-mode = {
