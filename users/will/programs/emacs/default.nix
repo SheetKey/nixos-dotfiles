@@ -215,6 +215,14 @@
         #   '';
         # }; 
 
+	# Nix-mode for emacs
+	nix-mode = {
+	  enable = true;
+	  extraConfig = ''
+	    :mode "\\.nix\\"
+	  '';
+	};
+
       };
 
     };
