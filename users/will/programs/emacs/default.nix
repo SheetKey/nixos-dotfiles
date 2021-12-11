@@ -51,7 +51,7 @@
 
         ;;;;;;;;;;; Function for evil mode
         (defun will/evil-hook ()
-          (dolist (mode '(custom-mode
+          (dolist (mode '(;custom-mode
                           eshell-mode
                           ; git-rebase-mode
                           ; erc-mode
