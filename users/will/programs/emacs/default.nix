@@ -260,6 +260,9 @@
           enable = true;
           after = [ "magit" ];
         };
+        ssh-agency = {
+          enable = true;
+        };
 
       };
 
