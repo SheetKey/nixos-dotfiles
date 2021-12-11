@@ -72,7 +72,7 @@
             (setq evil-auto-indent nil))
 
           ;;;;;;;;;; Org-mode heading sizes function
-          (with-eval-after-load 'org-faces
+          (defun will/org-font-setup ()
             (dolist (face '((org-level-1 . 1.2)
                             (org-level-2 . 1.1)
                             (org-level-3 . 1.05)
@@ -287,6 +287,8 @@
           config = ''
             (setq org-ellipsis " ▾"
                   org-hide-emphasis-markers t)
+
+            (will/org-font-setup)
           '';
         };
         org-bullets = {
