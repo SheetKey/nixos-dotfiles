@@ -182,17 +182,17 @@
         # Evil mode
         evil = {
           enable = true;
-        #  init = ''
-        #    (setq evil-want-integration t)
-        #    (setq evil-want-keybinding nil)
-        #    (setq evil-want-C-u-scroll t)
-        #    (setq evil-want-C-i-jump nil)
-        #  '';
+          init = ''
+            (setq evil-want-integration t)
+            (setq evil-want-keybinding nil)
+            (setq evil-want-C-u-scroll t)
+            (setq evil-want-C-i-jump nil)
+          '';
         #  hook = [ "(evil-mode . will/evil-hook)" ];
           config = ''
             (evil-mode 1)
             (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
-            (define-key evil-insert-state-map (kbd "C-h") 'evil-dekete-backward-char-and-join)
+            (define-key evil-insert-state-map (kbd "C-h") 'evil-delete-backward-char-and-join)
 
             ;; Use visual line motions even outside of visual-line-mode buffers
             (evil-gloabal-set-key 'motion "j" 'evil-next-visual-line)
@@ -202,6 +202,9 @@
             (evil-set-initial-state 'dashboard-mode 'normal)
           '';
         };
+        evil-global-set-key = {
+          enable = true;
+        }; 
 
       };
 
