@@ -164,8 +164,8 @@
             "M-s r" = "consult-ripgrep";
           };
           bindLocal = {
-            { minibuffer-local-map =
-                { C-r = "consult-history"; };
+            minibuffer-local-map =
+              { C-r = "consult-history"; };
             };
         };
 
