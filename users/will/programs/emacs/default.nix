@@ -213,15 +213,19 @@
         #     (evil-set-initial-state 'messages-buffer-mode 'normal)
         #     (evil-set-initial-state 'dashboard-mode 'normal)
         #   '';
-        # }; 
-
-	# Nix-mode for emacs
-	nix-mode = {
-	  enable = true;
-	  extraConfig = ''
-	    :mode "\\.nix\\'"
-	  '';
-	};
+        # };
+        
+	      # Nix-mode for emacs
+	      nix-mode = {
+	        enable = true;
+	        extraConfig = ''
+	          :mode "\\.nix\\'"
+	        '';
+	      };
+        nix-flake = {
+          enable = true;
+          after = [ "nix-mode" ];
+        };
 
       };
 
