@@ -277,6 +277,10 @@
                   org-hide-emphasis-markers t)
           '';
         };
+        org-bullets = {
+          enable = true;
+          hook = [ "(org-mode . org-bullets-mode)" ];
+        };
 
       };
 
