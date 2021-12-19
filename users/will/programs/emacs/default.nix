@@ -81,7 +81,7 @@
                             (org-level-6 . 1.1)
                             (org-level-7 . 1.1)
                             (org-level-8 . 1.1)))
-                    (set-face-attribute (car face) nil :font "Hack Nerd Font Mono" :weight 'regular :height (cdr face))))
+                    (set-face-attribute (car face) nil :font "Hack Nerd Font Mono" :weight 'bold :height (cdr face))))
       '';
 
       # extra packages for emacs
