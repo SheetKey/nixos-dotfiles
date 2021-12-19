@@ -73,14 +73,14 @@
 
           ;;;;;;;;;; Org-mode heading sizes function
           (defun will/org-font-setup ()
-            (dolist (face '((org-level-1 . 1.2)
-                            (org-level-2 . 1.1)
-                            (org-level-3 . 1.05)
-                            (org-level-4 . 1.0)
-                            (org-level-5 . 1.1)
-                            (org-level-6 . 1.1)
-                            (org-level-7 . 1.1)
-                            (org-level-8 . 1.1)))
+            (dolist (face '((org-level-1 . 1.5)
+                            (org-level-2 . 1.4)
+                            (org-level-3 . 1.3)
+                            (org-level-4 . 1.2)
+                            (org-level-5 . 1.3)
+                            (org-level-6 . 1.3)
+                            (org-level-7 . 1.3)
+                            (org-level-8 . 1.3)))
                     (set-face-attribute (car face) nil :font "Hack Nerd Font Mono" :weight 'bold :height (cdr face))))
       '';
 
