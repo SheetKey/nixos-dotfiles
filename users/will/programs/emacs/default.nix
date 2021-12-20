@@ -305,7 +305,7 @@
           enable = true;
           hook = [ "(org-mode . org-bullets-mode)" ];
         };
-        visual-fill = {
+        visual-fill-column = {
           enable = true;
           defer = true;
           hook = [ "(org-mode . will/org-mode-visual-fill)" ];
