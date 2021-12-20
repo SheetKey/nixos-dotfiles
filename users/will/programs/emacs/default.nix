@@ -67,7 +67,7 @@
           (defun will/org-mode-setup ()
             (org-indent-mode)
             (variable-pitch-mode 1)
-            (auto-fill-mode 0)
+            ;; (auto-fill-mode 0)
             (visual-line-mode 1)
             (setq evil-auto-indent nil))
 
