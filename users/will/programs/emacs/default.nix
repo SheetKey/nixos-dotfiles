@@ -299,7 +299,8 @@
             (setq org-log-into-drawer t)
 
             (setq org-agenda-files
-                  '("~/Documents/Org/Tasks.org"))
+                  '("~/Documents/Org/Tasks.org"
+                    "~/Documents/Org/Birthdays.org"))
 
             (font-lock-add-keywords 'org-mode
                                     '(("^ *\\([-]\\) "
