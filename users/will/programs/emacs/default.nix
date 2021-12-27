@@ -302,6 +302,9 @@
                   '("~/Documents/Org/Tasks.org"
                     "~/Documents/Org/Birthdays.org"))
 
+            (setq org-todo-keywords
+                  '((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d!)")))
+
             (font-lock-add-keywords 'org-mode
                                     '(("^ *\\([-]\\) "
                                        (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
