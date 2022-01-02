@@ -309,6 +309,10 @@
                                     '(("^ *\\([-]\\) "
                                        (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
 
+            (setq org-refile-targets
+                  '(("Archive.org" :maxlevel . 1)))
+            (advice-add 'org-refile :after 'org-save-all-org-buffers)
+
             (will/org-font-setup)
           '';
         };
