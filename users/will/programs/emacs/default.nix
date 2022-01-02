@@ -303,7 +303,7 @@
                     "~/Documents/Org/Birthdays.org"))
 
             (setq org-todo-keywords
-                  '((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d!)")))
+                  '((sequence "TODO(t)" "ONGOING(o)" "NEXT(n)" "|" "DONE(d!)")))
 
             (font-lock-add-keywords 'org-mode
                                     '(("^ *\\([-]\\) "
