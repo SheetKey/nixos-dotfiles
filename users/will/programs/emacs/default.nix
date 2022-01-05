@@ -299,14 +299,6 @@
             (setq org-ellipsis " ▾"
                   org-hide-emphasis-markers t)
 
-            (setq org-agenda-start-with-log-mode t)
-            (setq org-log-done 'time)
-            (setq org-log-into-drawer t)
-
-            (setq org-agenda-files
-                  '("~/Documents/Org/Tasks.org"
-                    "~/Documents/Org/Birthdays.org"))
-
             (setq org-todo-keywords
                   '((sequence "TODO(t)" "CURRENT(c)" "NEXT(n)" "|" "DONE(d!)")))
 
@@ -314,11 +306,35 @@
                                     '(("^ *\\([-]\\) "
                                        (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
 
-            (setq org-refile-targets
-                  '(("Archive.org" :maxlevel . 1)
-                    ("Tasks.org" :maxlevel . 1)))
-            (advice-add 'org-refile :after 'org-save-all-org-buffers)
+            (org-babel-do-load-languages
+                'org-babel-load-languages
+                '((emacs-lisp . t )))
 
+            (will/org-font-setup)
+          '';
+        };
+        org-tempo = {
+          enable = true;
+          package = "org";
+        };
+        org-agenda = {
+          enable = true;
+          after = [ "org" ];
+          defer = true;
+          config = ''
+            (setq org-agenda-start-with-log-mode t)
+            (setq org-log-done 'time)
+            (setq org-log-into-drawer t)
+
+            (setq org-agenda-files
+                  '("~/Documents/Org/Tasks.org"
+                    "~/Documents/Org/Birthdays.org"))
+          '';
+        };
+        org-capture = {
+          enable = true;
+          after = [ "org" ];
+          config = ''
             (setq org-capture-templates
                   (doct '(("Tasks" :keys "t"
                            :file "~/Documents/Org/Tasks.org"
@@ -332,12 +348,16 @@
                            :children (("Task" :keys "t"
                                        :headline "Inbox"
                                        :todo-state "TODO"))))))
-
-            (org-babel-do-load-languages
-                'org-babel-load-languages
-                '((emacs-lisp . t )))
-
-            (will/org-font-setup)
+          '';
+        };
+        org-refile = {
+          enable = true;
+          after = [ "org" ];
+          config = ''
+            (setq org-refile-targets
+                  '(("Archive.org" :maxlevel . 1)
+                    ("Tasks.org" :maxlevel . 1)))
+            (advice-add 'org-refile :after 'org-save-all-org-buffers)
           '';
         };
         org-bullets = {
