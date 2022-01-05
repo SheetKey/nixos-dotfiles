@@ -314,6 +314,19 @@
                     ("Tasks.org" :maxlevel . 1)))
             (advice-add 'org-refile :after 'org-save-all-org-buffers)
 
+            (setq org-capture-templates
+                  (doct '(("Tasks" :keys "t"
+                           :file "~/Documents/Org/Tasks.org"
+                           :prepend t
+                           :template ("* %{todo-state} %^{Description}"
+                                      ":PROPERTIES:"
+                                      ":Created: %U"
+                                      ":END:"
+                                      "%?")
+                           :children (("Task" :keys "t"
+                                       :headline "Inbox"
+                                       :todo-state "TODO"))))))
+
             (will/org-font-setup)
           '';
         };
