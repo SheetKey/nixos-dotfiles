@@ -44,7 +44,7 @@
 
         ;; Font
         (set-face-attribute 'default nil :font "FiraCode Nerd Font Mono" :height 110)
-        (set-face-attribute 'fixed-pitch nil :font "Fira Code Retina" :height 110)
+        (set-face-attribute 'fixed-pitch nil :font "FiraCode Nerd Font Mono" :height 110)
         (set-face-attribute 'variable-pitch nil :font "DejaVu Serif" :height 110 :weight 'regular)
 
         ;;;;;;;;;;; KEYBINDS
