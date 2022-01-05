@@ -328,6 +328,10 @@
                                        :headline "Inbox"
                                        :todo-state "TODO"))))))
 
+            (org-babel-do-load-languages
+                'org-babel-load-languages
+                '((emacs-lisp . t )))
+
             (will/org-font-setup)
           '';
         };
