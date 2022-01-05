@@ -321,6 +321,11 @@
           enable = true;
           hook = [ "(org-mode . org-bullets-mode)" ];
         };
+        doct = {
+          enable = true;
+          defer = true;
+          command = [ "doct" ];
+        };
 
       };
 
