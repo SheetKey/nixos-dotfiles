@@ -360,6 +360,10 @@
             (advice-add 'org-refile :after 'org-save-all-org-buffers)
           '';
         };
+        org-tempo = {
+          enable = true;
+          package = "org";
+        };
         org-bullets = {
           enable = true;
           hook = [ "(org-mode . org-bullets-mode)" ];
