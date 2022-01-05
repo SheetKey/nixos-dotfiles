@@ -321,7 +321,7 @@
                            :template ("* %{todo-state} %^{Description}"
                                       ":PROPERTIES:"
                                       ":Created: %U"
-                                      "%i"
+                                      ":Link: %i"
                                       ":END:"
                                       "%?")
                            :children (("Task" :keys "t"
