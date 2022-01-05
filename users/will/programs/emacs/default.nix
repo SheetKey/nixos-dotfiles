@@ -313,10 +313,6 @@
             (will/org-font-setup)
           '';
         };
-        org-tempo = {
-          enable = true;
-          package = "org";
-        };
         org-agenda = {
           enable = true;
           after = [ "org" ];
