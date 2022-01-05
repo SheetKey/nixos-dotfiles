@@ -85,11 +85,6 @@
                             (org-level-8 . 1.3)))
                     (set-face-attribute (car face) nil :font "Hack Nerd Font Mono" :weight 'bold :height (cdr face))))
 
-          ;;;;;;;;;; Org-mode visual fill
-          (defun will/org-mode-visual-fill ()
-            (setq visual-fill-column-width 100
-                  visual-fill-center-text t)
-            (visual-fill-column-mode 1))
       '';
 
       # extra packages for emacs
