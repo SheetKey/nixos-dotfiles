@@ -44,8 +44,8 @@
 
         ;; Font
         (set-face-attribute 'default nil :font "FiraCode Nerd Font Mono" :height 110)
-        (set-face-attribute 'fixed-pitch nil :font "FiraCode Nerd Font Mono" :height 110)
-        (set-face-attribute 'variable-pitch nil :font "DejaVu Serif" :height 110 :weight 'regular)
+        ; (set-face-attribute 'fixed-pitch nil :font "FiraCode Nerd Font Mono" :height 110)
+        ; (set-face-attribute 'variable-pitch nil :font "DejaVu Serif" :height 110 :weight 'regular)
 
         ;;;;;;;;;;; KEYBINDS
         ;; Make ESC quit prompts
@@ -84,13 +84,13 @@
                             (org-level-7 . 1.3)
                             (org-level-8 . 1.3)))
                     (set-face-attribute (car face) nil :font "Hack Nerd Font Mono" :weight 'bold :height (cdr face)))
-            (set-face-attribute 'org-block nil :foreground nil :inherit 'fixed-pitch)
-            (set-face-attribute 'org-code nil :inherit '(shadow fixed-pitch))
-            (set-face-attribute 'org-table nil :inherit '(shadow fixed-pitch))
-            (set-face-attribute 'org-verbatim nil :inherit '(shadow fixed-pitch))
-            (set-face-attribute 'org-special-keyword nil :inherit '(font-lock-comment-face fixed-pitch))
-            (set-face-attribute 'org-meta-line nil :inherit '(font-lock-comment-face fixed-pitch))
-            (set-face-attribute 'org-checkbox nil :inherit 'fixed-pitch)
+            ; (set-face-attribute 'org-block nil :foreground nil :inherit 'fixed-pitch)
+            ; (set-face-attribute 'org-code nil :inherit '(shadow fixed-pitch))
+            ; (set-face-attribute 'org-table nil :inherit '(shadow fixed-pitch))
+            ; (set-face-attribute 'org-verbatim nil :inherit '(shadow fixed-pitch))
+            ; (set-face-attribute 'org-special-keyword nil :inherit '(font-lock-comment-face fixed-pitch))
+            ; (set-face-attribute 'org-meta-line nil :inherit '(font-lock-comment-face fixed-pitch))
+            ; (set-face-attribute 'org-checkbox nil :inherit 'fixed-pitch)
           )
 
       '';
