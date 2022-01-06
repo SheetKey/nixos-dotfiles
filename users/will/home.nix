@@ -44,6 +44,7 @@
     brave
     trayer
     networkmanagerapplet
+    mathematica
 
     # window manager related
     nitrogen
