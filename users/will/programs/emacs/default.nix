@@ -281,7 +281,7 @@
         # Magit
         magit = {
           enable = true;
-          command = [ "magit-status magit-get-current-branch" ];
+          command = [ "magit-status" "magit-get-current-branch" ];
           extraConfig = ''
             :custom
             (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1)
