@@ -376,6 +376,10 @@
           defer = true;
           command = [ "doct" ];
         };
+        wolfram-mode = {
+          enable = true;
+          defer = true;
+        };
 
       };
 
