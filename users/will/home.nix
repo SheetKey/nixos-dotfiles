@@ -40,6 +40,10 @@
     # Viewer
     zathura
 
+    # Haskell
+
+    haskell-language-server
+
     #GUI stuff
     brave
     trayer
