@@ -396,6 +396,9 @@
         lsp-haskell = {
           enable = true;
           hook = [ "(haskell-mode . lsp-deferred)" "(haskell-literate-mode . lsp-deferred)" ];
+          extraConfig = ''
+            :mode "\\.hs\\'"
+          '';
         };
         #Company autocompletions with LSP
         company = {
