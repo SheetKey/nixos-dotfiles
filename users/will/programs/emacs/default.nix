@@ -393,6 +393,10 @@
             (lsp-enable-which-key-integration t)
           '';
         };
+        lsp-ui = {
+          enable = true;
+          defer = true;
+        };
         lsp-haskell = {
           enable = true;
           hook = [ "(haskell-mode . lsp-deferred)" "(haskell-literate-mode . lsp-deferred)" ];
