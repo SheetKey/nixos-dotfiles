@@ -393,6 +393,10 @@
             (lsp-enable-which-key-integration t)
           '';
         };
+        lsp-haskell = {
+          enable = true;
+          hook = [ "(haskell-mode . lsp-deferred)" "(haskell-literate-mode . lsp-deferred)" ];
+        };
         #Company autocompletions with LSP
         company = {
           enable = true;
