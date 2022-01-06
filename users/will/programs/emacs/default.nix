@@ -294,6 +294,7 @@
         # Org mode
         org = {
           enable = true;
+          package = epkgs: epkgs.org-plus-contrib;
           hook = [ "(org-mode . will/org-mode-setup)" ];
           config = ''
             (setq org-ellipsis " ▾"
