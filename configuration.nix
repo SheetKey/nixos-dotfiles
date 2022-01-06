@@ -21,6 +21,7 @@
       experimental-features = nix-command flakes
     '';
   };
+  nixpkgs.config.allowUnfree = true;
 
 ############## ADD BOOT SETTINGS IN HOST SPECIFIC CONFIG#########################
   # Use the GRUB 2 boot loader.
