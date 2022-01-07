@@ -443,7 +443,13 @@
         #   enable = true;
         #   hook = [ "(term-mode . eterm-256color-mode)" ];
         # };
-
+        vterm = {
+          enable = true;
+          command = [ "vterm" ];
+          config = ''
+            (setq vterm-max-scrollback 10000)
+          '';
+        };
 
       };
 
