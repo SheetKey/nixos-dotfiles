@@ -253,6 +253,12 @@
           after = [ "evil" ];
           config = "(evil-collection-init)";
         };
+        evil-nerd-commenter = {
+          enable = true;
+          extraConfig = ''
+            :bind ("M-/" . evilnc-comment-or-uncomment-lines)
+          '';
+        };
 
         projectile = {
           enable = true;
