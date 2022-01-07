@@ -434,6 +434,15 @@
           hook = [ "(company-mode . company-box-mode)" ];
         };
 
+        #Term mode
+        term = {
+          enable = true;
+        };
+        eterm-256color = {
+          enable = true;
+          hook = [ "(term-mode . eterm-256color-mode)" ];
+        };
+
       };
 
     };
