@@ -395,7 +395,7 @@
         };
         lsp-ui = {
           enable = true;
-          defer = true;
+          hook = [ "(lsp-mode . lsp-ui-mode)" ];
         };
         lsp-haskell = {
           enable = true;
