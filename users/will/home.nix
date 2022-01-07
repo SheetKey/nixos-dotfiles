@@ -55,8 +55,12 @@
     picom
     rofi
 
-    # Other?
+    # Stuff for emacs
     ncurses
+      # Stuff for vterm
+    cmake
+    libtool
+    libvterm
   ];
 
 
