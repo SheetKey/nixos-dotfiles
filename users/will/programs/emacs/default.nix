@@ -438,10 +438,11 @@
         term = {
           enable = true;
         };
-        eterm-256color = {
-          enable = true;
-          hook = [ "(term-mode . eterm-256color-mode)" ];
-        };
+        ##############################NIX SAYS IS BROKEN
+        # eterm-256color = {
+        #   enable = true;
+        #   hook = [ "(term-mode . eterm-256color-mode)" ];
+        # };
 
       };
 
