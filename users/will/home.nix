@@ -44,7 +44,7 @@
 
     haskell-language-server
 
-    #GUI stuff
+    # GUI stuff
     brave
     trayer
     networkmanagerapplet
