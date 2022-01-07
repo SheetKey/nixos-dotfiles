@@ -462,6 +462,9 @@
               "h" 'dired-up-directory
               "l" 'dired-find-file)
           '';
+          extraConfig = ''
+            :custom ((dired-listing-switches "=-agho --group-directories-first"))
+          '';
         };
 
       };
