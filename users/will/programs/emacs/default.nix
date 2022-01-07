@@ -423,6 +423,10 @@
             (company-idle-delay 0.0)
           '';
         };
+        company-box = {
+          enable = true;
+          hook = [ "(company-mode . company-box-mode)" ];
+        };
 
       };
 
