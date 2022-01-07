@@ -54,6 +54,9 @@
     nitrogen
     picom
     rofi
+
+    # Other?
+    ncurses
   ];
 
 
