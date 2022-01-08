@@ -466,6 +466,9 @@
             :custom ((dired-listing-switches "-agho --group-directories-first"))
           '';
         };
+        dired-single = {
+          enable = true;
+        };
 
       };
 
