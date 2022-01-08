@@ -459,8 +459,8 @@
           command = [ "dired" "dired-jump" ];
           config = ''
             (evil-collection-define-key 'normal 'dired-mode-map
-              "h" 'dired-up-directory
-              "l" 'dired-find-file)
+              "h" 'dired-single-up-directory
+              "l" 'dired-single-buffer)
           '';
           extraConfig = ''
             :custom ((dired-listing-switches "-agho --group-directories-first"))
