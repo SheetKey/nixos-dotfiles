@@ -468,6 +468,7 @@
         };
         dired-single = {
           enable = true;
+          after = [ "dired" ];
         };
 
       };
