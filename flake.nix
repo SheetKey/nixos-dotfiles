@@ -52,6 +52,32 @@
 
     nixosConfigurations = {
 
+      asus1 = lib.nixosSystem {
+        inherit system;
+
+	    modules = [
+	      ./configuration.nix ./hosts/asus1.nix
+
+	      ({ pkgs, ... }: {
+	        nixpkgs.overlays = [ neovim-nightly-overlay.overlay ];
+	      })
+
+	      home-manager.nixosModules.home-manager {
+	        home-manager.useGlobalPkgs = true;
+	        home-manager.useUserPackages = true;
+            home-manager.users.will = {
+              imports = [
+                ./users/will/home.nix 
+                nur-no-pkgs.repos.rycee.hmModules.emacs-init
+              ];
+            };
+	        nixpkgs.overlays = [
+	          nur.overlay emacs-overlay.overlay
+	        ];
+	      }
+	    ];
+      };
+
       nixos3 = lib.nixosSystem {
         inherit system;
 
