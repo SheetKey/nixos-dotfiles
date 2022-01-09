@@ -2,7 +2,7 @@
 
 {
 
-  networking.hostName = "Nixos"
+  networking.hostName = "Nixos";
   networking.networkmanager.enable = true;
 
   environment.systemPackages = with pkgs; [];
