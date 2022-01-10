@@ -3,9 +3,17 @@
 {
 
   networking.hostName = "Nixos";
-  networking.networkmanager.enable = true;
+  # networking.networkmanager.enable = true;
+  networking.wireless.enable = true;
+  networking.wireless.userControlled.enable = true;
 
-  environment.systemPackages = with pkgs; [];
+  environment.systemPackages = with pkgs; [
+    pciutils
+    usbutils
+    lshw
+  ];
+
+  hardware.enableRedistributableFirmware = true;
 
   # COPIED FROM GENERATED configuration.nix
     system.stateVersion = "21.11";
@@ -18,7 +26,7 @@
     imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
     boot.initrd.availableKernelModules = [ "xhci_pci" "nvme" "usb_storage" "sd_mod" "alcor" ];
-    boot.initrd.kernelModules = [ ];
+    boot.initrd.kernelModules = [ "iwlwifi" ];
     boot.kernelModules = [ "kvm-intel" ];
     boot.extraModulePackages = [ ];
 
