@@ -6,6 +6,8 @@
   # networking.networkmanager.enable = true;
   networking.wireless.enable = true;
   networking.wireless.userControlled.enable = true;
+  # interface for wifi usb card
+  networking.interfaces.wlp0s20f0u1.useDHCP = true;
 
   environment.systemPackages = with pkgs; [
     pciutils
@@ -26,8 +28,8 @@
     imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
     boot.initrd.availableKernelModules = [ "xhci_pci" "nvme" "usb_storage" "sd_mod" "alcor" ];
-    boot.initrd.kernelModules = [ "iwlwifi" ];
-    boot.kernelModules = [ "kvm-intel" ];
+    boot.initrd.kernelModules = [ ];
+    boot.kernelModules = [ "kvm-intel" "iwlwifi" ];
     boot.extraModulePackages = [ ];
 
     fileSystems."/" =
