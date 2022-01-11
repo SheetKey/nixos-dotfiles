@@ -2,12 +2,13 @@
 
 {
 
-  networking.hostName = "Nixos";
-  # networking.networkmanager.enable = true;
-  networking.wireless.enable = true;
-  networking.wireless.userControlled.enable = true;
-  # interface for wifi usb card
-  networking.interfaces.wlp0s20f0u1.useDHCP = true;
+  networking.hostName = "nixos";
+  networking.networkmanager.enable = true;
+  # networking.wireless.enable = true;
+  # networking.wireless.userControlled.enable = true;
+
+  networking.useDHCP = false;
+  networking.interfaces.wlp3s0.useDHCP = true;
 
   environment.systemPackages = with pkgs; [
     pciutils
@@ -15,7 +16,7 @@
     lshw
   ];
 
-  hardware.enableRedistributableFirmware = true;
+  # hardware.enableRedistributableFirmware = true;
 
   # COPIED FROM GENERATED configuration.nix
     system.stateVersion = "21.11";
@@ -29,21 +30,21 @@
 
     boot.initrd.availableKernelModules = [ "xhci_pci" "nvme" "usb_storage" "sd_mod" "alcor" ];
     boot.initrd.kernelModules = [ ];
-    boot.kernelModules = [ "kvm-intel" "iwlwifi" ];
+    boot.kernelModules = [ "kvm-intel" ];
     boot.extraModulePackages = [ ];
 
     fileSystems."/" =
-      { device = "/dev/disk/by-label/NIXOS";
+      { device = "/dev/disk/by-label/nixos";
         fsType = "ext4";
       };
 
     fileSystems."/boot" =
-      { device = "/dev/disk/by-label/BOOT";
+      { device = "/dev/disk/by-label/boot";
         fsType = "vfat";
       };
 
     swapDevices =
-      [ { device = "/dev/disk/by-label/SWAP"; }
+      [ { device = "/dev/disk/by-label/swap"; }
       ];
 
     powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";

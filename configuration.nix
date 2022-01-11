@@ -42,11 +42,12 @@
     keyMap = "us";
   };
 
+##################### ADD NETWORK SETTINGS TO HOST SPECIFIC CONGIF ########################
   # The global useDHCP flag is deprecated, therefore explicitly set to false here.
   # Per-interface useDHCP will be mandatory in the future, so this generated config
   # replicates the default behaviour.
-  networking.useDHCP = false;
-  networking.interfaces.enp0s3.useDHCP = true;
+  # networking.useDHCP = false;
+  # networking.interfaces.enp0s3.useDHCP = true;
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -90,7 +91,7 @@
   users.users.will = {
     isNormalUser = true;
     home = "/home/will";
-    extraGroups = [ "wheel" ]; 
+    extraGroups = [ "wheel" "networkmanager" ]; 
     shell = pkgs.zsh;
 
     initialPassword = "12";
