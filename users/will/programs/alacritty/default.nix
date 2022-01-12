@@ -15,7 +15,7 @@
       background_opacity = 0.94;
       
       font = {
-        size = 12.0;
+        size = 9.0;
 
 	normal.family = "mononoki Nerd Font Mono";
 	normal.style = "Regular";
