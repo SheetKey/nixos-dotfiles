@@ -49,7 +49,7 @@
     trayer
     networkmanagerapplet
     cbatticon
-    # mathematica
+    mathematica
 
     # window manager related
     nitrogen
