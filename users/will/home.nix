@@ -48,6 +48,7 @@
     brave
     trayer
     networkmanagerapplet
+    cbatticon
     # mathematica
 
     # window manager related
