@@ -8,7 +8,7 @@
   # networking.wireless.userControlled.enable = true;
 
   networking.useDHCP = false;
-  # networking.interfaces.wlp3s0.useDHCP = true;
+  networking.interfaces.wlp3s0.useDHCP = true;
 
   environment.systemPackages = with pkgs; [
     pciutils
