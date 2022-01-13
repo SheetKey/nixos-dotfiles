@@ -318,9 +318,10 @@
                 'org-babel-load-languages
                 '((emacs-lisp . t )
                   (shell . t)
-                  ;;;;;;;;;;;;;;(mathematica . t)))
+                  ;;;;;;;;;;;;;;(mathematica . t))
+            )
 
-            (setq org-babel-mathematica-command "~/dotfiles/nixos-dotfiles/scripts/mash")
+            ;;;;;;;(setq org-babel-mathematica-command "~/dotfiles/nixos-dotfiles/scripts/mash")
 
             (will/org-font-setup)
           '';
