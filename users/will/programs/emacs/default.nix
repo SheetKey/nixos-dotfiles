@@ -319,15 +319,10 @@
             (setq org-todo-keywords
                   '((sequence "TODO(t)" "CURRENT(c)" "NEXT(n)" "REVIEW(r)" "|" "DONE(d!)"))
                   org-todo-keyword-faces
-                  ;;'(("TODO" :size 50 :weight normal :underline t)
-                  ;;  ("CURRENT" :size 50 :weight normal :underline t)
-                  ;;  ("NEXT" :size 50 :weight normal :underline t)
-                  ;;  ("REVIEW" :size 50 :weight normal :underline t)
-                  ;;  ("DONE" :size 50 :weight normal :underline t))
                   '(("TODO" . org-todo)
                     ("CURRENT" . org-todo)
                     ("NEXT" . org-todo)
-                    ("REVIEW" . org-todo)
+                    ("REVIEW" . org-done)
                     ("DONE" . org-done))
             )
 
