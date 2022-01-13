@@ -49,7 +49,8 @@
     trayer
     networkmanagerapplet
     cbatticon
-    pa_applet
+    ###pa_applet
+    libsForQt5.kmix
     mathematica
 
     # window manager related
