@@ -318,7 +318,7 @@
                 'org-babel-load-languages
                 '((emacs-lisp . t )
                   (shell . t)
-                  ;;;;;;;;;;;;;;(mathematica . t)
+                  (mathematica . t)
                 )
             )
 
