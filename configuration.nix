@@ -101,7 +101,7 @@
   #no sudo passwd
   security.sudo = {
   enable = true;
-  wheelNeedsPassword = false;
+  wheelNeedsPassword = true;
   };
 
   # List packages installed in system profile. To search, run:
