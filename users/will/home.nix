@@ -51,6 +51,7 @@
     cbatticon
     pa_applet
     mathematica
+    zoom-us
 
     # window manager related
     nitrogen
