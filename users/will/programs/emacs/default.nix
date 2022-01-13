@@ -320,7 +320,7 @@
                   (shell . t)
                   (mathematica . t)))
 
-            ;;;;;;;;;;;;(setq org-babel-mathematica-command "~/dotfiles/nixos-dotfiles/scripts/mash")
+            (setq org-babel-mathematica-command "~/dotfiles/nixos-dotfiles/scripts/mash")
 
             (will/org-font-setup)
           '';
@@ -374,7 +374,7 @@
           config = ''
             (add-to-list 'org-structure-template-alist '("sh" . "src shell"))            
             (add-to-list 'org-structure-template-alist '("el" . "src emacs-lisp"))
-            (add-to-list 'org-structure-template-alist '("ma" . "src mathematica"))
+            ;;;;;;;;;;;;;;;;;;;(add-to-list 'org-structure-template-alist '("ma" . "src mathematica"))
           '';
         };
         org-bullets = {
