@@ -310,11 +310,11 @@
             (setq org-todo-keywords
                   '((sequence "TODO(t)" "CURRENT(c)" "NEXT(n)" "REVIEW(r)" "|" "DONE(d!)"))
                   org-todo-keyword-faces
-                  '(("TODO" :underline t)
-                    ("CURRENT" :underline t)
-                    ("NEXT" :underline t)
-                    ("REVIEW" :underline t)
-                    ("DONE" :underline t))
+                  '(("TODO" :size 90 :weight normal :underline t)
+                    ("CURRENT" :size 90 :weight normal :underline t)
+                    ("NEXT" :size 90 :weight normal :underline t)
+                    ("REVIEW" :size 90 :weight normal :underline t)
+                    ("DONE" :size 90 :weight normal :underline t))
             )
 
             (font-lock-add-keywords 'org-mode
