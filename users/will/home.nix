@@ -52,6 +52,7 @@
     pa_applet
     mathematica
     zoom-us
+    noisetorch
 
     # window manager related
     nitrogen
