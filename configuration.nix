@@ -91,7 +91,7 @@
   users.users.will = {
     isNormalUser = true;
     home = "/home/will";
-    extraGroups = [ "wheel" "networkmanager" ]; 
+    extraGroups = [ "wheel" "networkmanager" "audio" ]; 
     shell = pkgs.zsh;
 
     initialPassword = "12";
