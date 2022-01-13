@@ -79,6 +79,7 @@
       ./programs/alacritty/default.nix
       ./programs/neovim/default.nix
       ./programs/emacs/default.nix
+      ./programs/noisetorch/default.nix
 
       ./services/picom/default.nix
       ./services/polybar/default.nix
