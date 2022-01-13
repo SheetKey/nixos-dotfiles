@@ -337,8 +337,7 @@
             (setq org-log-into-drawer t)
 
             (setq org-agenda-files
-                  '("~/Documents/Org/Tasks.org"
-                    "~/Documents/Org/Birthdays.org"))
+                  '("~/Documents/Org"))
           '';
         };
         org-capture = {
