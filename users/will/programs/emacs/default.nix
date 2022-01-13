@@ -308,7 +308,14 @@
                   org-hide-emphasis-markers t)
 
             (setq org-todo-keywords
-                  '((sequence "TODO(t)" "CURRENT(c)" "NEXT(n)" "REVIEW(r)" "|" "DONE(d!)")))
+                  '((sequence "TODO(t)" "CURRENT(c)" "NEXT(n)" "REVIEW(r)" "|" "DONE(d!)"))
+                  org-todo-keyword-faces
+                  '(("TODO" :underline t)
+                    ("CURRENT" :underline t)
+                    ("NEXT" :underline t)
+                    ("REVIEW" :underline t)
+                    ("DONE" :underline t))
+            )
 
             (font-lock-add-keywords 'org-mode
                                     '(("^ *\\([-]\\) "
