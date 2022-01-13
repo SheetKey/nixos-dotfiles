@@ -320,7 +320,7 @@
                   (shell . t)
                   (mathematica . t)))
 
-            (setq org-babel-mathematica-command "~/dotfiles/nixos-dotfiles/scripts/mash")
+            ;;;;;;;;;;;;(setq org-babel-mathematica-command "~/dotfiles/nixos-dotfiles/scripts/mash")
 
             (will/org-font-setup)
           '';
