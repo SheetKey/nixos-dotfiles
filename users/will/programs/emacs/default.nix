@@ -386,7 +386,7 @@
           '';
         };
         org-contrib = {
-          enable = true;
+          enable = false;
         };
         org-bullets = {
           enable = true;
