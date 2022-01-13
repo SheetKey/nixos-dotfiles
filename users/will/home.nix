@@ -50,7 +50,7 @@
     networkmanagerapplet
     cbatticon
     ###pa_applet
-    libsForQt5.kmix
+    pasystray
     mathematica
 
     # window manager related
