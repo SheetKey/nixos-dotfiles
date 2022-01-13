@@ -53,6 +53,7 @@
     mathematica
     zoom-us
     noisetorch
+    pavucontrol
 
     # window manager related
     nitrogen
