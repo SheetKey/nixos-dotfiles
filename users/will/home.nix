@@ -49,8 +49,7 @@
     trayer
     networkmanagerapplet
     cbatticon
-    ###pa_applet
-    pasystray
+    pa_applet
     mathematica
 
     # window manager related
