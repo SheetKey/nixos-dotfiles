@@ -379,9 +379,8 @@
             (add-to-list 'org-structure-template-alist '("ma" . "src mathematica"))
           '';
         };
-        ob-mathematica = {
+        org-contrib = {
           enable = true;
-          defer = true;
         };
         org-bullets = {
           enable = true;
