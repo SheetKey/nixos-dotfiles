@@ -49,7 +49,7 @@
     trayer
     networkmanagerapplet
     cbatticon
-    pa_applet
+    #####pa_applet
     mathematica
     zoom-us
     noisetorch
