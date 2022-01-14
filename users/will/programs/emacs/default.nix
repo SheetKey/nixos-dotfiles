@@ -506,6 +506,16 @@
           '';
         };
 
+        # Latex
+        auctex = {
+          enable = true;
+          # Add hook for reftex if using reftex
+          config = ''
+            (setq TeX-auto-save t
+                  TeX-parse-self t)
+          '';
+        };
+
       };
 
     };
