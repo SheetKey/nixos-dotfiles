@@ -54,7 +54,7 @@
     zoom-us
     noisetorch
     pavucontrol
-    tlauncher #minecraft
+    minecraft
 
     # window manager related
     nitrogen
