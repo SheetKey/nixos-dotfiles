@@ -408,7 +408,10 @@
         };
         wolfram-mode = {
           enable = true;
-          defer = true;
+          config = ''
+            (setq mathematica-command-line "~/.local/bin/mash")
+            (add-to-list 'org-src-lang-modes '("mathematica" . wolfram))
+          '';
         };
 
         # LSP Mode
