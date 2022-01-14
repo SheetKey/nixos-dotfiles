@@ -338,7 +338,7 @@
                 )
             )
 
-            (setq org-babel-mathematica-command "~/dotfiles/nixos-dotfiles/scripts/mash")
+            (setq org-babel-mathematica-command "mashScript")
 
             (will/org-font-setup)
           '';
@@ -409,7 +409,7 @@
         wolfram-mode = {
           enable = true;
           config = ''
-            (setq mathematica-command-line "~/dotfiles/nixos-dotfiles/scripts/mash")
+            (setq mathematica-command-line "mashScript")
             (add-to-list 'org-src-lang-modes '("mathematica" . wolfram))
           '';
         };
