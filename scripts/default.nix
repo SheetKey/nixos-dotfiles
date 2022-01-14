@@ -34,11 +34,7 @@ let
     
     # Possible paths to the Mathematica kernel.  Add yours.
     my @mathpath = (
-      "/usr/bin/math",
-      "/usr/local/bin/math",
-      "/Applications/Mathematica.app/Contents/MacOS/MathKernel",
-      "/Applications/Mathematica Home Edition.app/Contents/MacOS/MathKernel",
-      "/nix/store/37fliaf65il82awmr70hj6jcds75ggjy-mathematica-13.0.0/bin/math",
+      "/nix/store/37fliaf65il82awmr70hj6jcds75ggjy-mathematica-13.0.0/libexec/Mathematica/Executables/mathematica",
     );
     my $math;  # The first of the above that actually exists.
     for (@mathpath) { if(-e $_) { $math = $_;  last; } }
