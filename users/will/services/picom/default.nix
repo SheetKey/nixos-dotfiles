@@ -10,7 +10,9 @@
     fadeDelta = 5;
     shadow = true;
     shadowOpacity = "0.75";
-    unredir-if-possible = false;
-    vsync = true;
+    extraOptions = ''
+      unredir-if-possible = false;
+      vsync = true;
+    '';
   };
 }
