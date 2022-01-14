@@ -34,7 +34,7 @@ let
     
     # Possible paths to the Mathematica kernel.  Add yours.
     my @mathpath = (
-      "/nix/store/37fliaf65il82awmr70hj6jcds75ggjy-mathematica-13.0.0/bin/mathematica",
+      "/nix/store/37fliaf65il82awmr70hj6jcds75ggjy-mathematica-13.0.0/bin/math",
     );
     my $math;  # The first of the above that actually exists.
     for (@mathpath) { if(-e $_) { $math = $_;  last; } }
