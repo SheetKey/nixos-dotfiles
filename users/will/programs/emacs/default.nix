@@ -409,7 +409,7 @@
         wolfram-mode = {
           enable = true;
           config = ''
-            (setq mathematica-command-line "~/.local/bin/mash")
+            (setq mathematica-command-line "~/dotfiles/nixos-dotfiles/scripts/mash")
             (add-to-list 'org-src-lang-modes '("mathematica" . wolfram))
           '';
         };
