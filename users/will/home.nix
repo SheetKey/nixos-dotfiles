@@ -55,6 +55,7 @@
     noisetorch
     pavucontrol
     minecraft
+    fabric-installer
 
     # window manager related
     nitrogen
