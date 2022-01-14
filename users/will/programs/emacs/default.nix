@@ -507,8 +507,9 @@
         };
 
         # Latex
-        auctex = {
+        latex = {
           enable = true;
+          package = epkgs: epkgs.auctex;
           # Add hook for reftex if using reftex
           config = ''
             (setq TeX-auto-save t
