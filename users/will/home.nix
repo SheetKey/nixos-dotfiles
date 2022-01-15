@@ -54,8 +54,7 @@
     zoom-us
     noisetorch
     pavucontrol
-    minecraft
-    fabric-installer
+    tlauncher
 
     # window manager related
     nitrogen
