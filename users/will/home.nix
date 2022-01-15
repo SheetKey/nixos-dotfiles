@@ -54,6 +54,9 @@
     zoom-us
     noisetorch
     pavucontrol
+
+    # Games
+    ivan
     tlauncher
 
     # window manager related
