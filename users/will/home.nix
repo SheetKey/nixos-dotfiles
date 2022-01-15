@@ -56,8 +56,8 @@
     pavucontrol
 
     # Games
-    ivan
     tlauncher
+    boohu
 
     # window manager related
     nitrogen
