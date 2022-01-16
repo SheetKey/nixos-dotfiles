@@ -59,6 +59,7 @@
     tlauncher
     boohu
     superTux
+    mindustry
 
     # window manager related
     nitrogen
