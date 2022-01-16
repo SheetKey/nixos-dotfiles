@@ -58,6 +58,7 @@
     # Games
     tlauncher
     boohu
+    superTux
 
     # window manager related
     nitrogen
