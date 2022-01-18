@@ -373,6 +373,9 @@
                                       "%?")
                            :children (("Task" :keys "t"
                                        :headline "Inbox"
+                                       :todo-state "TODO")
+                                      ("School" :keys "s"
+                                       :headline "Inbox"
                                        :todo-state "TODO"))))))
           '';
         };
