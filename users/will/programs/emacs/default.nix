@@ -353,8 +353,12 @@
             (setq org-log-done 'time)
             (setq org-log-into-drawer t)
 
-            (setq org-directory "~/Documents/Org")
-            (setq org-agenda-files (list org-directory))
+            ;; (setq org-directory "~/Documents/Org")
+            ;; (setq org-agenda-files (list org-directory))
+            (setq org-agenda-files
+                  (mapcar 'abbreviate-file-name
+                          (split-string
+                           (shell-command-to-string "find ~/org -name \"*.org\"") "\n")))
           '';
         };
         org-capture = {
