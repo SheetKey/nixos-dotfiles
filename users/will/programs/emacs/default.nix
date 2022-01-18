@@ -353,8 +353,9 @@
             (setq org-log-done 'time)
             (setq org-log-into-drawer t)
 
+            (setq org-directory "~/Documents")
             (setq org-agenda-files
-                  '("~/Documents/"))
+                  '(list org-directory))
           '';
         };
         org-capture = {
