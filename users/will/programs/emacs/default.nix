@@ -358,7 +358,7 @@
             (setq org-agenda-files
                   (mapcar 'abbreviate-file-name
                           (split-string
-                           (shell-command-to-string "find ~/org -name \"*.org\"") "\n")))
+                           (shell-command-to-string "find ~/Documents -name \"*.org\"") "\n")))
           '';
         };
         org-capture = {
