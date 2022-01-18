@@ -354,7 +354,7 @@
             (setq org-log-into-drawer t)
 
             (setq org-agenda-files
-                  '("~/Documents"))
+                  '("~/Documents/"))
           '';
         };
         org-capture = {
