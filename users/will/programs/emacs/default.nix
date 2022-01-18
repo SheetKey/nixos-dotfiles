@@ -337,13 +337,13 @@
             (will/org-font-setup)
 
             ;; Taken from https://gitlab.com/jabranham/emacs/-/blob/master/init.el
-            (org-pretty-entities t "UTF8 all the things!")
-            (org-M-RET-may-split-line nil "M-RET may never split a line.")
-            (org-catch-invisible-edits 'show-and-error "Don't let me edit things I can't see.")
-            (org-special-ctrl-a/e t "Make C-a and C-e work more like how I want:.")
+            (setq org-pretty-entities t "UTF8 all the things!")
+            (setq org-M-RET-may-split-line nil "M-RET may never split a line.")
+            (setq org-catch-invisible-edits 'show-and-error "Don't let me edit things I can't see.")
+            (setq org-special-ctrl-a/e t "Make C-a and C-e work more like how I want:.")
             
-            (org-highlight-latex-and-related '(latex entities) "set up fontlocking for latex")
-            (org-startup-with-inline-images t "Show inline images.")
+            (setq org-highlight-latex-and-related '(latex entities) "set up fontlocking for latex")
+            (setq org-startup-with-inline-images t "Show inline images.")
             
           '';
         };
