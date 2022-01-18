@@ -355,7 +355,7 @@
 
             (setq org-agenda-files
                   '("~/Documents/Org"
-                    "~/Documents/School/School.org))
+                  '("~/Documents/School/School.org)))
           '';
         };
         org-capture = {
