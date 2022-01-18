@@ -57,6 +57,7 @@
     zoom-us
     noisetorch
     pavucontrol
+    scrot #screenshots
 
     # Games
     tlauncher
