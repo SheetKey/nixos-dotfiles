@@ -354,8 +354,8 @@
             (setq org-log-into-drawer t)
 
             (setq org-agenda-files
-                  '("~/Documents/Org"
-                  '("~/Documents/School/School.org)))
+                  '(("~/Documents/Org"
+                    ("~/Documents/School/School.org))))
           '';
         };
         org-capture = {
