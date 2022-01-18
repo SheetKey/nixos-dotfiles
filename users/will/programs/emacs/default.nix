@@ -410,6 +410,10 @@
           enable = true;
           hook = [ "(org-mode . org-bullets-mode)" ];
         };
+        mixed-pitch = {
+          enable = true;
+          hook = [ "(org-mode . mixed-pitch-mode)" ];
+        };
         doct = {
           enable = true;
           defer = true;
