@@ -393,6 +393,7 @@
             (add-to-list 'org-structure-template-alist '("sh" . "src shell"))            
             (add-to-list 'org-structure-template-alist '("el" . "src emacs-lisp"))
             (add-to-list 'org-structure-template-alist '("ma" . "src mathematica"))
+            (add-to-list 'org-structure-template-alist '("oc" . "src octave"))
           '';
         };
         org-contrib = {
