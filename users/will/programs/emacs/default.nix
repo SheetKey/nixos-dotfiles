@@ -93,8 +93,7 @@
                             (org-level-6 . 1.3)
                             (org-level-7 . 1.3)
                             (org-level-8 . 1.3)))
-                    (set-face-attribute (car face) nil :font "Hack Nerd Font Mono" :weight 'bold :height (cdr face)))
-          )
+                    (set-face-attribute (car face) nil :font "Hack Nerd Font Mono" :weight 'bold :height (cdr face))))
 
       '';
 
