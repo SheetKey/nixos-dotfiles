@@ -44,6 +44,9 @@
 
     haskell-language-server
 
+    # Matlab (Octave of course)
+    octaveFull
+
     # GUI stuff
     brave
     trayer
