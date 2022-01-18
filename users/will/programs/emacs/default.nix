@@ -353,7 +353,7 @@
             (setq org-log-done 'time)
             (setq org-log-into-drawer t)
 
-            (setq org-directory "~/Documents")
+            (setq org-directory "~/Documents/Org")
             (setq org-agenda-files (list org-directory))
           '';
         };
