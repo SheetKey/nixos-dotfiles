@@ -382,8 +382,17 @@
                                       "%?")
                            :children (("Task" :keys "t"
                                        :headline "Inbox"
-                                       :todo-state "TODO")
-                                      ("School" :keys "s"
+                                       :todo-state "TODO")))
+                          ("School" :keys "s"
+                           :file "~/Documents/School/School.org"
+                           :prepend t
+                           :template ("* %{todo-state} %^{Description}"
+                                      ":PROPERTIES:"
+                                      ":Created: %U"
+                                      ":Link: %a"
+                                      ":END:"
+                                      "%?")
+                           :children (("Task" :keys "t"
                                        :headline "Inbox"
                                        :todo-state "TODO"))))))
           '';
