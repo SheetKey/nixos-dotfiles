@@ -64,6 +64,7 @@
     boohu
     superTux
     mindustry
+    openttd
 
     # window manager related
     nitrogen
