@@ -65,7 +65,7 @@
     superTux
     mindustry
     openttd
-    freeciv_qt
+    freeciv_gtk
 
     # window manager related
     nitrogen
