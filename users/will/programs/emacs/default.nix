@@ -104,7 +104,7 @@
               TeX-electric-math (cons "$" "$") 
               TeX-electric-sub-and-superscript t
         )
-        (add-hook ’LaTeX-mode-hook ’LaTeX-math-mode)
+        (add-hook 'LaTeX-mode-hook 'LaTeX-math-mode)
       '';
 
       # extra packages for emacs
