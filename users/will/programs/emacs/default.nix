@@ -96,8 +96,8 @@
                   (set-face-attribute (car face) nil :font "Hack Nerd Font Mono" :weight 'bold :height (cdr face))))
 
         ;;;;;;;; LaTeX (AucTeX)
-;;        (load "auctex.el" nil t t)
-;;        (load "preview-latex.el" nil t t)
+        (load "auctex.el" nil t t)
+        (load "preview-latex.el" nil t t)
       '';
 
       # extra packages for emacs
@@ -535,49 +535,6 @@
             (evil-collection-define-key 'normal 'dired-mode-map
               "H" 'dired-hide-dotfiles-mode)
           '';
-        };
-
-        # Latex using auctex
-        ### Config adopted from https://gitlab.com/jabranham/emacs/-/blob/master/init.el
-        ## tex-site = {
-        ##   enable = true;
-        ##   mode = [ "\\.tex\\'" ];
-        ##   extraConfig = ''
-        ##     :custom
-        ##     (TeX-auto-save t)
-        ##     (TeX-parse-self t)
-        ##     (TeX-electric-sub-and-superscript t) ;Auto insert {} after typing _ or ^
-        ##     (TeX-source-correlate-mode t)
-        ##     (TeX-clean-confirm nil)
-        ##   '';
-        ##   hook = [ "(LaTeX-mode . LaTeX-math-mode)"
-        ##          ##  "(LaTeX-mode . reftex-mode)"
-        ##            "(LaTeX-mode . TeX-PDF-mode)"
-        ##          ];
-        ##   init = "(use-package tex-mode)";
-        ## };
-        ## auctex = {
-        ##   enable = true;
-        ##   defer = true;
-        ##   config = ''
-        ##     (setq TeX-auto-save t)
-        ##     (setq TeX-parse-self t)
-        ##   '';
-        ## };
-        ## tex = {
-        ##   enable = true;
-        ##   defer = true;
-        ##   extraConfig = ''
-        ##     :ensure auctex
-        ##   '';
-        ##   config = ''
-        ##     (setq TeX-auto-save t
-        ##           TeX-parse-self t)
-        ##   '';
-        ## };
-        latex = {
-          enable = true;
-          package = epkgs: epkgs.auctex;
         };
 
       };
