@@ -544,6 +544,20 @@
           '';
         };
 
+        # pdf-tools
+        pdf-tools = {
+          enable = true;
+          defer = 7;
+          extraConfig = ''
+            :custom
+            (TeX-view-program-selection '((output-pdf "pdf-tools")) "Use pdf-tools to display pdfs from latex runs.")
+            (TeX-view-program-list '(("pdf-tools" ("TeX-pdf-tools-sync-view") nil)))
+          '';
+          config = ''
+            ;;(pdf-tools-install t)
+          '';
+        };
+
       };
 
     };
