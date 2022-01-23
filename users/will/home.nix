@@ -36,6 +36,7 @@
 
     # Latex
     texlive.combined.scheme-full
+    auctex
 
     # Viewer
     zathura
