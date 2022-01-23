@@ -552,6 +552,7 @@
             :custom
             (TeX-view-program-selection '((output-pdf "pdf-tools")) "Use pdf-tools to display pdfs from latex runs.")
             (TeX-view-program-list '(("pdf-tools" ("TeX-pdf-tools-sync-view") nil)))
+            :magic ("%PDF" . pdf-view-mode)
           '';
           config = ''
             ;;(pdf-tools-install t)
