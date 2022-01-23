@@ -75,26 +75,25 @@
                           ))
           (add-to-list 'evil-emacs-state-modes mode)))
 
-          ;;;;;;;;;; Org-mode hook function
-          (defun will/org-mode-setup ()
-            (org-indent-mode)
-            ;; (variable-pitch-mode 1)
-            ;; (auto-fill-mode 0)
-            (visual-line-mode 1)
-            (setq evil-auto-indent nil))
+        ;;;;;;;;;; Org-mode hook function
+        (defun will/org-mode-setup ()
+          (org-indent-mode)
+          ;; (variable-pitch-mode 1)
+          ;; (auto-fill-mode 0)
+          (visual-line-mode 1)
+          (setq evil-auto-indent nil))
 
-          ;;;;;;;;;; Org-mode font function
-          (defun will/org-font-setup ()
-            (dolist (face '((org-level-1 . 1.5)
-                            (org-level-2 . 1.4)
-                            (org-level-3 . 1.3)
-                            (org-level-4 . 1.2)
-                            (org-level-5 . 1.3)
-                            (org-level-6 . 1.3)
-                            (org-level-7 . 1.3)
-                            (org-level-8 . 1.3)))
-                    (set-face-attribute (car face) nil :font "Hack Nerd Font Mono" :weight 'bold :height (cdr face))))
-
+        ;;;;;;;;;; Org-mode font function
+        (defun will/org-font-setup ()
+          (dolist (face '((org-level-1 . 1.5)
+                          (org-level-2 . 1.4)
+                          (org-level-3 . 1.3)
+                          (org-level-4 . 1.2)
+                          (org-level-5 . 1.3)
+                          (org-level-6 . 1.3)
+                          (org-level-7 . 1.3)
+                          (org-level-8 . 1.3)))
+                  (set-face-attribute (car face) nil :font "Hack Nerd Font Mono" :weight 'bold :height (cdr face))))
       '';
 
       # extra packages for emacs
