@@ -101,7 +101,7 @@
 
         (setq TeX-auto-save t
               TeX-parse-self t
-              TeX-electric-math t
+              TeX-electric-math (cons "$" "$") 
               TeX-electric-sub-and-superscript t
         )
       '';
