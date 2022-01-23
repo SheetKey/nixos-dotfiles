@@ -553,12 +553,22 @@
         ##          ];
         ##   init = "(use-package tex-mode)";
         ## };
-        auctex = {
+        ## auctex = {
+        ##   enable = true;
+        ##   defer = true;
+        ##   config = ''
+        ##     (setq TeX-auto-save t)
+        ##     (setq TeX-parse-self t)
+        ##   '';
+        ## };
+        tex = {
           enable = true;
-          defer = true;
+          extraConfig = ''
+            :ensure auctex
+          '';
           config = ''
-            (setq TeX-auto-save t)
-            (setq TeX-parse-self t)
+            (setq TeX-auto-save t
+                  TeX-parse-self t)
           '';
         };
 
