@@ -94,6 +94,10 @@
                           (org-level-7 . 1.3)
                           (org-level-8 . 1.3)))
                   (set-face-attribute (car face) nil :font "Hack Nerd Font Mono" :weight 'bold :height (cdr face))))
+
+        ;;;;;;;; LaTeX (AucTeX)
+        (load "auctex.el" nil t t)
+        (load "preview-latex.el" nil t t)
       '';
 
       # extra packages for emacs
