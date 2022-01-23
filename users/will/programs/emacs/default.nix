@@ -105,6 +105,7 @@
               TeX-electric-sub-and-superscript t
         )
         (add-hook 'LaTeX-mode-hook 'LaTeX-math-mode)
+        (add-hook 'TeX-after-compilation-finished-functions #'TeX-revert-document-buffer)
       '';
 
       # extra packages for emacs
