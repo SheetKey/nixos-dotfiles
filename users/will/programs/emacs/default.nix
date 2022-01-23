@@ -98,6 +98,9 @@
         ;;;;;;;; LaTeX (AucTeX)
         (load "auctex.el" nil t t)
         (load "preview-latex.el" nil t t)
+
+        (setq TeX-auto-save t
+              TeX-parse-self t)
       '';
 
       # extra packages for emacs
