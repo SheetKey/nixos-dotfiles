@@ -561,17 +561,17 @@
         ##     (setq TeX-parse-self t)
         ##   '';
         ## };
-        tex = {
-          enable = true;
-          defer = true;
-          extraConfig = ''
-            :ensure auctex
-          '';
-          config = ''
-            (setq TeX-auto-save t
-                  TeX-parse-self t)
-          '';
-        };
+        ## tex = {
+        ##   enable = true;
+        ##   defer = true;
+        ##   extraConfig = ''
+        ##     :ensure auctex
+        ##   '';
+        ##   config = ''
+        ##     (setq TeX-auto-save t
+        ##           TeX-parse-self t)
+        ##   '';
+        ## };
 
       };
 
