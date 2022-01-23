@@ -563,6 +563,7 @@
         ## };
         tex = {
           enable = true;
+          defer = true;
           extraConfig = ''
             :ensure auctex
           '';
