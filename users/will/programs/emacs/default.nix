@@ -27,7 +27,7 @@
         (tool-bar-mode -1)                  ; Disable the toolbar
         (tooltip-mode -1)                   ; Disable tooltips
         (set-fringe-mode 10)                ; Give breathing room
-        ;;(menu-bar-mode -1)                  ; Disable menu bar
+        (menu-bar-mode -1)                  ; Disable menu bar
 
         ;; Backup file
         (setq backup-directory-alist '(("." . "~/.emacs.d/backup"))
