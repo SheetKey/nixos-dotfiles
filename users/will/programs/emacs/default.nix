@@ -96,8 +96,8 @@
                   (set-face-attribute (car face) nil :font "Hack Nerd Font Mono" :weight 'bold :height (cdr face))))
 
         ;;;;;;;; LaTeX (AucTeX)
-        (load "auctex.el" nil t t)
-        (load "preview-latex.el" nil t t)
+;;        (load "auctex.el" nil t t)
+;;        (load "preview-latex.el" nil t t)
       '';
 
       # extra packages for emacs
@@ -575,6 +575,10 @@
         ##           TeX-parse-self t)
         ##   '';
         ## };
+        latex = {
+          enable = true;
+          package = epkgs: epkgs.auctex;
+        };
 
       };
 
