@@ -534,14 +534,30 @@
           '';
         };
 
-        # Latex
-        latex = {
-          enable = true;
-          package = epkgs: epkgs.auctex;
-          # Add hook for reftex if using reftex
+        # Latex using auctex
+        ### Config adopted from https://gitlab.com/jabranham/emacs/-/blob/master/init.el
+        ## tex-site = {
+        ##   enable = true;
+        ##   mode = [ "\\.tex\\'" ];
+        ##   extraConfig = ''
+        ##     :custom
+        ##     (TeX-auto-save t)
+        ##     (TeX-parse-self t)
+        ##     (TeX-electric-sub-and-superscript t) ;Auto insert {} after typing _ or ^
+        ##     (TeX-source-correlate-mode t)
+        ##     (TeX-clean-confirm nil)
+        ##   '';
+        ##   hook = [ "(LaTeX-mode . LaTeX-math-mode)"
+        ##            "(LaTeX-mode . reftex-mode)"
+        ##            "(LaTeX-mode . TeX-PDF-mode)"
+        ##          ];
+        ## };
+        auctex = {
+          enable = t;
+          defer = t;
           config = ''
-            (setq TeX-auto-save t
-                  TeX-parse-self t)
+            (setq TeX-auto-save t)
+            (setq TeX-parse-self t)
           '';
         };
 
