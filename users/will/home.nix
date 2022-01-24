@@ -59,6 +59,7 @@
     noisetorch
     pavucontrol
     scrot #screenshots
+    libreoffice
 
     # Games
     tlauncher
