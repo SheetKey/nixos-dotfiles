@@ -573,7 +573,7 @@
         };
 
         # Octave
-        EOS = {
+        eos = {
           enable = true;
         };
 
