@@ -573,7 +573,7 @@
         };
 
         # Octave stuff
-        octave-mod = {
+        octave-mode = {
           enable = true;
         };
 
