@@ -572,6 +572,11 @@
           '';
         };
 
+        # Octave
+        EOS = {
+          enable = true;
+        };
+
 
       };
 
