@@ -572,6 +572,11 @@
           '';
         };
 
+        # Octave stuff
+        octave-mod = {
+          enable = true;
+        };
+
       };
 
     };
