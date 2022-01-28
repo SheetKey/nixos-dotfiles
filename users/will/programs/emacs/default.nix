@@ -477,17 +477,17 @@
           enable = true;
           hook = [ "(lsp-mode . lsp-ui-mode)" ];
         };
-        lsp-haskell = {
-          enable = true;
-          defer = true;
-          init = ''
-            (add-hook 'haskell-mode-hook
-                      (lambda ()
-                        (lsp)
-                        (setq evil-shift-width 2 )))
-            (add-hook 'haskell-literate-mode-hook #'lsp)
-          '';
-        };
+        ## lsp-haskell = {
+        ##   enable = true;
+        ##   defer = true;
+        ##   init = ''
+        ##     (add-hook 'haskell-mode-hook
+        ##               (lambda ()
+        ##                 (lsp)
+        ##                 (setq evil-shift-width 2 )))
+        ##     (add-hook 'haskell-literate-mode-hook #'lsp)
+        ##   '';
+        ## };
         #Company autocompletions with LSP
         company = {
           enable = true;
