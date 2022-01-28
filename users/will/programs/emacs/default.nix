@@ -571,6 +571,12 @@
           '';
         };
 
+        # haskell using haskell-mode
+        haskell-mode = {
+          enable = true;
+          
+        };
+
 
 
       };
