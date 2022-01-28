@@ -491,8 +491,8 @@
         #Company autocompletions with LSP
         company = {
           enable = true;
-          after = [ "lsp-mode" ];
-          hook = [ "(lsp-mode . company-mode)" ];
+          after = [ "lsp-mode" "haskell-mode" ];
+          hook = [ "(lsp-mode . company-mode)" "(haskell-mode . company-mode)" ];
           extraConfig = ''
             :bind (:map company-active-map
                     ("<tab>" . company-complete-selection))
