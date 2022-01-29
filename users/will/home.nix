@@ -41,10 +41,6 @@
     # Viewer
     zathura
 
-    # Haskell
-
-    haskell-language-server
-
     # Matlab (Octave of course)
     octaveFull
 
