@@ -1,7 +1,11 @@
 { pkgs, ... }:
 
 {
-  programs.direnv.enable = true;
-  programs.direnv.nix-direnv.enable = true;
-  programs.direnv-nix-direnv.enableFlakes = true;
+  programs.direnv = {
+    enable = true;
+    nix-direnv = {
+      enable = true;
+      enableFlakes = true;
+    };
+  };
 }
