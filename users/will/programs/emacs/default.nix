@@ -17,6 +17,7 @@
         (require 'doom-modeline)
         (setq doom-modeline-buffer-file-name-style 'truncate-except-project)
         (doom-modeline-mode 1)
+        (tab-bar-mode 1)
       '';
 
       # beginning of init.el
@@ -119,14 +120,18 @@
         (add-hook 'TeX-after-compilation-finished-functions #'TeX-revert-document-buffer)
 
         ;;;;;;; Tab bar mode
-        (setq tab-bar-mode t
+        (setq ;;tab-bar-mode t
               tab-bar-show t
               tab-bar-new-tab-choice "*scratch*"
               tab-bar-new-tab-to 'rightmost
-              ;tab-bar-tab-name-function
+              tab-bar-tab-name-function 'will/tabbarname
               tab-bar-close-button-show nil
               tab-bar-new-button-show nil
         )
+        
+        (defun will/tabbarname (msg)
+          (interactive "sEnter Name: ")
+            (message "Name: %s" msg))
 
       '';
 
