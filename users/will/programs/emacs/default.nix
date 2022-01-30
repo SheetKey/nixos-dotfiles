@@ -296,6 +296,9 @@
             (setq projectile-switch-project-action #'projectile-dired)
           '';
         };
+        undo-fu = {
+          enable = true;
+        };
         
 	      # Nix-mode for emacs
 	      nix-mode = {
