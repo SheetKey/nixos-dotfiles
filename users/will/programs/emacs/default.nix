@@ -119,7 +119,8 @@
         (add-hook 'TeX-after-compilation-finished-functions #'TeX-revert-document-buffer)
 
         ;;;;;;; Tab bar mode
-        (setq tab-bar-mode-new-tab-choice "*scratch*")
+        (setq tab-bar-mode 1
+              tab-bar-new-tab-choice "*scratch*")
       '';
 
       # extra packages for emacs
