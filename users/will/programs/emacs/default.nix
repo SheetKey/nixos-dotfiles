@@ -124,15 +124,10 @@
               tab-bar-show t
               tab-bar-new-tab-choice "*scratch*"
               tab-bar-new-tab-to 'rightmost
-              tab-bar-tab-name-function 'will/tabbarname
               tab-bar-close-button-show nil
               tab-bar-new-button-show nil
         )
         
-        (defun will/tabbarname (msg)
-          (interactive "sEnter Name: ")
-            (message "Name: %s" msg))
-
       '';
 
       # extra packages for emacs
