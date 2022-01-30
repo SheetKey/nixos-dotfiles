@@ -126,7 +126,7 @@
               tab-bar-new-tab-to 'rightmost
               tab-bar-close-button-show nil
               tab-bar-new-button-show nil
-              tab-bar-tab-name-function #'tab-bar-tab-rename
+              tab-bar-tab-name-function #'tab-bar-rename-tab
         )
         
       '';
