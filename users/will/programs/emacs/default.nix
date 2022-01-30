@@ -128,8 +128,9 @@
               tab-bar-new-button-show nil
               tab-bar-tab-name-function #'will/tabbarname
         )
-        (defun will/tabbarname (x)
-               (interactive "s"))
+        (defun will/tabbarname ()
+               (interactive)
+               (let ((x (read-string "Enter name:")))))
         
       '';
 
