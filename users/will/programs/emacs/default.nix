@@ -122,7 +122,7 @@
         (setq tab-bar-mode t
               tab-bar-show t
               tab-bar-new-tab-choice "*scratch*"
-              tab-bar-new-tab-to rightmost
+              tab-bar-new-tab-to 'rightmost
               tab-bar-tab-name-function tab-bar-rename-tab
               tab-bar-close-button-show nil
               tab-bar-new-button-show nil
