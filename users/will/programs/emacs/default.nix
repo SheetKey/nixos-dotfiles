@@ -128,7 +128,7 @@
               tab-bar-new-button-show nil
               tab-bar-tab-name-function #'will/tabbarname
         )
-        (defun will/tabbarname (x)
+        (defun will/tabbarname ()
                (interactive "s"))
         
       '';
