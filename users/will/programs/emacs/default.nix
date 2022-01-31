@@ -113,8 +113,11 @@
 
         (setq TeX-auto-save t
               TeX-parse-self t
-              TeX-electric-math (cons "$" "$") 
+              ;;;TeX-electric-math (cons "$" "$") I found this annoying
+              ;;;LaTeX-electric-left-right-brace t
               TeX-electric-sub-and-superscript t
+              LaTeX-math-menu-unicode t
+              TeX-insert-macro-default-style 'show-optional-args
         )
         (add-hook 'LaTeX-mode-hook 'LaTeX-math-mode)
         (add-hook 'TeX-after-compilation-finished-functions #'TeX-revert-document-buffer)
