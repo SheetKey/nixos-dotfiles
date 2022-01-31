@@ -132,7 +132,7 @@
                (interactive)
                (let ((x (read-string "Enter name:")))))
 
-        (add-hook 'tab-new #'tab-bar-rename-tab)
+        (add-hook #'tab-new #'tab-bar-rename-tab)
         
       '';
 
