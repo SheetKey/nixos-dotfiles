@@ -58,27 +58,26 @@
   services.xserver = {
   	enable = true;
     # Keyboard US and Polytonic Greek
-	layout = "us,gr";
+	  layout = "us,gr";
     xkbVariant = ",polytonic";
-    xkbOptions = "grp:shifts_toggle";
-
-
-	displayManager.lightdm.enable = true;
-	displayManager.defaultSession = "none+xmonad";
-	windowManager = {
-		xmonad.enable = true;
-		xmonad.enableContribAndExtras = true;
-		xmonad.extraPackages = hpkgs: [
-			hpkgs.xmonad
-			hpkgs.xmonad-contrib
-			hpkgs.xmonad-extras
     xkbOptions = "grp:shifts_toggle, caps:escape";
+
+
+	  displayManager.lightdm.enable = true;
+	  displayManager.defaultSession = "none+xmonad";
+	  windowManager = {
+		  xmonad.enable = true;
+		  xmonad.enableContribAndExtras = true;
+		  xmonad.extraPackages = hpkgs: [
+			  hpkgs.xmonad
+			  hpkgs.xmonad-contrib
+			  hpkgs.xmonad-extras
 			];
-	};
-	libinput = {
-          enable = true;
-	  touchpad.naturalScrolling = false;
-	};
+	  };
+	  libinput = {
+      enable = true;
+	    touchpad.naturalScrolling = false;
+	  };
   };
 
   # Enable CUPS to print documents.
