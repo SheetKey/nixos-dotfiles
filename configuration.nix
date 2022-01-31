@@ -72,6 +72,7 @@
 			hpkgs.xmonad
 			hpkgs.xmonad-contrib
 			hpkgs.xmonad-extras
+    xkbOptions = "grp:shifts_toggle, caps:escape";
 			];
 	};
 	libinput = {
