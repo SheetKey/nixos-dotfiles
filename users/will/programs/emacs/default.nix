@@ -126,11 +126,13 @@
               tab-bar-new-tab-to 'rightmost
               tab-bar-close-button-show nil
               tab-bar-new-button-show nil
-              tab-bar-tab-name-function #'will/tabbarname
+              ;;tab-bar-tab-name-function #'will/tabbarname
         )
         (defun will/tabbarname ()
                (interactive)
                (let ((x (read-string "Enter name:")))))
+
+        (add-hook 'tab-bar-new-tab 'tab-bar-rename-tab)
         
       '';
 
