@@ -131,7 +131,8 @@
               tab-bar-new-button-show nil
         )
 
-        (add-hook 'tab-new (call-interactively #'tab-bar-rename-tab))
+        ;;(add-hook 'tab-new (call-interactively #'tab-bar-rename-tab))
+        (add-hook 'tab-bar-post-open-functions (lambda (&rest_) (call-interactively #'tab-bar-rename-tab)))
         
       '';
 
