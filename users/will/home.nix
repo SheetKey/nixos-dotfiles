@@ -34,6 +34,10 @@
     nix-prefetch-github
     ripgrep
 
+    # midi
+    timidity
+    freepats
+
     # Latex
     texlive.combined.scheme-full
     auctex
