@@ -66,8 +66,9 @@
     boohu
     superTux
     mindustry
-    openttd
     freeciv_qt
+    widelands
+    zeroad
 
     # window manager related
     nitrogen
