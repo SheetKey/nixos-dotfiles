@@ -62,7 +62,6 @@
     libreoffice
 
     # Games
-    tlauncher
     boohu
     superTux
     mindustry
