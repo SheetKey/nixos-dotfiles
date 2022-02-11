@@ -36,7 +36,7 @@
 
     # midi
     timidity
-    freepats
+    ### freepats
 
     # Latex
     texlive.combined.scheme-full
