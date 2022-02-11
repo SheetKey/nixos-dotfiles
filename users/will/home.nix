@@ -66,7 +66,7 @@
     superTux
     mindustry
     freeciv_qt
-    #### widelands
+    widelands
     zeroad
 
     # window manager related
