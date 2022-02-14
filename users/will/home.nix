@@ -59,7 +59,9 @@
     noisetorch
     pavucontrol
     scrot #screenshots
+    spectacle
     libreoffice
+
 
     # Games
     boohu
