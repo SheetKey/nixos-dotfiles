@@ -47,6 +47,7 @@
 
     # Matlab (Octave of course)
     octaveFull
+    octavePackages.symbolic
 
     # GUI stuff
     brave
