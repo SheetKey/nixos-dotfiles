@@ -14,6 +14,9 @@
     pciutils
     usbutils
     lshw
+
+
+    (octave.withPackages (opkgs: with opkgs; [ symbolic ]))
   ];
 
   # hardware.enableRedistributableFirmware = true;
