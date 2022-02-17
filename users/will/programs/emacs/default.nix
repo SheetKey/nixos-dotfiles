@@ -377,6 +377,9 @@
 
             (setq org-babel-mathematica-command "mashScript")
 
+            ;;; Increases font size of latex preview
+            (setq org-format-latex-options (plist-put org-format-latex-options :scale 2.0))
+
             (will/org-font-setup)
 
           '';
