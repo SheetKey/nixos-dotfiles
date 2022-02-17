@@ -70,6 +70,7 @@
     freeciv_qt
     widelands
     zeroad
+    polymc
 
     # window manager related
     nitrogen
