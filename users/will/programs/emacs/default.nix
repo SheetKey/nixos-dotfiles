@@ -469,7 +469,7 @@
           hook = [ "(org-mode . org-bullets-mode)" ];
         };
         mixed-pitch = {
-          enable = true;
+          enable = false;
           hook = [ "(org-mode . mixed-pitch-mode)" ];
         };
         doct = {
