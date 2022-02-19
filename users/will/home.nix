@@ -71,7 +71,7 @@
     widelands
     zeroad
     polymc
-    adom
+    unnethack
 
     # window manager related
     nitrogen
