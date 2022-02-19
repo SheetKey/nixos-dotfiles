@@ -71,7 +71,7 @@
     widelands
     zeroad
     polymc
-    keeperrl
+    adom
 
     # window manager related
     nitrogen
