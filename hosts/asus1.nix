@@ -16,6 +16,13 @@
     lshw
   ];
 
+  #################### Steam
+
+  programs.steam.enable = true;
+
+  ####################
+
+
   # hardware.enableRedistributableFirmware = true;
 
   #################### NVIDIA
