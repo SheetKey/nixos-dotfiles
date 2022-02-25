@@ -33,6 +33,7 @@
     lf
     nix-prefetch-github
     ripgrep
+    unzip
 
     # midi
     timidity
