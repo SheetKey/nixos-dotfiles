@@ -47,7 +47,7 @@
     zathura
 
     # Matlab (Octave of course)
-    (octave.withPackages (opkgs: with opkgs; [ symbolic ]))
+    (octaveFull.withPackages (opkgs: with opkgs; [ symbolic ]))
 
     # GUI stuff
     brave
