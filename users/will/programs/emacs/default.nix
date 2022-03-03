@@ -272,7 +272,7 @@
           init = ''
             (setq evil-want-integration t)
             (setq evil-want-keybinding nil)
-            (setq evil-want-C-u-scroll t)
+            (setq evil-want-C-u-scroll nil)
             (setq evil-want-C-i-jump nil)
             (setq evil-undo-system 'undo-fu)
           '';
