@@ -63,6 +63,7 @@
     spectacle
     libreoffice
 
+    glxinfo
 
     # Games
     boohu
