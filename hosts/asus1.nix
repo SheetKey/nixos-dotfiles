@@ -28,6 +28,9 @@
   #################### NVIDIA
 
     services.xserver.videoDrivers = [ "nvidia" ];
+
+    hardware.nvidia.modesetting.enable = true;
+
     hardware.nvidia.prime = {
       offload.enable = true;
     
