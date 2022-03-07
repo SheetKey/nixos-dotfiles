@@ -597,6 +597,9 @@
         # saveplace-pdf-view
         saveplace-pdf-view = {
           enable = true;
+          config = ''
+            (save-place-mode 1)
+          '';
         };
 
         # haskell using haskell-mode
