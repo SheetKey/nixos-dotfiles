@@ -47,7 +47,7 @@
     zathura
 
     # Hakell
-    haskell-language-server
+    ### haskell-language-server
 
     # Matlab (Octave of course)
     (octaveFull.withPackages (opkgs: with opkgs; [ symbolic ]))
