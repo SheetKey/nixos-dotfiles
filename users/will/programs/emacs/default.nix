@@ -527,8 +527,8 @@
         ##     (add-hook 'haskell-literate-mode-hook #'lsp)
         ##   '';
         ## };
-        #Company autocompletions with LSP
-
+        
+        # Company autocompletions with LSP
         company = {
           enable = true;
           ### after = [ "lsp-mode" "haskell-mode" ];
