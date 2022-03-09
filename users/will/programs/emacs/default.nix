@@ -509,7 +509,7 @@
           init = "(setq lsp-keymap-prefix \"C-c l\")";
           hook = [ "(haskell-mode . lsp)" ];
           config = ''
-            (lsp-enable-which-key-integration t)
+            ;(lsp-enable-which-key-integration t)
           '';
         };
         lsp-ui = {
