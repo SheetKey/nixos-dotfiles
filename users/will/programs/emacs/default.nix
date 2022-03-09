@@ -507,7 +507,7 @@
           enable = true;
           command = [ "lsp" "lsp-deferred" ];
           init = "(setq lsp-keymap-prefix \"C-c l\")";
-          ### hook = [ "(haskell-mode . lsp)" ];
+          hook = [ "(haskell-mode . lsp)" ];
           config = ''
             (lsp-enable-which-key-integration t)
           '';
@@ -516,17 +516,9 @@
           enable = true;
           hook = [ "(lsp-mode . lsp-ui-mode)" ];
         };
-        ## lsp-haskell = {
-        ##   enable = true;
-        ##   defer = true;
-        ##   init = ''
-        ##     (add-hook 'haskell-mode-hook
-        ##               (lambda ()
-        ##                 (lsp)
-        ##                 (setq evil-shift-width 2 )))
-        ##     (add-hook 'haskell-literate-mode-hook #'lsp)
-        ##   '';
-        ## };
+        lsp-haskell = {
+          enable = true;
+        };
         
         # Company autocompletions with LSP
         company = {
