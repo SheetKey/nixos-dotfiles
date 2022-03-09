@@ -609,6 +609,10 @@
           enable = true;
           
         };
+        haskell-doc = {
+          enable = true;
+        };
+          
 
 
 
