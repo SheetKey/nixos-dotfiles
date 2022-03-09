@@ -524,7 +524,7 @@
         company = {
           enable = true;
           ### after = [ "lsp-mode" "haskell-mode" ];
-          hook = [ "(lsp-mode . company-mode)" ];
+          hook = [ "(lsp . company-mode)" ];
           extraConfig = ''
             :bind (:map company-active-map
                     ("<tab>" . company-complete-selection))
