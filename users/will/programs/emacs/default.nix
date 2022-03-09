@@ -126,7 +126,7 @@
         
         ;;;;;;;; RefTeX
         (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
-        
+        (setq reftex-plug-into-AUCTeX t)
 
         ;;;;;;; Tab bar mode
         (setq ;;tab-bar-mode t
