@@ -493,6 +493,7 @@
           enable = true;
           command = [ "lsp" "lsp-deferred" ];
           init = "(setq lsp-keymap-prefix \"C-c l\")";
+          hook = [ "(haskell-mode . lsp)" ];
           config = ''
             (lsp-enable-which-key-integration t)
           '';
@@ -513,10 +514,11 @@
         ##   '';
         ## };
         #Company autocompletions with LSP
+
         company = {
           enable = true;
-          after = [ "lsp-mode" "haskell-mode" ];
-          hook = [ "(lsp-mode . company-mode)" "(haskell-mode . company-mode)" ];
+          ### after = [ "lsp-mode" "haskell-mode" ];
+          hook = [ "(lsp-mode . company-mode)" ];
           extraConfig = ''
             :bind (:map company-active-map
                     ("<tab>" . company-complete-selection))
