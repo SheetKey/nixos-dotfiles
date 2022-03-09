@@ -123,6 +123,10 @@
         )
         (add-hook 'LaTeX-mode-hook 'LaTeX-math-mode)
         (add-hook 'TeX-after-compilation-finished-functions #'TeX-revert-document-buffer)
+        
+        ;;;;;;;; RefTeX
+        (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
+        
 
         ;;;;;;; Tab bar mode
         (setq ;;tab-bar-mode t
