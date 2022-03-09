@@ -39,7 +39,7 @@
           kept-old-versions 5    ; and how many of the old
         )
         ;; Autosaves
-        (setq auto-save-file-name-transforms '(("." "~/.emacs.d/auto-save-list/" t)))
+        (setq auto-save-file-name-transforms '((".*" "~/.emacs.d/auto-save-list/" t)))
 
         ;; Line numbers
         (column-number-mode)
