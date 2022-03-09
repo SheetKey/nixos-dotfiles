@@ -206,6 +206,14 @@
             (vertico-cycle t)
           '';
         };
+        # completion style for vertico
+        orderless = {
+          enable = true;
+          config = ''
+            (setq completion-styles '(orderless)
+            )
+          '';               
+        }
         # Savehist for vertico
         savehist = {
           enable = true;
