@@ -502,6 +502,11 @@
           '';
         };
 
+        # direnv integration
+        direnv = {
+          enable = true;
+        };
+
         # LSP Mode
         lsp-mode = {
           enable = true;
@@ -510,6 +515,9 @@
           hook = [ "(haskell-mode . lsp)" ];
           config = ''
             ;(lsp-enable-which-key-integration t)
+            
+            (advice-add 'lsp :before #'direnv-update-environment)
+            (setq lsp-modeline-code-actions-enable nil)
           '';
         };
         lsp-ui = {
