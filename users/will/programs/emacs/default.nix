@@ -213,7 +213,7 @@
             (setq completion-styles '(orderless)
             )
           '';               
-        }
+        };
         # Savehist for vertico
         savehist = {
           enable = true;
