@@ -517,7 +517,10 @@
             ;(lsp-enable-which-key-integration t)
             
             (advice-add 'lsp :before #'direnv-update-environment)
-            (setq lsp-modeline-code-actions-enable nil)
+            (setq lsp-modeline-code-actions-enable nil
+                  lsp-lens-enable t
+            )
+
           '';
         };
         lsp-ui = {
