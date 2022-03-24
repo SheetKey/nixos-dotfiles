@@ -25,7 +25,12 @@
 
     initExtraBeforeCompInit = ''
       autoload -U colors && colors
-      PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%~%{$fg[red]%}]%{$reset_color%}$%b "
+      autoload -Uz vcs_info
+      precmd() { vcs_info }
+      zstyle ':vcs_info:git:*' formats 'on branch %b'
+      setopt PROMPT_SUBST
+
+      PS1="%B%F{red}[%F{blue}%n%F{yellow}@%F{green}%M %F{magenta}%~ %F{yellow}${vsc_info_msg_0_}%F{red}]%{$reset_color%}$%b "
     '';
 
     initExtra = ''
