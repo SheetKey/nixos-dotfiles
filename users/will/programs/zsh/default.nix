@@ -24,12 +24,10 @@
     };
 
     initExtraBeforeCompInit = ''
-      autoload -U colors && colors
       autoload -Uz vcs_info
       precmd() { vcs_info }
       zstyle ':vcs_info:git:*' formats 'on branch %b'
       setopt PROMPT_SUBST
-
       PS1="%B%F{red}[%F{blue}%n%F{yellow}@%F{green}%M %F{magenta}%~ %F{yellow}${vcs_info_msg_0_}%F{red}]%{$reset_color%}$%b "
     '';
 
