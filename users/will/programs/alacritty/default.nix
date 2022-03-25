@@ -10,9 +10,9 @@
       window = {
         padding.x = 10;
 	      padding.y = 10;
+        opacity = 1.0;
       };
 
-      background_opacity = 0.94;
       
       font = {
         size = 9.0;
