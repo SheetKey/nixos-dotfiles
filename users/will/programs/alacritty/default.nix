@@ -10,7 +10,7 @@
       window = {
         padding.x = 10;
 	      padding.y = 10;
-        opacity = 0.98;
+        opacity = 0.97;
       };
 
       
