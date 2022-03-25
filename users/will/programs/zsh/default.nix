@@ -25,6 +25,7 @@
 
     initExtraBeforeCompInit = ''
       autoload -Uz vcs_info
+      zstyle ':vcs_info:*' enable git svn
       zstyle ':vcs_info:git:*' formats 'on branch %b'
       precmd() { vcs_info }
       setopt PROMPT_SUBST
