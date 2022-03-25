@@ -25,10 +25,9 @@
 
     initExtraBeforeCompInit = ''
       autoload -Uz vcs_info
-      zstyle ':vcs_info:*' enable git svn
-      zstyle ':vcs_info:git:*' formats 'on branch %b'
       precmd() { vcs_info }
-      setopt PROMPT_SUBST
+      zstyle ':vcs_info:git:*' formats 'on branch %b'
+      setopt prompt_subst
       PS1="%B%F{red}[%F{blue}%n%F{yellow}@%F{green}%M %F{magenta}%~ %F{yellow}${vcs_info_msg_0_}%F{red}]%{$reset_color%}$%b "
     '';
 
