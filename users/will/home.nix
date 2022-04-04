@@ -37,7 +37,8 @@
 
     # midi
     timidity
-    ### freepats
+    # tab editor
+    tuxguitar
 
     # Latex
     texlive.combined.scheme-full
