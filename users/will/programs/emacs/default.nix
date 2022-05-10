@@ -629,6 +629,11 @@
         haskell-doc = {
           enable = true;
         };
+
+        # ispell
+        ispell = {
+          enable = true;
+        }
           
 
 
