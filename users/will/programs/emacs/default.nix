@@ -633,7 +633,7 @@
         # ispell
         ispell = {
           enable = true;
-        }
+        };
           
 
 
