@@ -631,8 +631,11 @@
         };
 
         # ispell
-        flyspell = {
+        ispell = {
           enable = true;
+          extraConfig = ''
+            (setq ispell-program-name "aspell")
+          '';                      
         };
           
 
