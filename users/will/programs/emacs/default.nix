@@ -631,7 +631,7 @@
         };
 
         # ispell
-        ispell = {
+        flyspell = {
           enable = true;
         };
           
