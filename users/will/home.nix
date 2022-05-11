@@ -86,6 +86,10 @@
 
     # Stuff for emacs
     ncurses
+
+    aspell
+    aspellDicts.en
+    
       # Stuff for vterm
     cmake
     libtool
