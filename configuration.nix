@@ -81,6 +81,11 @@
 	  };
   };
 
+  services.emacs = {
+    enable = true;
+    package = pkgs.emacsGitNativeComp;
+  };
+
   # Enable CUPS to print documents.
   # services.printing.enable = true;
 
