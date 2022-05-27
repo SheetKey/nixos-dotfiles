@@ -32,7 +32,7 @@
   # boot.loader.efi.efiSysMountPoint = "/boot/efi";
   # Define on which hard drive you want to install Grub.
   # boot.loader.grub.device = "/dev/sda"; # or "nodev" for efi only
-
+#################################################################################
 
   # Set up locales.
   time.timeZone = "America/New_York";
