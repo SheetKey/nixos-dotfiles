@@ -9,7 +9,8 @@
 
   # Nix preferences: unstable version
   nix = {
-    package = pkgs.nixUnstable;
+    # Taken care of by flake
+    # package = pkgs.nixUnstable;
 
     #Garbage collection
     gc = {
