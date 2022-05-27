@@ -66,10 +66,10 @@
 
 	  displayManager.lightdm.enable = true;
 	  displayManager.defaultSession = "none+xmonad";
-	  windowManager = {
-		  xmonad.enable = true;
-		  xmonad.enableContribAndExtras = true;
-		  xmonad.extraPackages = hpkgs: [
+	  windowManager.xmonad = {
+		  enable = true;
+		  enableContribAndExtras = true;
+		  extraPackages = hpkgs: [
 			  hpkgs.xmonad
 			  hpkgs.xmonad-contrib
 			  hpkgs.xmonad-extras
