@@ -59,7 +59,9 @@
 	      ./configuration.nix ./hosts/asus1.nix
 
 	      ({ pkgs, ... }: {
-	        nixpkgs.overlays = [ neovim-nightly-overlay.overlay ];
+	        nixpkgs.overlays = [ neovim-nightly-overlay.overlay
+                               emacs-overlay.overlay
+                             ];
 	      })
 
 	      home-manager.nixosModules.home-manager {
@@ -72,7 +74,7 @@
               ];
             };
 	        nixpkgs.overlays = [
-	          nur.overlay emacs-overlay.overlay
+	          nur.overlay #emacs-overlay.overlay
 	        ];
 	      }
 	    ];
