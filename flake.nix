@@ -59,13 +59,17 @@
         inherit system;
 
 	      modules = [
-	        ./configuration.nix ./hosts/asus1.nix
 
 	        ({pkgs, ... }: {
             nixpkgs.overlays = [ neovim-nightly-overlay.overlay
                                  emacs-overlay.overlay
                                  nur.overlay
                                ];
+            imports =
+              [
+	              ./configuration.nix
+                ./hosts/asus1.nix
+              ];
 	        })
           
 
