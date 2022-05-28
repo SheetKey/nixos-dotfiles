@@ -84,7 +84,8 @@
   services.emacs = {
     enable = true;
     #package = pkgs.emacsGitNativeComp;
-    package = pkgs.emacsNativeComp;
+    #package = pkgs.emacsNativeComp;
+    package = pkgs.emacs28NativeComp;
   };
 
   # Enable CUPS to print documents.
