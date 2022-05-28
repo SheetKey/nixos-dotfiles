@@ -3,7 +3,7 @@
 {
   programs.emacs = {
     enable = true;
-    #package = pkgs.emacsGcc;
+    package = pkgs.emacsGitNativeComp;
     init = {
       enable = true;
 
