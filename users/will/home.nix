@@ -61,7 +61,6 @@
     pa_applet
     mathematica
     zoom-us
-    noisetorch
     pavucontrol
     scrot #screenshots
     spectacle
