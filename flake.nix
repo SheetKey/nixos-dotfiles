@@ -31,24 +31,25 @@
 
     system = "x86_64-linux";
 
-    #pkgs = import nixpkgs {
-    #  
-    #  inherit system;
+    pkgs = import nixpkgs {
+      
+      inherit system;
 
-    #  config = {
-    #	  allowUnfree = true;
-    #  };
+      config = {
+    	  allowUnfree = true;
+      };
 
-    #};
+      overlays = [ neovim-nightly-overlay.overlay
+                   emacs-overlay.overlay
+                   nur.overlay
+                 ];
+    };
 
     lib = nixpkgs.lib;
 
-    #nur-no-pkgs = import inputs.nur { 
-    #  pkgs = null; 
-    #  nurpkgs = pkgs;
-    #};
-    nur-no-pkgs = import nur {
-      nurpkgs = import nixpkgs { inherit system; };
+    nur-no-pkgs = import inputs.nur { 
+      pkgs = null; 
+      nurpkgs = pkgs;
     };
 
   in {
