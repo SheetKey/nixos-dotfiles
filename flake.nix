@@ -43,10 +43,10 @@
 
     lib = nixpkgs.lib;
 
-    nur-no-pkgs = import inputs.nur { 
-      pkgs = null; 
-      nurpkgs = pkgs;
-    };
+    #nur-no-pkgs = import inputs.nur { 
+    #  pkgs = null; 
+    #  nurpkgs = pkgs;
+    #};
 
   in {
 
