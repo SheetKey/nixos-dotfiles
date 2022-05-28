@@ -65,6 +65,11 @@
                                  emacs-overlay.overlay
                                  nur.overlay
                                ];
+            services.emacs = {
+              enable = true;
+              package = pkgs.emacsGitNativeComp;
+            };
+
             imports =
               [
 	              ./configuration.nix
