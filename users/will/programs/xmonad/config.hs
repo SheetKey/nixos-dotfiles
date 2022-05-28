@@ -193,7 +193,7 @@ tall = renamed [Replace "tall"]
     $ limitWindows 12
     $ mySpacing 8
     $ ResizableTall 1 (3/100) (1/2) []
-magnify = renamed [Replace "magnify"]
+mmagnify = renamed [Replace "magnify"]
     $ smartBorders
     $ windowNavigation
     $ addTabs shrinkText myTabTheme
@@ -276,7 +276,7 @@ myLayoutHook = avoidStruts $ mouseResize $ windowArrange $ T.toggleLayouts float
                $ mkToggle (NBFULL ?? NOBORDERS ?? EOT) myDefaultLayout
 	     where
 	       myDefaultLayout = withBorder myBorderWidth tall
-	                        ||| magnify
+	                        ||| mmagnify
 				||| noBorders monocle
 				||| floats
 				||| noBorders tabs
