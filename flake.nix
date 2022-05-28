@@ -36,7 +36,7 @@
       inherit system;
 
       config = {
-    	allowUnfree = true;
+    	  allowUnfree = true;
       };
 
     };
