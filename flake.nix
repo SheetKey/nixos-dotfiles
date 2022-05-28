@@ -47,6 +47,9 @@
     #  pkgs = null; 
     #  nurpkgs = pkgs;
     #};
+    nur-no-pkgs = import nur {
+      nurpkgs = import nixpkgs { inherit system; };
+    };
 
   in {
 
@@ -68,16 +71,10 @@
 	          home-manager.useGlobalPkgs = true;
 	          home-manager.useUserPackages = true;
             home-manager.users.will = {
-              let
-                nur-no-pkgs = import nur {
-                  nurpkgs = import nixpkgs { inherit system; };
-                };
-              in {
-                imports = [
-                   ./users/will/home.nix 
-                   nur-no-pkgs.repos.rycee.hmModules.emacs-init
-                 ];
-              };
+              imports = [
+                ./users/will/home.nix 
+                nur-no-pkgs.repos.rycee.hmModules.emacs-init
+              ];
             };
 	          #nixpkgs.overlays = [
 	          #  nur.overlay #emacs-overlay.overlay
