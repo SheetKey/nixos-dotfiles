@@ -61,11 +61,13 @@
 	      modules = [
 	        ./configuration.nix ./hosts/asus1.nix
 
-	        { nixpkgs.overlays = [ neovim-nightly-overlay.overlay
+	        ({pkgs, ... }: {
+            nixpkgs.overlays = [ neovim-nightly-overlay.overlay
                                  emacs-overlay.overlay
                                  nur.overlay
                                ];
-	        }
+	        })
+          
 
 	        home-manager.nixosModules.home-manager {
 	          home-manager.useGlobalPkgs = true;
