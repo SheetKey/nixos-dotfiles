@@ -58,24 +58,30 @@
 	      modules = [
 	        ./configuration.nix ./hosts/asus1.nix
 
-	        ({ pkgs, ... }: {
-	          nixpkgs.overlays = [ neovim-nightly-overlay.overlay
+	        { nixpkgs.overlays = [ neovim-nightly-overlay.overlay
                                  emacs-overlay.overlay
+                                 nur.overlay
                                ];
-	        })
+	        }
 
 	        home-manager.nixosModules.home-manager {
 	          home-manager.useGlobalPkgs = true;
 	          home-manager.useUserPackages = true;
             home-manager.users.will = {
-              imports = [
-                ./users/will/home.nix 
-                nur-no-pkgs.repos.rycee.hmModules.emacs-init
-              ];
+              let
+                nur-no-pkgs = import nur {
+                  nurpkgs = import nixpkgs { inherit system; };
+                };
+              in {
+                imports = [
+                   ./users/will/home.nix 
+                   nur-no-pkgs.repos.rycee.hmModules.emacs-init
+                 ];
+              };
             };
-	          nixpkgs.overlays = [
-	            nur.overlay #emacs-overlay.overlay
-	          ];
+	          #nixpkgs.overlays = [
+	          #  nur.overlay #emacs-overlay.overlay
+	          #];
 	        }
 	      ];
       };
