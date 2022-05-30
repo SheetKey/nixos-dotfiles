@@ -21,17 +21,17 @@
         , persistent = True
         , commands =
 	        [ 
-            Run Com "echo" ["<fn=3>\xf17c</fn>"] "penguin" 3600
+            Run Com "echo" ["<fn=4>\xf17c</fn>"] "penguin" 3600
           , Run Com "getKernelScript" [] "kernel" 36000
-          , Run Cpu ["-t", "<fn=2>\xf108</fn> cpu: (<total>%) ","-H","50","--high","red"] 20
-          , Run Memory ["-t", "<fn=2>\xf233</fn> mem: <used>M (<usedratio>%)"] 20
-          , Run DiskU [("/", "<fn=2>\xf0c7</fn> hdd: <free> free")] [] 60
-          , Run Com "echo" ["<fn=2>\xf0aa</fn>"] "uparrow" 3600
+          , Run Cpu ["-t", "<fn=4>\xf108</fn> cpu: (<total>%) ","-H","50","--high","red"] 20
+          , Run Memory ["-t", "<fn=4>\xf233</fn> mem: <used>M (<usedratio>%)"] 20
+          , Run DiskU [("/", "<fn=4>\xf0c7</fn> hdd: <free> free")] [] 60
+          , Run Com "echo" ["<fn=4>\xf0aa</fn>"] "uparrow" 3600
           , Run Uptime ["-t", "uptime: <days>d <hours>h"] 360
-          , Run Com "echo" ["<fn=2>\xf0f3</fn>"] "bell" 3600
-          , Run Com "echo" ["<fn=2>\xf242</fn>"] "baticon" 3600
+          , Run Com "echo" ["<fn=4>\xf0f3</fn>"] "bell" 3600
+          , Run Com "echo" ["<fn=4>\xf242</fn>"] "baticon" 3600
           , Run BatteryP ["BAT0"] ["-t", "<acstatus><watts> (<left<%)"] 360
-          , Run Date "<fn=2>\xf017</fn> %b %d %Y - (%I:%M%p) " "date" 50
+          , Run Date "<fn=4>\xf017</fn> %b %d %Y - (%I:%M%p) " "date" 50
           , Run Com "trayer-padding-icon.sh" [] "trayerpad" 20
           , Run Com "echo" ["<fn=4>\xf313</fn>"] "nixosicon" 3600
           , Run UnsafeStdinReader
