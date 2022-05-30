@@ -640,7 +640,9 @@
           
         exwm = {
           enable = true;
-          
+          extraConfig = ''
+            (exwm-config-example)
+          '';
         };
 
 

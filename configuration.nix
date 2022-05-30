@@ -88,7 +88,6 @@
       loadScript = ''
         (require 'exwm)
         (exwm-enable)
-        ;;(exwm-config-example)
       '';
     };
 
