@@ -64,8 +64,15 @@
     xkbOptions = "grp:shifts_toggle, caps:escape";
 
 
-	  displayManager.lightdm.enable = true;
-	  displayManager.defaultSession = "none+xmonad";
+	  displayManager = {
+      lightdm.enable = true;
+	    defaultSession = "none+xmonad";
+      autoLogin = {
+        enable = true;
+        user = "will";
+      };
+    };
+
 	  windowManager.xmonad = {
 		  enable = true;
 		  enableContribAndExtras = true;
