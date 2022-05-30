@@ -83,12 +83,20 @@
 			];
 	  };
 
-    windowManager.exwm = {
-      enable = true;
-      loadScript = ''
-        (require 'exwm)
-        (exwm-enable)
-        ;;(exwm-config-example)
+    #windowManager.exwm = {
+    #  enable = true;
+    #  loadScript = ''
+    #    (require 'exwm)
+    #    (exwm-enable)
+    #    ;;(exwm-config-example)
+    #  '';
+    #};
+
+    windowManager.session = lib.singleton {
+      name = "exwm";
+      start = ''
+          ${emacs}/bin/emacs --daemon -f exwm-enable
+          ${emacs}/bin/emacsclient -c
       '';
     };
 
