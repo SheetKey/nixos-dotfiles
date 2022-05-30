@@ -74,7 +74,7 @@
     };
 
 	  windowManager.xmonad = {
-		  enable = true;
+		  enable = false;
 		  enableContribAndExtras = true;
 		  extraPackages = hpkgs: [
 			  hpkgs.xmonad
