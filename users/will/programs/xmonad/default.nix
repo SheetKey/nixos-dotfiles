@@ -6,7 +6,7 @@
     enable = true;
 
     windowManager.xmonad = {
-      enable = true;
+      enable = false;
       enableContribAndExtras = true;
       extraPackages = hp: [
         hp.monad-logger
