@@ -82,6 +82,16 @@
 			  hpkgs.xmonad-extras
 			];
 	  };
+
+    windowManager.exwm = {
+      enable = true;
+      loadScript = ''
+        (require 'exwm)
+        (exwm-enable)
+        (exwm-config-example)
+      '';
+    };
+
 	  libinput = {
       enable = true;
 	    touchpad.naturalScrolling = false;
