@@ -86,10 +86,9 @@
     windowManager.exwm = {
       enable = true;
       enableDefaultConfig = false;
-      #loadScript = ''
-      #  (require 'exwm)
-      #  (exwm-enable)
-      #'';
+      loadScript = ''
+        (require 'exwm)
+      '';
     };
 
 
