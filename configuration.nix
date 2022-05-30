@@ -66,7 +66,7 @@
 
 	  displayManager = {
       lightdm.enable = true;
-	    defaultSession = "none+xmonad";
+	    defaultSession = "none+exwm";
       autoLogin = {
         enable = false;
         user = "will";
