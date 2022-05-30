@@ -10,9 +10,9 @@
       enableContribAndExtras = true;
       extraPackages = hp: [
         hp.monad-logger
-	hp.xmonad-contrib
-	hp.xmonad-extras
-	hp.dbus
+	      hp.xmonad-contrib
+	      hp.xmonad-extras
+	      hp.dbus
       ];
       config = ./config.hs;
     };

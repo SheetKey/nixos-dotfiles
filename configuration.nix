@@ -74,7 +74,7 @@
     };
 
 	  windowManager.xmonad = {
-		  enable = false;
+		  enable = true;
 		  enableContribAndExtras = true;
 		  extraPackages = hpkgs: [
 			  hpkgs.xmonad
@@ -87,7 +87,6 @@
       enable = true;
       enableDefaultConfig = false;
       loadScript = ''
-        (require 'exwm)
       '';
     };
 
