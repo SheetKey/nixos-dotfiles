@@ -140,6 +140,9 @@
         ;;(add-hook 'tab-new (call-interactively #'tab-bar-rename-tab))
         (add-hook 'tab-bar-tab-post-open-functions (lambda (&rest_) (call-interactively #'tab-bar-rename-tab)))
         
+        ;; Func for exwm
+        (defun will/exwm-update-class ()
+          (exwm-workspace-rename-buffer exwm-class-name))
       '';
 
       # extra packages for emacs
@@ -640,7 +643,60 @@
           
         exwm = {
           enable = true;
-          extraConfig = ''
+          config = ''
+            ;; set default number of workspaces
+            (setq exwm-workspace-number 5)
+
+            ;; When window class updates, use to set buffer name
+            (add-hook 'exwm-update-class-hook #'will/exwm-update-class)
+
+            (require 'exwm-systemtray)
+            (exwm-systemtray-enable)
+
+            ;; keybinds to always go to emacs
+            (setq exwm-input-prefix-keys
+              '(?\C-x
+                ?\C-u
+                ?\C-h
+                ?\M-x
+                ?\M-`
+                ?\M-&
+                ?\M-:
+                ?\C-\M-j ;; Buffer list
+                ?\C-\ )) ;; Ctrl+Space
+
+            ;; Ctrl+Q enables next key to be sent directly
+            (define-key exwm-mode-map [?\C-q] 'exwm-input-send-next-key)
+
+            ;; Set up global key binds
+            (setq exwm-input-global-keys
+              `(
+                ;; Reset to line mode (C-c C-k switches to char mode)
+                ([?\C-r] . exwm-reset)
+
+                ;; Move between windows
+                ([s-left] . windmove-left)
+                ([s-right] . windmove-right)
+                ([s-up] . windmove-up)
+                ([s-down] . windmove-down)
+
+                ;; Launch applications via shell command
+                ([?\s-&] . (lambda (command)
+                             (interactive (list (read-shell-command "$ ")))
+                             (start-process-shell-command command nil command)))
+
+                ;; Switch workspace
+                ([?\s-w] . exwm-workspace-switch)
+                ([?\s-`] . (lambda () (interactive) (exwm-workspace-switch-create 0)))
+
+                ;; 's-N': switch to a certain workspace with super number
+                ,@(mapcar (lambda (i)
+                            `(,(kbd (format "s-%d" i)) .
+                              (lambda ()
+                                (interactive)
+                                (exwm-workspace-switch-create ,i))))
+                          (number-sequence 0 9))))
+
             (exwm-enable)
           '';
         };
