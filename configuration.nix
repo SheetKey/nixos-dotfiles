@@ -95,8 +95,8 @@
     windowManager.session = lib.singleton {
       name = "exwm";
       start = ''
-          ${emacs}/bin/emacs --daemon -f exwm-enable
-          ${emacs}/bin/emacsclient -c
+          ${pkgs.emacs}/bin/emacs --daemon -f exwm-enable
+          ${pkgs.emacs}/bin/emacsclient -c
       '';
     };
 
