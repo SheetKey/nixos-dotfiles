@@ -68,7 +68,7 @@
       lightdm.enable = true;
 	    defaultSession = "none+xmonad";
       autoLogin = {
-        enable = true;
+        enable = false;
         user = "will";
       };
     };
