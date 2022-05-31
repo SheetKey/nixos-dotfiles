@@ -96,16 +96,16 @@
       #  alacritty &
       #  waitPID=$!
       #'';
-      start = ''
-        emacs -mm --debug-init
-        &
-        waitPID=$!
-      '';
       #start = ''
-      #  exec dbus-launch --exit-with-session emacs -mm --debug-init
+      #  emacs -mm --debug-init
       #  &
       #  waitPID=$!
       #'';
+      start = ''
+        exec dbus-launch --exit-with-session emacs -mm --debug-init
+        &
+        waitPID=$!
+      '';
     };
 
 	  libinput = {
