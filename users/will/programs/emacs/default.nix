@@ -674,10 +674,10 @@
                 ([?\C-r] . exwm-reset)
 
                 ;; Move between windows
-                ([s-left] . windmove-left)
-                ([s-right] . windmove-right)
-                ([s-up] . windmove-up)
-                ([s-down] . windmove-down)
+                ([s-h] . windmove-left)
+                ([s-l] . windmove-right)
+                ([s-j] . windmove-up)
+                ([s-k] . windmove-down)
 
                 ;; Launch applications via shell command
                 ([?\s-&] . (lambda (command)
