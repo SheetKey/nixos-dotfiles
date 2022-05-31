@@ -689,7 +689,7 @@
                 ([?\s-\ ] . exwm-layout-toggle-fullscreen)
 
                 ;; Launch applications via shell command
-                ([?\s-<return>] . (lambda (command)
+                ([s-return] . (lambda (command)
                              (interactive (list (read-shell-command "$ ")))
                              (start-process-shell-command command nil command)))
                 ;; Launch alacritty
