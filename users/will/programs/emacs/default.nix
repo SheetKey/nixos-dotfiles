@@ -647,6 +647,9 @@
             ;; set default number of workspaces
             (setq exwm-workspace-number 5)
 
+            ;; ADD STARTUP PROGRAMMS HERE
+            (start-process-shell-command "nitrogen" nil "nitrogen --restore")
+
             ;; When window class updates, use to set buffer name
             (add-hook 'exwm-update-class-hook #'will/exwm-update-class)
 
