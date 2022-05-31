@@ -674,22 +674,22 @@
                 ([?\C-r] . exwm-reset)
 
                 ;; Move between windows
-                ([s-h] . windmove-left)
-                ([s-l] . windmove-right)
-                ([s-j] . windmove-up)
-                ([s-k] . windmove-down)
+                ([\?s-h] . windmove-left)
+                ([\?s-l] . windmove-right)
+                ([\?s-j] . windmove-up)
+                ([\?s-k] . windmove-down)
 
                 ;; Move window positions
-                ([s-H] . windmove-swap-states-left)
-                ([s-L] . windmove-swap-states-right)
-                ([s-J] . windmove-swap-states-up)
-                ([s-K] . windmove-swap-states-down)
+                ([?\s-H] . windmove-swap-states-left)
+                ([?\s-L] . windmove-swap-states-right)
+                ([?\s-J] . windmove-swap-states-up)
+                ([?\s-K] . windmove-swap-states-down)
 
                 ;; Full screen
-                ([s-\ ] . exwm-layout-toggle-fullscreen)
+                ([?\s-\ ] . exwm-layout-toggle-fullscreen)
 
                 ;; Launch applications via shell command
-                ([?\s-&] . (lambda (command)
+                ([?\s-<return>] . (lambda (command)
                              (interactive (list (read-shell-command "$ ")))
                              (start-process-shell-command command nil command)))
 
