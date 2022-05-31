@@ -97,7 +97,8 @@
       #  waitPID=$!
       #'';
       start = ''
-        emacs &
+        emacs -mm --debug-init
+        &
         waitPID=$!
       '';
     };
