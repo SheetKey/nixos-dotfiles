@@ -73,23 +73,34 @@
       };
     };
 
-	  windowManager.xmonad = {
-		  enable = true;
-		  enableContribAndExtras = true;
-		  extraPackages = hpkgs: [
-			  hpkgs.xmonad
-			  hpkgs.xmonad-contrib
-			  hpkgs.xmonad-extras
-			];
-	  };
+	  #windowManager.xmonad = {
+		#  enable = false;
+		#  enableContribAndExtras = true;
+		#  extraPackages = hpkgs: [
+		#	  hpkgs.xmonad
+		#	  hpkgs.xmonad-contrib
+		#	  hpkgs.xmonad-extras
+		#	];
+	  #};
 
-    windowManager.exwm = {
-      enable = true;
-      enableDefaultConfig = false;
-      loadScript = ''
+    #windowManager.exwm = {
+    #  enable = true;
+    #  enableDefaultConfig = false;
+    #  loadScript = ''
+    #  '';
+    #};
+    windowManager.session = lib.singleton {
+      name = "exwm";
+      #start = ''
+      #  ${pkgs.emacsGitNativeComp}/bin/emacs &
+      #  alacritty &
+      #  waitPID=$!
+      #'';
+      start = ''
+        emacs &
+        waitPID=$!
       '';
     };
-
 
 	  libinput = {
       enable = true;

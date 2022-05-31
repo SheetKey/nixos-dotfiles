@@ -13,7 +13,6 @@
 
       # early-init.el file
       earlyInit = ''
-
         (require 'doom-modeline)
         (setq doom-modeline-buffer-file-name-style 'truncate-except-project)
         (doom-modeline-mode 1)
