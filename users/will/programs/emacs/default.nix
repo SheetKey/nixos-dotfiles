@@ -16,7 +16,7 @@
         (require 'doom-modeline)
         (setq doom-modeline-buffer-file-name-style 'truncate-except-project)
         (doom-modeline-mode 1)
-        (tab-bar-mode 1)
+        (tab-bar-mode 0)
       '';
 
       # beginning of init.el
