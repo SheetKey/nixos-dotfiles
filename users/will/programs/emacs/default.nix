@@ -664,7 +664,7 @@
                 ?\C-\M-j ;; Buffer list
                 ?\C-\ )) ;; Ctrl+Space
 
-            ;; Ctrl+Q enables next key to be sent directly
+            ;; Ctrl+Q enables next key to be sent directly to application NOT emacs itself
             (define-key exwm-mode-map [?\C-q] 'exwm-input-send-next-key)
 
             ;; Set up global key binds
