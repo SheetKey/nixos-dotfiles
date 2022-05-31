@@ -686,7 +686,8 @@
 
                 ;; Switch workspace
                 ([?\s-w] . exwm-workspace-switch)
-                ([?\s-`] . (lambda () (interactive) (exwm-workspace-switch-create 0)))
+                ;; A keybind to that S-` gets to workspace 0
+                ;; ([?\s-`] . (lambda () (interactive) (exwm-workspace-switch-create 0)))
 
                 ;; 's-N': switch to a certain workspace with super number
                 ,@(mapcar (lambda (i)
@@ -694,7 +695,7 @@
                               (lambda ()
                                 (interactive)
                                 (exwm-workspace-switch-create ,i))))
-                          (number-sequence 0 9))))
+                          (number-sequence 1 9))))
 
             (exwm-enable)
           '';
