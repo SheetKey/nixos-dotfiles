@@ -689,12 +689,11 @@
                 ([?\s-\ ] . exwm-layout-toggle-fullscreen)
 
                 ;; Launch applications via shell command
-                ([s-<return>] . (lambda (command)
+                ([?\s-<return>] . (lambda (command)
                              (interactive (list (read-shell-command "$ ")))
                              (start-process-shell-command command nil command)))
                 ;; Launch alacritty
-                ([?\s-t] . (lambda ()
-                             (start-process-shell-command "alacritty" nil "alacritty")))
+                ([?\s-t] . (start-process-shell-command "alacritty" nil "alacritty"))
 
                 ;; Switch workspace
                 ([?\s-w] . exwm-workspace-switch)
