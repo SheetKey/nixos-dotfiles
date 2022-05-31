@@ -679,6 +679,12 @@
                 ([s-j] . windmove-up)
                 ([s-k] . windmove-down)
 
+                ;; Move window positions
+                ([s-H] . windmove-swap-states-left)
+                ([s-L] . windmove-swap-states-right)
+                ([s-J] . windmove-swap-states-up)
+                ([s-K] . windmove-swap-states-down)
+
                 ;; Launch applications via shell command
                 ([?\s-&] . (lambda (command)
                              (interactive (list (read-shell-command "$ ")))
