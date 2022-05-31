@@ -692,6 +692,9 @@
                 ([?\s-<return>] . (lambda (command)
                              (interactive (list (read-shell-command "$ ")))
                              (start-process-shell-command command nil command)))
+                ;; Launch alacritty
+                ([?\s-t] . (lambda ()
+                             (start-process-shell-command "alacritty" nil "alacritty")))
 
                 ;; Switch workspace
                 ([?\s-w] . exwm-workspace-switch)
