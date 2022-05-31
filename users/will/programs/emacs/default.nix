@@ -674,10 +674,10 @@
                 ([?\C-r] . exwm-reset)
 
                 ;; Move between windows
-                ([\?s-h] . windmove-left)
-                ([\?s-l] . windmove-right)
-                ([\?s-j] . windmove-up)
-                ([\?s-k] . windmove-down)
+                ([?\s-h] . windmove-left)
+                ([?\s-l] . windmove-right)
+                ([?\s-j] . windmove-up)
+                ([?\s-k] . windmove-down)
 
                 ;; Move window positions
                 ([?\s-H] . windmove-swap-states-left)
@@ -686,10 +686,10 @@
                 ([?\s-K] . windmove-swap-states-down)
 
                 ;; Full screen
-                ([?\s-\ ] . exwm-layout-toggle-fullscreen)
+                ([s-SPC] . exwm-layout-toggle-fullscreen)
 
                 ;; Launch applications via shell command
-                ([?\s-<return>] . (lambda (command)
+                ([s-<return>] . (lambda (command)
                              (interactive (list (read-shell-command "$ ")))
                              (start-process-shell-command command nil command)))
                 ;; Launch alacritty
