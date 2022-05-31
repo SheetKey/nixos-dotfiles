@@ -694,6 +694,7 @@
                              (start-process-shell-command command nil command)))
                 ;; Launch alacritty
                 ([?\s-t] . (lambda ()
+                             (interactive)
                              (start-process-shell-command "alacritty" nil "alacritty")))
 
                 ;; Switch workspace
