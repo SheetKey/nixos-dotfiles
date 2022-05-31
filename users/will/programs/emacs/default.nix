@@ -685,6 +685,9 @@
                 ([s-J] . windmove-swap-states-up)
                 ([s-K] . windmove-swap-states-down)
 
+                ;; Full screen
+                ([s-\ ] . exwm-layout-toggle-fullscreen)
+
                 ;; Launch applications via shell command
                 ([?\s-&] . (lambda (command)
                              (interactive (list (read-shell-command "$ ")))
