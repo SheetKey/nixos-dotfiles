@@ -162,6 +162,17 @@
     xkblayout-state
   ];
 
+  services.logind = {
+    extraConfig = "HandlePowerKey=suspend";
+    lidSwitch = "suspend";
+  };
+
+  programs.slock.enable = true;
+
+  programs.xss-lock = {
+    enable = true;
+  };
+
   # Install fonts
   fonts.fonts = with pkgs; [
     nerdfonts
