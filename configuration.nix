@@ -101,10 +101,10 @@
       #  &
       #  waitPID=$!
       #'';
-#exec dbus-launch --exit-with-session 
+
       start = ''
         emacs --daemon
-        exec dbus-launch --exit-with-session emacsclient -c &
+        exec emacsclient -c &
         waitPID=$!
       '';
     };
