@@ -752,6 +752,7 @@
           after = [ "exwm" ];
           config = ''
             (desktop-environment-mode)
+            (define-key desktop-environment-lock-screen (kbd "s-l") nil)
           '';
           extraConfig = ''
             :custom
