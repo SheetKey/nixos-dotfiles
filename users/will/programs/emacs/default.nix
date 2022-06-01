@@ -63,7 +63,7 @@
           (set-face-attribute 'variable-pitch nil :font "TeX Gyre Schola")
         )
         (if (daemonp)
-            (add-hook 'server-after-make-frame-functions
+            (add-hook 'after-make-frame-functions
                       (lambda (frame)
                         (setq doom-modeline-icon t)
                         (with-selected-frame frame

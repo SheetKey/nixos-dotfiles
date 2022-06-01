@@ -101,8 +101,10 @@
       #  &
       #  waitPID=$!
       #'';
+#exec dbus-launch --exit-with-session 
       start = ''
-        exec dbus-launch --exit-with-session emacs -mm --debug-init &
+        emacs --daemon
+        exec emacsclient -c &
         waitPID=$!
       '';
     };
@@ -113,10 +115,10 @@
 	  };
   };
 
-  services.emacs = {
-    enable = true;
-    package = pkgs.emacsGitNativeComp;
-  };
+  #services.emacs = {
+  #  enable = true;
+  #  package = pkgs.emacsGitNativeComp;
+  #};
 
   # Enable CUPS to print documents.
   # services.printing.enable = true;
