@@ -752,7 +752,7 @@
           after = [ "exwm" ];
           config = ''
             (desktop-environment-mode)
-            (define-key desktop-environment-mode-map (kbd "s-l") nil)
+            (define-key desktop-environment-mode-map [?\s-l] nil)
           '';
           extraConfig = ''
             :custom
