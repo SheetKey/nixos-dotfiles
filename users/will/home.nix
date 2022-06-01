@@ -62,6 +62,7 @@
     mathematica
     zoom-us
     pavucontrol
+    brightnessctl
     scrot #screenshots
     spectacle
     libreoffice
