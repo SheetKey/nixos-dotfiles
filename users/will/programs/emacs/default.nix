@@ -56,9 +56,18 @@
         (setq visible-bell t)
 
         ;; Font
-        (set-face-attribute 'default nil :font "FiraCode Nerd Font Mono" :height 110)
-        (set-face-attribute 'fixed-pitch nil :font "FiraCode Nerd Font Mono")
-        (set-face-attribute 'variable-pitch nil :font "TeX Gyre Schola")
+        (defun will/set-font-faces ()
+          (message "setting fonts")
+          (set-face-attribute 'default nil :font "FiraCode Nerd Font Mono" :height 110)
+          (set-face-attribute 'fixed-pitch nil :font "FiraCode Nerd Font Mono")
+          (set-face-attribute 'variable-pitch nil :font "TeX Gyre Schola")
+        )
+        (if (daemonp)
+            (add-hook 'after-make-frame-functions
+                      (lambda (frame)
+                        (with-selected-frame frame
+                          (will/set-font-faces))))
+            (will/set-font-faces))
 
         ;;;;;;;;;;; KEYBINDS
         ;; Make ESC quit prompts
