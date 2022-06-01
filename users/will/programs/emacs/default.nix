@@ -139,10 +139,27 @@
 
         ;;(add-hook 'tab-new (call-interactively #'tab-bar-rename-tab))
         (add-hook 'tab-bar-tab-post-open-functions (lambda (&rest_) (call-interactively #'tab-bar-rename-tab)))
-        
+        ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; EXWM        
         ;; Func for exwm
         (defun will/exwm-update-class ()
           (exwm-workspace-rename-buffer exwm-class-name))
+
+        ;; Start programs in background for exwm
+        (defun will/run-in-background (command)
+          (let ((command-parts (split-string command "[ ]+")))
+            (apply #'call-process `(,(car command-parts) nil 0 nil ,@(cdr command-parts)))))
+
+        ;; Exwm startup hook
+        (defun will/exwm-init-hook ()
+          ;; Start on workspace 1
+          (exwm-workspace-switch-create 1)
+
+          ;; Launch background apps
+          (will/run-in-background "pa-applet")
+          (will/run-in-background "nm-applet")
+          (will/run-in-background "cbatticon")
+        )
+
       '';
 
       # extra packages for emacs
@@ -640,6 +657,10 @@
             (setq ispell-program-name "aspell")
           '';                      
         };
+
+        exwm-systemtray = {
+          enable = true;
+        };
           
         exwm = {
           enable = true;
@@ -647,14 +668,21 @@
             ;; set default number of workspaces
             (setq exwm-workspace-number 5)
 
+            ;; Enable system tray
+            (require 'exwm-systemtray)
+            (exwm-systemtray-enable)
+
             ;; ADD STARTUP PROGRAMMS HERE
             (start-process-shell-command "nitrogen" nil "nitrogen --restore")
+            ;;(start-process-shell-command "pa-applet" nil "pa-applet")
+            ;;(start-process-shell-command "nm-applet" nil "nm-applet")
+            ;;(start-process-shell-command "cbatticon" nil "cbatticon")
 
             ;; When window class updates, use to set buffer name
             (add-hook 'exwm-update-class-hook #'will/exwm-update-class)
 
-            (require 'exwm-systemtray)
-            (exwm-systemtray-enable)
+            ;; Extra config on startup
+            (add-hook 'exwm-init-hook #'will/exwm-init-hook)
 
             ;; keybinds to always go to emacs
             (setq exwm-input-prefix-keys
