@@ -658,9 +658,9 @@
           '';                      
         };
 
-        exwm-systemtray = {
-          enable = true;
-        };
+        #exwm-systemtray = {
+        #  enable = true;
+        #};
           
         exwm = {
           enable = true;
@@ -669,9 +669,9 @@
             (setq exwm-workspace-number 5)
 
             ;; Enable system tray
-            (require 'exwm-systemtray)
-            (setq exwm-systemtray-height 32)
-            (exwm-systemtray-enable)
+            ;; (require 'exwm-systemtray)
+            ;; (setq exwm-systemtray-height 32)
+            ;; (exwm-systemtray-enable)
 
             ;; ADD STARTUP PROGRAMMS HERE
             (start-process-shell-command "nitrogen" nil "nitrogen --restore")
@@ -744,6 +744,21 @@
                           (number-sequence 0 9))))
 
             (exwm-enable)
+          '';
+        };
+
+        desktop-environment = {
+          enable = true;
+          after = [ "exwm" ];
+          config = ''
+            (desktop-environment-mode)
+          '';
+          extraConfig = ''
+            :custom
+            (desktop-environment-brightness-small-increment "2%+")
+            (desktop-environment-brightness-small-decrement "2%-")
+            (desktop-environment-brightness-normal-increment "5%+")
+            (desktop-environment-brightness-normal-decrement "5%-")
           '';
         };
 
