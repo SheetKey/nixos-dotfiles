@@ -670,6 +670,7 @@
 
             ;; Enable system tray
             (require 'exwm-systemtray)
+            (setq exwm-systemtray-height 32)
             (exwm-systemtray-enable)
 
             ;; ADD STARTUP PROGRAMMS HERE
