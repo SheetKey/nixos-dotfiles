@@ -63,6 +63,7 @@
     zoom-us
     pavucontrol
     brightnessctl
+    upower
     scrot #screenshots
     spectacle
     libreoffice
