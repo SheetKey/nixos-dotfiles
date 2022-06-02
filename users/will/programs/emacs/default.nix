@@ -164,6 +164,9 @@
           ;; Start on workspace 1
           (exwm-workspace-switch-create 1)
 
+          ;; Launch polybar
+          (will/start-panel)
+
           ;; Launch background apps
           (will/run-in-background "pa-applet")
           (will/run-in-background "nm-applet")
