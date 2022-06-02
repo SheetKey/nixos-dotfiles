@@ -9,7 +9,7 @@
     config = ./config.ini;
 
     script = ''
-      polybar top &
+      polybar panel &
     '';
   };
 }
