@@ -169,6 +169,21 @@
           (will/run-in-background "nm-applet")
           (will/run-in-background "cbatticon")
         )
+        ;; Exwm polybar
+        (defvar will/polybar-process nil
+          "Holds the process of the running polybar instance, if any")
+
+        (defun will/kill-panel ()
+          (interactive)
+          (when will/polybar-process
+            (ignore-errors
+              (kill-process will/polybar-process)))
+          (setq will/polybar-process nil))
+
+        (defun will/start-panel ()
+          (interactive)
+          (will/kill-panel)
+          (setq will/polybar-process (start-process-shell-command "polybar" nil "polybar panel")))
 
       '';
 
