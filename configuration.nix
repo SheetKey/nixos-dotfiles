@@ -177,6 +177,7 @@
   fonts.fonts = with pkgs; [
     nerdfonts
     font-awesome
+    material-icons
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
