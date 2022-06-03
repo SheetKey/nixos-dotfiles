@@ -4,7 +4,7 @@
 
 let
   polybar-exwm-workspace = pkgs.writeShellScriptBin "polybar-exwm-workspace" ''
-    emacsclient -e "will/exwm-workspace"
+    emacsclient -e "(will/exwm-workspace)" | sed -e 's/^"//' -e 's/"$//'
   '';
   nvidia-offload = pkgs.writeShellScriptBin "nvidia-offload" ''
     export __NV_PRIME_RENDER_OFFLOAD=1
