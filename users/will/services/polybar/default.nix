@@ -11,5 +11,6 @@
     #script = ''
     #  polybar panel &
     #'';
+    script = "";
   };
 }
