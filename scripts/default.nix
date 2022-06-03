@@ -3,6 +3,9 @@
 { pkgs, ... }:
 
 let
+  polybar-exwm-workspace = pkgs.writeShellScriptBin "polybar-exwm-workspace" ''
+    emacsclient -e "will/exwm-workspace"
+  '';
   nvidia-offload = pkgs.writeShellScriptBin "nvidia-offload" ''
     export __NV_PRIME_RENDER_OFFLOAD=1
     export __NV_PRIME_RENDER_OFFLOAD_PROVIDER=NVIDIA-G0
@@ -68,9 +71,9 @@ let
 
 in {
   environment.systemPackages = [ 
+    polybar-exwm-workspace
     getKernelScript
     trayer-padding-icon
     nvidia-offload
-    mashScript
   ];
 }
