@@ -207,6 +207,22 @@
         (defun will/send-polybar-exwm-workspace ()
           (will/send-polybar-hook "exwm-workspace" 1))
 
+        ;; Settings for openwith 
+        (setq openwith-associations
+          (list
+            ;(list (openwith-make-regexp
+            ;  `("mpg" "mpeg" "mp3" "mp4"
+            ;    "avi" "wmv" "wav" "mov" "flv"
+            ;    "ogm" "ogg" "mkv"))
+            ;  "mpv"
+            ;  `(file))
+            (list (openwith-make-regexp
+              `("pdf" "png" "jpeg"))
+              "zathura"
+              `(file))))
+        (openwith-mode 1)
+        ;; UNCOMMENT NEXT LINE IF ISSUES
+        ;;(setq largr-file-warning-threshold nil)
       '';
 
       # extra packages for emacs
@@ -810,6 +826,10 @@
             (desktop-environment-brightness-normal-increment "5%+")
             (desktop-environment-brightness-normal-decrement "5%-")
           '';
+        };
+
+        openwith = {
+          enable = true;
         };
 
 
