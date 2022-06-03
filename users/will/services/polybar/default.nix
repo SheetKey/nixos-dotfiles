@@ -8,8 +8,8 @@
 
     config = ./config.ini;
 
-    script = ''
-      polybar panel &
-    '';
+    #script = ''
+    #  polybar panel &
+    #'';
   };
 }
