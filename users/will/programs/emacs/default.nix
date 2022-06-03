@@ -201,6 +201,12 @@
             (8 "0 1 2 3 4 5 6 7 [8] 9")
             (9 "0 1 2 3 4 5 6 7 8 [9]")))
 
+        (defun will/send-polybar-hook (module-name hook-index)
+          (start-process-shell-command "polybar-msg" nil
+            (format "polybar-msg hook %s %s" module-name hook-index)))
+        (defun will/send-polybar-exwm-workspace ()
+          (will/send-polybar-hook "exwm-workspace" 1))
+
       '';
 
       # extra packages for emacs
@@ -722,6 +728,8 @@
 
             ;; When window class updates, use to set buffer name
             (add-hook 'exwm-update-class-hook #'will/exwm-update-class)
+            ;; When workspace updates notify polybar
+            (add-hook 'exwm-workspace-switch-hook #'will/send-polybar-exwm-workspace)
 
             ;; Extra config on startup
             (add-hook 'exwm-init-hook #'will/exwm-init-hook)
