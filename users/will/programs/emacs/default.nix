@@ -207,22 +207,34 @@
         (defun will/send-polybar-exwm-workspace ()
           (will/send-polybar-hook "exwm-workspace" 1))
 
-        ;; Settings for openwith 
-        (setq openwith-associations
-          (list
-            ;(list (openwith-make-regexp
-            ;  `("mpg" "mpeg" "mp3" "mp4"
-            ;    "avi" "wmv" "wav" "mov" "flv"
-            ;    "ogm" "ogg" "mkv"))
-            ;  "mpv"
-            ;  `(file))
-            (list (openwith-make-regexp
-              `("pdf" "png" "jpeg"))
-              "zathura"
-              `(file))))
-        (openwith-mode 1)
-        ;; UNCOMMENT NEXT LINE IF ISSUES
-        ;;(setq largr-file-warning-threshold nil)
+        ;; Openwith setting
+        (when (require 'openwith nil 'noerror)
+          (setq openwith-associations
+            (list
+              (list (openwith-make-extension-regexp
+                '("doc" "xls" "ppt" "odt" "ods" "odg" "odp"))
+                "libreoffice"
+                '(file))
+              (list (openwith-make-extension-regexp
+                '("mpg" "mpeg" "mp3" "mp4"
+                  "avi" "wmv" "wav" "mov" "flv"
+                  "ogm" "ogg" "mkv"))
+                "mpv"
+                '(file))
+              (list (openwith-make-extension-regexp
+                '("pdf" "png" "jpeg"))
+                "zathura"
+                '(file))
+          ))
+          (openwith-mode 1))
+
+
+        ;; Lsp which key integration
+        ;;(with-eval-after-load 'lsp-mode
+        ;;  (add-hook 'lsp-mode-hook #'lsp-enable-which-key-integration))
+        (defun will/lsp-which-key ()
+          (interactive)
+          (lsp-enable-which-key-integration t))
       '';
 
       # extra packages for emacs
@@ -588,16 +600,32 @@
         # direnv integration
         direnv = {
           enable = true;
+          config = "(direnv-mode)";
         };
+
+        #######################################################
+        #######################################################
+        #######################################################
+        #######################################################
 
         # LSP Mode
         lsp-mode = {
           enable = true;
-          command = [ "lsp" "lsp-deferred" ];
-          init = "(setq lsp-keymap-prefix \"C-c l\")";
-          hook = [ "(haskell-mode . lsp)" ];
+          command = [ "lsp" ];
+          init = ''
+            (define-key lsp-mode-map (kbd "C-c C-l") lsp-command-map)
+          '';
+          hook = [ "(haskell-mode . lsp)"
+                   "(haskell-literate-mode-hook .lsp)"
+                   "(haskell-mode . (lsp-enable-which-key-integration t))"
+                 ];
           config = ''
-            ;(lsp-enable-which-key-integration t)
+            (define-key lsp-mode-map [?\s-l] nil)
+            ;;(setq lsp-keymap-prefix [?\C-c l])
+            ;;(define-key lsp-mode-map [?\C-c l] lsp-keymap-prefix)
+            
+            ;;(with-eval-after-load 'lsp-mode
+            ;;  (add-hook 'lsp-mode-hook #'lsp-enable-which-key-integration))
             
             (advice-add 'lsp :before #'direnv-update-environment)
             (setq lsp-modeline-code-actions-enable nil
@@ -606,14 +634,29 @@
 
           '';
         };
+        lsp-headerline-breadcrumb-mode = {
+          enable = true;
+        };
+        lsp-modeline-diagnostics-mode = {
+          enable = true;
+        };
+        lsp-modeline-code-actions-mode = {
+          enable = true;
+        };
         lsp-ui = {
           enable = true;
           hook = [ "(lsp-mode . lsp-ui-mode)" ];
+          config = ''
+            (setq lsp-ui-sideline-enable t)
+            (setq lsp-ui-sideline-show-hover nil)
+            ;(setq lsp-ui-doc-position 'bottom)
+            ;(lsp-ui-doc-show)
+          '';
         };
         lsp-haskell = {
           enable = true;
         };
-        
+
         # Company autocompletions with LSP
         company = {
           enable = true;
@@ -633,6 +676,19 @@
           enable = true;
           hook = [ "(company-mode . company-box-mode)" ];
         };
+
+        # haskell using haskell-mode
+        haskell-mode = {
+          enable = true;
+        };
+        haskell-doc = {
+          enable = true;
+        };
+
+        #######################################################
+        #######################################################
+        #######################################################
+        #######################################################
 
         #Term mode
         term = {
@@ -702,15 +758,6 @@
           config = ''
             (save-place-mode 1)
           '';
-        };
-
-        # haskell using haskell-mode
-        haskell-mode = {
-          enable = true;
-          
-        };
-        haskell-doc = {
-          enable = true;
         };
 
         # ispell
@@ -830,6 +877,10 @@
 
         openwith = {
           enable = true;
+          config = ''
+        ;; UNCOMMENT NEXT LINE IF ISSUES
+        ;;(setq largr-file-warning-threshold nil)
+          '';
         };
 
 
