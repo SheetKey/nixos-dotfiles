@@ -111,6 +111,8 @@
       ./programs/emacs/default.nix
       ./programs/direnv/default.nix
 
+      ./programs/awesomewm/default.nix
+
       ./services/picom/default.nix
       ./services/polybar/default.nix
 

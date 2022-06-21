@@ -89,6 +89,9 @@
     #  loadScript = ''
     #  '';
     #};
+    windowManager.awesome = {
+      enable = true;
+    };
     windowManager.session = lib.singleton {
       name = "exwm";
       #start = ''
