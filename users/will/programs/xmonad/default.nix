@@ -3,7 +3,7 @@
 
 {
   xsession = {
-    enable = true;
+    enable = false;
 
     windowManager.xmonad = {
       enable = false;
