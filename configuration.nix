@@ -66,7 +66,7 @@
 
 	  displayManager = {
       lightdm.enable = true;
-	    defaultSession = "none+exwm";
+	    defaultSession = "none+awesome";
       autoLogin = {
         enable = false;
         user = "will";
@@ -83,34 +83,30 @@
 		#	];
 	  #};
 
-    #windowManager.exwm = {
-    #  enable = true;
-    #  enableDefaultConfig = false;
-    #  loadScript = ''
-    #  '';
-    #};
     windowManager.awesome = {
       enable = true;
     };
-    windowManager.session = lib.singleton {
-      name = "exwm";
-      #start = ''
-      #  ${pkgs.emacsGitNativeComp}/bin/emacs &
-      #  alacritty &
-      #  waitPID=$!
-      #'';
-      #start = ''
-      #  emacs -mm --debug-init
-      #  &
-      #  waitPID=$!
-      #'';
+    ### THIS IS A WORKING EXWM START CONFIG #######
+    # windowManager.session = lib.singleton {
+    #   name = "exwm";
+    #   #start = ''
+    #   #  ${pkgs.emacsGitNativeComp}/bin/emacs &
+    #   #  alacritty &
+    #   #  waitPID=$!
+    #   #'';
+    #   #start = ''
+    #   #  emacs -mm --debug-init
+    #   #  &
+    #   #  waitPID=$!
+    #   #'';
 
-      start = ''
-        emacs --daemon
-        exec emacsclient -c &
-        waitPID=$!
-      '';
-    };
+    #   start = ''
+    #     emacs --daemon
+    #     exec emacsclient -c &
+    #     waitPID=$!
+    #   '';
+    # };
+    ###############################################
 
 	  libinput = {
       enable = true;
@@ -118,10 +114,10 @@
 	  };
   };
 
-  #services.emacs = {
-  #  enable = true;
-  #  package = pkgs.emacsGitNativeComp;
-  #};
+  services.emacs = {
+    enable = true;
+    package = pkgs.emacsGitNativeComp;
+  };
 
   # Enable CUPS to print documents.
   # services.printing.enable = true;
