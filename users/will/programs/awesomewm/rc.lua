@@ -45,11 +45,17 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
+-- NOTE: Next line was the default
+-- beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
+
+-- local theme_path = string.format("%s/.config/awesome/themes/%s/theme.lua", os.getenv("HOME"), "zenburn")
+-- beautiful.init(theme_path)
+
+beautiful.init(gears.filesystem.get_configuration_dir() .. "mytheme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "alacritty"
-editor = os.getenv("EDITOR") or "emacs"
+editor = os.getenv("EDITOR") or "nvim"
 editor_cmd = terminal .. " -e " .. editor
 
 -- Default modkey.
@@ -63,9 +69,9 @@ modkey = "Mod4"
 awful.layout.layouts = {
     -- awful.layout.suit.floating,
     awful.layout.suit.tile,
-    awful.layout.suit.tile.left,
-    awful.layout.suit.tile.bottom,
-    awful.layout.suit.tile.top,
+    -- awful.layout.suit.tile.left,
+    -- awful.layout.suit.tile.bottom,
+    -- awful.layout.suit.tile.top,
     awful.layout.suit.fair,
     -- awful.layout.suit.fair.horizontal,
     -- awful.layout.suit.spiral,
@@ -264,14 +270,15 @@ globalkeys = gears.table.join(
               {description = "focus the previous screen", group = "screen"}),
     awful.key({ modkey,           }, "u", awful.client.urgent.jumpto,
               {description = "jump to urgent client", group = "client"}),
-    awful.key({ modkey,           }, "Tab",
-        function ()
-            awful.client.focus.history.previous()
-            if client.focus then
-                client.focus:raise()
-            end
-        end,
-        {description = "go back", group = "client"}),
+    -- NOTE: I COMMENTED OUT TO GET BACK 'modkey tab'
+    -- awful.key({ modkey,           }, "Tab",
+    --     function ()
+    --         awful.client.focus.history.previous()
+    --         if client.focus then
+    --             client.focus:raise()
+    --         end
+    --     end,
+    --     {description = "go back", group = "client"}),
 
     -- Standard program
     awful.key({ modkey,           }, "Return", function () awful.spawn(terminal) end,
@@ -280,6 +287,12 @@ globalkeys = gears.table.join(
               {description = "reload awesome", group = "awesome"}),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit,
               {description = "quit awesome", group = "awesome"}),
+    -- NOTE: Spawn an emacs client
+    awful.key({ modkey,           }, "e", function () awful.spawn.with_shell("emacsclient -c") end,
+              {description = "open an emacsclient frame", group = "launcher"}),
+    -- NOTE: Spawn brave
+    awful.key({modkey,            }, "b", function () awful.spawn("brave") end,
+              {description = "spawn brave", group = "launcher"}),
 
     awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)          end,
               {description = "increase master width factor", group = "layout"}),
@@ -293,9 +306,11 @@ globalkeys = gears.table.join(
               {description = "increase the number of columns", group = "layout"}),
     awful.key({ modkey, "Control" }, "l",     function () awful.tag.incncol(-1, nil, true)    end,
               {description = "decrease the number of columns", group = "layout"}),
-    awful.key({ modkey,           }, "space", function () awful.layout.inc( 1)                end,
+    -- NOTE: I CHANGED FROM "space" TO "tab"
+    awful.key({ modkey,           }, "Tab", function () awful.layout.inc( 1)                end,
               {description = "select next", group = "layout"}),
-    awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(-1)                end,
+    -- NOTE: I CHANGED FROM "space" TO "tab"
+    awful.key({ modkey, "Shift"   }, "Tab", function () awful.layout.inc(-1)                end,
               {description = "select previous", group = "layout"}),
 
     awful.key({ modkey, "Control" }, "n",
@@ -311,8 +326,11 @@ globalkeys = gears.table.join(
               {description = "restore minimized", group = "client"}),
 
     -- Prompt
-    awful.key({ modkey },            "r",     function () awful.screen.focused().mypromptbox:run() end,
-              {description = "run prompt", group = "launcher"}),
+    -- awful.key({ modkey },            "r",     function () awful.screen.focused().mypromptbox:run() end,
+    --           {description = "run prompt", group = "launcher"}),
+    -- NOTE: USE ROFI
+    awful.key({ modkey },               "d", function () awful.spawn("rofi") end,
+              {description = "rofi", group = "launcher"}),
 
     awful.key({ modkey }, "x",
               function ()
@@ -330,7 +348,8 @@ globalkeys = gears.table.join(
 )
 
 clientkeys = gears.table.join(
-    awful.key({ modkey,           }, "f",
+    -- NOTE: I CHANGED FROM "f" to "space"
+    awful.key({ modkey,           }, "space",
         function (c)
             c.fullscreen = not c.fullscreen
             c:raise()
@@ -488,14 +507,21 @@ awful.rules.rules = {
         }
       }, properties = { floating = true }},
 
+    -- NOTE: I SET THIS TO FALSE
     -- Add titlebars to normal clients and dialogs
     { rule_any = {type = { "normal", "dialog" }
-      }, properties = { titlebars_enabled = true }
+      }, properties = { titlebars_enabled = false }
     },
 
     -- Set Firefox to always map on the tag named "2" on screen 1.
     -- { rule = { class = "Firefox" },
     --   properties = { screen = 1, tag = "2" } },
+
+    -- Fix emacs not taking up entire space
+    { rule = { class = "Emacs" },
+      properties = { size_hints_honor = false }
+    },
+
 }
 -- }}}
 
@@ -561,4 +587,13 @@ end)
 
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
+-- }}}
+
+
+-- {{{ Autostart
+awful.spawn.once("pa-applet")
+awful.spawn.once("nm-applet")
+awful.spawn.once("cbatticon")
+awful.spawn.once("emacs --daemon")
+awful.spawn.once("nitrogen --restore")
 -- }}}

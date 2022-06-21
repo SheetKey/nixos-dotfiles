@@ -772,12 +772,8 @@
           '';                      
         };
 
-        #exwm-systemtray = {
-        #  enable = true;
-        #};
-          
         exwm = {
-          enable = true;
+          enable = false;
           config = ''
             ;; set default number of workspaces
             (setq exwm-workspace-number 5)
