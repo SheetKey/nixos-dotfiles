@@ -46,12 +46,11 @@ end
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
 -- NOTE: Next line was the default
--- beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
+beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
 
--- local theme_path = string.format("%s/.config/awesome/themes/%s/theme.lua", os.getenv("HOME"), "zenburn")
+-- local theme_path = string.format("%s/.config/awesome/mytheme.lua", os.getenv("HOME"))
 -- beautiful.init(theme_path)
 
-beautiful.init(gears.filesystem.get_configuration_dir() .. "mytheme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "alacritty"
@@ -217,8 +216,8 @@ awful.screen.connect_for_each_screen(function(s)
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
             mykeyboardlayout,
-            wibox.widget.systray(),
             mytextclock,
+            wibox.widget.systray(),
             s.mylayoutbox,
         },
     }
@@ -329,7 +328,7 @@ globalkeys = gears.table.join(
     -- awful.key({ modkey },            "r",     function () awful.screen.focused().mypromptbox:run() end,
     --           {description = "run prompt", group = "launcher"}),
     -- NOTE: USE ROFI
-    awful.key({ modkey },               "d", function () awful.spawn("rofi") end,
+    awful.key({ modkey },               "d", function () awful.spawn("rofi -show run") end,
               {description = "rofi", group = "launcher"}),
 
     awful.key({ modkey }, "x",
