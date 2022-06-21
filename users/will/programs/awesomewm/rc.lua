@@ -518,7 +518,9 @@ awful.rules.rules = {
 
     -- Fix emacs not taking up entire space
     { rule = { class = "Emacs" },
-      properties = { size_hints_honor = false }
+      properties = { size_hints_honor = false,
+		     placement = awful.placement.no_overlap+awful.placement.no_offscreen
+      }
     },
 
 }
