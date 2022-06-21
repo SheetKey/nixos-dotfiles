@@ -437,7 +437,14 @@ for i = 1, 9 do
                           end
                       end
                   end,
-                  {description = "toggle focused client on tag #" .. i, group = "tag"})
+                  {description = "toggle focused client on tag #" .. i, group = "tag"}),
+
+	-- NOTE: My brightness controls
+	awful.key({ }, "XF86MonBrightnessDown", function ()
+	      awful.util.spawn("brightnessctl s 5%-") end),
+	awful.key({ }, "XF86MonBrightnessUp", function ()
+	      awful.util.spawn("brightnessctl s +5%") end)
+	
     )
 end
 
@@ -519,7 +526,6 @@ awful.rules.rules = {
     -- Fix emacs not taking up entire space
     { rule = { class = "Emacs" },
       properties = { size_hints_honor = false,
-		     placement = awful.placement.no_overlap+awful.placement.no_offscreen
       }
     },
 

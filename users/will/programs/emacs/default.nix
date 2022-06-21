@@ -62,6 +62,18 @@
           (set-face-attribute 'fixed-pitch nil :font "FiraCode Nerd Font Mono")
           (set-face-attribute 'variable-pitch nil :font "TeX Gyre Schola")
         )
+        ;; Taken from doom modeline FAQ
+;;        (after! doom-modeline
+;;          (doom-modeline-def-modeline 'main
+;;              '(bar matches buffer-info remote-host buffer-position parrot selection-info)
+;;              '(misc-info minor-modes checker input-method buffer-encoding major-mode process vcs "  "))) 
+        (eval-after-load "doom-modeline"
+          (doom-modeline-def-modeline 'main
+              '(bar matches buffer-info remote-host buffer-position parrot selection-info)
+              '(misc-info minor-modes checker input-method buffer-encoding major-mode process vcs "  "))) 
+
+    
+
         (if (daemonp)
             (add-hook 'after-make-frame-functions
                       (lambda (frame)
@@ -264,7 +276,12 @@
         };
 
         # All the icons
-        all-the-icons.enable = true;
+        all-the-icons = {
+          enable = true;
+          #config = ''
+          #  (setq all-the-icons-scale-factor 1.1)
+          #'';
+        };
 
         # Rainbow delimiters for elisp
         rainbow-delimiters = {
