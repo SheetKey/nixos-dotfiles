@@ -441,9 +441,9 @@ for i = 1, 9 do
 
 	-- NOTE: My brightness controls
 	awful.key({ }, "XF86MonBrightnessDown", function ()
-	      awful.util.spawn("brightnessctl s 5%-") end),
+	      awful.util.spawn("brightnessctl s 1%-") end),
 	awful.key({ }, "XF86MonBrightnessUp", function ()
-	      awful.util.spawn("brightnessctl s +5%") end)
+	      awful.util.spawn("brightnessctl s +1%") end)
 	
     )
 end
