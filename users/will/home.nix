@@ -34,6 +34,7 @@
     nix-prefetch-github
     ripgrep
     unzip
+    hardinfo
 
     # midi
     timidity
