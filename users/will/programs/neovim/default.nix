@@ -26,7 +26,7 @@
       ultisnips
 
       # Eyecandy
-      (nvim-treesitter.withPlugins (plugins: pkgs.tree-sitter.allGrammars))
+      # (nvim-treesitter.withPlugins (plugins: pkgs.tree-sitter.allGrammars))
       pears-nvim
       bufferline-nvim
       lualine-nvim

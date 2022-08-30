@@ -652,13 +652,13 @@
           '';
         };
         lsp-headerline-breadcrumb-mode = {
-          enable = true;
+          enable = false;
         };
         lsp-modeline-diagnostics-mode = {
-          enable = true;
+          enable = false;
         };
         lsp-modeline-code-actions-mode = {
-          enable = true;
+          enable = false;
         };
         lsp-ui = {
           enable = true;
@@ -734,7 +734,7 @@
           enable = true;
           command = [ "dired" "dired-jump" ];
           config = ''
-            (evil-collection-define-key 'normal 'dired-mode-map
+            (evil-define-key 'normal 'dired-mode-map
               "h" 'dired-single-up-directory
               "l" 'dired-single-buffer)
           '';
