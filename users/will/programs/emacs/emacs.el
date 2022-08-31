@@ -78,7 +78,7 @@
     ;; Global settings
     (setq doom-themes-enable-bold t
           doom-themes-enable-italic t)
-    (load-theme 'doom-tokyo-night t)
+    (load-theme 'doom-moonlight t)
 
     (doom-themes-visual-bell-config)
 )
