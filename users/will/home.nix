@@ -109,7 +109,7 @@
       ./programs/lf/default.nix
       ./programs/alacritty/default.nix
       ./programs/neovim/default.nix
-      ./programs/emacs/new-default.nix
+      ./programs/emacs/new-new-default.nix
       ./programs/direnv/default.nix
 
       ./programs/awesomewm/default.nix
