@@ -1,3 +1,5 @@
+(setq use-package-always-ensure t)
+
 ;; UI Changes
 (scroll-bar-mode -1)                ; Disable visible scrollbar
 (tool-bar-mode -1)                  ; Disable the toolbar
@@ -97,7 +99,7 @@
 )
 
 (use-package rainbow-delimiters
-  :enable t
+  :ensure t
   :hook prog-mode
 )
 
@@ -174,7 +176,7 @@
 )
 
 (use-package magit
-  :command (magit-status magit-get-current-branch)
+  :commands (magit-status magit-get-current-branch)
   :custom 
     (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1)
 )
@@ -188,7 +190,7 @@
 
 ;; NEEDS KEYBINDS
 (use-package dired
-  :command (dired dired-jump)
+  :commands (dired dired-jump)
 )
 
 ;; NEEDS KEYBINDS
