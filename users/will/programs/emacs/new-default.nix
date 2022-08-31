@@ -2,31 +2,30 @@
 
 {
   programs.emacs = {
-    enable = true;
+    enable = false;
     package = pkgs.emacsGitNativeComp;
-    extraPackages = with pkgs.emacs28Packages [
-      use-package
-      doom-themes
-      doom-modeline
-      all-the-icons
-      rainbow-delimiters
-      which-key
-      vertico
-      orderless
-      marginalia
-      consult
-      helpful
-      evil
-      evil-collection
-      undo-fu
-      nix-mode
-      nix-flake
-      magit
-      ssh-agnecy
-      direnv
-      dired-single
-      all-the-icons-dired
-      openwith
+    extraPackages = epkgs: [
+      epkgs.use-package
+      epkgs.doom-themes
+      epkgs.doom-modeline
+      epkgs.all-the-icons
+      epkgs.rainbow-delimiters
+      epkgs.which-key
+      epkgs.vertico
+      epkgs.orderless
+      epkgs.marginalia
+      epkgs.consult
+      epkgs.helpful
+      epkgs.evil
+      epkgs.evil-collection
+      epkgs.undo-fu
+      epkgs.nix-mode
+      epkgs.magit
+      epkgs.ssh-agency
+      epkgs.direnv
+      epkgs.dired-single
+      epkgs.all-the-icons-dired
+      epkgs.openwith
     ];
     extraConfig = ''
     ;; UI Changes
