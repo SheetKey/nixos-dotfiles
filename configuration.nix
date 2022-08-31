@@ -159,6 +159,15 @@
 
     # xkblayout-state
     xkblayout-state
+
+    # emacs
+    (emacsWithPackagesFromUsePackage
+      {
+      config = ./users/will/programs/emacs/emacs.el;
+      package = pkgs.emacsGitNativeComp;
+      alwaysEnsure = true;
+      }
+    )
   ];
 
   services.logind = {
