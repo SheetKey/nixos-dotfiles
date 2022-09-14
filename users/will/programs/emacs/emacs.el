@@ -129,7 +129,7 @@
     ;; Global settings
     (setq doom-themes-enable-bold t
           doom-themes-enable-italic t)
-    (load-theme 'doom-nord t)
+    (load-theme 'doom-nord-aurora t)
 
     (doom-themes-visual-bell-config)
 )
