@@ -129,7 +129,7 @@
     ;; Global settings
     (setq doom-themes-enable-bold t
           doom-themes-enable-italic t)
-    (load-theme 'doom-city-lights t)
+    (load-theme 'doom-monokai-machine t)
 
     (doom-themes-visual-bell-config)
 )
