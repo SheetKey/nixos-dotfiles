@@ -114,10 +114,18 @@
 	  };
   };
 
-  # services.emacs = {
-  #   enable = true;
-  #   package = pkgs.emacsGitNativeComp;
-  # };
+  services.emacs = {
+    enable = false;
+    install = true;
+    defaultEditor = true;
+    package = with pkgs; (emacsWithPackagesFromUsePackage
+      {
+      config = ./users/will/programs/emacs/emacs.el;
+      package = pkgs.emacsGitNativeComp;
+      alwaysEnsure = false;
+      }
+    );
+  };
 
   # Enable CUPS to print documents.
   # services.printing.enable = true;
@@ -160,14 +168,6 @@
     # xkblayout-state
     xkblayout-state
 
-    # emacs
-    (emacsWithPackagesFromUsePackage
-      {
-      config = ./users/will/programs/emacs/emacs.el;
-      package = pkgs.emacsGitNativeComp;
-      alwaysEnsure = true;
-      }
-    )
   ];
 
   services.logind = {
@@ -186,6 +186,7 @@
     nerdfonts
     font-awesome
     material-icons
+    emacs-all-the-icons-fonts
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

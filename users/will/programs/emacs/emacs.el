@@ -1,4 +1,4 @@
-(setq use-package-always-ensure t)
+;;(setq use-package-always-ensure t)
 
 ;; UI Changes
 (scroll-bar-mode -1)                ; Disable visible scrollbar
@@ -72,18 +72,70 @@
 (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
 (setq reftex-plug-into-AUCTeX t)
 
+(use-package general
+  :ensure t
+)
+
+;; Gloabl keys
+(general-def
+ "<escape>" 'keyboard-escape-quit
+ ;; Consult
+ "C-S" 'consult-line
+ "C-x b" 'consult-buffer
+ "M-g M-g" 'consult-goto-line
+ "M-g g" 'consult-goto-line
+ "M-s f" 'consult-find
+ "M-s r" 'consult-ripgrep
+ ;; Helpful
+ [remap describe-function] 'helpful-function
+ [remap describe-symbol] 'helpful-symbol
+ [remap describe-command] 'helpful-command
+ [remap describe-variable] 'helpful-variable
+ [remap describe-key] 'helpful-key
+)
+;; Evil global keys
+(general-def 'motion
+  "j" 'evil-next-visual-line
+  "k" 'evil-previous-visual-line
+)
+;; Vertico keys
+(general-def vertico-map
+	     "C-j" 'vertico-next
+	     "C-k" 'vertico-previous
+	     "C-f" 'vertico-exit
+)
+;; Minibuffer keys
+(general-def minibuffer-local-map
+	     "M-h" 'backward-kill-word
+	     ;; Consult
+	     "C-r" 'consult-history
+)
+;; Dired keys
+(general-def 'normal dired-mode-map
+  "h" 'dired-single-up-directory
+  "l" 'dired-single-buffer
+  "H" 'dired-hide-dotfiles-mode
+)
+;; Dired single
+(general-def dired-mode-map
+  [remap dired-find-file] 'dired-single-buffer
+  [remap dired-mouse-find-file-other-window] 'dired-single-buffer-mouse
+  [remap dired-up-directory] 'dired-single-up-directory
+)
 
 (use-package doom-themes
+  :ensure t
   :config
     ;; Global settings
     (setq doom-themes-enable-bold t
           doom-themes-enable-italic t)
-    (load-theme 'doom-moonlight t)
+    (load-theme 'doom-nord t)
 
     (doom-themes-visual-bell-config)
 )
 
 (use-package doom-modeline
+  :ensure t
   :init (doom-modeline-mode 1)
   :config
     (setq doom-modeline-buffer-file-name-style 'truncate-except-project)
@@ -96,15 +148,16 @@
       '(misc-info minor-modes checker input-method buffer-encoding major-mode process vcs "  "))) 
 
 (use-package all-the-icons
+  :ensure t
 )
 
 (use-package rainbow-delimiters
   :ensure t
-  :hook prog-mode
+  :hook (prog-mode . rainbow-delimiters-mode)
 )
 
-;; NEEDS KEYBINDS
 (use-package which-key
+  :ensure t
   :init (which-key-mode)
   :config
     (setq which-key-idle-delay 0.5)
@@ -112,6 +165,7 @@
 
 ;; NEEDS KEYBINDS
 (use-package vertico
+  :ensure t
   :init (vertico-mode)
   :config
     (setq vertico-cycle t)
@@ -124,12 +178,14 @@
 )
 
 (use-package orderless
-  :config
-    (setq completion-styles '(orderless))
+  :ensure t
+  :custom
+    (completion-styles '(orderless))
 )
 
 ;; NEEDS KEYBINDS
 (use-package marginalia
+  :ensure t
   :after (vertico)
   :custom
     (marginalia-annotators '(marginalia-annotators-heavy marginalia-annotators-light nil))
@@ -137,14 +193,17 @@
 
 ;; NEEDS KEYBINDS
 (use-package consult
+  :ensure t
 )
 
 ;; NEEDS KEYBINDS
 (use-package helpful
+  :ensure t
 )
 
 ;; NEEDS KEYBINDS
 (use-package evil
+  :ensure t
   :init
     (setq evil-want-integration t
           evil-want-keybinding nil
@@ -160,14 +219,17 @@
 
 ;; NEEDS KEYBINDS
 (use-package evil-collection
+  :ensure t
   :after (evil)
   :config (evil-collection-init)
 )
 
 (use-package undo-fu
+  :ensure t
 )
 
 (use-package nix-mode
+  :ensure t
   :mode "\\.nix\\'"
 )
 
@@ -176,30 +238,41 @@
 )
 
 (use-package magit
+  :ensure t
   :commands (magit-status magit-get-current-branch)
   :custom 
     (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1)
 )
 
 (use-package ssh-agency
+  :ensure t
 )
 
 (use-package direnv
+  :ensure t
   :config (direnv-mode)
 )
 
 ;; NEEDS KEYBINDS
 (use-package dired
   :commands (dired dired-jump)
+  :custom (dired-listing-switches "-agho --group-directories-first")
 )
 
 ;; NEEDS KEYBINDS
 (use-package dired-single
+  :ensure t
   :after (dired)
 )
 
+(use-package dired-hide-dotfiles
+  :ensure t
+  :hook (dired-mode . dired-hide-dotfiles-mode)
+)
+
 (use-package all-the-icons-dired
-  :hook (dired-mode)
+  :ensure t
+  :hook (dired-mode . all-the-icons-dired-mode)
 )  
 
 (use-package ispell
@@ -208,6 +281,7 @@
 )
 
 (use-package openwith
+  :ensure t
   :config
     (when (require 'openwith nil 'noerror)
       (setq openwith-associations
@@ -232,3 +306,7 @@
     )
 )
 
+(use-package haskell-mode
+  :ensure t
+)
+  
