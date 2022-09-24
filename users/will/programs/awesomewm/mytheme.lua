@@ -9,16 +9,16 @@ local theme = {}
 
 theme.font          = "Ubuntu Nerd Font 8"
 
-theme.bg_normal     = "#222222"
-theme.bg_focus      = "#535d6c"
-theme.bg_urgent     = "#ff0000"
-theme.bg_minimize   = "#444444"
+theme.bg_normal     = "#073642"
+theme.bg_focus      = "#268bd2"
+theme.bg_urgent     = "#dc322f"
+theme.bg_minimize   = "#002b36"
 theme.bg_systray    = theme.bg_normal
 
-theme.fg_normal     = "#aaaaaa"
-theme.fg_focus      = "#ffffff"
-theme.fg_urgent     = "#ffffff"
-theme.fg_minimize   = "#ffffff"
+theme.fg_normal     = "#657b83"
+theme.fg_focus      = "#586e75"
+theme.fg_urgent     = "#586e75"
+theme.fg_minimize   = "#586e75"
 
 theme.useless_gap   = dpi(0)
 theme.border_width  = dpi(1)
