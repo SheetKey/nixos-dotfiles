@@ -23,6 +23,10 @@
 (column-number-mode)
 (global-display-line-numbers-mode t)
 
+;; Single line scrolling
+(setq scroll-step 1)
+(setq scroll-margin 3)
+
 ;; Disable line numbers in some modes
 (dolist (mode '(org-mode-hook
                 term-mode-hook
