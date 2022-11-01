@@ -25,7 +25,8 @@
 
 ;; Single line scrolling
 (setq scroll-step 1)
-(setq scroll-margin 3)
+(setq scroll-margin 2)
+(pixel-scroll-precision-mode t)
 
 ;; Disable line numbers in some modes
 (dolist (mode '(org-mode-hook
@@ -98,7 +99,7 @@
  [remap describe-key] 'helpful-key
 )
 ;; Evil global keys
-(general-def 'motion
+(general-def '(motion normal)
   "j" 'evil-next-visual-line
   "k" 'evil-previous-visual-line
 )
@@ -314,3 +315,7 @@
   :ensure t
 )
   
+(use-package tab-jump-out
+  :ensure t
+)
+(tab-jump-out-mode)
