@@ -97,6 +97,8 @@
  [remap describe-command] 'helpful-command
  [remap describe-variable] 'helpful-variable
  [remap describe-key] 'helpful-key
+ ;; exit delimeters
+ "M-<tab>" 'will/exit-parens
 )
 ;; Evil global keys
 (general-def '(motion normal)
@@ -315,7 +317,36 @@
   :ensure t
 )
   
-(use-package tab-jump-out
-  :ensure t
-)
-(tab-jump-out-mode)
+(require 'dash)
+
+(defvar-local will/exit-parens-delimiters '(";" ")" "]" "}" "|" "'" "\"" "`" "$" ">")
+  "The delimiters indicate `will/exit-parens` should jump out.")
+
+(defun will/get-line-from-cursor (arg)
+  (interactive "P")
+  (buffer-substring-no-properties
+   (point)
+   (line-end-position)
+   ))
+
+(defun will/contains-delimiter (arg)
+  (-first
+   (lambda (head)
+     (-contains? will/exit-parens-delimiters head))
+   (split-string arg "")))
+
+(defun will/line-contains-delimeter (arg)
+  (interactive "P")
+  (will/contains-delimiter (will/get-line-from-cursor nil)))
+
+(defun will/test (arg)
+  (interactive "P")
+  (print (will/line-contains-delimeter nil)))
+
+(defun will/exit-parens (arg)
+  "Jump out of a parenthetical"
+  (interactive "P")
+  (let ((str (will/line-contains-delimeter nil)))
+    (if str
+	(search-forward str)
+      (nil))))
