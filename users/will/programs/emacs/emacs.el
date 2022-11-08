@@ -97,8 +97,6 @@
  [remap describe-command] 'helpful-command
  [remap describe-variable] 'helpful-variable
  [remap describe-key] 'helpful-key
- ;; exit delimeters
- "M-<tab>" 'will/exit-parens
 )
 ;; Evil global keys
 (general-def '(motion normal)
@@ -319,7 +317,7 @@
   
 (require 'dash)
 
-(defvar-local will/exit-parens-delimiters '(";" ")" "]" "}" "|" "'" "\"" "`" "$" ">")
+(defvar-local will/tab-out-delimiters '(";" ")" "]" "}" "|" "'" "\"" "`" "$" ">")
   "The delimiters indicate `will/exit-parens` should jump out.")
 
 (defun will/get-line-from-cursor (arg)
@@ -332,21 +330,69 @@
 (defun will/contains-delimiter (arg)
   (-first
    (lambda (head)
-     (-contains? will/exit-parens-delimiters head))
+     (-contains? will/tab-out-delimiters head))
    (split-string arg "")))
 
 (defun will/line-contains-delimeter (arg)
   (interactive "P")
   (will/contains-delimiter (will/get-line-from-cursor nil)))
 
-(defun will/test (arg)
-  (interactive "P")
-  (print (will/line-contains-delimeter nil)))
-
-(defun will/exit-parens (arg)
+(defun will/tab-out (arg)
   "Jump out of a parenthetical"
   (interactive "P")
   (let ((str (will/line-contains-delimeter nil)))
     (if str
 	(search-forward str)
-      (nil))))
+      (will/tab-fallback))))
+
+(defun will/tab-fallback ()
+  "Fallback behavior of `will/exit-parens`."
+  (let ((fallback-behavior (will/tab-original-keybinding)))
+    (if fallback-behavior
+	(call-interactively fallback-behavior))))
+
+(defun will/tab-original-keybinding ()
+  "Get current keys' binding as if `will/exit-parens` didn't exist."
+  ;; Copied from tab-jump-out
+  (let* ((will/tab-out-mode nil)
+	 (keys (this-single-command-keys)))
+    (or (key-binding keys t)
+	(key-binding (will/tab-out--fallback-translate-input keys) t))))
+
+(defun will/tab-out--fallback-translate-input (keys)
+  ;; Copied from tab-jump-out
+  (let ((retval [])
+	(i 0))
+    (while (< i (length keys))
+      (let ((j i)
+	    (translated local-function-key-map))
+	(while (and (< j (length keys))
+		    translated
+		    (keymapp translated))
+	  (setq translated (cdr (assoc (aref keys j) (remove 'keymap translated)))
+		j (1+ j)))
+	(setq retval (vconcat retval (cond ((symbolp translated)
+					    `[,translated])
+					   ((vectorp translated)
+					    translated)
+					   (t
+					    (substring keys i j)))))
+	(setq i j)))
+    retval))
+
+(defgroup will/tab-out nil
+  "Custom group for `will/tab-out-mode`."
+  :group 'editing
+  :prefix "will/tab-out-")
+
+(defvar will/tab-out-mode-map
+  (let ((map (make-sparse-keymap)))
+    (define-key map [tab] 'will/tab-out)
+    map)
+  "Keymap for `will/tab-out`.")
+
+(define-minor-mode will/tab-out-mode
+  "A minor mode that allows you to jump out of parentheticals with tab."
+  :keymap will/tab-out-mode-map)
+
+(will/tab-out-mode)
