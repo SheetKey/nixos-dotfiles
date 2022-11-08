@@ -68,6 +68,7 @@
     scrot #screenshots
     spectacle
     libreoffice
+    krita
 
     glxinfo
 
