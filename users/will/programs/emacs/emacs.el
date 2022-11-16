@@ -288,28 +288,32 @@
 (use-package openwith
   :ensure t
   :config
-    (when (require 'openwith nil 'noerror)
-      (setq openwith-associations
-        (list
-          (list (openwith-make-extension-regexp
-            '("doc" "xls" "ppt" "odt" "ods" "odg" "odp"))
-            "libreoffice"
-            '(file))
-          (list (openwith-make-extension-regexp
-            '("mpg" "mpeg" "mp3" "mp4"
-              "avi" "wmv" "wav" "mov" "flv"
-              "ogm" "ogg" "mkv"))
-            "mpv"
-            '(file))
-          (list (openwith-make-extension-regexp
-            '("pdf" "png" "jpeg"))
-            "zathura"
-            '(file))
-        )
-      )
-      (openwith-mode 1)
+  (when (require 'openwith nil 'noerror)
+    (setq openwith-associations
+          (list
+           (list (openwith-make-extension-regexp
+		  '("doc" "xls" "ppt" "odt" "ods" "odg" "odp"))
+		 "libreoffice"
+		 '(file))
+           (list (openwith-make-extension-regexp
+		  '("mpg" "mpeg" "mp3" "mp4"
+		    "avi" "wmv" "wav" "mov" "flv"
+		    "ogm" "ogg" "mkv"))
+		 "mpv"
+		 '(file))
+           (list (openwith-make-extension-regexp
+		  '("pdf"))
+		 "zathura"
+		 '(file))
+	   (list (openwith-make-extension-regexp
+		  '("png" "jpeg" "jpg"))
+		 "nomacs"
+		 '(file))
+	   )
+	  )
+    (openwith-mode 1)
     )
-)
+  )
 
 (use-package haskell-mode
   :ensure t

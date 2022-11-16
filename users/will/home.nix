@@ -47,6 +47,7 @@
 
     # Viewer
     zathura
+    nomacs
 
     # Hakell
     ### haskell-language-server
@@ -74,12 +75,9 @@
 
     # Games
     boohu
-    superTux
     mindustry
     freeciv_qt
     widelands
-    zeroad
-    polymc
     unnethack
 
     # window manager related
