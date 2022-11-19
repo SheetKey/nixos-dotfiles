@@ -79,6 +79,7 @@
     freeciv_qt
     widelands
     unnethack
+    vbam
 
     # window manager related
     nitrogen
