@@ -41,6 +41,8 @@
     # tab editor
     tuxguitar
 
+    lilypond
+
     # Latex
     texlive.combined.scheme-full
     auctex
@@ -79,7 +81,7 @@
     freeciv_qt
     widelands
     unnethack
-    vbam
+    mgba
 
     # window manager related
     nitrogen

@@ -400,3 +400,14 @@
   :keymap will/tab-out-mode-map)
 
 (will/tab-out-mode 1)
+
+
+(require 'lilypond-mode)
+
+(use-package LilyPond-mode
+  :mode "\\.ly\\'"
+  :config
+  (setq LilyPond-pdf-command "zathura"
+	)
+  )
+  
