@@ -63,7 +63,7 @@
     networkmanagerapplet
     cbatticon
     pa_applet
-    mathematica
+    #mathematica
     zoom-us
     pavucontrol
     brightnessctl
