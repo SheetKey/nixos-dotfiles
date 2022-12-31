@@ -121,7 +121,7 @@
     package = with pkgs; (emacsWithPackagesFromUsePackage
       {
       config = ./users/will/programs/emacs/emacs.el;
-      package = pkgs.emacsGitNativeComp;
+      package = pkgs.emacsGit;
       alwaysEnsure = false;
       }
     );

@@ -77,10 +77,10 @@
 
     # Games
     boohu
-    mindustry
-    freeciv_qt
-    widelands
-    unnethack
+    #mindustry
+    #freeciv_qt
+    #widelands
+    #unnethack
     mgba
 
     # window manager related
@@ -90,6 +90,7 @@
 
     # Stuff for emacs
     ncurses
+    sqlite
 
     aspell
     aspellDicts.en
