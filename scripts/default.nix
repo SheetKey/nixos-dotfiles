@@ -13,6 +13,9 @@ let
     export __VK_LAYER_NV_optimus=NVIDIA_only
     exec -a "$0" "$@"
   '';
+  nvidia-set-offload-steam = pkgs.writeShellScriptBin "nvidia-set-offload-steam" ''
+    sed 's/^Exec=/&nvidia-offload /' /run/current-system/sw/share/applications/steam.desktop > ~/.local/share/applications/steam.desktop
+  '';
 
   getKernelScript = pkgs.writeShellScriptBin "getKernelScript" ''
     kern="$(uname -r)"
@@ -75,5 +78,6 @@ in {
     getKernelScript
     trayer-padding-icon
     nvidia-offload
+    nvidia-set-offload-steam
   ];
 }
