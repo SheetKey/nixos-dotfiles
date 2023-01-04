@@ -25,6 +25,7 @@
     # Terminal
     alacritty
     zsh
+    bash
     # DO NOT ADD NEOVIM TO "home.packages": LEAVE IN "configuration.nix"
     # neovim
     neofetch
@@ -107,6 +108,7 @@
     [
       ./programs/xmonad/default.nix
       ./programs/zsh/default.nix
+      ./programs/bash/default.nix
       ./programs/rofi/default.nix
       ./programs/xmobar/default.nix
       ./programs/lf/default.nix
