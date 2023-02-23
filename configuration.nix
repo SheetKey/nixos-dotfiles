@@ -150,6 +150,10 @@
   enable = true;
   wheelNeedsPassword = true;
   };
+  security.wrappers = {
+    pmount.source = "${pkgs.pmount}/bin/pmount";
+    pumount.source = "${pkgs.pmount}/bin/pumount";
+  };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
