@@ -154,11 +154,13 @@
     pmount = {
       source = "${pkgs.pmount}/bin/pmount";
       owner = "root";
-      setuid = true'
+      group = "root";
+      setuid = true;
     };
     pumount = {
       source = "${pkgs.pmount}/bin/pumount";
       owner = "root";
+      group = "root";
       setuid = true;
     };
   };
