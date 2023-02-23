@@ -36,6 +36,7 @@
     ripgrep
     unzip
     hardinfo
+    pmount
 
     # midi
     timidity
