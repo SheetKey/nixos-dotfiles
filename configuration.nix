@@ -151,8 +151,16 @@
   wheelNeedsPassword = true;
   };
   security.wrappers = {
-    pmount.source = "${pkgs.pmount}/bin/pmount";
-    pumount.source = "${pkgs.pmount}/bin/pumount";
+    pmount = {
+      source = "${pkgs.pmount}/bin/pmount";
+      owner = "root";
+      setuid = true'
+    };
+    pumount = {
+      source = "${pkgs.pmount}/bin/pumount";
+      owner = "root";
+      setuid = true;
+    };
   };
 
   # List packages installed in system profile. To search, run:
