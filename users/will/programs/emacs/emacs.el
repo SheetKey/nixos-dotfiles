@@ -321,7 +321,7 @@
   
 (require 'dash)
 
-(defvar-local will/tab-out-delimiters '(";" ")" "]" "}" "|" "'" "\"" "`" "$" ">")
+(defvar-local will/tab-out-delimiters '(";" "(" ")" "]" "{" "}" "|" "'" "\"" "`" "$" ">")
   "The delimiters indicate `will/exit-parens` should jump out.")
 
 (defun will/get-line-from-cursor (arg)
