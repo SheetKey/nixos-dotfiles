@@ -399,7 +399,7 @@
   "A minor mode that allows you to jump out of parentheticals with tab."
   :keymap will/tab-out-mode-map)
 
-(will/tab-out-mode 1)
+(will/tab-out-mode t)
 
 
 (require 'lilypond-mode)
