@@ -59,7 +59,7 @@
   services.xserver = {
   	enable = true;
     # Keyboard US and Polytonic Greek
-	  layout = "us,gr";
+	  layout = "us,gr,hu";
     xkbVariant = ",polytonic";
     xkbOptions = "grp:shifts_toggle, caps:escape";
 
