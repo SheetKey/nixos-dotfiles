@@ -61,6 +61,7 @@
 
     # GUI stuff
     brave
+    nyxt
     trayer
     networkmanagerapplet
     cbatticon
@@ -117,6 +118,8 @@
       ./programs/neovim/default.nix
       ./programs/emacs/new-new-default.nix
       ./programs/direnv/default.nix
+
+      ./programs/nyxt/default.nix
 
       ./programs/awesomewm/default.nix
 
