@@ -75,6 +75,7 @@
     spectacle
     libreoffice
     krita
+    goxel
 
     glxinfo
 
