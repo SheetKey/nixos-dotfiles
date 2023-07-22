@@ -81,6 +81,7 @@
 
     # Games
     boohu
+    prismlauncher
     #mindustry
     #freeciv_qt
     #widelands
