@@ -39,7 +39,7 @@
   time.timeZone = "America/New_York";
   i18n.defaultLocale = "en_US.UTF-8";
   console = {
-    font = "FiraCode";
+    # font = "FiraCode";
     keyMap = "us";
   };
 
@@ -184,6 +184,8 @@
 
   ];
 
+  programs.zsh.enable = true;
+
   services.logind = {
     extraConfig = "HandlePowerKey=suspend";
     lidSwitch = "suspend";
@@ -220,7 +222,7 @@
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
+  networking.firewall.enable = false;
 
   # ADD stateVersion TO HOST CONFIG BASED ON THE GENERATER "configuration.nix"
 
