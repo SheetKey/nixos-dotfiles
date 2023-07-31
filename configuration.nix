@@ -9,9 +9,6 @@
 
   # Nix preferences: unstable version
   nix = {
-    # Taken care of by flake
-    # package = pkgs.nixUnstable;
-
     #Garbage collection
     gc = {
       automatic = true;
@@ -39,7 +36,6 @@
   time.timeZone = "America/New_York";
   i18n.defaultLocale = "en_US.UTF-8";
   console = {
-    # font = "FiraCode";
     keyMap = "us";
   };
 
@@ -59,7 +55,7 @@
   services.xserver = {
   	enable = true;
     # Keyboard US and Polytonic Greek
-	  layout = "us,gr,hu";
+	  layout = "us,gr";
     xkbVariant = ",polytonic";
     xkbOptions = "grp:shifts_toggle, caps:escape";
 
@@ -86,27 +82,6 @@
     windowManager.awesome = {
       enable = true;
     };
-    ### THIS IS A WORKING EXWM START CONFIG #######
-    # windowManager.session = lib.singleton {
-    #   name = "exwm";
-    #   #start = ''
-    #   #  ${pkgs.emacsGitNativeComp}/bin/emacs &
-    #   #  alacritty &
-    #   #  waitPID=$!
-    #   #'';
-    #   #start = ''
-    #   #  emacs -mm --debug-init
-    #   #  &
-    #   #  waitPID=$!
-    #   #'';
-
-    #   start = ''
-    #     emacs --daemon
-    #     exec emacsclient -c &
-    #     waitPID=$!
-    #   '';
-    # };
-    ###############################################
 
 	  libinput = {
       enable = true;
@@ -121,7 +96,7 @@
     package = with pkgs; (emacsWithPackagesFromUsePackage
       {
       config = ./users/will/programs/emacs/emacs.el;
-      package = pkgs.emacsGit;
+      package = pkgs.emacs-git;
       alwaysEnsure = false;
       }
     );
@@ -147,8 +122,8 @@
 
   #no sudo passwd
   security.sudo = {
-  enable = true;
-  wheelNeedsPassword = true;
+    enable = true;
+    wheelNeedsPassword = true;
   };
   security.wrappers = {
     pmount = {
@@ -175,13 +150,8 @@
     git
     neovim
 
-    #Window manager stuff
-    xmobar
-    polybar
-
     # xkblayout-state
     xkblayout-state
-
   ];
 
   programs.zsh.enable = true;
