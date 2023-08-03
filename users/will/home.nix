@@ -76,7 +76,6 @@
     libreoffice
     krita
     goxel
-    unetbootin
 
     glxinfo
 
