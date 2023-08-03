@@ -1,0 +1,138 @@
+#+TITLE: Will's Emacs Config
+#+AUTHOR: Will
+#+STARTUP: showeverything
+#+OPTIONS: toc:2
+
+* TABLE OF CONTENTS :toc:
+
+* Packages
+** General Keybindings
+
+#+begin_src emacs-lisp
+  (use-package general
+    :ensure t)
+#+end_src
+
+** Org
+
+*** Src code blocks with tempo
+
+| Typing the below + TAB | Expands to...              |
+| <a                     | '#+begin_export ascii' ... |
+| <c                     | '#+begin_center' ...       |
+| <C                     | '#+begin_comment' ...      |
+| <e                     | '#+begin_example' ...      |
+| <E                     | '#+begin_export' ...       |
+| <h                     | '#+begin_export html' ...  |
+| <l                     | '#+begin_export latex' ... |
+| <q                     | '#+begin_quote' ...        |
+| <s                     | '#+begin_src' ...          |
+| <v                     | '#+begin_verse' ...        |
+
+#+begin_src emacs-lisp
+  (require 'org-tempo)
+#+end_src
+
+*** Table of contents 
+
+#+begin_src emacs-lisp
+  (use-package toc-org
+    :ensure t
+    :commands toc-org-enable
+    :init (add-hook 'org-mode-hook 'toc-org-enable))
+#+end_src
+
+*** Bullets
+
+#+begin_src emacs-lisp
+  (add-hook 'org-mode-hook 'org-indent-mode)
+  (use-package org-bullets
+    :ensure t
+    :init (add-hood 'org-mode-hook (lambda () (org-bullets-mode 1))))
+#+end_src
+
+** Which-key
+
+#+begin_src emacs-lisp
+  (use-package which-key
+    :ensure t
+    :init (which-key-mode 1)
+    :config
+    (setq which-key-idle-delay 0.5))
+#+end_src
+
+* Base settings
+** Fonts
+
+#+begin_src emacs-lisp
+  (defun will/set-font-faces ()
+    (message "setting fonts")
+    (set-face-attribute 'default nil
+			:font "FiraCode Nerd Font Mono"
+			:height 110
+			:weight 'medium)
+    (set-face-attribute 'variable-pitch nil
+			:font "TeX Gyre Schola"
+			:height 120
+			:weight 'medium)
+    (set-face-attribute 'fixed-pitch nil
+			:font "FireCode Nerd Font Mono"
+			:heigth 110
+			:weight 'medium)
+    (set-face-attribute 'font-lock-comment-face nil
+			:slant 'italic)
+    (set-face-attribute 'font-lock-keyword-face nil
+			:slant 'italic))
+#+end_src
+
+** UI
+
+#+begin_src emacs-lisp
+  ;; Adjust line spacing
+  (setq-default line-spacing 0.12)
+
+  (scroll-bar-mode -1)
+  (tool-bar-mode -1)
+  (menu-bar-mode -1)
+  (tooltip-mode -1)
+
+  (set-fringe-mode 10)
+
+  ;; Line numbers and truncation
+  (column-number-mode t)
+  (global-display-line-numbers-mode 1)
+  (global-visual-line-mode 1)
+
+  (setq visible-bell t)
+
+  (electric-indent-mode -1)
+#+end_src
+
+** Execute when using daemon
+
+#+begin_src emacs-lisp
+  (if (daemonp)
+      (add-hook 'after-make-frame-functions
+		(lambda (frame)
+		  (setq doom-modeline-icon t)
+		  (with-selected-frame frame
+		    (will/set-font-faces))))
+    (will/set-font-faces))
+#+end_src
+
+** Backups
+
+#+begin_src emacs-lisp
+  (setq backup-directory-alist '(("." . "~/.config/emacs/backup"))
+	backup-by-copying t
+	version-control t
+	delete-old-version t
+	kept-new-version 20
+	kept-old-version t)
+#+end_src
+
+** Autosaves
+
+#+begin_src emacs-lisp
+  (setq auto-save-file-name-transforms '((".*" "~/.config/emacs/auto-save-list/" t)))
+#+end_src
