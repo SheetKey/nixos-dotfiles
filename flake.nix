@@ -54,6 +54,29 @@
 	      ];
       };
 
+      serval = lib.nixosSystem {
+        inherit system;
+        
+        modules = [
+          ({pkgs, ... }: {
+            nixpkgs.overlays = [emacs-overlay.overlay ];
+            imports =
+              [
+                ./configuration.nix
+                ./hosts/serval.nix
+              ];
+          })
+          
+          home-manager.nixosModules.home-manager {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.will = {
+              imports = [ ./users/will/home.nix ];
+            };
+          }
+        ];
+      };
+
     };
   };
 }
