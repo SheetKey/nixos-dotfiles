@@ -13,17 +13,29 @@
         opacity = 0.97;
       };
 
+      key_bindings = [
+        {
+          key = "E";
+          mods = "Control";
+          action = "ScrollLineDown";
+        }
+        {
+          key = "Y";
+          mods = "Control";
+          action = "ScrollLineUp";
+        }
+      ];
       
       font = {
         size = 9.0;
         
-	      normal.family = "mononoki Nerd Font Mono";
+	      normal.family = "FiraCode Nerd Font Mono";
 	      normal.style = "Regular";
-	      bold.family = "monospace";
+	      bold.family = "FiraCode Nerd Font Mono";
 	      bold.style = "Bold";
-	      italic.family = "monospace";
+	      italic.family = "FiraCode Nerd Font Mono";
 	      italic.style = "Italic";
-	      bold_italic.family = "monospace";
+	      bold_italic.family = "FiraCode Nerd Font Mono";
 	      bold_italic.style = "Bold Italic";
       };
       

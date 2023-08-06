@@ -57,7 +57,7 @@
     # Keyboard US and Polytonic Greek
 	  layout = "us,gr";
     xkbVariant = ",polytonic";
-    xkbOptions = "grp:shifts_toggle, caps:escape";
+    xkbOptions = "grp:shifts_toggle, ctrl:nocaps";
 
 
 	  displayManager = {
@@ -95,7 +95,7 @@
     defaultEditor = true;
     package = with pkgs; (emacsWithPackagesFromUsePackage
       {
-      config = ./users/will/programs/emacs/emacs.el;
+      config = ./users/will/programs/emacs/config.el;
       package = pkgs.emacs-git;
       alwaysEnsure = false;
       }
@@ -168,7 +168,7 @@
   };
 
   # Install fonts
-  fonts.fonts = with pkgs; [
+  fonts.packages = with pkgs; [
     nerdfonts
     font-awesome
     material-icons

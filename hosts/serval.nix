@@ -2,7 +2,7 @@
 
 {
   networking = {
-    hostName = "sevalNixos";
+    hostName = "servalNixos";
     networkmanager.enable = true;
   };
   

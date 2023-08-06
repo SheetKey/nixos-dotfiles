@@ -16,7 +16,7 @@
       compinit
       _comp_options+=(globdots)
     '';
-    enableSyntaxHighlighting = true;
+    syntaxHighlighting.enable = true;
 
     history = {
       save = 1000000;

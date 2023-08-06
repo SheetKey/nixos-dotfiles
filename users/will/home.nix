@@ -110,6 +110,7 @@
 
   imports = 
     [
+      ./programs/emacs/default.nix
       ./programs/xmonad/default.nix
       ./programs/zsh/default.nix
       ./programs/bash/default.nix
@@ -118,7 +119,6 @@
       ./programs/lf/default.nix
       ./programs/alacritty/default.nix
       ./programs/neovim/default.nix
-      ./programs/emacs/emacs.nix
       ./programs/direnv/default.nix
 
       ./programs/nyxt/default.nix

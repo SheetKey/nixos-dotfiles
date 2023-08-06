@@ -2,21 +2,77 @@
 #+AUTHOR: Will
 #+STARTUP: showeverything
 #+OPTIONS: toc:2
+#+PROPERTY: header-args:emacs-lisp :tangle yes
 
 * TABLE OF CONTENTS :toc:
+- [[#packages][Packages]]
+  - [[#general-keybindings][General Keybindings]]
+  - [[#org][Org]]
+  - [[#latex][LaTeX]]
+  - [[#lilypond][Lilypond]]
+  - [[#which-key][Which-key]]
+  - [[#ui-packages][UI packages]]
+  - [[#better-completions][Better completions]]
+  - [[#better-searching][Better searching]]
+  - [[#better-undo][Better undo]]
+  - [[#magit][Magit]]
+  - [[#dired][Dired]]
+  - [[#spellcheck][Spellcheck]]
+  - [[#openwith][Openwith]]
+  - [[#programming-languages][Programming languages]]
+- [[#base-settings][Base settings]]
+  - [[#fonts][Fonts]]
+  - [[#ui][UI]]
+  - [[#execute-when-using-daemon][Execute when using daemon]]
+  - [[#backups][Backups]]
+  - [[#autosaves][Autosaves]]
+- [[#my-mode][My mode]]
+  - [[#tab-out-mode][Tab out mode]]
+- [[#tangle-on-save][Tangle on save]]
 
 * Packages
 ** General Keybindings
-
 #+begin_src emacs-lisp
   (use-package general
     :ensure t)
 #+end_src
 
+*** Global keys
+#+begin_src emacs-lisp
+  (general-def
+    ;; Consult
+    "C-s" 'consult-line
+    "C-x b" 'consult-buffer
+    "M-g M-g" 'consult-goto-line
+    "M-g g" 'consult-goto-line
+    "M-s f" 'consult-find
+    "M-s r" 'consult-ripgrep
+    ;; Helpful
+    [remap describe-function] 'helpful-function
+    [remap describe-symbol] 'helpful-symbol
+    [remap describe-command] 'helpful-command
+    [remap descrive-variable] 'helpful-variable
+    [remap describe-key] 'helpful-key)
+#+end_src
+
+*** Minibuffer keys
+#+begin_src emacs-lisp
+  (general-def minibuffer-local-map
+    "M-h" 'backward-kill-word
+    ;; Consult
+    "C-r" 'consult-history)
+#+end_src
+
+*** Remap to use dired-single
+#+begin_src emacs-lisp
+  (general-def dired-mode-map
+    [remap dired-find-file] 'dired-single-buffer
+    [remap dired-mouse-find-file-other-window] 'dired-single-buffer-mouse
+    [remap dired-up-directory] 'dired-single-up-directory)
+#+end_src
+
 ** Org
-
 *** Src code blocks with tempo
-
 | Typing the below + TAB | Expands to...              |
 | <a                     | '#+begin_export ascii' ... |
 | <c                     | '#+begin_center' ...       |
@@ -48,7 +104,40 @@
   (add-hook 'org-mode-hook 'org-indent-mode)
   (use-package org-bullets
     :ensure t
-    :init (add-hood 'org-mode-hook (lambda () (org-bullets-mode 1))))
+    :init (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+#+end_src
+
+** LaTeX
+*** AucTeX
+#+begin_src emacs-lisp
+  (load "auctex.el" nil t t)
+  (load "preview-latex.el" nil t t)
+
+  (setq TeX-auto-save t
+        TeX-parse-self t
+        TeX-electric-math (cons "$" "$")
+        LaTeX-electric-left-right-brace t
+        TeX-electric-sub-and-superscript t
+        LaTeX-math-menu-unicode t
+        TeX-insert-macro-default-style 'show-optional-args)
+  (add-hook 'LaTeX-mod-hook 'LaTeX-math-mode)
+  (add-hook 'TeX-after-compilation-finished-functions #'TeX-revert-document-buffer)
+#+end_src
+
+*** RefTeX
+#+begin_src emacs-lisp
+  (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
+  (setq reftex-plug-into-AUCTex t)
+#+end_src
+
+** Lilypond
+#+begin_src emacs-lisp
+  (require 'lilypond-mode)
+
+  (use-package LilyPond-mode
+    :mode "\\.ly\\'"
+    :config
+    (setq LilyPond-pdf-command "zathura"))
 #+end_src
 
 ** Which-key
@@ -59,6 +148,194 @@
     :init (which-key-mode 1)
     :config
     (setq which-key-idle-delay 0.5))
+#+end_src
+
+** UI packages
+
+*** Doom themes
+
+#+begin_src emacs-lisp
+  (use-package doom-themes
+    :ensure t
+    :config
+    (setq doom-themes-enable-bold t
+          doom-themes-enable-italic t)
+    (load-theme 'doom-solarized-dark t)
+    (doom-themes-visual-bell-config))
+#+end_src
+
+*** Doo modeline
+
+#+begin_src emacs-lisp
+  (use-package doom-modeline
+    :ensure t
+    :init (doom-modeline-mode 1)
+    :config
+    (setq doom-modeline-buffer-file-name-style 'truncate-except-project))
+
+  ;; Taken from the doom-modeline FAQ
+  (eval-after-load "doom-modeline"
+    (doom-modeline-def-modeline 
+     'main
+     '(bar matches buffer-info remote-host buffer-position parrot selection-info)
+     '(misc-info minor-modes checker input-method buffer-encoding major-mode process vcs "  ")))
+#+end_src
+
+*** Icons
+
+#+begin_src emacs-lisp
+  (use-package all-the-icons
+    :ensure t)
+#+end_src
+
+*** Rainbow delimiters
+
+#+begin_src emacs-lisp
+  (use-package rainbow-delimiters
+    :ensure t
+    :hook (prog-mode . rainbow-delimiters-mode))
+#+end_src
+
+** Better completions
+*** Vertico
+#+begin_src emacs-lisp
+  (use-package vertico
+    :ensure t
+    :init (vertico-mode)
+    :config (setq vertico-cycle t))
+#+end_src
+
+*** Save minibuffer history
+#+begin_src emacs-lisp
+  (use-package savehist
+    :init (savehist-mode)
+    :config (setq history-length 25))
+#+end_src
+
+** Better searching
+*** Consult
+#+begin_src emacs-lisp
+  (use-package consult
+    :ensure t)
+#+end_src
+
+*** Marginalia
+#+begin_src emacs-lisp
+  (use-package marginalia
+    :ensure t
+    :after (vertico)
+    :custom
+    (marginalia-annotators '(marginalia-annotators-heavy marginalia-annotators-light nil)))
+#+end_src
+
+*** Helpful
+#+begin_src emacs-lisp
+  (use-package helpful
+    :ensure t)
+#+end_src
+
+*** Orderless (fuzzy searching)
+#+begin_src emacs-lisp
+  (use-package orderless
+    :ensure t
+    :custom
+    (completion-styles '(orderless)))
+#+end_src
+
+** Better undo
+#+begin_src emacs-lisp
+  (use-package undo-fu
+    :ensure t)
+#+end_src
+
+** Magit
+#+begin_src emacs-lisp
+  (use-package magit
+    :ensure t
+    :commands (magit-status magit-get-current-branch)
+    :custom
+    (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
+#+end_src
+
+In my previous config, I had the 'ssh-agency' package installed, although it seems this may not be necessary.
+
+** Dired
+#+begin_src emacs-lisp
+  (use-package dired
+    :commands (dired dired-jump)
+    :custom (dired-listing-switches "-agho --group-directories-first"))
+
+  (use-package dired-single
+    :ensure t
+    :after (dired))
+
+  (use-package dired-hide-dotfiles
+    :ensure t
+    :hook (dired-mode . dired-hide-dotfiles-mode))
+
+  (use-package all-the-icons-dired
+    :ensure t
+    :hook (dired-mode . all-the-icons-dired-mode))
+#+end_src
+
+** Spellcheck
+#+begin_src emacs-lisp
+  (use-package ispell
+    :config
+    (setq ispell-program-name "aspell"))
+#+end_src
+
+** Openwith
+#+begin_src emacs-lisp
+  (use-package openwith
+    :ensure t
+    :config
+    (when (require 'openwith nil 'noerror)
+      (setq openwith-associations
+            (list
+             (list (openwith-make-extension-regexp
+                    '("doc" "xls" "ppt" "odt" "ods" "odg" "odp"))
+                   "libreoffice"
+                   '(file))
+             (list (openwith-make-extension-regexp
+                    '("mgp" "mpeg" "mp3" "mp4"
+                      "avi" "wmv" "wav" "mov" "flv"
+                      "ogn" "ogg" "mkv"))
+                   "mpv"
+                   '(file))
+             (list (openwith-make-extension-regexp
+                    '("pdf"))
+                   "zathura"
+                   '(file))
+             (list (openwith-make-extension-regexp
+                    '("png" "jpeg" "jpg"))
+                   "nomacs"
+                   '(file))))
+      (openwith-mode 1)))
+#+end_src
+
+** Programming languages
+*** Nix
+#+begin_src emacs-lisp
+  (use-package nix-mode
+    :ensure t
+    :mode "\\.nix\\'")
+
+  (use-package nix-flake
+    :after (nix-mode))
+#+end_src
+
+**** Direnv
+#+begin_src emacs-lisp
+  (use-package direnv
+    :ensure t
+    :config (direnv-mode))
+#+end_src
+
+*** Haskell
+#+begin_src emacs-lisp
+  (use-package haskell-mode
+    :ensure t)
 #+end_src
 
 * Base settings
@@ -76,8 +353,8 @@
 			:height 120
 			:weight 'medium)
     (set-face-attribute 'fixed-pitch nil
-			:font "FireCode Nerd Font Mono"
-			:heigth 110
+			:font "FiraCode Nerd Font Mono"
+			:height 110
 			:weight 'medium)
     (set-face-attribute 'font-lock-comment-face nil
 			:slant 'italic)
@@ -123,7 +400,7 @@
 ** Backups
 
 #+begin_src emacs-lisp
-  (setq backup-directory-alist '(("." . "~/.config/emacs/backup"))
+  (setq backup-directory-alist '(("." . "~/.emacs.d/backup"))
 	backup-by-copying t
 	version-control t
 	delete-old-version t
@@ -132,7 +409,99 @@
 #+end_src
 
 ** Autosaves
-
 #+begin_src emacs-lisp
-  (setq auto-save-file-name-transforms '((".*" "~/.config/emacs/auto-save-list/" t)))
+  (setq auto-save-file-name-transforms '((".*" "~/.emacs.d/auto-save-list/" t)))
 #+end_src
+
+* My mode
+#+begin_src emacs-lisp
+  (require 'dash)
+#+end_src
+
+** Tab out mode
+#+begin_src emacs-lisp
+  (defvar-local will/tab-out-delimiters 
+      '(";" "(" ")" "[" "]" "{" "}" "|" "'" "\"" "`" "$" "<" ">"))
+
+  (defun will/get-line-from-curson (arg)
+    (interactive "P")
+    (buffer-substring-no-properties
+     (+ 1 point)
+     (line-end-position)))
+
+  (defun will/contains-delimiter (arg)
+    (-first
+     (lambda (head)
+       (-contains? will/tab-out-delimiters head))
+     (split-string arg "")))
+
+  (defun will/line-contains-delimeter (arg)
+    (interactive "P")
+    (will/contains-delimiter (will/get-line-from-cursor nil)))
+
+  (defun will/tab-out (arg)
+    "Jump out of a parenthetical."
+    (interactive "P")
+    (let ((str (will/line-contains-delimeter nil)))
+      (if str
+          (search-froward str)
+        (will/tab-fallback))))
+
+  (defun will/tab-fallback ()
+    "Fallback behavior of `will/exit-parens`."
+    (let ((fallback-behavior (will/tab-original-keybinding)))
+      (if fallback-behavior
+          (call-interactively fallback-behavior))))
+
+  (defun will/tab-original-keybinding ()
+    "Get current keys' binding as if `will/exit-parens` didn't exist."
+    ;; Copied from tap-jump-out package
+    (let* ((will/tab-out-mode nil)
+           (keys (this-single-command-keys)))
+      (or (key-binding keys t)
+          (key-binding (will/tab-out--fallback-translate-input keys) t))))
+
+  (defun will/tab-out--fallback-translate-input (keys)
+    ;; Copied from tap-jump-out package
+    (let ((retval [])
+          (i 0))
+      (while (< i (length keys))
+        (let ((j i)
+              (translated local-function-key-map))
+          (while (and (< j (length keys))
+                      translated
+                      (keymapp translated))
+            (setq translated (cdr (assoc (aref keys j) (remove 'keymap translated)))
+                  j (1+ j)))
+          (setq retval (vconcat retval (cond ((symbolp translated)
+                                              `[,translated])
+                                             ((vectorp translated)
+                                              translated)
+                                             (t
+                                              (substring keys i j)))))
+          (setq i j)))
+      retval))
+
+  (defgroup will/tab-out nil
+    "Custom group for `will/tab-out-mode`."
+    :group 'editing
+    :prefix "will/tab-out-")
+
+  (defvar will/tab-out-mode-map
+    (let ((map (make-sparse-keymap)))
+      (define-key map [tap] 'will/tab-out)
+      map)
+    "Keymap for `will/tab-out`.")
+
+  (define-minor-mode will/tab-out-mode
+    "A minor mode that allows you to jump out of parentheticals with tab."
+    :keymap will/tab-out-mode-map
+    :global t)
+#+end_src
+
+* Tangle on save
+THIS MUST BE THE LAST PART OF THE FILE IN ORDER TO WORK
+
+;; Local Variables:
+;; eval: (add-hook 'after-save-hook (lambda () (if (y-or-n-p "Tangle?")(org-babel-tangle))) nil t)
+;; End:
