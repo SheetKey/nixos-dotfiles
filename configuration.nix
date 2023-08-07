@@ -6,13 +6,14 @@
       ./scripts/default.nix
     ];
 
-
   # Nix preferences: unstable version
   nix = {
+    settings.auto-optimise-store = true;
     #Garbage collection
     gc = {
       automatic = true;
       dates = "daily";
+      options = "--delete-older-than 30d";
     };
 
     extraOptions = ''
