@@ -189,6 +189,12 @@
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
 
+  services.syncthing = {
+    enable = true;
+    dataDir = "/home/will/Documents";
+    configDir = "/home/will/Documents/.config/syncthing";
+  };
+
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
