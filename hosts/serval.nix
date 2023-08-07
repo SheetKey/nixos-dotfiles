@@ -2,7 +2,7 @@
 
 {
   networking = {
-    hostName = "servalNixos";
+    hostName = "serval";
     networkmanager.enable = true;
   };
   
@@ -57,28 +57,19 @@
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
-  # boot.extraModulePackages = with config.boot.kernelPackages; [ system76 system76-power system76-scheduler system76-io system76-acpi ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/6c42a9d0-1a31-4cf5-a478-f9794c8ac19c";
-      fsType = "btrfs";
-      options = [ "subvol=root" "compress=zstd" ];
+    { device = "/dev/disk/by-uuid/17739fd3-4ff5-42d4-8a65-b7547927b07c";
+      fsType = "ext4";
     };
 
   fileSystems."/home" =
-    { device = "/dev/disk/by-uuid/6c42a9d0-1a31-4cf5-a478-f9794c8ac19c";
-      fsType = "btrfs";
-      options = [ "subvol=home" "compress=zstd" ];
-    };
-
-  fileSystems."/nix" =
-    { device = "/dev/disk/by-uuid/6c42a9d0-1a31-4cf5-a478-f9794c8ac19c";
-      fsType = "btrfs";
-      options = [ "subvol=nix" "compress=zstd" "noatime" ];
+    { device = "/dev/disk/by-uuid/25bc232e-d9f1-4065-b6c0-1c6288a880bb";
+      fsType = "ext4";
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/39A3-8B82";
+    { device = "/dev/disk/by-uuid/46FB-12A3";
       fsType = "vfat";
     };
 
