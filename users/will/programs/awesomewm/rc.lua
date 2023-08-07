@@ -438,10 +438,10 @@ for i = 1, 9 do
                   {description = "toggle focused client on tag #" .. i, group = "tag"}),
 
 	-- NOTE: My brightness controls
-	awful.key({ }, "XF86MonBrightnessDown", function ()
-	      awful.util.spawn("brightnessctl s 20-") end),
-	awful.key({ }, "XF86MonBrightnessUp", function ()
-	      awful.util.spawn("brightnessctl s +20") end)
+	--awful.key({ }, "XF86MonBrightnessDown", function ()
+	--      awful.util.spawn("brightnessctl s 20-") end),
+	--awful.key({ }, "XF86MonBrightnessUp", function ()
+	--      awful.util.spawn("brightnessctl s +20") end)
 	
     )
 end
