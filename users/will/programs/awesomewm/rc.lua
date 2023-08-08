@@ -435,7 +435,7 @@ for i = 1, 9 do
                           end
                       end
                   end,
-                  {description = "toggle focused client on tag #" .. i, group = "tag"}),
+                  {description = "toggle focused client on tag #" .. i, group = "tag"})
 
 	-- NOTE: My brightness controls
 	--awful.key({ }, "XF86MonBrightnessDown", function ()
