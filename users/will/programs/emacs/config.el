@@ -26,6 +26,22 @@
   [remap dired-mouse-find-file-other-window] 'dired-single-buffer-mouse
   [remap dired-up-directory] 'dired-single-up-directory)
 
+(general-def company-active-map
+  "C-n" 'company-select-next
+  "C-p" 'company-select-previous
+  "M-<" 'company-select-first
+  "M->" 'company-select-last)
+
+(general-def rustic-mode-map
+  "M-j" 'lsp-ui-imenu
+  "M-?" 'lsp-find-references
+  "C-c C-c l" 'flycheck-list-errors
+  "C-c C-c a" 'lsp-execute-code-action
+  "C-c C-c r" 'lsp-rename
+  "C-c C-c q" 'lsp-workspace-restart
+  "C-c C-c Q" 'lsp-workspace-shutdown
+  "C-c C-c s" 'lsp-rust-analyzer-status)
+
 (require 'org-tempo)
 
 (use-package toc-org
@@ -150,6 +166,9 @@
   :config
   (setq ispell-program-name "aspell"))
 
+(use-package flycheck
+  :ensure t)
+
 (use-package openwith
   :ensure t
   :config
@@ -176,6 +195,30 @@
                  '(file))))
     (openwith-mode 1)))
 
+(use-package company
+  :ensure t
+  :custom 
+  (company-idle-delay 0.5))
+
+(use-package lsp-mode
+  :ensure t
+  :commands lsp
+  :custom
+  (lsp-rust-analyzer-cargo-watch-command "clippy")
+  (lsp-eldoc-render-all t)
+  (lsp-idle-delay 0.6)
+  (lsp-inlay-hint-enable t)
+  :config
+  (add-hook 'lsp-mode-hook 'lsp-ui-mode))
+
+(use-package lsp-ui
+  :ensure t
+  :commands lsp-ui-mode
+  :custom
+  (lsp-ui-peek-always-show t)
+  (lsp-ui-sideline-show-hover t)
+  (lsp-ui-doc-enable nil))
+
 (use-package nix-mode
   :ensure t
   :mode "\\.nix\\'")
@@ -189,6 +232,11 @@
 
 (use-package haskell-mode
   :ensure t)
+
+(use-package rustic
+  :ensure t
+  :config
+  (setq rustic-format-on-save t))
 
 (defun will/set-font-faces ()
   (message "setting fonts")
