@@ -30,6 +30,7 @@
     # neovim
     neofetch
     htop
+    nvtop-nvidia
     #xorg.kill
     lf
     nix-prefetch-github
