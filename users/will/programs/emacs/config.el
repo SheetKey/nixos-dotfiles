@@ -14,7 +14,9 @@
   [remap describe-symbol] 'helpful-symbol
   [remap describe-command] 'helpful-command
   [remap descrive-variable] 'helpful-variable
-  [remap describe-key] 'helpful-key)
+  [remap describe-key] 'helpful-key
+  ;; IBuffer
+  "C-x C-b" 'ibuffer)
 
 (general-def minibuffer-local-map
   "M-h" 'backward-kill-word
@@ -31,16 +33,6 @@
   "C-p" 'company-select-previous
   "M-<" 'company-select-first
   "M->" 'company-select-last)
-
-(general-def rustic-mode-map
-  "M-j" 'lsp-ui-imenu
-  "M-?" 'lsp-find-references
-  "C-c C-c l" 'flycheck-list-errors
-  "C-c C-c a" 'lsp-execute-code-action
-  "C-c C-c r" 'lsp-rename
-  "C-c C-c q" 'lsp-workspace-restart
-  "C-c C-c Q" 'lsp-workspace-shutdown
-  "C-c C-c s" 'lsp-rust-analyzer-status)
 
 (require 'org-tempo)
 
@@ -83,13 +75,13 @@
   :config
   (setq which-key-idle-delay 0.5))
 
-(use-package doom-themes
-  :ensure t
-  :config
-  (setq doom-themes-enable-bold t
-        doom-themes-enable-italic t)
-  (load-theme 'doom-solarized-dark t)
-  (doom-themes-visual-bell-config))
+;; (use-package doom-themes
+;;   :ensure t
+;;   :config
+;;   (setq doom-themes-enable-bold t
+;;         doom-themes-enable-italic t)
+;;   (load-theme 'doom-solarized-dark t)
+;;   (doom-themes-visual-bell-config))
 
 (use-package doom-modeline
   :ensure t
@@ -197,27 +189,12 @@
 
 (use-package company
   :ensure t
-  :custom 
-  (company-idle-delay 0.5))
-
-(use-package lsp-mode
-  :ensure t
-  :commands lsp
-  :custom
-  (lsp-rust-analyzer-cargo-watch-command "clippy")
-  (lsp-eldoc-render-all t)
-  (lsp-idle-delay 0.6)
-  (lsp-inlay-hint-enable t)
   :config
-  (add-hook 'lsp-mode-hook 'lsp-ui-mode))
+  (setq company-idle-delay 0
+        company-minimum-prefix-length 3
+        global-company-mode t))
 
-(use-package lsp-ui
-  :ensure t
-  :commands lsp-ui-mode
-  :custom
-  (lsp-ui-peek-always-show t)
-  (lsp-ui-sideline-show-hover t)
-  (lsp-ui-doc-enable nil))
+(require 'eglot)
 
 (use-package nix-mode
   :ensure t
@@ -231,12 +208,9 @@
   :config (direnv-mode))
 
 (use-package haskell-mode
-  :ensure t)
-
-(use-package rustic
   :ensure t
   :config
-  (setq rustic-format-on-save t))
+  (add-hook 'haskell-mode-hook 'eglot-ensure))
 
 (defun will/set-font-faces ()
   (message "setting fonts")
@@ -276,6 +250,33 @@
 
 (electric-indent-mode -1)
 
+(global-hl-line-mode 1)
+
+(blink-cursor-mode nil)
+
+(setq 
+ ;; font options for highlighting
+ modus-themes-bold-constructs t
+ modus-themes-italic-constructs t
+
+ ;; org settings
+ modus-themes-org-blocks 'tinted-background
+
+ ;; headings
+ modus-themes-headings 
+ '((1 . (1.5))
+   (2 . (1.3)))
+
+ ;; modeline
+ modus-themes-common-palette-overrides
+ '((bg-mode-line-active bg-cyan-intense)
+   (fg-mode-line-active fg-main)
+   (border-mode-line-active blue-intense)))
+
+
+;; This should be the last line of theme config: set variables first.
+(load-theme 'modus-vivendi-deuteranopia t)
+
 (if (daemonp)
     (add-hook 'after-make-frame-functions
 	      (lambda (frame)
@@ -293,15 +294,36 @@
 
 (setq auto-save-file-name-transforms '((".*" "~/.emacs.d/auto-save-list/" t)))
 
+(global-auto-revert-mode 1)
+;; Revert dired
+(setq global-auto-revert-non-file-buffers t)
+
+(setq ibuffer-saved-filter-groups
+      (quote (("default"
+               ("dired" (mode . dired-mode))
+               ("org" (name . "^.*org$"))
+               ("programming" (or
+                               (mode . haskell-mode)
+                               (mode . nix-mode)))
+               ("magit" (mode . magit-mode))
+               ("emacs" (or
+                         (name . "^\\*scratch*$")
+                         (name . "^\\*Messages\\*$")))))))
+
+(add-hook 'ibuffer-mode-hook
+          (lambda ()
+            (ibuffer-auto-mode 1)
+            (ibuffer-switch-to-saved-filter-groups "default")))
+
 (require 'dash)
 
 (defvar-local will/tab-out-delimiters 
     '(";" "(" ")" "[" "]" "{" "}" "|" "'" "\"" "`" "$" "<" ">"))
 
-(defun will/get-line-from-curson (arg)
+(defun will/get-line-from-cursor (arg)
   (interactive "P")
   (buffer-substring-no-properties
-   (+ 1 point)
+   (+ 1 (point))
    (line-end-position)))
 
 (defun will/contains-delimiter (arg)
@@ -319,7 +341,7 @@
   (interactive "P")
   (let ((str (will/line-contains-delimeter nil)))
     (if str
-        (search-froward str)
+        (search-forward str)
       (will/tab-fallback))))
 
 (defun will/tab-fallback ()
@@ -372,3 +394,5 @@
   "A minor mode that allows you to jump out of parentheticals with tab."
   :keymap will/tab-out-mode-map
   :global t)
+
+(will/tab-out-mode 1)
