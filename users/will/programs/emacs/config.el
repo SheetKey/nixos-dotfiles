@@ -194,7 +194,11 @@
         company-minimum-prefix-length 2)
   (add-hook 'after-init-hook 'global-company-mode))
 
-(require 'eglot)
+(use-package eglot
+  :after (direnv)
+  :custom
+  (eglot-autoshutdown t)
+  (eglot-confirm-server-initiated-edits nil))
 
 (use-package nix-mode
   :ensure t

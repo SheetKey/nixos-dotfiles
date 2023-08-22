@@ -343,7 +343,11 @@ In my previous config, I had the 'ssh-agency' package installed, although it see
 #+end_src
 *** LSP
 #+begin_src emacs-lisp
-  (require 'eglot)
+  (use-package eglot
+    :after (direnv)
+    :custom
+    (eglot-autoshutdown t)
+    (eglot-confirm-server-initiated-edits nil))
 #+end_src
 
 *** Nix
