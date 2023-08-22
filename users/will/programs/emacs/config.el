@@ -352,14 +352,14 @@
 
 (defun will/tab-original-keybinding ()
   "Get current keys' binding as if `will/exit-parens` didn't exist."
-  ;; Copied from tap-jump-out package
+  ;; Copied from tab-jump-out package
   (let* ((will/tab-out-mode nil)
          (keys (this-single-command-keys)))
     (or (key-binding keys t)
         (key-binding (will/tab-out--fallback-translate-input keys) t))))
 
 (defun will/tab-out--fallback-translate-input (keys)
-  ;; Copied from tap-jump-out package
+  ;; Copied from tab-jump-out package
   (let ((retval [])
         (i 0))
     (while (< i (length keys))
@@ -386,7 +386,7 @@
 
 (defvar will/tab-out-mode-map
   (let ((map (make-sparse-keymap)))
-    (define-key map [tap] 'will/tab-out)
+    (define-key map [tab] 'will/tab-out)
     map)
   "Keymap for `will/tab-out`.")
 
