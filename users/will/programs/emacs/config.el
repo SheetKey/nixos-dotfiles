@@ -191,8 +191,8 @@
   :ensure t
   :config
   (setq company-idle-delay 0
-        company-minimum-prefix-length 3
-        global-company-mode t))
+        company-minimum-prefix-length 2)
+  (add-hook 'after-init-hook 'global-company-mode))
 
 (require 'eglot)
 
@@ -305,7 +305,7 @@
                ("programming" (or
                                (mode . haskell-mode)
                                (mode . nix-mode)))
-               ("magit" (mode . magit-mode))
+               ("magit" (name . "magit*"))
                ("emacs" (or
                          (name . "^\\*scratch*$")
                          (name . "^\\*Messages\\*$")))))))
