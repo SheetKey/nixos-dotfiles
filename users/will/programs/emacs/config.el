@@ -326,9 +326,16 @@
 
 (defun will/get-line-from-cursor (arg)
   (interactive "P")
-  (buffer-substring-no-properties
-   (+ 1 (point))
-   (line-end-position)))
+  (let ((not-end-of-line (buffer-substring-no-properties
+                          (+ 1 (point))
+                          (line-end-position))))
+    (if not-end-of-line
+        (buffer-substring-no-properties
+         (+ 1 (point))
+         (line-end-position))
+      (buffer-substring-no-properties
+       (point)
+       (line-end-position)))))
 
 (defun will/contains-delimiter (arg)
   (-first
