@@ -407,3 +407,5 @@
   :global t)
 
 (will/tab-out-mode 1)
+(add-hook 'minibuffer-setup-hook (lambda () (will/tab-out-mode -1)))
+(add-hook 'minibuffer-exit-hook (lambda () (will/tab-out-mode 1)))
