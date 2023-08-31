@@ -32,7 +32,8 @@
   "C-n" 'company-select-next
   "C-p" 'company-select-previous
   "M-<" 'company-select-first
-  "M->" 'company-select-last)
+  "M->" 'company-select-last
+  "TAB" 'company-complete)
 
 (require 'org-tempo)
 
@@ -215,6 +216,11 @@
   :ensure t
   :config
   (add-hook 'haskell-mode-hook 'eglot-ensure))
+
+(use-package zig-mode
+  :ensure t
+  :config
+  (add-hook 'zig-mode-hook 'eglot-ensure))
 
 (defun will/set-font-faces ()
   (message "setting fonts")
@@ -406,6 +412,6 @@
   :keymap will/tab-out-mode-map
   :global t)
 
-(will/tab-out-mode 1)
-(add-hook 'minibuffer-setup-hook (lambda () (will/tab-out-mode -1)))
-(add-hook 'minibuffer-exit-hook (lambda () (will/tab-out-mode 1)))
+;; (will/tab-out-mode 1)
+;; (add-hook 'minibuffer-setup-hook (lambda () (will/tab-out-mode -1)))
+;; (add-hook 'minibuffer-exit-hook (lambda () (will/tab-out-mode 1)))

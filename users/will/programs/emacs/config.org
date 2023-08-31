@@ -81,7 +81,8 @@
     "C-n" 'company-select-next
     "C-p" 'company-select-previous
     "M-<" 'company-select-first
-    "M->" 'company-select-last)
+    "M->" 'company-select-last
+    "TAB" 'company-complete)
 #+end_src
 
 ** Org
@@ -375,6 +376,14 @@ In my previous config, I had the 'ssh-agency' package installed, although it see
     (add-hook 'haskell-mode-hook 'eglot-ensure))
 #+end_src
 
+*** Zig
+#+begin_src emacs-lisp
+  (use-package zig-mode
+    :ensure t
+    :config
+    (add-hook 'zig-mode-hook 'eglot-ensure))
+#+end_src
+
 * Base settings
 ** Fonts
 
@@ -599,9 +608,9 @@ In my previous config, I had the 'ssh-agency' package installed, although it see
     :keymap will/tab-out-mode-map
     :global t)
 
-  (will/tab-out-mode 1)
-  (add-hook 'minibuffer-setup-hook (lambda () (will/tab-out-mode -1)))
-  (add-hook 'minibuffer-exit-hook (lambda () (will/tab-out-mode 1)))
+  ;; (will/tab-out-mode 1)
+  ;; (add-hook 'minibuffer-setup-hook (lambda () (will/tab-out-mode -1)))
+  ;; (add-hook 'minibuffer-exit-hook (lambda () (will/tab-out-mode 1)))
 #+end_src
 
 * Tangle on save
