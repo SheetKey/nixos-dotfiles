@@ -76,6 +76,7 @@
     libreoffice
     krita
     goxel
+    zotero
 
     glxinfo
 
