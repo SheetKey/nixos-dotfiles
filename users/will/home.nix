@@ -45,7 +45,7 @@
 
     # text to speech
     tts
-    poppler-utils
+    poppler_utils
 
     lilypond
 
