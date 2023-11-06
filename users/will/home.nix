@@ -43,6 +43,10 @@
     # tab editor
     tuxguitar
 
+    # text to speech
+    tts
+    poppler-utils
+
     lilypond
 
     # Latex
