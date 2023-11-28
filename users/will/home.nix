@@ -47,6 +47,7 @@
     tts
     poppler_utils
     espeak-classic
+    vlc
 
     lilypond
 
