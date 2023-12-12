@@ -55,6 +55,7 @@
     # Latex
     texlive.combined.scheme-full
     auctex
+    tikzit
 
     # Viewer
     zathura
