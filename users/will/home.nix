@@ -44,7 +44,6 @@
     tuxguitar
 
     # text to speech
-    tts
     poppler_utils
     espeak-classic
     vlc
