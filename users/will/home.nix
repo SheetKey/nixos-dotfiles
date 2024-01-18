@@ -48,7 +48,7 @@
     poppler_utils
     espeak-classic
     vlc
-    piper-tts
+    # piper-tts #CURRENTLY BROKEN; TRY AGAIN WHEN NEEDED (onnx dependency doesn't build)
 
     lilypond
 
