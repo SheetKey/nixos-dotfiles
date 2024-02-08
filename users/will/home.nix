@@ -68,6 +68,7 @@
 
     # GUI stuff
     brave
+    firefox
     nyxt
     trayer
     networkmanagerapplet
