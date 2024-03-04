@@ -130,6 +130,7 @@
       ./programs/alacritty/default.nix
       ./programs/neovim/default.nix
       ./programs/direnv/default.nix
+      ./programs/zathura/default.nix
 
       ./programs/nyxt/default.nix
 
