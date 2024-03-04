@@ -43,11 +43,18 @@
     # tab editor
     tuxguitar
 
+    # text to speech
+    poppler_utils
+    espeak-classic
+    vlc
+    # piper-tts #CURRENTLY BROKEN; TRY AGAIN WHEN NEEDED (onnx dependency doesn't build)
+
     lilypond
 
     # Latex
     texlive.combined.scheme-full
     auctex
+    tikzit
 
     # Viewer
     zathura
@@ -61,6 +68,7 @@
 
     # GUI stuff
     brave
+    firefox
     nyxt
     trayer
     networkmanagerapplet
@@ -76,6 +84,7 @@
     libreoffice
     krita
     goxel
+    zotero
 
     glxinfo
 

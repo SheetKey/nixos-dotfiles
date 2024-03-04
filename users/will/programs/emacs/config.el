@@ -14,7 +14,9 @@
   [remap describe-symbol] 'helpful-symbol
   [remap describe-command] 'helpful-command
   [remap descrive-variable] 'helpful-variable
-  [remap describe-key] 'helpful-key)
+  [remap describe-key] 'helpful-key
+  ;; IBuffer
+  "C-x C-b" 'ibuffer)
 
 (general-def minibuffer-local-map
   "M-h" 'backward-kill-word
@@ -25,6 +27,13 @@
   [remap dired-find-file] 'dired-single-buffer
   [remap dired-mouse-find-file-other-window] 'dired-single-buffer-mouse
   [remap dired-up-directory] 'dired-single-up-directory)
+
+(general-def company-active-map
+  "C-n" 'company-select-next
+  "C-p" 'company-select-previous
+  "M-<" 'company-select-first
+  "M->" 'company-select-last
+  "TAB" 'company-complete)
 
 (require 'org-tempo)
 
@@ -67,13 +76,13 @@
   :config
   (setq which-key-idle-delay 0.5))
 
-(use-package doom-themes
-  :ensure t
-  :config
-  (setq doom-themes-enable-bold t
-        doom-themes-enable-italic t)
-  (load-theme 'doom-solarized-dark t)
-  (doom-themes-visual-bell-config))
+;; (use-package doom-themes
+;;   :ensure t
+;;   :config
+;;   (setq doom-themes-enable-bold t
+;;         doom-themes-enable-italic t)
+;;   (load-theme 'doom-solarized-dark t)
+;;   (doom-themes-visual-bell-config))
 
 (use-package doom-modeline
   :ensure t
@@ -150,6 +159,9 @@
   :config
   (setq ispell-program-name "aspell"))
 
+(use-package flycheck
+  :ensure t)
+
 (use-package openwith
   :ensure t
   :config
@@ -176,6 +188,19 @@
                  '(file))))
     (openwith-mode 1)))
 
+(use-package company
+  :ensure t
+  :config
+  (setq company-idle-delay 0
+        company-minimum-prefix-length 2)
+  (add-hook 'after-init-hook 'global-company-mode))
+
+(use-package eglot
+  :after (direnv)
+  :custom
+  (eglot-autoshutdown t)
+  (eglot-confirm-server-initiated-edits nil))
+
 (use-package nix-mode
   :ensure t
   :mode "\\.nix\\'")
@@ -188,7 +213,14 @@
   :config (direnv-mode))
 
 (use-package haskell-mode
-  :ensure t)
+  :ensure t
+  :config
+  (add-hook 'haskell-mode-hook 'eglot-ensure))
+
+(use-package zig-mode
+  :ensure t
+  :config
+  (add-hook 'zig-mode-hook 'eglot-ensure))
 
 (defun will/set-font-faces ()
   (message "setting fonts")
@@ -228,6 +260,33 @@
 
 (electric-indent-mode -1)
 
+(global-hl-line-mode 1)
+
+(blink-cursor-mode nil)
+
+(setq 
+ ;; font options for highlighting
+ modus-themes-bold-constructs t
+ modus-themes-italic-constructs t
+
+ ;; org settings
+ modus-themes-org-blocks 'tinted-background
+
+ ;; headings
+ modus-themes-headings 
+ '((1 . (1.5))
+   (2 . (1.3)))
+
+ ;; modeline
+ modus-themes-common-palette-overrides
+ '((bg-mode-line-active bg-cyan-intense)
+   (fg-mode-line-active fg-main)
+   (border-mode-line-active blue-intense)))
+
+
+;; This should be the last line of theme config: set variables first.
+(load-theme 'modus-vivendi-deuteranopia t)
+
 (if (daemonp)
     (add-hook 'after-make-frame-functions
 	      (lambda (frame)
@@ -245,16 +304,44 @@
 
 (setq auto-save-file-name-transforms '((".*" "~/.emacs.d/auto-save-list/" t)))
 
+(global-auto-revert-mode 1)
+;; Revert dired
+(setq global-auto-revert-non-file-buffers t)
+
+(setq ibuffer-saved-filter-groups
+      (quote (("default"
+               ("dired" (mode . dired-mode))
+               ("org" (name . "^.*org$"))
+               ("programming" (or
+                               (mode . haskell-mode)
+                               (mode . nix-mode)))
+               ("magit" (name . "magit*"))
+               ("emacs" (or
+                         (name . "^\\*scratch*$")
+                         (name . "^\\*Messages\\*$")))))))
+
+(add-hook 'ibuffer-mode-hook
+          (lambda ()
+            (ibuffer-auto-mode 1)
+            (ibuffer-switch-to-saved-filter-groups "default")))
+
 (require 'dash)
 
 (defvar-local will/tab-out-delimiters 
     '(";" "(" ")" "[" "]" "{" "}" "|" "'" "\"" "`" "$" "<" ">"))
 
-(defun will/get-line-from-curson (arg)
+(defun will/get-line-from-cursor (arg)
   (interactive "P")
-  (buffer-substring-no-properties
-   (+ 1 point)
-   (line-end-position)))
+  (let ((not-end-of-line (buffer-substring-no-properties
+                          (+ 1 (point))
+                          (line-end-position))))
+    (if not-end-of-line
+        (buffer-substring-no-properties
+         (+ 1 (point))
+         (line-end-position))
+      (buffer-substring-no-properties
+       (point)
+       (line-end-position)))))
 
 (defun will/contains-delimiter (arg)
   (-first
@@ -271,7 +358,7 @@
   (interactive "P")
   (let ((str (will/line-contains-delimeter nil)))
     (if str
-        (search-froward str)
+        (search-forward str)
       (will/tab-fallback))))
 
 (defun will/tab-fallback ()
@@ -282,14 +369,14 @@
 
 (defun will/tab-original-keybinding ()
   "Get current keys' binding as if `will/exit-parens` didn't exist."
-  ;; Copied from tap-jump-out package
+  ;; Copied from tab-jump-out package
   (let* ((will/tab-out-mode nil)
          (keys (this-single-command-keys)))
     (or (key-binding keys t)
         (key-binding (will/tab-out--fallback-translate-input keys) t))))
 
 (defun will/tab-out--fallback-translate-input (keys)
-  ;; Copied from tap-jump-out package
+  ;; Copied from tab-jump-out package
   (let ((retval [])
         (i 0))
     (while (< i (length keys))
@@ -316,7 +403,7 @@
 
 (defvar will/tab-out-mode-map
   (let ((map (make-sparse-keymap)))
-    (define-key map [tap] 'will/tab-out)
+    (define-key map [tab] 'will/tab-out)
     map)
   "Keymap for `will/tab-out`.")
 
@@ -324,3 +411,7 @@
   "A minor mode that allows you to jump out of parentheticals with tab."
   :keymap will/tab-out-mode-map
   :global t)
+
+;; (will/tab-out-mode 1)
+;; (add-hook 'minibuffer-setup-hook (lambda () (will/tab-out-mode -1)))
+;; (add-hook 'minibuffer-exit-hook (lambda () (will/tab-out-mode 1)))
