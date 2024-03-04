@@ -69,7 +69,7 @@
     # GUI stuff
     brave
     firefox
-    nyxt
+    # nyxt #broken sbcl dep
     trayer
     networkmanagerapplet
     cbatticon
