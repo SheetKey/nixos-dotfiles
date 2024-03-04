@@ -90,12 +90,8 @@
   :config
   (setq doom-modeline-buffer-file-name-style 'truncate-except-project))
 
-;; Taken from the doom-modeline FAQ
-(eval-after-load "doom-modeline"
-  (doom-modeline-def-modeline 
-   'main
-   '(bar matches buffer-info remote-host buffer-position parrot selection-info)
-   '(misc-info minor-modes checker input-method buffer-encoding major-mode process vcs "  ")))
+;; Taken from the doom-modeline FAQ to fix right side cutoff
+(setq nerd-icons-scale-factor 1.1)
 
 (use-package all-the-icons
   :ensure t)
