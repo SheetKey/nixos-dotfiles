@@ -1,0 +1,100 @@
+map [fullscreen] +   zoom in
+map [fullscreen] -   zoom out
+map [fullscreen] <A-Space>   scroll full-up
+map [fullscreen] <A-s>   toggle_statusbar
+map [fullscreen] <BackSpace>   scroll full-up
+map [fullscreen] <C-BackSpace>   navigate previous
+map [fullscreen] <C-Space>   navigate next
+map [fullscreen] <C-r>   search backward
+map [fullscreen] <C-s>   search forward
+map [fullscreen] <Down>   scroll down
+map [fullscreen] <Left>   scroll left
+map [fullscreen] <Return>   scroll full-down
+map [fullscreen] <Right>   scroll right
+map [fullscreen] <Space>   scroll full-down
+map [fullscreen] <Tab>   toggle_index
+map [fullscreen] <Up>   scroll up
+map [fullscreen] =   zoom in
+map [fullscreen] A   adjust_window best-fit
+map [fullscreen] F   follow
+map [fullscreen] \'   mark_evaluate
+map [fullscreen] \,   navigate next
+map [fullscreen] \.   navigate previous
+map [fullscreen] a   scroll full-left
+map [fullscreen] b   scroll left
+map [fullscreen] d   toggle_page_mode
+map [fullscreen] e   scroll full-right
+map [fullscreen] f   scroll right
+map [fullscreen] i   toggle_index
+map [fullscreen] l   jumplist backward
+map [fullscreen] m   mark_add
+map [fullscreen] n   scroll down
+map [fullscreen] p   scroll up
+map [fullscreen] q   quit
+map [fullscreen] r   jumplist forward
+map [fullscreen] s   adjust_window width
+map [index] <A-\<>   navigate_index top
+map [index] <A-\>>   navigate_index bottom
+map [index] <A-i>   navigate_index collapse-all
+map [index] <A-s>   toggle_statusbar
+map [index] <A-v>   navigate_index up
+map [index] <BackSpace>   navigate_index up
+map [index] <C-[>   toggle_index
+map [index] <C-b>   navigate_index collapse
+map [index] <C-c>   toggle_index
+map [index] <C-f>   navigate_index expand
+map [index] <C-g>   toggle_index
+map [index] <C-h>   navigate_index up
+map [index] <C-i>   navigate_index expand-all
+map [index] <C-j>   navigate_index select
+map [index] <C-m>   navigate_index select
+map [index] <C-n>   navigate_index down
+map [index] <C-p>   navigate_index up
+map [index] <C-v>   navigate_index down
+map [index] <Down>   navigate_index down
+map [index] <Esc>   toggle_index
+map [index] <Left>   navigate_index collapse
+map [index] <Return>   navigate_index select
+map [index] <Right>   navigate_index expand
+map [index] <Space>   navigate_index select
+map [index] <Up>   navigate_index up
+map [index] \<   navigate_index top
+map [index] \>   navigate_index bottom
+map [index] i   toggle_index
+map [index] q   toggle_index
+map [normal] +   zoom in
+map [normal] -   zoom out
+map [normal] <A-Space>   scroll full-up
+map [normal] <A-s>   toggle_statusbar
+map [normal] <BackSpace>   scroll full-up
+map [normal] <C-BackSpace>   navigate previous
+map [normal] <C-Space>   navigate next
+map [normal] <C-r>   search backward
+map [normal] <C-s>   search forward
+map [normal] <Down>   scroll down
+map [normal] <Left>   scroll left
+map [normal] <Return>   scroll full-down
+map [normal] <Right>   scroll right
+map [normal] <Space>   scroll full-down
+map [normal] <Tab>   toggle_index
+map [normal] <Up>   scroll up
+map [normal] =   zoom in
+map [normal] A   adjust_window best-fit
+map [normal] F   follow
+map [normal] R   rotate
+map [normal] \'   mark_evaluate
+map [normal] \,   navigate next
+map [normal] \.   navigate previous
+map [normal] a   scroll full-left
+map [normal] b   scroll left
+map [normal] d   toggle_page_mode
+map [normal] e   scroll full-right
+map [normal] f   scroll right
+map [normal] i   toggle_index
+map [normal] l   jumplist backward
+map [normal] m   mark_add
+map [normal] n   scroll down
+map [normal] p   scroll up
+map [normal] q   quit
+map [normal] r   jumplist forward
+map [normal] s   adjust_window width
