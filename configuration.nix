@@ -70,6 +70,16 @@
       };
     };
 
+
+    # new xmonad
+    windowManager.xmonad = {
+      enable = true;
+      enableContribAndExtras = true;
+      config = builtins.readFile ./users/will/programs/xmonad/xmonad.hs;
+    };
+
+    ### END new xmonad
+    
 	  #windowManager.xmonad = {
 		#  enable = false;
 		#  enableContribAndExtras = true;
