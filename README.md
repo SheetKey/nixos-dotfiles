@@ -9,7 +9,7 @@
 	1. Switch user `jane` with `will` and add `initialPassword` option
 	2. Add packages `neovim` and `git` (others are optional, I usually only install these)
 	3. Add this to enable flakes
-		```
+		```Nix
 		nix = {
 		  packages = pkgs.nixUnstable;
 		  extraOptions = ''
@@ -30,12 +30,12 @@
 
 7. ``eval `ssh-agent` ``, `ssh-add KEYNAME`.
 
-8. In home directory run, `mkdir dotfiles`, `cd /dotfiles`, `git clone git@github.com:SheetKey/nixos-dotfiles.git`
+8. In home directory run, ```mkdir dotfiles && cd /dotfiles && git clone git@github.com:SheetKey/nixos-dotfiles.git```
 
-9. Create new host file `HOSTNAME.nix` in `/hosts` 
+10. Create new host file `HOSTNAME.nix` in `/hosts` 
 
-10. Add to new `HOSTNAME.nix`
-	```
+11. Add to new `HOSTNAME.nix`
+	```Nix
 	{ config, lib, pkgs, modulesPath, ... }:
 
 	{
@@ -54,8 +54,8 @@
 	}
 	```
 
-11. Edit flake.nix to create new "nixosConfiguration"
-	```
+12. Edit flake.nix to create new "nixosConfiguration"
+	```Nix
 	NEWHOSTNAME = lib.nixosSystem {
 	  inherit system;
 
@@ -77,9 +77,9 @@
 	};
 	```
 
-12. Run `nix flake lock`
+13. Run `nix flake lock`
 
-13. Build a certain nixosConfiguration.
-	```
+14. Build a certain nixosConfiguration.
+	```bash
 	nixos-rebuild switch --flake .#NEWHOSTNAME
 	```
