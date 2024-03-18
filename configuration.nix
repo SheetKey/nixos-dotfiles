@@ -63,7 +63,7 @@
 
 	  displayManager = {
       lightdm.enable = true;
-	    defaultSession = "none+awesome";
+	    defaultSession = "none+xmonad";
       autoLogin = {
         enable = false;
         user = "will";
@@ -75,6 +75,12 @@
     windowManager.xmonad = {
       enable = true;
       enableContribAndExtras = true;
+      # extraPackages = hpkgs: [
+      #   hpkgs.process_1_6_18_0
+			#   hpkgs.xmonad
+			#   hpkgs.xmonad-contrib
+			#   hpkgs.xmonad-extras
+			# ];
       config = builtins.readFile ./users/will/programs/xmonad/xmonad.hs;
     };
 
@@ -163,6 +169,10 @@
 
     # xkblayout-state
     xkblayout-state
+
+    # installed globally for xmonad
+    dzen2
+    feh
   ];
 
   programs.zsh.enable = true;
@@ -179,12 +189,15 @@
   };
 
   # Install fonts
-  fonts.packages = with pkgs; [
-    nerdfonts
-    font-awesome
-    material-icons
-    emacs-all-the-icons-fonts
-  ];
+  fonts = {
+    packages = with pkgs; [
+      nerdfonts
+      font-awesome
+      material-icons
+      emacs-all-the-icons-fonts
+    ];
+    fontDir.enable = true;
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

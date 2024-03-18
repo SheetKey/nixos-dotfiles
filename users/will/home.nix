@@ -38,6 +38,8 @@
     hardinfo
     pmount
 
+    xlsfonts
+
     # midi
     timidity
     # tab editor
