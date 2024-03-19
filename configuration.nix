@@ -56,10 +56,11 @@
   services.xserver = {
   	enable = true;
     # Keyboard US and Polytonic Greek
-	  layout = "us,gr";
-    xkbVariant = ",polytonic";
-    xkbOptions = "grp:shifts_toggle, ctrl:nocaps";
-
+    xkb = {
+	    layout = "us,gr";
+      variant = ",polytonic";
+      options = "grp:shifts_toggle, ctrl:nocaps";
+    };
 
 	  displayManager = {
       lightdm.enable = true;
