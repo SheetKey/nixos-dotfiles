@@ -38,7 +38,9 @@
     hardinfo
     pmount
 
+    # check X server fonts
     xlsfonts
+    xfontsel
 
     # midi
     timidity
