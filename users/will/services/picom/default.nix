@@ -1,16 +1,7 @@
-# picom default.nix
+{ lib, pkgs, ... }:
 
 {
-  services.picom = {
-    enable = true;
-    activeOpacity = 1.0;
-    inactiveOpacity = 1.0;
-    backend = "glx";
-    fade = true;
-    fadeDelta = 5;
-    shadow = true;
-    shadowOpacity = 0.75;
-    vSync = false;
-    # unredir-if-possible = false;
+  home.file = {
+    ".config/picom/picom.conf".source = ./picom.conf;
   };
 }
