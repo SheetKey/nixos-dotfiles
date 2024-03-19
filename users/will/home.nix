@@ -27,7 +27,6 @@
     zsh
     bash
     # DO NOT ADD NEOVIM TO "home.packages": LEAVE IN "configuration.nix"
-    # neovim
     neofetch
     htop
     #xorg.kill
@@ -83,8 +82,7 @@
     pavucontrol
     brightnessctl
     upower
-    scrot #screenshots
-    spectacle
+    spectacle # screenshots
     libreoffice
     krita
     goxel
@@ -114,7 +112,7 @@
     aspell
     aspellDicts.en
     
-      # Stuff for vterm
+    # Stuff for vterm
     cmake
     libtool
     libvterm
