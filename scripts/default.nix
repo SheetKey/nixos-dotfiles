@@ -77,7 +77,7 @@ let
   '';
 
   dzen2-nix-icon = pkgs.writeShellScriptBin "dzen2-nix-icon" ''
-    echo '' | dzen2 -p -fn '-*-firacode nerd font mono-bold-*-*-*-*-300-*-*-*-*-iso8859-1' -h 22 -w 30 -fg '#2fafff' -bg '#000000' -e 'button2=;' 
+    echo '' | dzen2 -p -fn '-*-firacode nerd font mono-bold-*-*-*-*-250-*-*-*-*-iso8859-1' -h 22 -w 30 -fg '#2fafff' -bg '#000000' -e 'button2=;' 
   '';
 
 in {
