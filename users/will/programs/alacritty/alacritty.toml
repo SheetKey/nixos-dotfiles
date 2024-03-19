@@ -88,8 +88,8 @@ bindings = [
 { key = "N", mods = "Control", action = "SearchFocusNext", mode = "Search" },
 { key = "P", mods = "Control", action = "SearchFocusPrevious", mode = "Search" },
 { key = "G", mods = "Control", action = "SearchCancel", mode = "Search" },
-{ key = "Y", mods = "Control", action = "Paste" },
-{ key = "W", mods = "Alt", action = "Copy" },
+{ key = "Y", mods = "Control|Alt", action = "Paste" },
+{ key = "W", mods = "Control|Alt", action = "Copy" },
 { key = "Enter", action = "SearchConfirm", mode = "Search" },
 { key = ">", mods = "Alt|Shift", action = "ScrollToBottom" },
 ]
