@@ -70,31 +70,11 @@
       };
     };
 
-
-    # new xmonad
     windowManager.xmonad = {
       enable = true;
       enableContribAndExtras = true;
-      # extraPackages = hpkgs: [
-      #   hpkgs.process_1_6_18_0
-			#   hpkgs.xmonad
-			#   hpkgs.xmonad-contrib
-			#   hpkgs.xmonad-extras
-			# ];
       config = builtins.readFile ./users/will/programs/xmonad/xmonad.hs;
     };
-
-    ### END new xmonad
-    
-	  #windowManager.xmonad = {
-		#  enable = false;
-		#  enableContribAndExtras = true;
-		#  extraPackages = hpkgs: [
-		#	  hpkgs.xmonad
-		#	  hpkgs.xmonad-contrib
-		#	  hpkgs.xmonad-extras
-		#	];
-	  #};
 
     windowManager.awesome = {
       enable = true;
