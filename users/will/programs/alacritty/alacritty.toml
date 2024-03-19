@@ -89,4 +89,6 @@ bindings = [
 { key = "G", mods = "Control", action = "SearchCancel", mode = "Search" },
 { key = "Y", mods = "Control", action = "Paste" },
 { key = "W", mods = "Alt", action = "Copy" },
+{ key = "Enter", action = "SearchConfirm", mode = "Search" },
+{ key = ">", mods = "Alt|Shift", action = "ScrollToBottom" },
 ]
