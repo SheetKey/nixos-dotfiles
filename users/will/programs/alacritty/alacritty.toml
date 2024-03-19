@@ -1,0 +1,92 @@
+[shell]
+program = "zsh"
+
+[window]
+opacity = 0.97
+
+[window.padding]
+x = 10
+y = 10
+
+[font]
+size = 9.0
+
+[font.normal]
+family = "FiraCode Nerd Font Mono"
+style = "Regular"
+
+[font.bold]
+family = "FiraCode Nerd Font Mono"
+style = "Bold"
+
+[font.italic]
+family = "FiraCode Nerd Font Mono"
+style = "Italic"
+
+[font.bold_italic]
+family = "FiraCode Nerd Font Mono"
+style = "Bold Italic"
+
+[colors]
+[colors.primary]
+foreground = "#ffffff"
+background = "#000000"
+dim_foreground = "#989898"
+bright_foreground = "#c6daff"
+
+[colors.cursor]
+cursor = "#efef00"
+text = "#1e1e1e"
+
+[colors.selection]
+text = "#ffffff"
+background = "#5a5a5a"
+
+[colors.normal]
+black = "#000000"
+red = "#ff5f59"
+green = "#44bc44"
+yellow = "#cabf00"
+blue = "#2fafff"
+magenta = "#feacd0"
+cyan = "#00d3d0"
+white = "#ffffff"
+
+[colors.bright]
+black = "#303030"
+red = "#ff5f5f"
+green = "#44df44"
+yellow = "#efef00"
+blue = "#338fff"
+magenta = "#ff66ff"
+cyan = "#00eff0"
+white = "#ffffff"
+
+[colors.dim]
+black = "#1e1e1e"
+red = "#ff9580"
+green = "#88ca9f"
+yellow = "#d2b580"
+blue = "#82b0ec"
+magenta = "#caa6df"
+cyan = "#9ac8e0"
+white = "#ffffff"
+
+[selection]
+save_to_clipboard = true
+
+# [cursor]
+# shape = "Block"
+# blinking = "On"
+
+[keyboard]
+bindings = [
+{ key = "N", mods = "Control", action = "ScrollLineDown", mode = "~Search" },
+{ key = "P", mods = "Control", action = "ScrollLineUp", mode = "~Search" },
+{ key = "S", mods = "Control", action = "SearchForward", mode = "~Search" },
+{ key = "N", mods = "Control", action = "SearchFocusNext", mode = "Search" },
+{ key = "P", mods = "Control", action = "SearchFocusPrevious", mode = "Search" },
+{ key = "G", mods = "Control", action = "SearchCancel", mode = "Search" },
+{ key = "Y", mods = "Control", action = "Paste" },
+{ key = "W", mods = "Alt", action = "Copy" },
+]
