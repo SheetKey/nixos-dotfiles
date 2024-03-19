@@ -75,9 +75,10 @@ white = "#ffffff"
 [selection]
 save_to_clipboard = true
 
-# [cursor]
-# shape = "Block"
-# blinking = "On"
+[cursor]
+[cursor.style]
+shape = "Block"
+blinking = "On"
 
 [keyboard]
 bindings = [
