@@ -59,7 +59,11 @@ main = do
     , focusedBorderColor = "#ffffff"
     , normalBorderColor = "#000000"
     }
-    
+
+-- NOTE:
+-- The following are leader keys and should not be used on their own:
+-- "M-l" for layout related commands
+-- "M-u" for other commands
 myKeys :: XConfig Layout -> M.Map (KeyMask, KeySym) (X ())
 myKeys c = mkKeymap c $
   [ ("M-<Return>", spawn $ terminal c)
@@ -86,6 +90,12 @@ myKeys c = mkKeymap c $
   , ("M-l m", sendMessage (Toggle MIRROR))
   
   , ("M-S-q", io exitSuccess)
+
+  -- other
+  , ("<XF86MonBrightnessUp>", spawn "brightnessctl s +10%")
+  , ("<XF86MonBrightnessDown>", spawn "brightnessctl s 10%-")
+  , ("M-u b h", spawn "brightnessctl s 100%")
+  , ("M-u b l", spawn "brightnessctl s 15%")
   ]
   ++
   -- mod-[1-9] switches to workspace N
