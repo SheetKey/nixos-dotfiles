@@ -72,6 +72,11 @@ let
     echo "<icon=''${iconfile}/>" 
   '';
 
+  trayer-width = pkgs.writeShellScriptBin "trayer-width" ''
+    xprop -name panel | grep 'program specified minimum size' | cut -d ' ' -f 5
+  '';
+
+  dzen2-nix-icon = pkgs.writeShellScriptBin "dzen2-nix-icon" ''
 in {
   environment.systemPackages = [ 
     polybar-exwm-workspace
@@ -79,5 +84,6 @@ in {
     trayer-padding-icon
     nvidia-offload
     nvidia-set-offload-steam
+    trayer-width
   ];
 }
