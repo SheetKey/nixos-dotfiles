@@ -13,6 +13,8 @@ import XMonad.Util.SpawnOnce (spawnOnce)
 import XMonad.Util.Ungrab (unGrab)
 import XMonad.Prompt.Shell (split)
 
+import XMonad.Actions.Navigation2D
+
 -- layouts
 
 
@@ -53,6 +55,7 @@ main = do
     --toggleFullFloatEwmhFullscreen $
     ewmhFullscreen $ ewmh $
     docks $ dynamicSBs myStatusBars $
+    myNavigation2D $
     def
     { modMask = mod4Mask
     , keys = myKeys
@@ -65,6 +68,13 @@ main = do
     , normalBorderColor = "#000000"
     }
 
+myNavigation2D :: XConfig l -> XConfig l
+myNavigation2D = navigation2DP
+  ( def { defaultTiledNavigation = centerNavigation } )
+  ("p", "b", "n", "f")
+  [("M-", windowGo), ("M-S-", windowSwap)]
+  True
+
 -- NOTE:
 -- The following are leader keys and should not be used on their own:
 -- "M-l" for layout related commands
@@ -74,21 +84,17 @@ myKeys c = mkKeymap c $
   [ ("M-<Return>", spawn $ terminal c)
   , ("M-S-c", kill)
   , ("M-x", spawn "rofi -show run")
-  , ("M-S-b", spawn "brave")
+  , ("M-C-b", spawn "brave")
   , ("M-S-s", unGrab *> spawn "spectacle -r")
   , ("M-e", spawn "emacsclient -c")
     
   -- Layout keys
   , ("M-<Tab>", sendMessage NextLayout)
-  , ("M-n", windows W.focusDown)
-  , ("M-p", windows W.focusUp)
   , ("M-m", windows W.focusMaster)
   , ("M-S-<Return>", windows W.swapMaster)
-  , ("M-S-n", windows W.swapDown)
-  , ("M-S-p", windows W.swapUp)
   -- resize
-  , ("M-f", sendMessage Expand)
-  , ("M-b", sendMessage Shrink)
+  , ("M-l f", sendMessage Expand)
+  , ("M-l b", sendMessage Shrink)
   -- version issues
   -- , ("M-<Space>", withFocused toggleFullFloat)
   , ("M-<Space>", sendMessage (Toggle NBFULL) >> sendMessage ToggleStruts)
