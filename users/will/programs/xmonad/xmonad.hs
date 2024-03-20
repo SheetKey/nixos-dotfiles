@@ -19,6 +19,10 @@ import XMonad.Prompt.Shell (split)
 -- layouts modifiers
 import XMonad.Layout.MultiToggle (Toggle(..),  mkToggle, single)
 import XMonad.Layout.MultiToggle.Instances (StdTransformers(NBFULL, MIRROR))
+import XMonad.Layout.Renamed
+import XMonad.Layout.LayoutModifier
+import XMonad.Util.NamedWindows
+import qualified XMonad.Util.ExtensibleState as XS
 
 -- status bar (using dzen2)
 import XMonad.Hooks.StatusBar
@@ -41,6 +45,7 @@ import Data.Time (formatTime
 
 -- base
 import System.Exit (exitSuccess)
+import Data.List ((\\))
 
 main :: IO ()
 main = do
@@ -88,6 +93,8 @@ myKeys c = mkKeymap c $
   -- , ("M-<Space>", withFocused toggleFullFloat)
   , ("M-<Space>", sendMessage (Toggle NBFULL) >> sendMessage ToggleStruts)
   , ("M-l m", sendMessage (Toggle MIRROR))
+  , ("M-h", withFocused hideWindow)
+  , ("M-C-h", popNewestHiddenWindow)
   
   , ("M-S-q", io exitSuccess)
 
@@ -112,6 +119,7 @@ myLayout = transformLayout $ tallLeft
 
 transformLayout = id
   . avoidStruts
+  . hiddenWindows
   . mkToggle (single NBFULL)
   . mkToggle (single MIRROR)
 
@@ -174,7 +182,7 @@ dzenCmdRight = "dzen2 \
                \-e 'button2=;'"
 
 filterWindowTitle :: String -> String
-filterWindowTitle = last . split '-'
+filterWindowTitle = dropWhile (== ' ') . last . split '-'
 
 dzenLeftPP :: PP
 dzenLeftPP = def
@@ -187,8 +195,8 @@ dzenLeftPP = def
   , ppSep = ""
   , ppTitle = const ""
   , ppTitleSanitize = const ""
-  , ppLayout = pad
-  , ppOrder = \ (ws : l : _ : ts : _) -> [l, ws, ts]
+  , ppLayout = pad . (\\ "Hidden ")
+  , ppOrder = \ (ws : l : _ : ts : hts : _) -> [l, ws, ts, hts]
   , ppExtras =
     [ logTitles' $ TitlesFormat
       { focusedFormat = dzenColor "#ffffff" "#535353" 
@@ -198,6 +206,7 @@ dzenLeftPP = def
       , urgentFormat = dzenColor "#ffffff" "#ff5f59" 
                        . pad . dzenEscape . wrap "!" "!" . drop 2 . dropWhile (/= '-')
       }
+    , hiddenWinTitlesL
     ]
   }
 
@@ -214,3 +223,118 @@ myDateLogger = io $ Just
   . formatTime defaultTimeLocale "%a %b %d, %I:%M%P"
   . addUTCTime (secondsToNominalDiffTime (-14400))
   <$> getCurrentTime
+
+-- THE FOLLOWING IS PROVIDED BY Xmonad.Layout.Hidden
+-- However, this module does not expose the 'HiddenWindows' constructor,
+-- so, as far as I can tell, it is not possible to get the names
+-- of hidden windows to display on the bar
+--------------------------------------------------------------------------------
+newtype HiddenWindows a = HiddenWindows [Window] deriving (Show, Read)
+
+--------------------------------------------------------------------------------
+-- | Messages for the @HiddenWindows@ layout modifier.
+data HiddenMsg = HideWindow Window                -- ^ Hide a window.
+               | PopNewestHiddenWindow            -- ^ Restore window (FILO).
+               | PopOldestHiddenWindow            -- ^ Restore window (FIFO).
+               | PopSpecificHiddenWindow Window   -- ^ Restore specific window.
+               deriving (Eq)
+
+instance Message HiddenMsg
+
+--------------------------------------------------------------------------------
+instance LayoutModifier HiddenWindows Window where
+  handleMess h@(HiddenWindows hidden) mess
+    | Just (HideWindow win)              <- fromMessage mess = hideWindowMsg h win
+    | Just PopNewestHiddenWindow         <- fromMessage mess = popNewestMsg h
+    | Just PopOldestHiddenWindow         <- fromMessage mess = popOldestMsg h
+    | Just (PopSpecificHiddenWindow win) <- fromMessage mess = popSpecificMsg win h
+    | Just ReleaseResources              <- fromMessage mess = doUnhook
+    | otherwise                                              = return Nothing
+    where doUnhook = do mapM_ restoreWindow hidden
+                        return Nothing
+
+  modifierDescription _ = "Hidden"
+
+--------------------------------------------------------------------------------
+-- | Apply the @HiddenWindows@ layout modifier.
+hiddenWindows :: LayoutClass l Window => l Window -> ModifiedLayout HiddenWindows l Window
+hiddenWindows = ModifiedLayout $ HiddenWindows []
+
+--------------------------------------------------------------------------------
+-- | Remove the given window from the current layout.  It is placed in
+-- list of hidden windows so it can be restored later.
+hideWindow :: Window -> X ()
+hideWindow = sendMessage . HideWindow
+
+--------------------------------------------------------------------------------
+-- | Restore a previously hidden window.  Using this function will
+-- treat the list of hidden windows as a FIFO queue.  That is, the
+-- first window hidden will be restored.
+popOldestHiddenWindow :: X ()
+popOldestHiddenWindow = sendMessage PopOldestHiddenWindow
+
+--------------------------------------------------------------------------------
+-- | Restore a previously hidden window.  Using this function will
+-- treat the list of hidden windows as a FILO queue.  That is, the
+-- most recently hidden window will be restored.
+popNewestHiddenWindow :: X ()
+popNewestHiddenWindow = sendMessage PopNewestHiddenWindow
+
+popHiddenWindow :: Window -> X ()
+popHiddenWindow = sendMessage . PopSpecificHiddenWindow
+
+--------------------------------------------------------------------------------
+hideWindowMsg :: HiddenWindows a -> Window -> X (Maybe (HiddenWindows a))
+hideWindowMsg (HiddenWindows hidden) win = do
+  modify (\s -> s { windowset = W.delete' win $ windowset s })
+  XS.modifyM $ \ (HiddenWindowTitles ts) -> do
+    name <- fmap show . getName $ win
+    return $ HiddenWindowTitles $ name : ts
+  return . Just . HiddenWindows $ hidden ++ [win]
+
+--------------------------------------------------------------------------------
+popNewestMsg :: HiddenWindows a -> X (Maybe (HiddenWindows a))
+popNewestMsg (HiddenWindows [])     = return Nothing
+popNewestMsg (HiddenWindows hidden) = do
+  let (win, rest) = (last hidden, init hidden)
+  restoreWindow win
+  XS.modify $ \ (HiddenWindowTitles (_ : ts)) -> HiddenWindowTitles ts
+  return . Just . HiddenWindows $ rest
+
+--------------------------------------------------------------------------------
+popOldestMsg :: HiddenWindows a -> X (Maybe (HiddenWindows a))
+popOldestMsg (HiddenWindows [])         = return Nothing
+popOldestMsg (HiddenWindows (win:rest)) = do
+  restoreWindow win
+  XS.modify $ \ (HiddenWindowTitles ts) -> HiddenWindowTitles (init ts)
+  return . Just . HiddenWindows $ rest
+
+--------------------------------------------------------------------------------
+popSpecificMsg :: Window -> HiddenWindows a -> X (Maybe (HiddenWindows a))
+popSpecificMsg _   (HiddenWindows []) = return Nothing
+popSpecificMsg win (HiddenWindows hiddenWins) = if win `elem` hiddenWins
+  then do
+    restoreWindow win
+    XS.modifyM $ \ (HiddenWindowTitles ts) -> do
+      name <- fmap show . getName $ win
+      return $ HiddenWindowTitles $ filter (/= name) ts
+    return . Just . HiddenWindows $ filter (/= win) hiddenWins
+  else
+    return . Just . HiddenWindows $ hiddenWins
+
+--------------------------------------------------------------------------------
+restoreWindow :: Window -> X ()
+restoreWindow = windows . W.insertUp
+
+--------------------------------------------------------------------------------
+hiddenWinTitlesL :: Logger
+hiddenWinTitlesL = do
+  HiddenWindowTitles winTitles <- XS.get
+  return . Just . unwords $ formatHidden <$> winTitles
+
+formatHidden :: String -> String
+formatHidden = dzenColor "#646464" "#303030" . pad . dzenEscape . filterWindowTitle
+
+data HiddenWindowTitles = HiddenWindowTitles [String]
+instance ExtensionClass HiddenWindowTitles where
+  initialValue = HiddenWindowTitles []
