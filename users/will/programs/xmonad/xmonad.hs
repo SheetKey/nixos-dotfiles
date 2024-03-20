@@ -106,9 +106,9 @@ myKeys c = mkKeymap c $
   [ ("M-S-" ++ show k, windows $ W.shift i)
   | (i, k) <- zip (XMonad.workspaces c) [1..9]]
   
-myLayout = transformLayout $ defTiled
+myLayout = transformLayout $ tallLeft
   where
-    defTiled = Tall 1 (3/100) (1/2)
+    tallLeft = Tall 1 (3/100) (1/2)
 
 transformLayout = id
   . avoidStruts
