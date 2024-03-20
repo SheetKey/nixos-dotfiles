@@ -16,7 +16,7 @@ import XMonad.Prompt.Shell (split)
 import XMonad.Actions.Navigation2D
 
 -- layouts
-
+import XMonad.Layout.BinarySpacePartition
 
 -- layouts modifiers
 import XMonad.Layout.MultiToggle (Toggle(..),  mkToggle, single)
@@ -95,6 +95,17 @@ myKeys c = mkKeymap c $
   -- resize
   , ("M-l f", sendMessage Expand)
   , ("M-l b", sendMessage Shrink)
+  -- BSP layout keys
+  , ("M-M1-b", sendMessage $ ExpandTowards L)
+  , ("M-M1-f", sendMessage $ ExpandTowards R)
+  , ("M-M1-n", sendMessage $ ExpandTowards D)
+  , ("M-M1-p", sendMessage $ ExpandTowards U)
+  , ("M-M1-C-b", sendMessage $ ShrinkFrom L)
+  , ("M-M1-C_f", sendMessage $ ShrinkFrom R)
+  , ("M-M1-C-n", sendMessage $ ShrinkFrom D)
+  , ("M-M1-C-p", sendMessage $ ShrinkFrom U)
+  , ("M-M1-s", sendMessage Swap)
+  , ("M-M1-r", sendMessage Rotate)
   -- version issues
   -- , ("M-<Space>", withFocused toggleFullFloat)
   , ("M-<Space>", sendMessage (Toggle NBFULL) >> sendMessage ToggleStruts)
@@ -119,7 +130,7 @@ myKeys c = mkKeymap c $
   [ ("M-S-" ++ show k, windows $ W.shift i)
   | (i, k) <- zip (XMonad.workspaces c) [1..9]]
   
-myLayout = transformLayout $ tallLeft
+myLayout = transformLayout $ emptyBSP ||| tallLeft
   where
     tallLeft = Tall 1 (3/100) (1/2)
 
