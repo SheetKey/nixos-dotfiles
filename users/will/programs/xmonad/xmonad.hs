@@ -202,7 +202,7 @@ dzenLeftPP = def
   , ppTitle = const ""
   , ppTitleSanitize = const ""
   , ppLayout = pad . (\\ "Hidden ")
-  , ppOrder = \ (ws : l : _ : ts : hts : _) -> [l, ws, ts, hts]
+  , ppOrder = \ (ws : l : _ : ts : hts : _) -> [l, ws, " ", ts, " ", hts]
   , ppExtras =
     [ logTitles' $ TitlesFormat
       { focusedFormat = dzenColor "#ffffff" "#535353" 
