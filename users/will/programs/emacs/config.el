@@ -20,7 +20,11 @@
   ;; Embark
   "C-." 'embark-act
   ;; Avy
-  "M-j" 'avy-goto-char-timer)
+  "M-j" 'avy-goto-char-timer
+  ;; Org capture
+  "C-c c" 'org-capture
+  ;; Org agenda
+  "C-c a" 'org-agenda-list)
 
 (general-def minibuffer-local-map
   "M-h" 'backward-kill-word
