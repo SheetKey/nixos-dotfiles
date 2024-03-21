@@ -86,7 +86,7 @@ myKeys c = mkKeymap c $
   , ("M-x", spawn "rofi -show run")
   , ("M-C-b", spawn "brave")
   , ("M-S-s", unGrab *> spawn "spectacle -r")
-  , ("M-e", spawn "emacsclient -c")
+  , ("M-e", spawn "emacsclient -c --eval '(org-agenda-list)' '(delete-other-windows)'")
     
   -- Layout keys
   , ("M-<Tab>", sendMessage NextLayout)
