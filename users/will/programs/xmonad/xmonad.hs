@@ -254,6 +254,7 @@ data HiddenMsg = HideWindow Window                -- ^ Hide a window.
                | PopNewestHiddenWindow            -- ^ Restore window (FILO).
                | PopOldestHiddenWindow            -- ^ Restore window (FIFO).
                | PopSpecificHiddenWindow Window   -- ^ Restore specific window.
+               | GetHiddenWindowNames             -- ^ Get the names of hidden windows.
                deriving (Eq)
 
 instance Message HiddenMsg
@@ -266,6 +267,7 @@ instance LayoutModifier HiddenWindows Window where
     | Just PopOldestHiddenWindow         <- fromMessage mess = popOldestMsg h
     | Just (PopSpecificHiddenWindow win) <- fromMessage mess = popSpecificMsg win h
     | Just ReleaseResources              <- fromMessage mess = doUnhook
+    | Just GetHiddenWindowNames          <- fromMessage mess = getHiddenNames h
     | otherwise                                              = return Nothing
     where doUnhook = do mapM_ restoreWindow hidden
                         return Nothing
@@ -304,9 +306,9 @@ popHiddenWindow = sendMessage . PopSpecificHiddenWindow
 hideWindowMsg :: HiddenWindows a -> Window -> X (Maybe (HiddenWindows a))
 hideWindowMsg (HiddenWindows hidden) win = do
   modify (\s -> s { windowset = W.delete' win $ windowset s })
-  XS.modifyM $ \ (HiddenWindowTitles ts) -> do
-    name <- fmap show . getName $ win
-    return $ HiddenWindowTitles $ name : ts
+  -- XS.modifyM $ \ (HiddenWindowTitles ts) -> do
+  --   name <- fmap show . getName $ win
+  --   return $ HiddenWindowTitles $ name : ts
   return . Just . HiddenWindows $ hidden ++ [win]
 
 --------------------------------------------------------------------------------
@@ -315,7 +317,7 @@ popNewestMsg (HiddenWindows [])     = return Nothing
 popNewestMsg (HiddenWindows hidden) = do
   let (win, rest) = (last hidden, init hidden)
   restoreWindow win
-  XS.modify $ \ (HiddenWindowTitles (_ : ts)) -> HiddenWindowTitles ts
+  -- XS.modify $ \ (HiddenWindowTitles (_ : ts)) -> HiddenWindowTitles ts
   return . Just . HiddenWindows $ rest
 
 --------------------------------------------------------------------------------
@@ -323,7 +325,7 @@ popOldestMsg :: HiddenWindows a -> X (Maybe (HiddenWindows a))
 popOldestMsg (HiddenWindows [])         = return Nothing
 popOldestMsg (HiddenWindows (win:rest)) = do
   restoreWindow win
-  XS.modify $ \ (HiddenWindowTitles ts) -> HiddenWindowTitles (init ts)
+  -- XS.modify $ \ (HiddenWindowTitles ts) -> HiddenWindowTitles (init ts)
   return . Just . HiddenWindows $ rest
 
 --------------------------------------------------------------------------------
@@ -332,12 +334,21 @@ popSpecificMsg _   (HiddenWindows []) = return Nothing
 popSpecificMsg win (HiddenWindows hiddenWins) = if win `elem` hiddenWins
   then do
     restoreWindow win
-    XS.modifyM $ \ (HiddenWindowTitles ts) -> do
-      name <- fmap show . getName $ win
-      return $ HiddenWindowTitles $ filter (/= name) ts
+    -- XS.modifyM $ \ (HiddenWindowTitles ts) -> do
+    --   name <- fmap show . getName $ win
+    --   return $ HiddenWindowTitles $ filter (/= name) ts
     return . Just . HiddenWindows $ filter (/= win) hiddenWins
   else
     return . Just . HiddenWindows $ hiddenWins
+
+--------------------------------------------------------------------------------
+-- | Add the names of hidden workspaces to 'extendedStack' so they may be
+-- printed to the status bar.
+getHiddenNames :: HiddenWindows a -> X (Maybe (HiddenWindows a))
+getHiddenNames (HiddenWindows hidden) = do
+  names <- traverse (fmap show . getName) hidden
+  XS.put $ HiddenWindowTitles names
+  return Nothing
 
 --------------------------------------------------------------------------------
 restoreWindow :: Window -> X ()
@@ -346,8 +357,11 @@ restoreWindow = windows . W.insertUp
 --------------------------------------------------------------------------------
 hiddenWinTitlesL :: Logger
 hiddenWinTitlesL = do
+  sendMessage GetHiddenWindowNames
   HiddenWindowTitles winTitles <- XS.get
-  return . Just . unwords $ formatHidden <$> winTitles
+  if winTitles == []
+    then return $ Just ""
+    else return . Just . unwords $ formatHidden <$> winTitles
 
 formatHidden :: String -> String
 formatHidden = dzenColor "#646464" "#303030" . pad . dzenEscape . filterWindowTitle
