@@ -135,7 +135,7 @@
 *** Todo
 #+begin_src emacs-lisp
   (setq org-todo-keywords
-        '((sequence "TODO" "TODAY" "|" "DONE")))
+        '((sequence "TODO" "|" "DONE")))
 #+end_src
 
 *** Agenda (Super agenda)
@@ -161,10 +161,10 @@
 
   (setq org-capture-templates
         (doct '(("Tasks" :keys "t"
-                 :file "~/Documents/Planning/Agenda/agenda.org"
+                 :file "~/Documents/Planning/Agenda/Agenda.org"
                  :prepend t
                  :template ("* %{todo-state} %^{Description}"
-                            "%^{Schedule|SCHEDULED|DEADLINE}: %^t"
+                            "%^{Schedule||SCHEDULED:|DEADLINE:} %^t"
                             ":PROPERTIES:"
                             ":Created: %U"
                             ":LINK: %a"

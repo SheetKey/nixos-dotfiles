@@ -56,7 +56,7 @@
   :init (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 
 (setq org-todo-keywords
-      '((sequence "TODO" "TODAY" "|" "DONE")))
+      '((sequence "TODO" "|" "DONE")))
 
 (setq org-directory "~/Documents/Planning"
       org-agenda-files 
@@ -76,10 +76,10 @@
 
 (setq org-capture-templates
       (doct '(("Tasks" :keys "t"
-               :file "~/Documents/Planning/Agenda/agenda.org"
+               :file "~/Documents/Planning/Agenda/Agenda.org"
                :prepend t
                :template ("* %{todo-state} %^{Description}"
-                          "%^{Schedule|SCHEDULED|DEADLINE}: %^t"
+                          "%^{Schedule||SCHEDULED:|DEADLINE:} %^t"
                           ":PROPERTIES:"
                           ":Created: %U"
                           ":LINK: %a"
