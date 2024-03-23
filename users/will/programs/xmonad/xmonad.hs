@@ -13,7 +13,10 @@ import XMonad.Util.SpawnOnce (spawnOnce)
 import XMonad.Util.Ungrab (unGrab)
 import XMonad.Prompt.Shell (split)
 
+-- actions
 import XMonad.Actions.Navigation2D
+import XMonad.Actions.NoBorders (toggleBorder)
+import XMonad.Actions.WithAll (withAll)
 
 -- layouts
 import XMonad.Layout.BinarySpacePartition
@@ -108,7 +111,9 @@ myKeys c = mkKeymap c $
   , ("M-M1-r", sendMessage Rotate)
   -- version issues
   -- , ("M-<Space>", withFocused toggleFullFloat)
-  , ("M-<Space>", sendMessage (Toggle NBFULL) >> sendMessage ToggleStruts)
+  , ("M-<Space>", sendMessage (Toggle NBFULL)
+                  >> sendMessage ToggleStruts
+                  >> withAll toggleBorder)
   , ("M-l m", sendMessage (Toggle MIRROR))
   , ("M-h", withFocused hideWindow)
   , ("M-C-h", popNewestHiddenWindow)
