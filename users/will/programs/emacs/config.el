@@ -350,6 +350,10 @@
                  '(file))))
     (openwith-mode 1)))
 
+(use-package aggressive-indent
+  :ensure t
+  :init (global-aggressive-indent-mode 1))
+
 (use-package company
   :ensure t
   :config

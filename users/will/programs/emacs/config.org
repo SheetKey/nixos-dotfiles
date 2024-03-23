@@ -22,6 +22,7 @@
   - [[#dired][Dired]]
   - [[#spellcheck][Spellcheck]]
   - [[#openwith][Openwith]]
+  - [[#aggressive-indent][Aggressive indent]]
   - [[#programming-languages][Programming languages]]
 - [[#base-settings][Base settings]]
   - [[#fonts][Fonts]]
@@ -512,6 +513,13 @@ In my previous config, I had the 'ssh-agency' package installed, although it see
                    "nomacs"
                    '(file))))
       (openwith-mode 1)))
+#+end_src
+
+** Aggressive indent
+#+begin_src emacs-lisp
+  (use-package aggressive-indent
+    :ensure t
+    :init (global-aggressive-indent-mode 1))
 #+end_src
 
 ** Programming languages
