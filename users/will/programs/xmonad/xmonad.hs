@@ -23,7 +23,7 @@ import XMonad.Layout.BinarySpacePartition
 
 -- layouts modifiers
 import XMonad.Layout.MultiToggle (Toggle(..),  mkToggle, single)
-import XMonad.Layout.MultiToggle.Instances (StdTransformers(NBFULL, MIRROR))
+import XMonad.Layout.MultiToggle.Instances (StdTransformers(FULL, MIRROR))
 import XMonad.Layout.Renamed
 import XMonad.Layout.LayoutModifier
 import XMonad.Util.NamedWindows
@@ -111,7 +111,7 @@ myKeys c = mkKeymap c $
   , ("M-M1-r", sendMessage Rotate)
   -- version issues
   -- , ("M-<Space>", withFocused toggleFullFloat)
-  , ("M-<Space>", sendMessage (Toggle NBFULL)
+  , ("M-<Space>", sendMessage (Toggle FULL)
                   >> sendMessage ToggleStruts
                   >> withAll toggleBorder)
   , ("M-l m", sendMessage (Toggle MIRROR))
@@ -142,7 +142,7 @@ myLayout = transformLayout $ emptyBSP ||| tallLeft
 transformLayout = id
   . avoidStruts
   . hiddenWindows
-  . mkToggle (single NBFULL)
+  . mkToggle (single FULL)
   . mkToggle (single MIRROR)
 
 myStartupHook :: X ()
