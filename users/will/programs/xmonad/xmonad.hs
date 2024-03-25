@@ -2,9 +2,7 @@ import XMonad
 
 import qualified XMonad.StackSet as W
 
--- This is in version 0.18.0
--- Nix currently has 0.17.1
--- import XMonad.Actions.ToggleFullFloat (toggleFullFloatEwmhFullscreen, toggleFullFloat)
+import XMonad.Actions.ToggleFullFloat (toggleFullFloatEwmhFullscreen, toggleFullFloat)
 
 import XMonad.Hooks.EwmhDesktops (ewmhFullscreen, ewmh)
 
@@ -22,12 +20,11 @@ import XMonad.Actions.WithAll (withAll)
 import XMonad.Layout.BinarySpacePartition
 
 -- layouts modifiers
-import XMonad.Layout.MultiToggle (Toggle(..),  mkToggle, single)
-import XMonad.Layout.MultiToggle.Instances (StdTransformers(FULL, MIRROR))
 import XMonad.Layout.Renamed
 import XMonad.Layout.LayoutModifier
 import XMonad.Util.NamedWindows
 import qualified XMonad.Util.ExtensibleState as XS
+import XMonad.Layout.NoBorders (lessBorders, Ambiguity(OnlyScreenFloat))
 
 -- status bar (using dzen2)
 import XMonad.Hooks.StatusBar
@@ -55,7 +52,7 @@ import Data.List ((\\))
 main :: IO ()
 main = do
   xmonad $
-    --toggleFullFloatEwmhFullscreen $
+    toggleFullFloatEwmhFullscreen $
     ewmhFullscreen $ ewmh $
     docks $ dynamicSBs myStatusBars $
     myNavigation2D $
@@ -109,12 +106,9 @@ myKeys c = mkKeymap c $
   , ("M-M1-C-p", sendMessage $ ShrinkFrom U)
   , ("M-M1-s", sendMessage Swap)
   , ("M-M1-r", sendMessage Rotate)
-  -- version issues
-  -- , ("M-<Space>", withFocused toggleFullFloat)
-  , ("M-<Space>", sendMessage (Toggle FULL)
-                  >> sendMessage ToggleStruts
-                  >> withAll toggleBorder)
-  , ("M-l m", sendMessage (Toggle MIRROR))
+  -- Fullscreen
+  , ("M-<Space>", withFocused toggleFullFloat)
+  -- hide windows
   , ("M-h", withFocused hideWindow)
   , ("M-C-h", popNewestHiddenWindow)
   
@@ -142,8 +136,7 @@ myLayout = transformLayout $ emptyBSP ||| tallLeft
 transformLayout = id
   . avoidStruts
   . hiddenWindows
-  . mkToggle (single FULL)
-  . mkToggle (single MIRROR)
+  . lessBorders OnlyScreenFloat
 
 myStartupHook :: X ()
 myStartupHook = do
