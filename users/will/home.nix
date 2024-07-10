@@ -118,6 +118,7 @@
     libvterm
 
     wine
+    scanmem
   ];
 
 
