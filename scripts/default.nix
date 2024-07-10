@@ -80,7 +80,7 @@ let
     echo '' | dzen2 -p -fn '-*-firacode nerd font mono-bold-*-*-*-*-250-*-*-*-*-iso8859-1' -h 22 -w 30 -fg '#2fafff' -bg '#000000' -e 'button2=;' 
   '';
 
-  protonhax = src: pkgs.writeScriptBin "protonhax" src;
+  protonhax = src: pkgs.writeShellScriptBin "protonhax" src;
 
 in {
   options.scripts.protonhax-src = lib.mkOption {
