@@ -116,6 +116,8 @@
     cmake
     libtool
     libvterm
+
+    wine
   ];
 
 
