@@ -1,6 +1,6 @@
 # Scripts defaul.nix
 
-{ pkgs, ... }:
+{ pkgs, lib, config, ... }:
 
 let
   polybar-exwm-workspace = pkgs.writeShellScriptBin "polybar-exwm-workspace" ''
@@ -80,8 +80,14 @@ let
     echo '' | dzen2 -p -fn '-*-firacode nerd font mono-bold-*-*-*-*-250-*-*-*-*-iso8859-1' -h 22 -w 30 -fg '#2fafff' -bg '#000000' -e 'button2=;' 
   '';
 
+  protonhax = src: pkgs.writeScriptBin "protonhax" src;
+
 in {
-  environment.systemPackages = [ 
+  options.scripts.protonhax-src = lib.mkOption {
+    type = lib.types.string;
+  };
+
+  config.environment.systemPackages = [ 
     polybar-exwm-workspace
     getKernelScript
     trayer-padding-icon
@@ -89,5 +95,6 @@ in {
     nvidia-set-offload-steam
     trayer-width
     dzen2-nix-icon
+    (protonhax config.scripts.protonhax-src)
   ];
 }

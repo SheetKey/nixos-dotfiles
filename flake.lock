@@ -93,11 +93,28 @@
         "type": "github"
       }
     },
+    "protonhax-git": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1713046416,
+        "narHash": "sha256-+saVvriwU6gu9pRaV3mVud8i2FXZ/o28K3iBmaUGDig=",
+        "owner": "jcnils",
+        "repo": "protonhax",
+        "rev": "449ce8cd2a86034499fcea1cba249ad79c93fdeb",
+        "type": "github"
+      },
+      "original": {
+        "owner": "jcnils",
+        "repo": "protonhax",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "emacs-overlay": "emacs-overlay",
         "home-manager": "home-manager",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs",
+        "protonhax-git": "protonhax-git"
       }
     },
     "systems": {
