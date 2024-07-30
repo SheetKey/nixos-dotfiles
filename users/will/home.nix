@@ -87,6 +87,7 @@
     krita
     goxel
     zotero
+    shotwell
 
     glxinfo
 
