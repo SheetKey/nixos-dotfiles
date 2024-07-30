@@ -87,7 +87,7 @@
     krita
     goxel
     zotero
-    shotwell
+    shotwell # import iphone photos
 
     glxinfo
 
