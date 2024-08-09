@@ -27,52 +27,54 @@
 
   #################### NVIDIA
 
-    services.xserver.videoDrivers = [ "nvidia" ];
+  services.xserver.videoDrivers = [ "nvidia" ];
 
-    hardware.nvidia.modesetting.enable = true;
+  hardware.nvidia = {
+    modesetting.enable = true;
+    prime = {
+      # offload.enable = true;
+      sync.enable = true;
 
-    hardware.nvidia.prime = {
-      offload.enable = true;
-    
       # Bus ID of the Intel GPU. You can find it using lspci, either under 3D or VGA
       intelBusId = "PCI:0:02:0";
-    
+      
       # Bus ID of the NVIDIA GPU. You can find it using lspci, either under 3D or VGA
       nvidiaBusId = "PCI:1:00:0";
     };
+  };
 
   ###########################
 
   # COPIED FROM GENERATED configuration.nix
-    system.stateVersion = "21.11";
+  system.stateVersion = "21.11";
 
-    boot.loader.systemd-boot.enable = true;
-    boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
 
   # COPIED FROM GENERATED hardware-configuration.nix
 
-    imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
+  imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
-    boot.initrd.availableKernelModules = [ "xhci_pci" "nvme" "usb_storage" "sd_mod" "alcor" ];
-    boot.initrd.kernelModules = [ ];
-    boot.kernelModules = [ "kvm-intel" ];
-    boot.extraModulePackages = [ ];
+  boot.initrd.availableKernelModules = [ "xhci_pci" "nvme" "usb_storage" "sd_mod" "alcor" ];
+  boot.initrd.kernelModules = [ ];
+  boot.kernelModules = [ "kvm-intel" ];
+  boot.extraModulePackages = [ ];
 
-    fileSystems."/" =
-      { device = "/dev/disk/by-label/nixos";
-        fsType = "ext4";
-      };
+  fileSystems."/" =
+    { device = "/dev/disk/by-label/nixos";
+      fsType = "ext4";
+    };
 
-    fileSystems."/boot" =
-      { device = "/dev/disk/by-label/boot";
-        fsType = "vfat";
-      };
+  fileSystems."/boot" =
+    { device = "/dev/disk/by-label/boot";
+      fsType = "vfat";
+    };
 
-    swapDevices =
-      [ { device = "/dev/disk/by-label/swap"; }
-      ];
+  swapDevices =
+    [ { device = "/dev/disk/by-label/swap"; }
+    ];
 
-    powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
-    hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
+  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
 }
