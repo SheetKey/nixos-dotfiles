@@ -51,6 +51,8 @@
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
+  # for iphone
+  services.usbmuxd.enable = true;
 
   # Enable the X11 windowing system.
   services.xserver = {
@@ -93,9 +95,9 @@
     defaultEditor = true;
     package = with pkgs; (emacsWithPackagesFromUsePackage
       {
-      config = ./users/will/programs/emacs/config.el;
-      package = pkgs.emacs-git;
-      alwaysEnsure = false;
+        config = ./users/will/programs/emacs/config.el;
+        package = pkgs.emacs-git;
+        alwaysEnsure = false;
       }
     );
   };

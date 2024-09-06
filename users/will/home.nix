@@ -88,6 +88,9 @@
     goxel
     zotero
     shotwell # import iphone photos
+    libheif
+    ifuse
+    libimobiledevice
 
     glxinfo
 
