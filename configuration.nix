@@ -106,8 +106,9 @@
   # services.printing.enable = true;
 
   # Enable sound.
-  sound.enable = true;
   hardware.pulseaudio.enable = true;
+  hardware.pulseaudio.support32Bit = true;
+  services.pipewire.enable = false;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.will = {

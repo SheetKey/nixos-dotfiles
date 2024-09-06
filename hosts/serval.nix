@@ -19,7 +19,7 @@
 
   hardware.opengl = {
     enable = true;
-    driSupport = true;
+    # driSupport = true;
     driSupport32Bit = true;
   };
 
@@ -27,6 +27,7 @@
 
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.nvidia = {
+    open = false;
     modesetting.enable = true;
     prime = {
       # offload.enable = true;
