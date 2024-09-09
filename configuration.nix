@@ -96,7 +96,7 @@
     package = with pkgs; (emacsWithPackagesFromUsePackage
       {
         config = ./users/will/programs/emacs/config.el;
-        package = pkgs.emacs-git;
+        package = pkgs.emacs-unstable;
         alwaysEnsure = false;
       }
     );

@@ -649,7 +649,8 @@ In my previous config, I had the 'ssh-agency' package installed, although it see
 
 
   ;; This should be the last line of theme config: set variables first.
-  (load-theme 'modus-vivendi-deuteranopia t)
+  ;(load-theme 'modus-vivendi-deuteranopia t)
+  (load-theme 'modus-vivendi t)
 #+end_src
 
 ** Execute when using daemon

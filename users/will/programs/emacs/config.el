@@ -391,21 +391,21 @@
 (defun will/set-font-faces ()
   (message "setting fonts")
   (set-face-attribute 'default nil
-		      :font "FiraCode Nerd Font Mono"
-		      :height 110
-		      :weight 'medium)
+			:font "FiraCode Nerd Font Mono"
+			:height 110
+			:weight 'medium)
   (set-face-attribute 'variable-pitch nil
-		      :font "TeX Gyre Schola"
-		      :height 120
-		      :weight 'medium)
+			:font "TeX Gyre Schola"
+			:height 120
+			:weight 'medium)
   (set-face-attribute 'fixed-pitch nil
-		      :font "FiraCode Nerd Font Mono"
-		      :height 110
-		      :weight 'medium)
+			:font "FiraCode Nerd Font Mono"
+			:height 110
+			:weight 'medium)
   (set-face-attribute 'font-lock-comment-face nil
-		      :slant 'italic)
+			:slant 'italic)
   (set-face-attribute 'font-lock-keyword-face nil
-		      :slant 'italic))
+			:slant 'italic))
 
 ;; Adjust line spacing
 (setq-default line-spacing 0.12)
@@ -451,22 +451,23 @@
 
 
 ;; This should be the last line of theme config: set variables first.
-(load-theme 'modus-vivendi-deuteranopia t)
+;(load-theme 'modus-vivendi-deuteranopia t)
+(load-theme 'modus-vivendi t)
 
 (if (daemonp)
     (add-hook 'after-make-frame-functions
-	      (lambda (frame)
-		(setq doom-modeline-icon t)
-		(with-selected-frame frame
-		  (will/set-font-faces))))
+		(lambda (frame)
+		  (setq doom-modeline-icon t)
+		  (with-selected-frame frame
+		    (will/set-font-faces))))
   (will/set-font-faces))
 
 (setq backup-directory-alist '(("." . "~/.emacs.d/backup"))
-      backup-by-copying t
-      version-control t
-      delete-old-version t
-      kept-new-version 20
-      kept-old-version t)
+	backup-by-copying t
+	version-control t
+	delete-old-version t
+	kept-new-version 20
+	kept-old-version t)
 
 (setq auto-save-file-name-transforms '((".*" "~/.emacs.d/auto-save-list/" t)))
 
