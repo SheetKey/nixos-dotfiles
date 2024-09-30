@@ -29,7 +29,10 @@
 
   services.xserver.videoDrivers = [ "nvidia" ];
 
+  services.xserver.dpi = 96;
+
   hardware.nvidia = {
+    open = false;
     modesetting.enable = true;
     prime = {
       # offload.enable = true;
