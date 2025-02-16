@@ -147,7 +147,7 @@
 
       ./services/picom/default.nix
       ./services/polybar/default.nix
-      ./services/kdeconnect/default.nix
+      # ./services/kdeconnect/default.nix
 
       ./xdg/userDirs/default.nix
     ];

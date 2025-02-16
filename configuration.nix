@@ -199,6 +199,8 @@
     openDefaultPorts = true;
   };
 
+  programs.kdeconnect.enable = true;
+
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
 
