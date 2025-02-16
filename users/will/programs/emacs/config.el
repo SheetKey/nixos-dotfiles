@@ -31,11 +31,6 @@
   ;; Consult
   "C-r" 'consult-history)
 
-(general-def dired-mode-map
-  [remap dired-find-file] 'dired-single-buffer
-  [remap dired-mouse-find-file-other-window] 'dired-single-buffer-mouse
-  [remap dired-up-directory] 'dired-single-up-directory)
-
 (general-def company-active-map
   "C-n" 'company-select-next
   "C-p" 'company-select-previous
@@ -305,9 +300,9 @@
   :commands (dired dired-jump)
   :custom (dired-listing-switches "-agho --group-directories-first"))
 
-(use-package dired-single
-  :ensure t
-  :after (dired))
+;;(use-package dired-single
+;;  :ensure t
+;;  :after (dired))
 
 (use-package dired-hide-dotfiles
   :ensure t
@@ -316,6 +311,8 @@
 (use-package all-the-icons-dired
   :ensure t
   :hook (dired-mode . all-the-icons-dired-mode))
+
+(setq dired-kill-when-opening-new-dired-buffer 1)
 
 (use-package ispell
   :config
