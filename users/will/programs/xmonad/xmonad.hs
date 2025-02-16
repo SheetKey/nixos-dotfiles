@@ -46,11 +46,29 @@ import Data.Time (formatTime
                  , getCurrentTime)
 
 -- base
-import System.Exit (exitSuccess)
+import Control.Monad (guard)
 import Data.List ((\\))
+import Data.Maybe (fromMaybe)
+import System.Exit (exitSuccess)
+import GHC.IO.Handle (hDuplicateTo)
+import System.IO (stderr, stdout, openFile, hClose, hSetBuffering, BufferMode(..), IOMode(..))
+import System.FilePath ((</>))
+import System.Environment (getEnv)
 
 main :: IO ()
 main = do
+  -- redirect stderr and stdout
+  home <- getEnv "HOME"
+  let xmonadDir = home </> ".xmonad"
+  hClose stdout
+  hClose stderr
+  stdout' <- openFile (xmonadDir </> "xmonad-stdout.log") AppendMode
+  stderr' <- openFile (xmonadDir </> "xmonad-stderr.log") AppendMode
+  hDuplicateTo stdout' stdout
+  hDuplicateTo stderr' stderr
+  hSetBuffering stdout NoBuffering
+  hSetBuffering stderr NoBuffering
+  -- config
   xmonad $
     toggleFullFloatEwmhFullscreen $
     ewmhFullscreen $ ewmh $
@@ -92,9 +110,8 @@ myKeys c = mkKeymap c $
   , ("M-<Tab>", sendMessage NextLayout)
   , ("M-m", windows W.focusMaster)
   , ("M-S-<Return>", windows W.swapMaster)
-  -- resize
-  , ("M-l f", sendMessage Expand)
-  , ("M-l b", sendMessage Shrink)
+  -- toggle float
+  , ("M-l f", withFocused toggleFloat)
   -- BSP layout keys
   , ("M-M1-b", sendMessage $ ExpandTowards L)
   , ("M-M1-f", sendMessage $ ExpandTowards R)
@@ -128,6 +145,27 @@ myKeys c = mkKeymap c $
   -- mod-shift-[1-9] moves client to workspace N
   [ ("M-S-" ++ show k, windows $ W.shift i)
   | (i, k) <- zip (XMonad.workspaces c) [1..9]]
+
+toggleFloat :: Window -> X ()
+toggleFloat w = do
+  (sc, rr) <- floatLocation w
+  windows $ \ws -> toggleFloat_ w rr . fromMaybe ws $ do
+    i <- W.findTag w ws
+    guard $ i `elem` map (W.tag . W.workspace) (W.screens ws)
+    f <- W.peek ws
+    sw <- W.lookupWorkspace sc ws
+    return (W.focusWindow f . W.shiftWin sw w $ ws)
+  
+
+toggleFloat_ :: Ord a => a -> W.RationalRect -> W.StackSet i l a s sd -> W.StackSet i l a s sd
+toggleFloat_ w r s =
+  s { W.floating = M.alter
+                 (\ mFloat -> case mFloat of
+                                Just _ -> Nothing
+                                Nothing -> Just r
+                 )
+                 w (W.floating s)
+    }
   
 myLayout = transformLayout $ emptyBSP ||| tallLeft
   where
@@ -197,7 +235,8 @@ dzenCmdRight = "dzen2 \
                \-e 'button2=;'"
 
 filterWindowTitle :: String -> String
-filterWindowTitle = dropWhile (== ' ') . last . split '-'
+filterWindowTitle [] = []
+filterWindowTitle str  = dropWhile (== ' ') . last . split '-' $ str
 
 dzenLeftPP :: PP
 dzenLeftPP = def
@@ -350,7 +389,10 @@ getHiddenNames (HiddenWindows hidden) = do
 
 --------------------------------------------------------------------------------
 restoreWindow :: Window -> X ()
-restoreWindow = windows . W.insertUp
+restoreWindow win = modify (\s -> s { windowset = W.insertUp win $ windowset s })
+-- restoreWindow w = windows $ \ss -> if w `W.member` ss
+--                                    then w `W.insertUp` ss
+--                                    else ss
 
 --------------------------------------------------------------------------------
 hiddenWinTitlesL :: Logger
