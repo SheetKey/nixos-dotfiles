@@ -93,6 +93,8 @@
     libimobiledevice
 
     glxinfo
+    arandr
+    inxi
 
     # Games
     boohu
@@ -148,6 +150,7 @@
       ./services/picom/default.nix
       ./services/polybar/default.nix
       # ./services/kdeconnect/default.nix
+      ./services/grobi/default.nix
 
       ./xdg/userDirs/default.nix
     ];

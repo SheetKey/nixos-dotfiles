@@ -175,7 +175,11 @@
   # Install fonts
   fonts = {
     packages = with pkgs; [
-      nerdfonts
+      nerd-fonts.ubuntu
+      nerd-fonts.ubuntu-mono
+      nerd-fonts.fira-mono
+      nerd-fonts.fira-code
+      nerd-fonts.mononoki
       font-awesome
       material-icons
       emacs-all-the-icons-fonts
