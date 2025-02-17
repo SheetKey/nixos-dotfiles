@@ -53,6 +53,7 @@ import System.Exit (exitSuccess)
 import GHC.IO.Handle (hDuplicateTo)
 import System.IO (stderr, stdout, openFile, hClose, hSetBuffering, BufferMode(..), IOMode(..))
 import System.FilePath ((</>))
+import System.Directory (createDirectoryIfMissing)
 import System.Environment (getEnv)
 
 main :: IO ()
@@ -60,6 +61,7 @@ main = do
   -- redirect stderr and stdout
   home <- getEnv "HOME"
   let xmonadDir = home </> ".xmonad"
+  createDirectoryIfMissing False xmonadDir
   hClose stdout
   hClose stderr
   stdout' <- openFile (xmonadDir </> "xmonad-stdout.log") AppendMode
