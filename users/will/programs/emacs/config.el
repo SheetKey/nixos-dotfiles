@@ -342,7 +342,7 @@
                  "zathura"
                  '(file))
            (list (openwith-make-extension-regexp
-                  '("png" "jpeg" "jpg"))
+                  '("png" "jpeg" "jpg" "heic"))
                  "nomacs"
                  '(file))))
     (openwith-mode 1)))

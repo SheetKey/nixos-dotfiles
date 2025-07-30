@@ -511,7 +511,7 @@ In my previous config, I had the 'ssh-agency' package installed, although it see
                    "zathura"
                    '(file))
              (list (openwith-make-extension-regexp
-                    '("png" "jpeg" "jpg"))
+                    '("png" "jpeg" "jpg" "heic"))
                    "nomacs"
                    '(file))))
       (openwith-mode 1)))
