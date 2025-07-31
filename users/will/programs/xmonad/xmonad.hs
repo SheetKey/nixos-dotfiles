@@ -5,6 +5,7 @@ import qualified XMonad.StackSet as W
 import XMonad.Actions.ToggleFullFloat (toggleFullFloatEwmhFullscreen, toggleFullFloat)
 
 import XMonad.Hooks.EwmhDesktops (ewmhFullscreen, ewmh)
+import XMonad.Hooks.SetWMName (setWMName) -- to fix java issues
 
 import XMonad.Util.EZConfig (mkKeymap)
 import XMonad.Util.SpawnOnce (spawnOnce)
@@ -71,22 +72,23 @@ main = do
   hSetBuffering stdout NoBuffering
   hSetBuffering stderr NoBuffering
   -- config
-  xmonad $
-    toggleFullFloatEwmhFullscreen $
-    ewmhFullscreen $ ewmh $
-    docks $ dynamicSBs myStatusBars $
-    myNavigation2D $
-    def
-    { modMask = mod4Mask
-    , keys = myKeys
-    , layoutHook = myLayout
-    , terminal = "alacritty"
-    , startupHook = myStartupHook
-    , focusFollowsMouse = False
-    , clickJustFocuses = True
-    , focusedBorderColor = "#ffffff"
-    , normalBorderColor = "#000000"
-    }
+  let conf =
+        toggleFullFloatEwmhFullscreen $
+        ewmhFullscreen $ ewmh $
+        docks $ dynamicSBs myStatusBars $
+        myNavigation2D $
+        def
+        { modMask = mod4Mask
+        , keys = myKeys
+        , layoutHook = myLayout
+        , terminal = "alacritty"
+        , startupHook = myStartupHook
+        , focusFollowsMouse = False
+        , clickJustFocuses = True
+        , focusedBorderColor = "#ffffff"
+        , normalBorderColor = "#000000"
+        }
+  xmonad conf { startupHook = startupHook conf >> setWMName "LG3D" }
 
 myNavigation2D :: XConfig l -> XConfig l
 myNavigation2D = navigation2DP

@@ -125,6 +125,9 @@
 
     wine
     scanmem
+
+    # java thinkorswim
+    jdk
   ];
 
 

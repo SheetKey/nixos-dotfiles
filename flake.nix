@@ -19,9 +19,11 @@
       url = "github:jcnils/protonhax";
       flake = false;
     };
+
+    nix-flatpak.url = "github:gmodena/nix-flatpak";
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, emacs-overlay, protonhax-git, ... }: 
+  outputs = inputs@{ self, nixpkgs, home-manager, emacs-overlay, protonhax-git, nix-flatpak, ... }: 
 
     let 
 
@@ -72,6 +74,8 @@
                 [
                   ./configuration.nix
                   ./hosts/serval.nix
+                  nix-flatpak.nixosModules.nix-flatpak
+                  ./flatpak.nix
                 ];
             })
             

@@ -15,6 +15,11 @@
     system76-keyboard-configurator
   ];
 
+  environment.variables = {
+    _JAVA_AWT_WM_NONREPARENTING = 1;
+    AWT_TOOLKIT = "MToolkit";
+  };
+
   hardware.system76.enableAll = true;
 
   hardware.opengl = {
@@ -43,7 +48,7 @@
 
   # THE BELOW CODE IS COPIED FROM THE AUTO-GENERATE 'configuration.nix'.
   # IT MAY CONTAIN EDITS.
-  
+
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -62,7 +67,7 @@
   # IT MAY CONTAIN EDITS.
 
   imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
-  
+
   boot.initrd.availableKernelModules = [ "xhci_pci" "thunderbolt" "nvme" "usb_storage" "sd_mod" "sdhci_pci" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];

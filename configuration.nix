@@ -22,7 +22,15 @@
   };
   nixpkgs.config.allowUnfree = true;
 
-############## ADD BOOT SETTINGS IN HOST SPECIFIC CONFIG#########################
+  xdg.portal = {
+    enable = true;
+    extraPortals = [
+      pkgs.xdg-desktop-portal-gtk
+    ];
+  };
+  services.flatpak.enable = true;
+
+  ############## ADD BOOT SETTINGS IN HOST SPECIFIC CONFIG#########################
   # Use the GRUB 2 boot loader.
   # boot.loader.grub.enable = true;
   # boot.loader.grub.version = 2;
@@ -31,7 +39,7 @@
   # boot.loader.efi.efiSysMountPoint = "/boot/efi";
   # Define on which hard drive you want to install Grub.
   # boot.loader.grub.device = "/dev/sda"; # or "nodev" for efi only
-#################################################################################
+  #################################################################################
 
   # Set up locales.
   time.timeZone = "America/New_York";
@@ -40,7 +48,7 @@
     keyMap = "us";
   };
 
-##################### ADD NETWORK SETTINGS TO HOST SPECIFIC CONGIF ########################
+  ##################### ADD NETWORK SETTINGS TO HOST SPECIFIC CONGIF ########################
   # The global useDHCP flag is deprecated, therefore explicitly set to false here.
   # Per-interface useDHCP will be mandatory in the future, so this generated config
   # replicates the default behaviour.
