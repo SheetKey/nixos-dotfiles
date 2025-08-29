@@ -16,21 +16,14 @@
     lshw
   ];
 
-  #################### Steam
-
-  programs.steam.enable = true;
-
-  ####################
-
-
-  # hardware.enableRedistributableFirmware = true;
-
-  #################### NVIDIA
-
-  services.xserver.videoDrivers = [ "nvidia" ];
+  hardware.opengl = {
+    enable = true;
+    driSupport32Bit = true;
+  };
 
   services.xserver.dpi = 96;
 
+  services.xserver.videoDrivers = [ "nvidia" ];
   hardware.nvidia = {
     open = false;
     modesetting.enable = true;
@@ -45,6 +38,8 @@
       nvidiaBusId = "PCI:1:00:0";
     };
   };
+
+  programs.steam.enable = true;
 
   ###########################
 
