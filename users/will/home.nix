@@ -50,7 +50,8 @@
     poppler_utils
     espeak-classic
     vlc
-    # piper-tts #CURRENTLY BROKEN; TRY AGAIN WHEN NEEDED (onnx dependency doesn't build)
+    piper-tts #CURRENTLY BROKEN; TRY AGAIN WHEN NEEDED (onnx dependency doesn't build)
+    ocrmypdf
 
     lilypond
 
