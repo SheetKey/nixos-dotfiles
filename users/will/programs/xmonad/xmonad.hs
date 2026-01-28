@@ -206,8 +206,8 @@ myStartupHook = do
   -- spawnOnce "xfce4-power-manager &"
   
 -- dzen status bar
-myStatusBars :: ScreenId -> IO StatusBarConfig
-myStatusBars _ = do
+myStatusBars :: ScreenId -> X StatusBarConfig
+myStatusBars _ = liftIO $ do
   -- trayerWidth <- readCreateProcess
   --   (shell "xprop -name panel | grep 'program specified minimum size' | cut -d ' ' -f 5") ""
   lBar <- statusBarPipe dzenCmdLeft (pure dzenLeftPP)

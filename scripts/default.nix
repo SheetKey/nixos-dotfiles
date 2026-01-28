@@ -84,7 +84,7 @@ let
 
 in {
   options.scripts.protonhax-src = lib.mkOption {
-    type = lib.types.string;
+    type = lib.types.str;
   };
 
   config.environment.systemPackages = [ 

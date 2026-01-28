@@ -34,7 +34,7 @@
     nix-prefetch-github
     ripgrep
     unzip
-    hardinfo
+    hardinfo2
     pmount
 
     # check X server fonts
@@ -47,7 +47,7 @@
     tuxguitar
 
     # text to speech
-    poppler_utils
+    poppler-utils
     espeak-classic
     vlc
     piper-tts #CURRENTLY BROKEN; TRY AGAIN WHEN NEEDED (onnx dependency doesn't build)
@@ -83,7 +83,7 @@
     pavucontrol
     brightnessctl
     upower
-    spectacle # screenshots
+    kdePackages.spectacle # screenshots
     libreoffice
     krita
     goxel
@@ -93,7 +93,7 @@
     ifuse
     libimobiledevice
 
-    glxinfo
+    mesa-demos
     arandr
     inxi
 
@@ -106,6 +106,7 @@
     #widelands
     #unnethack
     mgba
+    protontricks
 
     # window manager related
     nitrogen

@@ -170,8 +170,10 @@
   programs.zsh.enable = true;
 
   services.logind = {
-    extraConfig = "HandlePowerKey=suspend";
-    lidSwitch = "suspend";
+    settings.Login = {
+      HandlePowerKey = "suspend";
+      HandleLidSwitch = "suspend";
+    };
   };
 
   programs.slock.enable = true;

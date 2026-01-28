@@ -1,4 +1,4 @@
-[shell]
+[terminal.shell]
 program = "zsh"
 
 [window]
