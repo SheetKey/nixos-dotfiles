@@ -358,11 +358,11 @@
         company-minimum-prefix-length 2)
   (add-hook 'after-init-hook 'global-company-mode))
 
-(use-package eglot
-  :after (direnv)
-  :custom
-  (eglot-autoshutdown t)
-  (eglot-confirm-server-initiated-edits nil))
+;; (use-package eglot
+;;   :after (direnv)
+;;   :custom
+;;   (eglot-autoshutdown t)
+;;   (eglot-confirm-server-initiated-edits nil))
 
 (use-package nix-mode
   :ensure t
@@ -376,14 +376,14 @@
   :config (direnv-mode))
 
 (use-package haskell-mode
-  :ensure t
-  :config
-  (add-hook 'haskell-mode-hook 'eglot-ensure))
+  :ensure t)
+  ;; :config
+  ;; (add-hook 'haskell-mode-hook 'eglot-ensure))
 
 (use-package zig-mode
-  :ensure t
-  :config
-  (add-hook 'zig-mode-hook 'eglot-ensure))
+  :ensure t)
+  ;; :config
+  ;; (add-hook 'zig-mode-hook 'eglot-ensure))
 
 (defun will/set-font-faces ()
   (message "setting fonts")

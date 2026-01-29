@@ -537,11 +537,11 @@ In my previous config, I had the 'ssh-agency' package installed, although it see
 #+end_src
 *** LSP
 #+begin_src emacs-lisp
-  (use-package eglot
-    :after (direnv)
-    :custom
-    (eglot-autoshutdown t)
-    (eglot-confirm-server-initiated-edits nil))
+  ;; (use-package eglot
+  ;;   :after (direnv)
+  ;;   :custom
+  ;;   (eglot-autoshutdown t)
+  ;;   (eglot-confirm-server-initiated-edits nil))
 #+end_src
 
 *** Nix
@@ -564,17 +564,17 @@ In my previous config, I had the 'ssh-agency' package installed, although it see
 *** Haskell
 #+begin_src emacs-lisp
   (use-package haskell-mode
-    :ensure t
-    :config
-    (add-hook 'haskell-mode-hook 'eglot-ensure))
+    :ensure t)
+    ;; :config
+    ;; (add-hook 'haskell-mode-hook 'eglot-ensure))
 #+end_src
 
 *** Zig
 #+begin_src emacs-lisp
   (use-package zig-mode
-    :ensure t
-    :config
-    (add-hook 'zig-mode-hook 'eglot-ensure))
+    :ensure t)
+    ;; :config
+    ;; (add-hook 'zig-mode-hook 'eglot-ensure))
 #+end_src
 
 * Base settings
