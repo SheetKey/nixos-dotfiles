@@ -177,7 +177,7 @@
   };
 
   programs.slock.enable = true;
-
+  security.pam.services.i3lock.enable = true; # lets xss-lock (i3lock) know my password
   programs.xss-lock = {
     enable = true;
   };
