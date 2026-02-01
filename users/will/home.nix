@@ -73,6 +73,7 @@
     # GUI stuff
     brave
     firefox
+    librewolf
     # nyxt #broken sbcl dep
     trayer
     networkmanagerapplet
