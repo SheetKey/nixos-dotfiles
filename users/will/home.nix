@@ -145,7 +145,7 @@
       ./programs/xmobar/default.nix
       ./programs/lf/default.nix
       ./programs/alacritty/default.nix
-      ./programs/neovim/default.nix
+      # ./programs/neovim/default.nix
       ./programs/direnv/default.nix
       ./programs/zathura/default.nix
 
