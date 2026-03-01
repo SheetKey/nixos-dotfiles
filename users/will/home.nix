@@ -85,7 +85,7 @@
     brightnessctl
     upower
     kdePackages.spectacle # screenshots
-    libreoffice
+    # libreoffice "noto fonts broken"
     krita
     goxel
     zotero
