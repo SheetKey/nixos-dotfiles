@@ -5,6 +5,7 @@
     hostName = "serval";
     networkmanager.enable = true;
   };
+  programs.nm-applet.enable = true;
   
   environment.systemPackages = with pkgs; [
     pciutils

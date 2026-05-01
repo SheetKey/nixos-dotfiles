@@ -27,7 +27,6 @@
     zsh
     bash
     # DO NOT ADD NEOVIM TO "home.packages": LEAVE IN "configuration.nix"
-    neofetch
     htop
     #xorg.kill
     lf
@@ -76,7 +75,7 @@
     librewolf
     # nyxt #broken sbcl dep
     trayer
-    networkmanagerapplet
+    # networkmanagerapplet -- enabled in serval.nix
     cbatticon
     pa_applet
     #mathematica
@@ -85,7 +84,7 @@
     brightnessctl
     upower
     kdePackages.spectacle # screenshots
-    # libreoffice "noto fonts broken"
+    libreoffice
     krita
     goxel
     zotero
